@@ -53,7 +53,6 @@ class SuratTugasAsesorController extends Controller
         ]);
 
         $doc = file_get_contents(public_path('template_surat/Surat-Tugas-Asesor.rtf'));
-        // dd($doc);
 
         // Replace data
         $doc = str_replace('#NOMORSURAT', $request->nomor_surat, $doc);
