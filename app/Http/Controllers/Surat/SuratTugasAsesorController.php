@@ -105,7 +105,7 @@ class SuratTugasAsesorController extends Controller
         if (Storage::exists($filePath)) {
             Storage::delete($filePath);
         } else {
-            echo "File tidak ditemukan.";
+            //echo "File tidak ditemukan.";
         }
 
         // Buat File Doc Baru
@@ -173,10 +173,12 @@ class SuratTugasAsesorController extends Controller
     public function generatePdf($id)
     {
         // dd($id);
-        $data['dataSurat'] = SuratTugasModel::where('id', $id)->first();
+        $dataSurat = SuratTugasModel::where('id', $id)->first();
         // dd($data['dataSurat']);
-        $pdf = Pdf::loadView('admin.surat.surat-tugas-asesor.pdf', $data);
-        return $pdf->stream($data['dataSurat']->nama_surat . '.pdf');
+        // $pdf = Pdf::loadView('admin.surat.surat-tugas-asesor.pdf', $data);
+        $pdf = PDF::loadView('admin.surat.surat-tugas-asesor.pdf', ['dataSurat' => $dataSurat]);
+
+        return $pdf->stream($dataSurat->nama_surat . '.pdf');
     }
 
     public function get_data_tuk($id)
