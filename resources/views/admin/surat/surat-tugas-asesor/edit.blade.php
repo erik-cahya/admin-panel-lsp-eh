@@ -83,57 +83,23 @@
                                 <select id="selectOption" onchange="fillText()" name="nama_asesor" class="form-control"
                                     required>
                                     <option selected readonly disabled>Pilih Asesor</option>
-                                    <option value="Alit Aditya Angga Widiarsah"
-                                        {{ $dataSurat->nama_asesor == 'Alit Aditya Angga Widiarsah' ? 'selected' : '' }}>
-                                        Alit Aditya Angga Widiarsah</option>
-                                    <option value="Anton Kurniawan"
-                                        {{ $dataSurat->nama_asesor == 'Anton Kurniawan' ? 'selected' : '' }}>
-                                        Anton Kurniawan</option>
-                                    <option value="I Dewa Made Yudiarta"
-                                        {{ $dataSurat->nama_asesor == 'I Dewa Made Yudiarta' ? 'selected' : '' }}>I
-                                        Dewa Made Yudiarta</option>
-                                    <option value="I Gede Sumerta"
-                                        {{ $dataSurat->nama_asesor == 'I Gede Sumerta' ? 'selected' : '' }}>I
-                                        Gede Sumerta</option>
-                                    <option value="I Gede Swastika"
-                                        {{ $dataSurat->nama_asesor == 'I Gede Swastika' ? 'selected' : '' }}>I
-                                        Gede Swastika</option>
-                                    <option value="I Gusti Agung Putu Prawira Deasy Suharta"
-                                        {{ $dataSurat->nama_asesor == 'I Gusti Agung Putu Prawira Deasy Suharta' ? 'selected' : '' }}>
-                                        I
-                                        Gusti Agung Putu Prawira
-                                        Deasy Suharta</option>
-                                    <option value="I Gusti Made Sutama Arsa"
-                                        {{ $dataSurat->nama_asesor == 'I Gusti Made Sutama Arsa' ? 'selected' : '' }}>I
-                                        Gusti Made Sutama Arsa</option>
-                                    <option value="I Komang Sutarmika"
-                                        {{ $dataSurat->nama_asesor == 'I Komang Sutarmika' ? 'selected' : '' }}>I
-                                        Komang Sutarmika</option>
-                                    <option value="I Made Arta"
-                                        {{ $dataSurat->nama_asesor == 'I Made Arta' ? 'selected' : '' }}>I
-                                        Made Arta</option>
-                                    <option value="I Made Juni Suaryana"
-                                        {{ $dataSurat->nama_asesor == 'I Made Juni Suaryana' ? 'selected' : '' }}>I
-                                        Made Juni Suaryana</option>
-                                    <option value="I Nengah Jati"
-                                        {{ $dataSurat->nama_asesor == 'I Nengah Jati' ? 'selected' : '' }}>I
-                                        Nengah Jati</option>
-                                    <option value="I Putu Angga Sukma Primantara"
-                                        {{ $dataSurat->nama_asesor == 'I Putu Angga Sukma Primantara' ? 'selected' : '' }}>
-                                        I
-                                        Putu Angga Sukma Primantara</option>
-                                    <option value="I Wayan Mudiarta"
-                                        {{ $dataSurat->nama_asesor == 'I Wayan Mudiarta' ? 'selected' : '' }}>I
-                                        Wayan Mudiarta</option>
-                                    <option value="I Wayan Widiyasa"
-                                        {{ $dataSurat->nama_asesor == 'I Wayan Widiyasa' ? 'selected' : '' }}>I
-                                        Wayan Widiyasa</option>
-                                    <option value="Ribut Ponco Purnomo"
-                                        {{ $dataSurat->nama_asesor == 'Ribut Ponco Purnomo' ? 'selected' : '' }}>
-                                        Ribut Ponco Purnomo</option>
-                                    <option value="I Gusti Agung Wahyu Paranagita"
-                                        {{ $dataSurat->nama_asesor == 'I Gusti Agung Wahyu Paranagita' ? 'selected' : '' }}>
-                                        I Gusti Agung Wahyu Paranagita</option>
+                                    <option value="Alit Aditya Angga Widiarsah" {{ $dataSurat->nama_asesor == 'Alit Aditya Angga Widiarsah' ? 'selected' : '' }}>Alit Aditya Angga Widiarsah</option>
+                                    <option value="Anton Kurniawan" {{ $dataSurat->nama_asesor == 'Anton Kurniawan' ? 'selected' : '' }}> Anton Kurniawan</option>
+                                    <option value="I Dewa Made Yudiarta" {{ $dataSurat->nama_asesor == 'I Dewa Made Yudiarta' ? 'selected' : '' }}>I Dewa Made Yudiarta</option>
+                                    <option value="I Gede Sumerta" {{ $dataSurat->nama_asesor == 'I Gede Sumerta' ? 'selected' : '' }}>I Gede Sumerta</option>
+                                    <option value="I Gede Swastika" {{ $dataSurat->nama_asesor == 'I Gede Swastika' ? 'selected' : '' }}>I Gede Swastika</option>
+                                    <option value="I Gusti Agung Putu Prawira Deasy Suharta" {{ $dataSurat->nama_asesor == 'I Gusti Agung Putu Prawira Deasy Suharta' ? 'selected' : '' }}>I Gusti Agung Putu Prawira Deasy Suharta</option>
+                                    <option value="I Gusti Made Sutama Arsa" {{ $dataSurat->nama_asesor == 'I Gusti Made Sutama Arsa' ? 'selected' : '' }}>I Gusti Made Sutama Arsa</option>
+                                    <option value="I Komang Sutarmika" {{ $dataSurat->nama_asesor == 'I Komang Sutarmika' ? 'selected' : '' }}>I Komang Sutarmika</option>
+                                    <option value="I Made Arta" {{ $dataSurat->nama_asesor == 'I Made Arta' ? 'selected' : '' }}>I Made Arta</option>
+                                    <option value="I Made Juni Suaryana" {{ $dataSurat->nama_asesor == 'I Made Juni Suaryana' ? 'selected' : '' }}>I Made Juni Suaryana</option>
+                                    <option value="I Nengah Jati" {{ $dataSurat->nama_asesor == 'I Nengah Jati' ? 'selected' : '' }}>I Nengah Jati</option>
+                                    <option value="I Putu Angga Sukma Primantara" {{ $dataSurat->nama_asesor == 'I Putu Angga Sukma Primantara' ? 'selected' : '' }}>I Putu Angga Sukma Primantara</option>
+                                    <option value="I Wayan Mudiarta" {{ $dataSurat->nama_asesor == 'I Wayan Mudiarta' ? 's≈≈≈≈≈≈≈∫elected' : '' }}>I Wayan Mudiarta</option>
+                                    <option value="I Wayan Widiyasa" {{ $dataSurat->nama_asesor == 'I Wayan Widiyasa' ? 'selected' : '' }}>I Wayan Widiyasa</option>
+                                    <option value="Ribut Ponco Purnomo" {{ $dataSurat->nama_asesor == 'Ribut Ponco Purnomo' ? 'selected' : '' }}> Ribut Ponco Purnomo</option>
+                                    <option value="I Gusti Agung Wahyu Paranagita" {{ $dataSurat->nama_asesor == 'I Gusti Agung Wahyu Paranagita' ? 'selected' : '' }}> I Gusti Agung Wahyu Paranagita</option>
+                                    <option value="Ida Bagus Gde Widiantara, S.T., M.T." {{ $dataSurat->nama_asesor == 'Ida Bagus Gde Widiantara, S.T., M.T.' ? 'selected' : '' }}>Ida Bagus Gde Widiantara, S.T., M.T.</option>
                                 </select>
 
                             </div>
