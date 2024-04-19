@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\QRCode\QRCodeController;
+use App\Http\Controllers\Surat\SuratTugasAsesorController;
+use App\Http\Controllers\TUK\TUKController;
 use Illuminate\Support\Facades\Route;
 
 /*
