@@ -166,7 +166,7 @@ class SuratTugasAsesorController extends Controller
             return response()->download(storage_path('app/' . $filePath), $namaSurat . '.doc');
         } else {
             // Jika pada saat download file docnya tidak ada.. maka buat lagi file docnya
-            echo "File tidak ditemukan.";
+            // echo "File tidak ditemukan.";
 
             $dataSurat = SuratTugasModel::where('id', $id)->first();
 
