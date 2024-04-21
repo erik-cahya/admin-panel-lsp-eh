@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\QRCode\QRCodeController;
 use App\Http\Controllers\Surat\SuratTugasAsesorController;
 use App\Http\Controllers\TUK\TUKController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,9 +19,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [AuthenticatedSessionController::class, 'create']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
