@@ -188,7 +188,6 @@ class SuratTugasAsesorController extends Controller
             Storage::put('public/surat/' . $fileName . '.doc', $doc);
 
             return response()->download(storage_path('app/' . $filePath), $namaSurat . '.doc');
-
         }
     }
 
@@ -197,7 +196,7 @@ class SuratTugasAsesorController extends Controller
         $dataSurat = SuratTugasModel::where('id', $id)->first();
         $pdf = PDF::loadView('admin.surat.surat-tugas-asesor.pdf', ['dataSurat' => $dataSurat]);
 
-        return $pdf->stream($dataSurat->nama_surat . '.pdf');
+        return $pdf->download($dataSurat->nama_surat . '.pdf');
     }
 
     public function get_data_tuk($id)
