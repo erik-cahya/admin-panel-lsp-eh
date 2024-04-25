@@ -38,12 +38,12 @@
                     <ul class="nav sub-menu">
 
                         <li class="nav-item list-group-item d-flex justify-content-between align-items-center" >
-                            <a href="../../pages/email/inbox.html" class="nav-link {{ request()->segment(1) == 'surat-tugas-asesor' ? 'active' : '' }}">List Surat</a>
+                            <a href="/surat-tugas-asesor" class="nav-link {{ request()->segment(1) == 'surat-tugas-asesor' ? 'active' : '' }}">List Surat</a>
                             <span class="badge bg-primary rounded-pill" style="font-size: 10px">{{ App\Models\SuratTugasModel::count() }}</span>
                         </li>
 
                         <li class="nav-item">
-                            <a href="../../pages/email/read.html" class="nav-link {{ request()->segment(1) == 'surat-tugas-asesor' && request()->segment(2) == 'create' ? 'active' : '' }}">Create Surat</a>
+                            <a href="/surat-tugas-asesor/create" class="nav-link {{ request()->segment(1) == 'surat-tugas-asesor' && request()->segment(2) == 'create' ? 'active' : '' }}">Create Surat</a>
                         </li>
                     </ul>
                 </div>
