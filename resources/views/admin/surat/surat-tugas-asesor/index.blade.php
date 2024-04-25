@@ -1,254 +1,247 @@
 @extends('admin.layouts.master')
-@section('content')
-    <div class="container-fluid page__heading-container">
-        <div class="page__heading d-flex align-items-center">
-            <div class="flex">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
-                        <li class="breadcrumb-item">SURAT</li>
-                        <li class="breadcrumb-item active" aria-current="page">SURAT TUGAS ASESOR</li>
-                    </ol>
-                </nav>
-                <h1 class="m-0">Surat Tugas Asesor</h1>
-
-                <div class="badge badge-warning mt-3">Nomor Surat Terakhir : {{ $nomor_surat_terakhir->nomor_surat }}</div>
-
-
-            </div>
-            <a href="{{ route('surat-tugas-asesor.create') }}" class="btn btn-success ml-3">Buat Surat<i
-                    class="material-icons">add</i></a>
-        </div>
-    </div>
-
-
-    <div class="container-fluid page__container">
-
-
-
-        <div class="card p-4" style="">
-
-            <table id="example" class="display"class="table mb-0 thead-border-top-0 table-striped">
-                <thead>
-                    <tr>
-                        <th width="10" class="text-center">NO SURAT</th>
-                        <th width="150"> Nama TUK</th>
-                        <th width="150" class="text-center">Nama Asesor</th>
-                        <th width="130" class="text-center">Tanggal Uji</th>
-                        <th width="150" class="text-right">Skema</th>
-                        <th width="100">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody class="list" id="companies">
-                    @foreach ($data_surat as $dt_surat)
-                        <tr>
-                            <td class="text-center">
-                                <div class="badge badge-soft-dark">{{ $dt_surat->nomor_surat }}</div>
-                            </td>
-                            <td>
-                                <div class="d-flex align-items-center">
-
-                                    <div class="d-flex align-items-center">
-                                        <i class="material-icons icon-16pt mr-1 text-blue">business</i>
-                                        <a href="#">{{ $dt_surat->nama_tuk }}</a>
-                                    </div>
-
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <small class="text-muted"><i
-                                            class="material-icons icon-16pt mr-1">pin_drop</i>{{ $dt_surat->alamat_tuk }}</small>
-                                </div>
-                            </td>
-                            <td class="text-center">
-                                <i class="material-icons icon-16pt text-muted mr-1">account_circle</i>
-                                {{ $dt_surat->nama_asesor }}
-                            </td>
-
-                            <td class="text-center">
-                                {{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}
-                            </td>
-                            <td class="text-right"><strong>{{ $dt_surat->skema }}</strong></td>
-                            <td>
-
-                                <div class="dropdown pull-right">
-                                    <button type="button" class="btn btn-sm btn-primary" data-toggle="modal"
-                                        data-target="#modal-signup-{{ $dt_surat->id }}">See Details</button>
-
-
-
-                                    <button type="button" data-toggle="dropdown" class="btn btn-sm btn-danger">
-                                        More
-                                    </button>
-
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <div class="dropdown-divider"></div>
-
-                                        <a href="{{ route('surat-tugas-asesor.download', $dt_surat->id) }}"
-                                            class="dropdown-item"><i class="material-icons  mr-1">work</i> Download Word
-                                            (.doc)
-                                        </a>
-
-                                        <a href="{{ route('surat-tugas-asesor.generatePdf', $dt_surat->id) }}"
-                                            target="_blank" class="dropdown-item"><i
-                                                class="material-icons  mr-1">pin_drop</i>
-                                            Download PDF
-                                            (.pdf)
-                                        </a>
-
-                                        <div class="dropdown-divider"></div>
-
-                                        <form action="{{ route('surat-tugas-asesor.edit', $dt_surat->id) }}"
-                                            method="POST">
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
-                                            <button type="submit" class="dropdown-item d-flex align-items-center">
-                                                <i class="material-icons mr-1">edit</i> Edit
-                                            </button>
-                                        </form>
-
-                                        <form action="{{ route('surat-tugas-asesor.delete', $dt_surat->id) }}"
-                                            method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
-                                            <button type="submit" onclick="return confirm('Yakin Ingin Menghapus Surat ?')"
-                                                class="dropdown-item d-flex align-items-center">
-                                                <i class="material-icons mr-1">delete</i> Delete
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    @endforeach
-
-
-
-
-
-
-                </tbody>
-            </table>
-
-        </div>
-    </div>
+@section('css_page')
+    <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
+    <style>
+        .hide-column {
+            display: none;
+        }
+    </style>
 @endsection
 
+{{-- Content Web --}}
+@section('content')
+<div class="page-content">
+    <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+        <div>
+          <h4 class="mb-3 mb-md-0">Surat Tugas Asesor</h4>
+        </div>
+        <div class="d-flex align-items-center flex-wrap text-nowrap">
+            <span class="badge rounded-pill bg-info text-dark">Nomor Surat Terakhir : 017/ST-LSP-EHI/2024</span>
+        </div>
+    </div>
 
-@section('js_partials')
-    {{-- Modals --}}
-    @foreach ($data_surat as $dt_surat)
-        <div id="modal-signup-{{ $dt_surat->id }}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="px-3">
-                            <div class="d-flex justify-content-center mt-2 mb-4 navbar-light">
-                                <a href="javascript:void(0)" class="navbar-brand" style="min-width: 0">
-                                    <img class="navbar-brand-icon"
-                                        src="{{ asset('admin_panel') }}/assets/images/stack-logo-blue.svg" width="25"
-                                        alt="FlowDash">
-                                    <span>Detail Surat</span>
-                                </a>
-                            </div>
+    <div class="row mb-4">
+        <div class="col">
+            <span>Filter Table</span>
 
-                            <div class="form-row">
-                                <div class="col-12 col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label>Nomor Surat</label>
-                                        <input type="text" class="form-control" value="{{ $dt_surat->nomor_surat }}"
-                                            readonly>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label for="tanggal_surat">Skema</label>
-                                        <input type="text" class="form-control" value="{{ $dt_surat->nomor_surat }}"
-                                            readonly>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-12 col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label>Asesor</label>
-                                        <input type="text" class="form-control" value="{{ $dt_surat->nama_asesor }}"
-                                            readonly>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label for="tanggal_surat">No Reg</label>
-                                        <input type="text" class="form-control" value="{{ $dt_surat->no_reg }}"
-                                            readonly>
-                                    </div>
-                                </div>
-                            </div>
+            <button id="NoRegFilterButton" class="btn btn-primary btn-xs">No REG</button>
+            <button id="tempatTukFilterButton" class="btn btn-primary btn-xs">Tempat TUK</button>
+            <button id="alamatTUKFilterButton" class="btn btn btn-primary btn-xs">Alamat TUK</button>
+            <button id="skemaFilter" class="btn btn-primary btn-xs">Skema</button>
+            <button id="tanggalUjiFilterButton" class="btn btn-primary btn-xs">Tanggal Uji</button>
+            <button id="tanggalSuratFilterButton" class="btn btn-primary btn-xs">Tanggal Surat</button>
 
-                            <div class="form-row">
-                                <div class="col-12 col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label>Nama TUK</label>
-                                        <input type="text" class="form-control" value="{{ $dt_surat->nama_tuk }}"
-                                            readonly>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label for="tanggal_surat">Alamat TUK</label>
-                                        <input type="text" class="form-control" value="{{ $dt_surat->alamat_tuk }}"
-                                            readonly>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-12 col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label>Tanggal Uji</label>
-                                        <input type="text" class="form-control"
-                                            value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}"
-                                            readonly>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-6 mb-3">
-                                    <div class="form-group">
-                                        <label for="tanggal_surat">Tanggal Surat</label>
-                                        <input type="text" class="form-control"
-                                            value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}
-                                            "
-                                            readonly>
-                                    </div>
-                                </div>
-                            </div>
+        </div>
+    </div>
 
-                            <div class="form-row">
-                                <div class="col-12 col-md-12 mb-3">
-                                    <div class="form-group">
-                                        <label for="tanggal_surat">Surat Dibuat Tanggal</label>
-                                        <input type="text" class="form-control"
-                                            value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $dt_surat->created_at)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}
-                                            "
-                                            readonly>
-                                    </div>
-                                </div>
-                            </div>
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Data Table</h6>
+                    <div class="table-responsive">
+                        <table id="dataTableExample" class="table table-bordered" style="min-height: 50vh">
+                            <thead>
+                                <tr>
+                                    <th width="100px">Action</th>
+                                    <th width="100px" class="">No Surat</th>
+                                    <th class="">Nama Asesor</th>
+                                    <th class="columnNoReg">No REG</th>
+                                    <th class="columnTempatTuk">Tempat TUK</th>
+                                    <th class="columnAlamatTuk">Alamat TUK</th>
+                                    <th class="columnSkema">Skema</th>
+                                    <th class="columnTanggalUji">Tanggal Uji</th>
+                                    <th class="columnTanggalSurat">Tanggal Surat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data_surat as $dt_surat)
+                                    <tr>
+                                        <td>
+                                            <button type="button" class="btn btn-xs btn-danger btn-icon">
+                                                <i data-feather="eye"></i>
+                                            </button>
 
+                                            <div class="dropdown" style="display: inline">
+                                                <button class="btn btn-success btn-xs dropdown-toggle" type="button" id="dropdownMenuButton4" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action</button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                                                    <a class="dropdown-item" href="{{ route('surat-tugas-asesor.download', $dt_surat->id) }}">Download Word</a>
+                                                    <a class="dropdown-item" href="{{ route('surat-tugas-asesor.generatePdf', $dt_surat->id) }}" target="_blank">Download PDF</a>
 
+                                                    {{-- Edit Button --}}
+                                                    <form action="{{ route('surat-tugas-asesor.edit', $dt_surat->id) }}"
+                                                        method="POST">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
+                                                        <div class="dropdown-divider"></div>
+                                                        <button type="submit" class="dropdown-item">
+                                                            <i class="link-icon" data-feather="edit" style="width:16px; height:auto"></i>Edit
+                                                        </button>
 
-                        </div>
-                    </div> <!-- // END .modal-body -->
-                </div> <!-- // END .modal-content -->
-            </div> <!-- // END .modal-dialog -->
-        </div> <!-- // END .modal -->
-    @endforeach
+                                                    </form>
 
+                                                    {{-- Delete Button --}}
+                                                    <form action="{{ route('surat-tugas-asesor.delete', $dt_surat->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
+                                                        <button type="submit" class="dropdown-item">
+                                                            <i class="link-icon" data-feather="trash" style="width:16px; height:auto"></i>Delete Surat
+                                                        </button>
+                                                    </form>
 
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="">
+                                            <span class="badge bg-warning text-dark">{{ $dt_surat->nomor_surat }}</span>
+                                        </td>
+                                        <td class="">{{ $dt_surat->nama_asesor }}</td>
+                                        <td class="columnNoReg">{{ $dt_surat->no_reg }}</td>
+                                        <td class="columnTempatTuk">{{ $dt_surat->nama_tuk }}</td>
+                                        <td class="columnAlamatTuk">{{ Str::limit($dt_surat->alamat_tuk, 50) }}</td>
+                                        <td class="columnSkema">{{ $dt_surat->skema }}</td>
+                                        <td class="columnTanggalUji">{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
+                                        <td class="columnTanggalSurat">{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-    <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
+                                    </tr>
+                                @endforeach
+                                <!-- Penambahan baris data lainnya -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('js_page')
+    <script src="{{ asset('noble_panel') }}/assets/js/data-table.js"></script>
     <script>
-        new DataTable('#example');
+
+        // Filter Data Skema Table
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggleButton = document.getElementById("skemaFilter");
+            toggleButton.addEventListener("click", function () {
+                const columnsSkema = document.querySelectorAll("#dataTableExample th.columnSkema");
+                columnsSkema.forEach(column => {
+                    column.classList.toggle("hide-column");
+                    const index = Array.from(column.parentNode.children).indexOf(column);
+                    const rows = document.querySelectorAll("#dataTableExample tbody tr");
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll("td");
+                        cells[index].classList.toggle("hide-column");
+                    });
+                });
+            });
+            toggleButton.addEventListener("click", function () {
+                toggleButton.classList.toggle("btn-outline-primary");
+                toggleButton.classList.toggle("btn-primary");
+            });
+        });
+
+        // Filter Data Tempat TUK
+        document.addEventListener("DOMContentLoaded", function () {
+         const toggleButton = document.getElementById("tempatTukFilterButton");
+            toggleButton.addEventListener("click", function () {
+                const columnTempatTuks = document.querySelectorAll("#dataTableExample th.columnTempatTuk");
+                columnTempatTuks.forEach(column => {
+                    column.classList.toggle("hide-column");
+                    const index = Array.from(column.parentNode.children).indexOf(column);
+                    const rows = document.querySelectorAll("#dataTableExample tbody tr");
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll("td");
+                        cells[index].classList.toggle("hide-column");
+                    });
+                });
+            });
+            toggleButton.addEventListener("click", function () {
+                toggleButton.classList.toggle("btn-outline-primary");
+                toggleButton.classList.toggle("btn-primary");
+            });
+        });
+
+        // Filter Data Alamat TUK
+        document.addEventListener("DOMContentLoaded", function () {
+         const toggleButton = document.getElementById("alamatTUKFilterButton");
+            toggleButton.addEventListener("click", function () {
+                const columnAlamatTuks = document.querySelectorAll("#dataTableExample th.columnAlamatTuk");
+                columnAlamatTuks.forEach(column => {
+                    column.classList.toggle("hide-column");
+                    const index = Array.from(column.parentNode.children).indexOf(column);
+                    const rows = document.querySelectorAll("#dataTableExample tbody tr");
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll("td");
+                        cells[index].classList.toggle("hide-column");
+                    });
+                });
+            });
+            toggleButton.addEventListener("click", function () {
+                toggleButton.classList.toggle("btn-outline-primary");
+                toggleButton.classList.toggle("btn-primary");
+            });
+        });
+        // Filter Data NO REG Asesor
+        document.addEventListener("DOMContentLoaded", function () {
+         const toggleButton = document.getElementById("NoRegFilterButton");
+            toggleButton.addEventListener("click", function () {
+                const columnNoRegs = document.querySelectorAll("#dataTableExample th.columnNoReg");
+                columnNoRegs.forEach(column => {
+                    column.classList.toggle("hide-column");
+                    const index = Array.from(column.parentNode.children).indexOf(column);
+                    const rows = document.querySelectorAll("#dataTableExample tbody tr");
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll("td");
+                        cells[index].classList.toggle("hide-column");
+                    });
+                });
+            });
+            toggleButton.addEventListener("click", function () {
+                toggleButton.classList.toggle("btn-outline-primary");
+                toggleButton.classList.toggle("btn-primary");
+            });
+        });
+        // Filter Data Tanggal Surat
+        document.addEventListener("DOMContentLoaded", function () {
+         const toggleButton = document.getElementById("tanggalSuratFilterButton");
+            toggleButton.addEventListener("click", function () {
+                const columnTanggalSurats = document.querySelectorAll("#dataTableExample th.columnTanggalSurat");
+                columnTanggalSurats.forEach(column => {
+                    column.classList.toggle("hide-column");
+                    const index = Array.from(column.parentNode.children).indexOf(column);
+                    const rows = document.querySelectorAll("#dataTableExample tbody tr");
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll("td");
+                        cells[index].classList.toggle("hide-column");
+                    });
+                });
+            });
+            toggleButton.addEventListener("click", function () {
+                toggleButton.classList.toggle("btn-outline-primary");
+                toggleButton.classList.toggle("btn-primary");
+            });
+        });
+        // Filter Data Tanggal Uji
+        document.addEventListener("DOMContentLoaded", function () {
+         const toggleButton = document.getElementById("tanggalUjiFilterButton");
+            toggleButton.addEventListener("click", function () {
+                const columnTanggalUjis = document.querySelectorAll("#dataTableExample th.columnTanggalUji");
+                columnTanggalUjis.forEach(column => {
+                    column.classList.toggle("hide-column");
+                    const index = Array.from(column.parentNode.children).indexOf(column);
+                    const rows = document.querySelectorAll("#dataTableExample tbody tr");
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll("td");
+                        cells[index].classList.toggle("hide-column");
+                    });
+                });
+            });
+            toggleButton.addEventListener("click", function () {
+                toggleButton.classList.toggle("btn-outline-primary");
+                toggleButton.classList.toggle("btn-primary");
+            });
+        });
     </script>
 @endsection

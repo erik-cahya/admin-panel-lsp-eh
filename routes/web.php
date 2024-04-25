@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\QRCode\QRCodeController;
 use App\Http\Controllers\Surat\SuratTugasAsesorController;
@@ -20,15 +21,23 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [AuthenticatedSessionController::class, 'create']);
+require __DIR__ . '/auth.php';
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+// Middleware Guest / Belum Login
+Route::middleware(['guest'])->group(function () {
+    Route::get('/', [AuthenticatedSessionController::class, 'create']);
+});
 
-Route::get('cetak', [PDFController::class, 'cetak'])->name('cetakPDF');
+
+// Middleware Login
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+});
+
+
+
+
 
 Route::resource('/qr-code', QRCodeController::class);
 Route::get('/download-qrcode/{id}', [QRCodeController::class, 'download'])->name('download.qrcode');
