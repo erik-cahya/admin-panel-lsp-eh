@@ -35,7 +35,7 @@
     <style>
         .readonly {
             /* Tambahkan gaya yang ingin Anda terapkan di sini */
-            background-color: #121e3b; /* Contoh: Mengubah warna latar belakang */
+            cursor: not-allowed;
         }
     </style>
 
