@@ -27,8 +27,13 @@ class SuratTugasAsesorController extends Controller
 
     public function createSurat()
     {
+        // Ambil data nomor surat terakhir
+        $nomorSuratTerakhir = SuratTugasModel::latest()->first();
+        // Ambil angkanya doang
+        preg_match("/^\d+/", $nomorSuratTerakhir->nomor_surat, $matches);
+        $check = $matches[0];
+
         $tuk['tuk'] = TUKModel::get();
-        $check = DB::table('surat_tugas')->count();
         $count = $check + 1;
         $year = date('Y');
 
@@ -47,6 +52,13 @@ class SuratTugasAsesorController extends Controller
     {
         $validated = $request->validate([
             'nomor_surat' => 'required|unique:surat_tugas',
+            'nama_asesor' => 'required',
+            'no_reg' => 'required',
+            'nama_tuk' => 'required',
+            'alamat_tuk' => 'required',
+            'tanggal_uji' => 'required',
+            'tanggal_surat' => 'required',
+            'skema' => 'required',
         ], [
             'nomor_surat.required' => 'Nomor surat harus diisi.',
             'nomor_surat.unique' => 'Nomor surat sudah digunakan.',
@@ -79,8 +91,6 @@ class SuratTugasAsesorController extends Controller
             'tanggal_surat' => $request->tanggal_surat,
             'skema' => $request->skema,
         ]);
-
-
         return back();
     }
 
@@ -92,11 +102,8 @@ class SuratTugasAsesorController extends Controller
         return view('admin.surat.surat-tugas-asesor.edit', $data, $tuk);
     }
 
-    // ############ Page Update Surat -> DB
     public function updateSurat(Request $request, $id)
     {
-        // dd($request->all());
-
         // Hapus dulu file lama
         $namaSurat = DB::table('surat_tugas')->where('id', $id)->value('nama_surat');
         $filePath = 'public/surat/' . $namaSurat . '.doc';
@@ -162,14 +169,13 @@ class SuratTugasAsesorController extends Controller
         $namaSurat = DB::table('surat_tugas')->where('id', $id)->value('nama_surat');
         $filePath = 'public/surat/' . $namaSurat . '.doc';
 
+
         if (Storage::exists($filePath)) {
+            dd('ada');
             return response()->download(storage_path('app/' . $filePath), $namaSurat . '.doc');
         } else {
             // Jika pada saat download file docnya tidak ada.. maka buat lagi file docnya
-            // echo "File tidak ditemukan.";
-
             $dataSurat = SuratTugasModel::where('id', $id)->first();
-
             // Buat File Doc Baru
             $doc = file_get_contents(public_path('template_surat/Surat-Tugas-Asesor.rtf'));
 
@@ -186,7 +192,6 @@ class SuratTugasAsesorController extends Controller
 
             $fileName =  'Surat Tugas_' . $dataSurat->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_uji)->locale('id')->isoFormat(' DD MMMM YYYY'));
             Storage::put('public/surat/' . $fileName . '.doc', $doc);
-
             return response()->download(storage_path('app/' . $filePath), $namaSurat . '.doc');
         }
     }

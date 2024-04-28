@@ -22,8 +22,7 @@
                 <div class="card-form__body card-body">
 
                     {{-- Form Surat --}}
-                    <form enctype="multipart/form-data" method="POST"
-                        action="{{ route('surat-tugas-asesor.update', $dataSurat->id) }}">
+                    <form enctype="multipart/form-data" method="POST" action="{{ route('surat-tugas-asesor.update', $dataSurat->id) }}">
                         @csrf
                         <div class="form-row">
                             <div class="col-12 col-md-6 mb-3">

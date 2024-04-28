@@ -1,29 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\TUK;
+namespace App\Http\Controllers\DataLsp;
 
 use App\Http\Controllers\Controller;
 use App\Models\TUKModel;
-use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
-use Carbon\Carbon;
-
-use Illuminate\Support\Facades\DB;
-
 
 class TUKController extends Controller
 {
     public function tuk()
     {
-        $data['data'] = TUKModel::get();
-        return view('admin.tuk.tuk', $data);
+        $data['dataTuk'] = TUKModel::get();
+        return view('admin.TUK.index', $data);
     }
 
     public function tukAdd()
     {
-        return view('admin.tuk.tukAdd');
+        return view('admin.TUK.tukAdd');
     }
 
     public function tukAdded(Request $req)
@@ -35,6 +28,12 @@ class TUKController extends Controller
             'tuk_kontakCP' => $req->tuk_kontakCP,
         ]);
 
-        return back();
+        return redirect('/tuk');
+    }
+
+    public function tukDeleted($id)
+    {
+        TUKModel::destroy($id);
+        return redirect('/tuk');
     }
 }

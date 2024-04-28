@@ -11,6 +11,10 @@
         content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
     <title>LSP Engineering Hospitality Indonesia</title>
+
+    @yield('css_page')
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -23,8 +27,17 @@
     <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/css/demo2/style.css">
     <link rel="shortcut icon" href="{{ asset('noble_panel') }}/assets/images/favicon.png" />
 
+    {{-- Font Awesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-    @yield('css_page')
+
+
+    <style>
+        .readonly {
+            /* Tambahkan gaya yang ingin Anda terapkan di sini */
+            background-color: #121e3b; /* Contoh: Mengubah warna latar belakang */
+        }
+    </style>
 
 </head>
 
@@ -61,7 +74,15 @@
   <script src="{{ asset('noble_panel') }}/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
 	<!-- End plugin js for this page -->
 
-	@yield('js_page')
+	@yield('js_partials')
+
+    <script>
+        var readonlyInputs = document.querySelectorAll('input[readonly], select[readonly], textarea[readonly]');
+        // Loop melalui setiap elemen dan tambahkan kelas CSS 'readonly'
+        readonlyInputs.forEach(function(element) {
+            element.classList.add('readonly');
+        });
+    </script>
 </body>
 
 </html>

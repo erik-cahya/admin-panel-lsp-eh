@@ -1,158 +1,162 @@
 @extends('admin.layouts.master')
+@section('css_page')
+	<!-- Plugin css for this page -->
+	<link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/select2/select2.min.css">
+	<link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/jquery-tags-input/jquery.tagsinput.min.css">
+	<link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/dropzone/dropzone.min.css">
+	<link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/dropify/dist/dropify.min.css">
+	<link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/pickr/themes/classic.min.css">
+	<link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/flatpickr/flatpickr.min.css">
+	<!-- End plugin css for this page -->
+@endsection
 @section('content')
-    <div class="container-fluid page__heading-container">
-        <div class="page__heading d-flex align-items-center">
-            <div class="flex">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb mb-0">
-                        <li class="breadcrumb-item"><a href="#"><i class="material-icons icon-20pt">home</i></a></li>
-                        <li class="breadcrumb-item">SURAT</li>
-                        <li class="breadcrumb-item active" aria-current="page">SURAT TUGAS ASESOR</li>
-                    </ol>
-                </nav>
-                <h1 class="m-0">Edit Surat Tugas Asesor</h1>
-            </div>
-            <a href="{{ route('surat-tugas-asesor.view') }}" class="btn btn-success ml-3">Lihat Surat<i
-                    class="material-icons">add</i></a>
+<div class="page-content">
+    <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
+        <div>
+          <h4 class="mb-3 mb-md-0">Create Surat Tugas Asesor</h4>
         </div>
 
-        <div class="card card-form">
-            <div class="row no-gutters">
+    </div>
 
-                <div class="card-form__body card-body">
-
-                    {{-- Form Surat --}}
-                    <form enctype="multipart/form-data" method="POST"
-                        action="{{ route('surat-tugas-asesor.update', $dataSurat->id) }}">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h6 class="card-title">Data Surat</h6>
+                    <form enctype="multipart/form-data" method="POST" action="{{ route('surat-tugas-asesor.update', $dataSurat->id) }}">
                         @csrf
-                        <div class="form-row">
-                            <div class="col-12 col-md-6 mb-3">
-                                <div class="form-group">
-                                    <label for="nomor_surat">Nomor Surat</label>
-                                    <input id="nomor_surat" oninput="capitalizeText()" name="nomor_surat" type="text"
-                                        class="form-control" placeholder="26/ST-LSP-EHI/IV/2023"
-                                        value="{{ $dataSurat->nomor_surat }}" required>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Nomor Surat</label>
+                                    <input id="nomor_surat" oninput="capitalizeText()" name="nomor_surat" type="text" class="form-control" readonly value="{{ $dataSurat->nomor_surat }}">
+
+                                    @error('nomor_surat')
+                                        <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
-
-                            <div class="col-12 col-md-6 mb-3">
-                                <div class="form-group">
-
-
-                                    <label for="skema">Skema</label>
-
-                                    <select id="skema" name="skema" class="form-control" required>
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="skema" class="form-label">Skema</label>
+                                    <select id="skema" name="skema" class="form-select" required>
                                         <option selected readonly disabled>Pilih Skema Uji</option>
-
-                                        <option value="Mekanik Heating, Ventilation Dan Air Condition (HVAC)"
-                                            {{ $dataSurat->skema == 'Mekanik Heating, Ventilation Dan Air Condition (HVAC)' ? 'selected' : '' }}>
-                                            Mekanik
-                                            Heating, Ventilation Dan Air Condition (HVAC)</option>
-
-                                        <option value="Pelaksanaan Instalasi AC"
-                                            {{ $dataSurat->skema == 'Pelaksanaan Instalasi AC' ? 'selected' : '' }}>
-                                            Pelaksanaan Instalasi AC</option>
-
-                                        <option value="Perawatan Mesin Pendingin / AC"
-                                            {{ $dataSurat->skema == 'Perawatan Mesin Pendingin / AC' ? 'selected' : '' }}>
-                                            Perawatan
-                                            Mesin Pendingin / AC
-                                        </option>
-
-                                        <option value="Teknisi Lemari Pendingin"
-                                            {{ $dataSurat->skema == 'Teknisi Lemari Pendingin' ? 'selected' : '' }}>
-                                            Teknisi
-                                            Lemari Pendingin</option>
-
-                                        <option value="Teknisi Refrigerasi Domestik"
-                                            {{ $dataSurat->skema == 'Teknisi Refrigerasi Domestik' ? 'selected' : '' }}>
-                                            Teknisi
-                                            Refrigerasi Domestik</option>
+                                        <option value="Mekanik Heating, Ventilation Dan Air Condition (HVAC)">Mekanik Heating, Ventilation Dan Air Condition (HVAC)</option>
+                                        <option value="Pelaksanaan Instalasi AC">Pelaksanaan Instalasi AC</option>
+                                        <option value="Perawatan Mesin Pendingin / AC">Perawatan Mesin Pendingin / AC</option>
+                                        <option value="Teknisi Lemari Pendingin">Teknisi Lemari Pendingin</option>
+                                        <option value="Teknisi Refrigerasi Domestik">Teknisi Refrigerasi Domestik</option>
                                     </select>
 
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="col-12 col-md-6 mb-3">
-                                {{-- <label for="nama_asesor">Nama Asesor</label> --}}
-
-                                <label for="selectOption">Asesor</label>
-
-                                <select id="selectOption" onchange="fillText()" name="nama_asesor" class="form-control"
-                                    required>
-                                    <option selected readonly disabled>Pilih Asesor</option>
-                                    <option value="Alit Aditya Angga Widiarsah" {{ $dataSurat->nama_asesor == 'Alit Aditya Angga Widiarsah' ? 'selected' : '' }}>Alit Aditya Angga Widiarsah</option>
-                                    <option value="Anton Kurniawan" {{ $dataSurat->nama_asesor == 'Anton Kurniawan' ? 'selected' : '' }}> Anton Kurniawan</option>
-                                    <option value="I Dewa Made Yudiarta" {{ $dataSurat->nama_asesor == 'I Dewa Made Yudiarta' ? 'selected' : '' }}>I Dewa Made Yudiarta</option>
-                                    <option value="I Gede Sumerta" {{ $dataSurat->nama_asesor == 'I Gede Sumerta' ? 'selected' : '' }}>I Gede Sumerta</option>
-                                    <option value="I Gede Swastika" {{ $dataSurat->nama_asesor == 'I Gede Swastika' ? 'selected' : '' }}>I Gede Swastika</option>
-                                    <option value="I Gusti Agung Putu Prawira Deasy Suharta" {{ $dataSurat->nama_asesor == 'I Gusti Agung Putu Prawira Deasy Suharta' ? 'selected' : '' }}>I Gusti Agung Putu Prawira Deasy Suharta</option>
-                                    <option value="I Gusti Made Sutama Arsa" {{ $dataSurat->nama_asesor == 'I Gusti Made Sutama Arsa' ? 'selected' : '' }}>I Gusti Made Sutama Arsa</option>
-                                    <option value="I Komang Sutarmika" {{ $dataSurat->nama_asesor == 'I Komang Sutarmika' ? 'selected' : '' }}>I Komang Sutarmika</option>
-                                    <option value="I Made Arta" {{ $dataSurat->nama_asesor == 'I Made Arta' ? 'selected' : '' }}>I Made Arta</option>
-                                    <option value="I Made Juni Suaryana" {{ $dataSurat->nama_asesor == 'I Made Juni Suaryana' ? 'selected' : '' }}>I Made Juni Suaryana</option>
-                                    <option value="I Nengah Jati" {{ $dataSurat->nama_asesor == 'I Nengah Jati' ? 'selected' : '' }}>I Nengah Jati</option>
-                                    <option value="I Putu Angga Sukma Primantara" {{ $dataSurat->nama_asesor == 'I Putu Angga Sukma Primantara' ? 'selected' : '' }}>I Putu Angga Sukma Primantara</option>
-                                    <option value="I Wayan Mudiarta" {{ $dataSurat->nama_asesor == 'I Wayan Mudiarta' ? 's≈≈≈≈≈≈≈∫elected' : '' }}>I Wayan Mudiarta</option>
-                                    <option value="I Wayan Widiyasa" {{ $dataSurat->nama_asesor == 'I Wayan Widiyasa' ? 'selected' : '' }}>I Wayan Widiyasa</option>
-                                    <option value="Ribut Ponco Purnomo" {{ $dataSurat->nama_asesor == 'Ribut Ponco Purnomo' ? 'selected' : '' }}> Ribut Ponco Purnomo</option>
-                                    <option value="I Gusti Agung Wahyu Paranagita" {{ $dataSurat->nama_asesor == 'I Gusti Agung Wahyu Paranagita' ? 'selected' : '' }}> I Gusti Agung Wahyu Paranagita</option>
-                                    <option value="Ida Bagus Gde Widiantara, S.T., M.T." {{ $dataSurat->nama_asesor == 'Ida Bagus Gde Widiantara, S.T., M.T.' ? 'selected' : '' }}>Ida Bagus Gde Widiantara, S.T., M.T.</option>
-                                </select>
-
-                            </div>
-                            <div class="col-12 col-md-6 mb-3">
-                                <label for="no_reg">No REG</label>
-                                <input type="text" id="textInput" class="form-control" id="no_reg" name="no_reg"
-                                    placeholder="Pilih Nama Asesor" readonly>
-
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col-12 col-md-6 mb-3">
-                                <div class="form-group">
-                                    <label for="nama_tuk">Nama TUK</label>
-                                    <input type="text" name="nama_tuk" class="form-control" placeholder="Nama TUK"
-                                        value="{{ $dataSurat->nama_tuk }}" required>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 mb-3">
-                                <div class="form-group">
-                                    <label for="alamat_tuk">Alamat TUK</label>
-                                    <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control"
-                                        placeholder="Alamat TUK" value="{{ $dataSurat->alamat_tuk }}" required>
+                                    @error('skema')
+                                        <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
 
-                        <div class="form-row">
-                            <div class="col-12 col-md-6 mb-3">
-                                <div class="form-group">
-                                    <label for="tangal_uji">Tanggal Uji</label>
-                                    <input type="date" id="tanggal_uji" name="tanggal_uji" class="form-control"
-                                        value="{{ $dataSurat->tanggal_uji }}" required>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="skema" class="form-label">Asesor</label>
+                                    <select id="selectOption" onchange="fillText()" name="nama_asesor" class="form-select" required>
+                                        <option selected readonly disabled>Pilih Asesor</option>
+                                        <option value="Alit Aditya Angga Widiarsah">Alit Aditya Angga Widiarsah</option>
+                                        <option value="Anton Kurniawan">Anton Kurniawan</option>
+                                        <option value="I Dewa Made Yudiarta">I Dewa Made Yudiarta</option>
+                                        <option value="I Gede Sumerta">I Gede Sumerta</option>
+                                        <option value="I Gede Swastika">I Gede Swastika</option>
+                                        <option value="I Gusti Agung Putu Prawira Deasy Suharta">I Gusti Agung Putu Prawira Deasy Suharta</option>
+                                        <option value="I Gusti Made Sutama Arsa">I Gusti Made Sutama Arsa</option>
+                                        <option value="I Komang Sutarmika">I Komang Sutarmika</option>
+                                        <option value="I Made Arta">I Made Arta</option>
+                                        <option value="I Made Juni Suaryana">I Made Juni Suaryana</option>
+                                        <option value="I Nengah Jati">I Nengah Jati</option>
+                                        <option value="I Putu Angga Sukma Primantara">I Putu Angga Sukma Primantara</option>
+                                        <option value="I Wayan Mudiarta">I Wayan Mudiarta</option>
+                                        <option value="I Wayan Widiyasa">I Wayan Widiyasa</option>
+                                        <option value="Ribut Ponco Purnomo">Ribut Ponco Purnomo</option>
+                                        <option value="I Gusti Agung Wahyu Paranagita">I Gusti Agung Wahyu Paranagita</option>
+                                        <option value="Ida Bagus Gde Widiantara, S.T., M.T.">Ida Bagus Gde Widiantara, S.T., M.T.</option>
+                                    </select>
+
+                                    @error('nama_asesor')
+                                        <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6 mb-3">
-                                <div class="form-group">
-                                    <label for="tanggal_surat">Tanggal Surat</label>
-                                    <input type="date" id="tanggal_surat" name="tanggal_surat" class="form-control"
-                                        value="{{ $dataSurat->tanggal_surat }}" required>
+
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label">NO Reg</label>
+                                    <input type="text" id="textInput" class="form-control" id="no_reg" name="no_reg" placeholder="Pilih Nama Asesor" readonly>
                                 </div>
                             </div>
                         </div>
 
-                        <button class="btn btn-primary" type="submit">Submit</button>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label for="skema" class="form-label">Nama TUK</label>
+                                    <select name="nama_tuk" id="nama_tuk" class="form-select" required>
+                                        <option selected readonly disabled>Pilih TUK</option>
+                                        @foreach ($tuk as $t)
+                                            <option value="{{ $t->tuk_nama }}" {{ $dataSurat->nama_tuk == $t->tuk_nama ? 'selected' : '' }}>{{ $t->tuk_nama }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('nama_tuk')
+                                        <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="mb-3">
+                                    <label class="form-label">Alamat TUK</label>
+                                    <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control" placeholder="Alamat TUK" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-6 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Tanggal Uji</h6>
+                                        <div class="input-group flatpickr" id="flatpickr-date">
+                                            <input type="text" name="tanggal_uji" class="form-control" placeholder="Select date" data-input value="{{ $dataSurat->tanggal_uji }}">
+                                            <span class="input-group-text input-group-addon" data-toggle><i data-feather="calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 grid-margin stretch-card">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title">Tanggal Surat</h6>
+                                        <div class="input-group flatpickr" id="flatpickr-date">
+                                            <input type="text" name="tanggal_surat" class="form-control" placeholder="Select date" data-input value="{{ $dataSurat->tanggal_surat }}">
+                                            <span class="input-group-text input-group-addon" data-toggle><i data-feather="calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" type="submit">Submit form</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection
 @section('js_partials')
+
     <script src="{{ asset('admin_panel') }}/assets/vendor/jquery.mask.min.js"></script>
 
     {{-- !-- Flatpickr --> --}}
@@ -161,14 +165,9 @@
 
 
     <script>
-        window.onload = function() {
-            fillText();
-        };
-
         function fillText() {
             var selectValue = document.getElementById("selectOption").value;
             var textField = document.getElementById("textInput");
-
             // Javascript untuk autofill asesor
             switch (selectValue) {
                 case "Alit Aditya Angga Widiarsah":
@@ -233,4 +232,41 @@
             input.value = input.value.toUpperCase();
         }
     </script>
+
+    {{-- Get Location TUK Automatic --}}
+    {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
+    <script src="{{ asset('noble_panel/assets/js/jquery-3.5.1.min.js') }}"></script>
+
+    <script type='text/javascript'>
+        $(document).ready(function() {
+            // Fungsi yang akan dijalankan saat dokumen selesai dimuat
+            loadDataTuk();
+
+                // Fungsi untuk mengambil data TUK berdasarkan ID
+                function loadDataTuk() {
+                    var tuk_id = $("#nama_tuk").val();
+                    $.ajax({
+                        url: '../../get_data_tuk/' + tuk_id,
+                        type: 'get',
+                        dataType: 'json',
+                        success: function(response) {
+                            $("#alamat_tuk").val(response['data'][0].tuk_alamat);
+                        }
+                    });
+                }
+            // Memanggil fungsi saat elemen dengan ID 'nama_tuk' berubah
+            $('#nama_tuk').change(function() {
+                loadDataTuk();
+            });
+        });
+    </script>
+
+    <!-- Custom js for this page -->
+	<script src="{{ asset('noble_panel') }}/assets/js/flatpickr.js"></script>
+
+
+    <!-- Plugin js for this page -->
+	<script src="{{ asset('noble_panel') }}/assets/vendors/flatpickr/flatpickr.min.js"></script>
+
+
 @endsection
