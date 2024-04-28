@@ -3,7 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataLSP\AsesorController;
-use App\Http\Controllers\DataLsp\TUKController;
+use App\Http\Controllers\DataLSP\TUKController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\QRCode\QRCodeController;
 use App\Http\Controllers\Surat\SuratTugasAsesorController;
