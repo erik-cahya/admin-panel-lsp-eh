@@ -25,10 +25,6 @@ class SuratTugasAsesorController extends Controller
             $data['nomor_surat_terakhir'] =  ['nomor_surat' => '001/ST-LSP-EHI/2021'];
         }
 
-
-
-
-        // dd($data['data_surat']);
         return view('admin.surat.surat-tugas-asesor.index', $data);
     }
 
@@ -82,21 +78,7 @@ class SuratTugasAsesorController extends Controller
             'nomor_surat.unique' => 'Nomor surat sudah digunakan.',
         ]);
 
-        $doc = file_get_contents(public_path('template_surat/Surat-Tugas-Asesor.rtf'));
-
-        // Replace data
-        $doc = str_replace('#NOMORSURAT', $request->nomor_surat, $doc);
-        $doc = str_replace('#NAMAASESOR', $request->nama_asesor, $doc);
-        $doc = str_replace('#NOMORASESOR', $request->no_reg, $doc);
-        $doc = str_replace('#TANGGALSURAT', Carbon::createFromFormat('Y-m-d', $request->tanggal_surat)->locale('id')->isoFormat('DD MMMM YYYY'), $doc);
-        $doc = str_replace('#NAMATUK', $request->nama_tuk, $doc);
-        $doc = str_replace('#LOKASITUK', $request->alamat_tuk, $doc);
-        $doc = str_replace('#TANGGALUJI', Carbon::createFromFormat('Y-m-d', $request->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY'), $doc);
-        $doc = str_replace('#SKEMA', $request->skema, $doc);
-
-
         $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $request->tanggal_uji)->locale('id')->isoFormat('DD-MM-YYYY'));
-        Storage::put('public/surat/' . $fileName . '.doc', $doc);
 
         SuratTugasModel::create([
             'nama_surat' => $fileName,
@@ -128,32 +110,7 @@ class SuratTugasAsesorController extends Controller
 
     public function updateSurat(Request $request, $id)
     {
-        // Hapus dulu file lama
-        $namaSurat = DB::table('surat_tugas')->where('id', $id)->value('nama_surat');
-        $filePath = 'public/surat/' . $namaSurat . '.doc';
-
-        if (Storage::exists($filePath)) {
-            Storage::delete($filePath);
-        } else {
-            //echo "File tidak ditemukan.";
-        }
-
-        // Buat File Doc Baru
-        $doc = file_get_contents(public_path('template_surat/Surat-Tugas-Asesor.rtf'));
-
-        // Replace data
-        $doc = str_replace('#NOMORSURAT', $request->nomor_surat, $doc);
-        $doc = str_replace('#NAMAASESOR', $request->nama_asesor, $doc);
-        $doc = str_replace('#NOMORASESOR', $request->no_reg, $doc);
-        $doc = str_replace('#TANGGALSURAT', Carbon::createFromFormat('Y-m-d', $request->tanggal_surat)->locale('id')->isoFormat('DD MMMM YYYY'), $doc);
-        $doc = str_replace('#NAMATUK', $request->nama_tuk, $doc);
-        $doc = str_replace('#LOKASITUK', $request->alamat_tuk, $doc);
-        $doc = str_replace('#TANGGALUJI', Carbon::createFromFormat('Y-m-d', $request->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY'), $doc);
-        $doc = str_replace('#SKEMA', $request->skema, $doc);
-
-
         $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $request->tanggal_uji)->locale('id')->isoFormat('DD-MM-YYYY'));
-        Storage::put('public/surat/' . $fileName . '.doc', $doc);
 
         SuratTugasModel::where('id', $id)->update([
             'nama_surat' => $fileName,
@@ -177,56 +134,42 @@ class SuratTugasAsesorController extends Controller
 
     public function destroy(Request $request)
     {
-        $namaSurat = DB::table('surat_tugas')->where('id', $request->id)->value('nama_surat');
-        $filePath = 'public/surat/' . $namaSurat . '.doc';
+        SuratTugasModel::destroy($request->id);
 
-        if (Storage::exists($filePath)) {
-            Storage::delete($filePath);
-            SuratTugasModel::destroy($request->id);
-
-            $flashData = [
-                'judul' => 'Hapus Surat Success',
-                'pesan' => 'Surat Tugas Berhasil Di Hapus',
-                'swalFlashIcon' => 'success',
-            ];
-            return redirect('surat-tugas-asesor/')->with('flashData', $flashData);
-        } else {
-            SuratTugasModel::destroy($request->id);
-            echo "File tidak ditemukan.";
-        }
+        $flashData = [
+            'judul' => 'Hapus Surat Success',
+            'pesan' => 'Surat Tugas Berhasil Di Hapus',
+            'swalFlashIcon' => 'success',
+        ];
+        return redirect('surat-tugas-asesor/')->with('flashData', $flashData);
     }
 
 
     public function downloadSurat($id)
     {
-        // dd($id);
-        $namaSurat = DB::table('surat_tugas')->where('id', $id)->value('nama_surat');
-        $filePath = 'public/surat/' . $namaSurat . '.doc';
+        // Setiap Tombol download word ditekan, hapus semua file yang ada dan ganti dengan yang baru (biar server ga penuh)
+        Storage::deleteDirectory('public/surat');
 
+        $dataSurat = SuratTugasModel::where('id', $id)->first();
 
-        if (Storage::exists($filePath)) {
-            dd('ada');
-            return response()->download(storage_path('app/' . $filePath), $namaSurat . '.doc');
-        } else {
-            // Jika pada saat download file docnya tidak ada.. maka buat lagi file docnya
-            $dataSurat = SuratTugasModel::where('id', $id)->first();
-            // Buat File Doc Baru
-            $doc = file_get_contents(public_path('template_surat/Surat-Tugas-Asesor.rtf'));
+        $doc = file_get_contents(public_path('template_surat/Surat-Tugas-Asesor.rtf'));
 
-            // Replace data
-            $doc = str_replace('#NOMORSURAT', $dataSurat->nomor_surat, $doc);
-            $doc = str_replace('#NAMAASESOR', $dataSurat->nama_asesor, $doc);
-            $doc = str_replace('#NOMORASESOR', $dataSurat->no_reg, $doc);
-            $doc = str_replace('#TANGGALSURAT', Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_surat)->locale('id')->isoFormat('DD MMMM YYYY'), $doc);
-            $doc = str_replace('#NAMATUK', $dataSurat->nama_tuk, $doc);
-            $doc = str_replace('#LOKASITUK', $dataSurat->alamat_tuk, $doc);
-            $doc = str_replace('#TANGGALUJI', Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY'), $doc);
-            $doc = str_replace('#SKEMA', $dataSurat->skema, $doc);
+        $doc = str_replace('#NOMORSURAT', $dataSurat->nomor_surat, $doc);
+        $doc = str_replace('#NAMAASESOR', $dataSurat->nama_asesor, $doc);
+        $doc = str_replace('#NOMORASESOR', $dataSurat->no_reg, $doc);
+        $doc = str_replace('#TANGGALSURAT', Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_surat)->locale('id')->isoFormat('DD MMMM YYYY'), $doc);
+        $doc = str_replace('#NAMATUK', $dataSurat->nama_tuk, $doc);
+        $doc = str_replace('#LOKASITUK', $dataSurat->alamat_tuk, $doc);
+        $doc = str_replace('#TANGGALUJI', Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY'), $doc);
+        $doc = str_replace('#SKEMA', $dataSurat->skema, $doc);
 
-            $fileName =  'Surat Tugas_' . $dataSurat->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_uji)->locale('id')->isoFormat('DD-MM-YYYY'));
-            Storage::put('public/surat/' . $fileName . '.doc', $doc);
-            return response()->download(storage_path('app/' . $filePath), $namaSurat . '.doc');
-        }
+        $fileName =  $dataSurat->nama_surat;
+        $filePath = 'app/public/surat/' . $fileName . '.doc';
+
+        Storage::put('public/surat/' . $fileName . '.doc', $doc);
+        $response = response()->download(storage_path($filePath), $fileName . '.doc');
+
+        return $response;
     }
 
     public function generatePdf($id)
