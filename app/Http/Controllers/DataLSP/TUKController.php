@@ -27,13 +27,16 @@ class TUKController extends Controller
             'tuk_namaCP' => $req->tuk_namaCP,
             'tuk_kontakCP' => $req->tuk_kontakCP,
         ]);
-
-        return redirect('/tuk');
+        $dataPesan = [
+            'judul' => 'Data TUK Berhasil Ditambahkan',
+            'pesan' => 'Ini adalah pesan tambahan atau deskripsi yang ingin Anda tampilkan.'
+        ];
+        return redirect('/tuk')->with('flashData', $dataPesan);
     }
 
     public function tukDeleted($id)
     {
         TUKModel::destroy($id);
-        return redirect('/tuk');
+        return redirect()->route('tuk')->with('delete', 'Data TUK Berhasil Di Hapus');
     }
 }

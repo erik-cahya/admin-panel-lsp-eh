@@ -24,12 +24,12 @@
         <div class="col">
             <span>Filter Table</span>
 
-            <button id="NoRegFilterButton" class="btn btn-primary btn-xs">No REG</button>
-            <button id="tempatTukFilterButton" class="btn btn-primary btn-xs">Tempat TUK</button>
-            <button id="alamatTUKFilterButton" class="btn btn btn-primary btn-xs">Alamat TUK</button>
-            <button id="skemaFilter" class="btn btn-primary btn-xs">Skema</button>
-            <button id="tanggalUjiFilterButton" class="btn btn-primary btn-xs">Tanggal Uji</button>
-            <button id="tanggalSuratFilterButton" class="btn btn-primary btn-xs">Tanggal Surat</button>
+            <a href="javascript:void(0)" id="NoRegFilterButton" class="badge border bg-primary">No Reg</a>
+            <a href="javascript:void(0)" id="tempatTukFilterButton" class="badge border bg-primary">Tempat TUK</a>
+            <a href="javascript:void(0)" id="alamatTUKFilterButton" class="badge border bg-primary">Alamat TUK</a>
+            <a href="javascript:void(0)" id="skemaFilter" class="badge border bg-primary">Skema</a>
+            <a href="javascript:void(0)" id="tanggalUjiFilterButton" class="badge border bg-primary">Tanggal Uji</a>
+            <a href="javascript:void(0)" id="tanggalSuratFilterButton" class="badge border bg-primary">Tanggal Surat</a>
 
         </div>
     </div>
@@ -38,7 +38,7 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Data Table</h6>
+                    <h6 class="card-title">Surat Tugas Asesor</h6>
                     <div class="table-responsive">
                         <table id="dataTableExample" class="table table-bordered" style="min-height: 50vh">
                             <thead>
@@ -138,8 +138,8 @@
                 });
             });
             toggleButton.addEventListener("click", function () {
-                toggleButton.classList.toggle("btn-outline-primary");
-                toggleButton.classList.toggle("btn-primary");
+                toggleButton.classList.toggle("border-primary");
+                toggleButton.classList.toggle("bg-primary");
             });
         });
 
@@ -159,8 +159,8 @@
                 });
             });
             toggleButton.addEventListener("click", function () {
-                toggleButton.classList.toggle("btn-outline-primary");
-                toggleButton.classList.toggle("btn-primary");
+                toggleButton.classList.toggle("border-primary");
+                toggleButton.classList.toggle("bg-primary");
             });
         });
 
@@ -180,8 +180,8 @@
                 });
             });
             toggleButton.addEventListener("click", function () {
-                toggleButton.classList.toggle("btn-outline-primary");
-                toggleButton.classList.toggle("btn-primary");
+                toggleButton.classList.toggle("border-primary");
+                toggleButton.classList.toggle("bg-primary");
             });
         });
         // Filter Data NO REG Asesor
@@ -200,8 +200,8 @@
                 });
             });
             toggleButton.addEventListener("click", function () {
-                toggleButton.classList.toggle("btn-outline-primary");
-                toggleButton.classList.toggle("btn-primary");
+                toggleButton.classList.toggle("border-primary");
+                toggleButton.classList.toggle("bg-primary");
             });
         });
         // Filter Data Tanggal Surat
@@ -220,8 +220,8 @@
                 });
             });
             toggleButton.addEventListener("click", function () {
-                toggleButton.classList.toggle("btn-outline-primary");
-                toggleButton.classList.toggle("btn-primary");
+                toggleButton.classList.toggle("border-primary");
+                toggleButton.classList.toggle("bg-primary");
             });
         });
         // Filter Data Tanggal Uji
@@ -240,8 +240,8 @@
                 });
             });
             toggleButton.addEventListener("click", function () {
-                toggleButton.classList.toggle("btn-outline-primary");
-                toggleButton.classList.toggle("btn-primary");
+                toggleButton.classList.toggle("border-primary");
+                toggleButton.classList.toggle("bg-primary");
             });
         });
     </script>
