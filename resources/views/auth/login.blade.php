@@ -19,7 +19,7 @@ License: For each use you must have a valid license purchased only from above li
     <meta name="keywords"
         content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
 
-    <title>NobleUI - HTML Bootstrap 5 Admin Dashboard Template</title>
+    <title>Login | LSP Engineering Hospitality Indonesia</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -65,11 +65,14 @@ License: For each use you must have a valid license purchased only from above li
                                         <a href="#" class="noble-ui-logo logo-light d-block mb-2">
                                             <img src="{{ asset('img/logo_lsp.png') }}" alt="" width="300px">
                                         </a>
-                                        <!-- Session Status -->
-                                        <x-auth-session-status class="mb-4" style="color: red" :status="session('status')" />
 
-                                        <!-- Validation Errors -->
-                                        <x-auth-validation-errors class="mb-4" style="color: red" :errors="$errors" />
+                                        @error ('email')
+                                            <div class="alert alert-danger mt-4" role="alert">
+                                                <i data-feather="alert-circle"></i>
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+
 
                                         <form class="forms-sample mt-4" method="POST" action="{{ route('login') }}">
                                             @csrf

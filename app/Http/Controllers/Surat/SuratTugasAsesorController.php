@@ -19,7 +19,14 @@ class SuratTugasAsesorController extends Controller
     public function index()
     {
         $data['data_surat'] = SuratTugasModel::get();
+
         $data['nomor_surat_terakhir'] = SuratTugasModel::latest()->first();
+        if ($data['nomor_surat_terakhir'] == null) {
+            $data['nomor_surat_terakhir'] =  ['nomor_surat' => '001/ST-LSP-EHI/2021'];
+        }
+
+
+
 
         // dd($data['data_surat']);
         return view('admin.surat.surat-tugas-asesor.index', $data);
@@ -29,8 +36,12 @@ class SuratTugasAsesorController extends Controller
     {
         // Ambil data nomor surat terakhir
         $nomorSuratTerakhir = SuratTugasModel::latest()->first();
+
+        if ($nomorSuratTerakhir == null) {
+            $nomorSuratTerakhir =  ['nomor_surat' => '000/ST-LSP-EHI/2021'];
+        }
         // Ambil angkanya doang
-        preg_match("/^\d+/", $nomorSuratTerakhir->nomor_surat, $matches);
+        preg_match("/^\d+/", $nomorSuratTerakhir['nomor_surat'], $matches);
         $check = $matches[0];
 
         $tuk['tuk'] = TUKModel::get();
@@ -45,7 +56,14 @@ class SuratTugasAsesorController extends Controller
             $nomor_surat['nomor_surat'] = $count . "/ST-LSP-EHI/" . $year;
         }
 
+        $flashData = [
+            'judul' => 'Create Surat Success',
+            'pesan' => 'Surat Tugas Berhasil Dibuat',
+            'swalFlashIcon' => 'success',
+        ];
+
         return view('admin.surat.surat-tugas-asesor.create', $tuk, $nomor_surat);
+        // return redirect()->route('surat-tugas-asesor.create')->with(['tuk' => $tuk, 'nomor_surat' => $nomor_surat])->with('flashData', $flashData);
     }
 
     public function store(Request $request)
@@ -77,7 +95,7 @@ class SuratTugasAsesorController extends Controller
         $doc = str_replace('#SKEMA', $request->skema, $doc);
 
 
-        $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $request->tanggal_uji)->locale('id')->isoFormat(' DD MMMM YYYY'));
+        $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $request->tanggal_uji)->locale('id')->isoFormat('DD-MM-YYYY'));
         Storage::put('public/surat/' . $fileName . '.doc', $doc);
 
         SuratTugasModel::create([
@@ -91,7 +109,13 @@ class SuratTugasAsesorController extends Controller
             'tanggal_surat' => $request->tanggal_surat,
             'skema' => $request->skema,
         ]);
-        return back();
+
+        $flashData = [
+            'judul' => 'Create Surat Success',
+            'pesan' => 'Surat Tugas Berhasil Dibuat',
+            'swalFlashIcon' => 'success',
+        ];
+        return back()->with('flashData', $flashData);
     }
 
     // ############ Page Edit Surat
@@ -128,7 +152,7 @@ class SuratTugasAsesorController extends Controller
         $doc = str_replace('#SKEMA', $request->skema, $doc);
 
 
-        $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $request->tanggal_uji)->locale('id')->isoFormat(' DD MMMM YYYY'));
+        $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $request->tanggal_uji)->locale('id')->isoFormat('DD-MM-YYYY'));
         Storage::put('public/surat/' . $fileName . '.doc', $doc);
 
         SuratTugasModel::where('id', $id)->update([
@@ -143,8 +167,12 @@ class SuratTugasAsesorController extends Controller
             'skema' => $request->skema,
         ]);
 
-
-        return redirect('surat-tugas-asesor/');
+        $flashData = [
+            'judul' => 'Edit Surat Success',
+            'pesan' => 'Surat Tugas Berhasil Di Edit',
+            'swalFlashIcon' => 'success',
+        ];
+        return redirect('surat-tugas-asesor/')->with('flashData', $flashData);
     }
 
     public function destroy(Request $request)
@@ -155,7 +183,13 @@ class SuratTugasAsesorController extends Controller
         if (Storage::exists($filePath)) {
             Storage::delete($filePath);
             SuratTugasModel::destroy($request->id);
-            return redirect('surat-tugas-asesor/');
+
+            $flashData = [
+                'judul' => 'Hapus Surat Success',
+                'pesan' => 'Surat Tugas Berhasil Di Hapus',
+                'swalFlashIcon' => 'success',
+            ];
+            return redirect('surat-tugas-asesor/')->with('flashData', $flashData);
         } else {
             SuratTugasModel::destroy($request->id);
             echo "File tidak ditemukan.";
@@ -189,8 +223,7 @@ class SuratTugasAsesorController extends Controller
             $doc = str_replace('#TANGGALUJI', Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY'), $doc);
             $doc = str_replace('#SKEMA', $dataSurat->skema, $doc);
 
-
-            $fileName =  'Surat Tugas_' . $dataSurat->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_uji)->locale('id')->isoFormat(' DD MMMM YYYY'));
+            $fileName =  'Surat Tugas_' . $dataSurat->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_uji)->locale('id')->isoFormat('DD-MM-YYYY'));
             Storage::put('public/surat/' . $fileName . '.doc', $doc);
             return response()->download(storage_path('app/' . $filePath), $namaSurat . '.doc');
         }

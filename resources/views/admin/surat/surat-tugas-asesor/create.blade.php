@@ -1,3 +1,4 @@
+
 @extends('admin.layouts.master')
 @section('css_page')
 	<!-- Plugin css for this page -->

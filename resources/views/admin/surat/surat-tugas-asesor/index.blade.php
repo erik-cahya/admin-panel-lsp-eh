@@ -16,7 +16,7 @@
           <h4 class="mb-3 mb-md-0">Surat Tugas Asesor</h4>
         </div>
         <div class="d-flex align-items-center flex-wrap text-nowrap">
-            <span class="badge rounded-pill bg-info text-dark">Nomor Surat Terakhir : {{ $nomor_surat_terakhir->nomor_surat }}</span>
+            <span class="badge rounded-pill bg-info text-dark">Nomor Surat Terakhir : {{ $nomor_surat_terakhir['nomor_surat'] }}</span>
         </div>
     </div>
 

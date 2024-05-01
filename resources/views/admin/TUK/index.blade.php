@@ -2,8 +2,7 @@
 @section('css_page')
     <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.css">
 
-    {{-- Sweet Alert --}}
-    <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/sweetalert2/sweetalert2.min.css">
+
 
     <style>
         /* Mengaktifkan word-wrap pada kolom Alamat dan Contact Person */
@@ -104,27 +103,7 @@
 
 @section('js_partials')
     <script src="{{ asset('noble_panel') }}/assets/js/data-table.js"></script>
-    {{-- Sweet Alert JS --}}
-    <script src="{{ asset('noble_panel') }}/assets/vendors/sweetalert2/sweetalert2.min.js"></script>
-    <script src="{{ asset('noble_panel') }}/assets/js/sweet-alert.js"></script>
 
-
-    {{-- Sweet Alert / Flash Massage --}}
-
-    <script>
-        @if(session('flashData'))
-            var flashData = @json(session('flashData'));
-
-            Swal.fire({
-                title: flashData.judul,
-                text: flashData.pesan,
-                icon: flashData.swalFlashIcon,
-                confirmButtonText: 'OK'
-            });
-        @endif
-    </script>
-
-    {{-- /* End Sweet Alert / Flash Massage --}}
 
 
 

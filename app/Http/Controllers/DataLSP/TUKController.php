@@ -39,11 +39,11 @@ class TUKController extends Controller
     {
         TUKModel::destroy($id);
 
-        $dataPesan = [
+        $flashData = [
             'judul' => 'Delete Success',
             'pesan' => 'Data TUK Telah Dihapus',
             'swalFlashIcon' => 'success',
         ];
-        return redirect()->route('tuk')->with('flashData', $dataPesan);
+        return redirect()->route('tuk')->with('flashData', $flashData);
     }
 }

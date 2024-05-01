@@ -14,6 +14,9 @@
 
     @yield('css_page')
 
+    {{-- Sweet Alert --}}
+    <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/sweetalert2/sweetalert2.min.css">
+
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +32,6 @@
 
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
 
 
     <style>
@@ -83,6 +85,27 @@
             element.classList.add('readonly');
         });
     </script>
+
+    {{-- Sweet Alert JS --}}
+    <script src="{{ asset('noble_panel') }}/assets/vendors/sweetalert2/sweetalert2.min.js"></script>
+    <script src="{{ asset('noble_panel') }}/assets/js/sweet-alert.js"></script>
+
+
+    {{-- Sweet Alert / Flash Massage --}}
+    <script>
+        @if(session('flashData'))
+            var flashData = @json(session('flashData'));
+
+            Swal.fire({
+                title: flashData.judul,
+                text: flashData.pesan,
+                icon: flashData.swalFlashIcon,
+                confirmButtonText: 'OK'
+            });
+        @endif
+    </script>
+
+    {{-- /* End Sweet Alert / Flash Massage --}}
 </body>
 
 </html>
