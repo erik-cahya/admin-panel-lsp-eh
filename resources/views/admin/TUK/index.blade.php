@@ -118,7 +118,7 @@
             Swal.fire({
                 title: flashData.judul,
                 text: flashData.pesan,
-                icon: 'success',
+                icon: flashData.swalFlashIcon,
                 confirmButtonText: 'OK'
             });
         @endif
