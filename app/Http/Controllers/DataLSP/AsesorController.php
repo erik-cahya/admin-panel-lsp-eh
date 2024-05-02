@@ -12,12 +12,12 @@ class AsesorController extends Controller
     {
         $data['dataAsesor'] = AsesorModel::get();
         // dd($dataAsesor);
-        return view('admin.Asesor.index', $data);
+        return view('admin.asesor.index', $data);
     }
 
     public function create()
     {
-        return view('admin.Asesor.create');
+        return view('admin.asesor.create');
     }
 
     public function store(Request $request)
@@ -39,7 +39,7 @@ class AsesorController extends Controller
     public function edit($id)
     {
         $data['dataAsesor'] = AsesorModel::where('id', $id)->first();
-        return view('admin.Asesor.edit', $data);
+        return view('admin.asesor.edit', $data);
     }
 
     public function update(Request $request, $id)
