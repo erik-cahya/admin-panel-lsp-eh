@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Surat;
 
 use App\Http\Controllers\Controller;
+use App\Models\AsesorModel;
 use App\Models\TUKModel;
 use App\Models\SuratTugasModel;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -31,6 +32,8 @@ class SuratTugasAsesorController extends Controller
     public function createSurat()
     {
         // Ambil data nomor surat terakhir
+        $data['dataAsesor'] = AsesorModel::get();
+
         $nomorSuratTerakhir = SuratTugasModel::latest()->first();
 
         if ($nomorSuratTerakhir == null) {
@@ -40,26 +43,19 @@ class SuratTugasAsesorController extends Controller
         preg_match("/^\d+/", $nomorSuratTerakhir['nomor_surat'], $matches);
         $check = $matches[0];
 
-        $tuk['tuk'] = TUKModel::get();
+        $data['tuk'] = TUKModel::get();
         $count = $check + 1;
         $year = date('Y');
 
         if ($count < 10) {
-            $nomor_surat['nomor_surat'] = "00" . $count . "/ST-LSP-EHI/" . $year;
+            $data['nomor_surat'] = "00" . $count . "/ST-LSP-EHI/" . $year;
         } elseif ($count >= 10 and $count < 100) {
-            $nomor_surat['nomor_surat'] = "0" . $count . "/ST-LSP-EHI/" . $year;
+            $data['nomor_surat'] = "0" . $count . "/ST-LSP-EHI/" . $year;
         } elseif ($count >= 100) {
-            $nomor_surat['nomor_surat'] = $count . "/ST-LSP-EHI/" . $year;
+            $data['nomor_surat'] = $count . "/ST-LSP-EHI/" . $year;
         }
 
-        $flashData = [
-            'judul' => 'Create Surat Success',
-            'pesan' => 'Surat Tugas Berhasil Dibuat',
-            'swalFlashIcon' => 'success',
-        ];
-
-        return view('admin.surat.surat-tugas-asesor.create', $tuk, $nomor_surat);
-        // return redirect()->route('surat-tugas-asesor.create')->with(['tuk' => $tuk, 'nomor_surat' => $nomor_surat])->with('flashData', $flashData);
+        return view('admin.surat.surat-tugas-asesor.create', $data);
     }
 
     public function store(Request $request)
@@ -185,6 +181,16 @@ class SuratTugasAsesorController extends Controller
         $empData['data'] = DB::table('tuk')
             ->select("tuk_alamat")
             ->where('tuk_nama', $id)
+            ->get();
+
+        return response()->json($empData);
+    }
+
+    public function get_data_asesor($id)
+    {
+        $empData['data'] = DB::table('asesor')
+            ->select("no_reg")
+            ->where('nama_asesor', $id)
             ->get();
 
         return response()->json($empData);

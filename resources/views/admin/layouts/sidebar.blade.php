@@ -62,11 +62,11 @@
                 <div class="collapse {{ request()->segment(1) == 'qr-code' ? 'show' : '' }}" id="qr-code">
                     <ul class="nav sub-menu">
                         <li class="nav-item list-group-item d-flex justify-content-between align-items-center" >
-                            <a href="{{ route('surat-tugas-asesor.view') }}" class="nav-link {{ request()->segment(1)  == 'surat-tugas-asesor' && request()->segment(2) == null ? 'active' : '' }}">List QR Code</a>
+                            <a href="/qr-code" class="nav-link {{ request()->segment(1)  == 'qr-code' && request()->segment(2) == null ? 'active' : '' }}">List QR Code</a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('surat-tugas-asesor.create') }}" class="nav-link {{ request()->segment(1) == 'surat-tugas-asesor' && request()->segment(2) == 'create' ? 'active' : '' }}">Create QR</a>
+                            <a href="{{ route('qr-code.create') }}" class="nav-link {{ request()->segment(1) == 'qr-code' && request()->segment(2) == 'create' ? 'active' : '' }}">Create QR</a>
                         </li>
                     </ul>
                 </div>
@@ -114,11 +114,13 @@
                 <div class="collapse {{ request()->segment(1) == 'asesor' || request()->segment(1) == 'asesorAdd' ? 'show' : '' }}" id="data-asesor">
                     <ul class="nav sub-menu">
                         <li class="nav-item list-group-item d-flex justify-content-between align-items-center" >
-                            <a href="{{ route('asesor') }}" class="nav-link {{ request()->segment(1)  == 'asesor' && request()->segment(2) == null ? 'active' : '' }}">List Asesor</a>
+                            <a href="/asesor" class="nav-link {{ request()->segment(1)  == 'asesor' && request()->segment(2) == null ? 'active' : '' }}">List Asesor</a>
+                            <span class="badge bg-primary rounded-pill" style="font-size: 10px">{{ App\Models\AsesorModel::count() }}</span>
+
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('asesorAdd') }}" class="nav-link {{ request()->segment(1) == 'asesorAdd' ? 'active' : '' }}">Tambah Asesor</a>
+                            <a href="/asesor/create" class="nav-link {{ request()->segment(1) == 'asesor' && request()->segment(2) == 'create' ? 'active' : '' }}">Tambah Asesor</a>
                         </li>
                     </ul>
                 </div>

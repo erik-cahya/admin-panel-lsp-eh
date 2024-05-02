@@ -4,6 +4,11 @@
     </a>
     <div class="navbar-content">
 
+        {{-- <h1>Contoh Switch Theme</h1>
+        <label for="theme-switch">Switch Theme:</label>
+        <input type="checkbox" id="theme-switch" data-light="{{ asset('noble_panel') }}/assets/css/demo1/style.css" data-dark="{{ asset('noble_panel') }}/assets/css/demo2/style.css">
+        <script src="{{ asset('js/switch-theme.js') }}"></script> --}}
+
         <ul class="navbar-nav">
 
             <li class="nav-item dropdown">

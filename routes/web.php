@@ -65,12 +65,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('get_data_tuk/{id}', [SuratTugasAsesorController::class, 'get_data_tuk'])->name('get_data_tuk');
 
     // ############################################################ Asesor
-    Route::get('asesor', [AsesorController::class, 'asesor'])->name('asesor');
-    Route::get('asesorAdd', [AsesorController::class, 'asesorAdd'])->name('asesorAdd');
-    Route::post('asesorAdded', [AsesorController::class, 'asesorAdded'])->name('asesorAdded');
-    Route::get('asesorEdit', [AsesorController::class, 'asesorEdit'])->name('asesorEdit');
-    Route::post('asesorEdited/{id}', [AsesorController::class, 'asesorEdited'])->name('asesorEdited');
-    Route::delete('asesorDeleted/{id}', [AsesorController::class, 'asesorDeleted'])->name('asesorDeleted');
-
+    Route::resource('/asesor', AsesorController::class);
     Route::get('get_data_asesor/{id}', [SuratTugasAsesorController::class, 'get_data_asesor'])->name('get_data_asesor');
 });

@@ -27,7 +27,11 @@
     <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/mdi/css/materialdesignicons.min.css">
 
     <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/css/demo2/style.css">
+
+
+    <link id="theme-link" rel="stylesheet" href="{{ asset('noble_panel') }}/assets/css/demo2/style.css">
+
+
     <link rel="shortcut icon" href="{{ asset('noble_panel') }}/assets/images/favicon.png" />
 
     {{-- Font Awesome --}}
@@ -67,7 +71,8 @@
 
     <script src="{{ asset('noble_panel') }}/assets/vendors/core/core.js"></script>
     <script src="{{ asset('noble_panel') }}/assets/vendors/feather-icons/feather.min.js"></script>
-    <script src="{{ asset('noble_panel') }}/assets/js/template.js"></script>
+    {{-- <script src="{{ asset('noble_panel') }}/assets/js/template.js"></script> --}}
+    <script src="{{ asset('js/page.js') }}"></script>
 
 
 
@@ -77,14 +82,6 @@
 	<!-- End plugin js for this page -->
 
 	@yield('js_partials')
-
-    <script>
-        var readonlyInputs = document.querySelectorAll('input[readonly], select[readonly], textarea[readonly]');
-        // Loop melalui setiap elemen dan tambahkan kelas CSS 'readonly'
-        readonlyInputs.forEach(function(element) {
-            element.classList.add('readonly');
-        });
-    </script>
 
     {{-- Sweet Alert JS --}}
     <script src="{{ asset('noble_panel') }}/assets/vendors/sweetalert2/sweetalert2.min.js"></script>
