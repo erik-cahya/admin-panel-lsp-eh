@@ -5,6 +5,10 @@
         .hide-column {
             display: none;
         }
+        .hidden {
+            display: none !important;
+        }
+
     </style>
 @endsection
 
@@ -41,7 +45,14 @@
                 <div class="card-body">
                     <h6 class="card-title">Surat Tugas Asesor</h6>
                     <div class="table-responsive">
-                        <table id="dataTableExample" class="table table-bordered" style="min-height: 50vh">
+
+                        {{-- Loading --}}
+                        <div class="spinnder d-flex justify-content-center">
+                            <div id="loading" class="spinner-grow text-danger"></div>
+                        </div>
+                        {{-- /* End Loading --}}
+
+                        <table id="dataTableExample" class="table table-bordered hidden" style="min-height: 50vh;">
                             <thead>
                                 <tr>
                                     <th width="100px">Action</th>
@@ -352,4 +363,15 @@
             });
         });
     </script>
+
+<script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      // Simulasikan waktu tunggu
+      setTimeout(function() {
+        // Setelah 2 detik, tampilkan data table dan sembunyikan loading spinner
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('dataTableExample').classList.remove('hidden');
+      }, 2000); // 2 Detik
+    });
+</script>
 @endsection
