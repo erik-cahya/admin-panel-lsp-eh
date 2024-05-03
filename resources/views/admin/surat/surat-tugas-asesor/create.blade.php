@@ -42,11 +42,10 @@
                                     <label for="skema" class="form-label">Skema</label>
                                     <select id="skema" name="skema" class="form-select" required>
                                         <option selected readonly disabled>Pilih Skema Uji</option>
-                                            <option value="Mekanik Heating, Ventilation Dan Air Condition (HVAC)">Mekanik Heating, Ventilation Dan Air Condition (HVAC)</option>
-                                            <option value="Pelaksanaan Instalasi AC">Pelaksanaan Instalasi AC</option>
-                                            <option value="Perawatan Mesin Pendingin / AC">Perawatan Mesin Pendingin / AC</option>
-                                            <option value="Teknisi Lemari Pendingin">Teknisi Lemari Pendingin</option>
-                                            <option value="Teknisi Refrigerasi Domestik">Teknisi Refrigerasi Domestik</option>
+                                        @foreach ($dataSkema as $skema)
+                                            <option value="{{ $skema->nama_skema }}">{{ $skema->nama_skema }}</option>
+                                        @endforeach
+
                                     </select>
 
                                     @error('skema')

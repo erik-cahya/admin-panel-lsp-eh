@@ -42,11 +42,9 @@
                                     <label for="skema" class="form-label">Skema</label>
                                     <select id="skema" name="skema" class="form-select" required>
                                         <option selected readonly disabled>Pilih Skema Uji</option>
-                                        <option value="Mekanik Heating, Ventilation Dan Air Condition (HVAC)">Mekanik Heating, Ventilation Dan Air Condition (HVAC)</option>
-                                        <option value="Pelaksanaan Instalasi AC">Pelaksanaan Instalasi AC</option>
-                                        <option value="Perawatan Mesin Pendingin / AC">Perawatan Mesin Pendingin / AC</option>
-                                        <option value="Teknisi Lemari Pendingin">Teknisi Lemari Pendingin</option>
-                                        <option value="Teknisi Refrigerasi Domestik">Teknisi Refrigerasi Domestik</option>
+                                        @foreach ($dataSkema as $skema)
+                                            <option value="{{ $skema->nama_skema }}" {{ $dataSurat->skema == $skema->nama_skema ? 'selected' : '' }}>{{ $skema->nama_skema }}</option>
+                                        @endforeach
                                     </select>
 
                                     @error('skema')
@@ -60,25 +58,11 @@
                             <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label for="skema" class="form-label">Asesor</label>
-                                    <select id="selectOption" onchange="fillText()" name="nama_asesor" class="form-select" required>
+                                    <select id="nama_asesor" name="nama_asesor" class="form-select" required>
                                         <option selected readonly disabled>Pilih Asesor</option>
-                                        <option value="Alit Aditya Angga Widiarsah">Alit Aditya Angga Widiarsah</option>
-                                        <option value="Anton Kurniawan">Anton Kurniawan</option>
-                                        <option value="I Dewa Made Yudiarta">I Dewa Made Yudiarta</option>
-                                        <option value="I Gede Sumerta">I Gede Sumerta</option>
-                                        <option value="I Gede Swastika">I Gede Swastika</option>
-                                        <option value="I Gusti Agung Putu Prawira Deasy Suharta">I Gusti Agung Putu Prawira Deasy Suharta</option>
-                                        <option value="I Gusti Made Sutama Arsa">I Gusti Made Sutama Arsa</option>
-                                        <option value="I Komang Sutarmika">I Komang Sutarmika</option>
-                                        <option value="I Made Arta">I Made Arta</option>
-                                        <option value="I Made Juni Suaryana">I Made Juni Suaryana</option>
-                                        <option value="I Nengah Jati">I Nengah Jati</option>
-                                        <option value="I Putu Angga Sukma Primantara">I Putu Angga Sukma Primantara</option>
-                                        <option value="I Wayan Mudiarta">I Wayan Mudiarta</option>
-                                        <option value="I Wayan Widiyasa">I Wayan Widiyasa</option>
-                                        <option value="Ribut Ponco Purnomo">Ribut Ponco Purnomo</option>
-                                        <option value="I Gusti Agung Wahyu Paranagita">I Gusti Agung Wahyu Paranagita</option>
-                                        <option value="Ida Bagus Gde Widiantara, S.T., M.T.">Ida Bagus Gde Widiantara, S.T., M.T.</option>
+                                        @foreach ($dataAsesor as $asesor)
+                                            <option value="{{ $asesor->nama_asesor }}" {{ $dataSurat->nama_asesor == $asesor->nama_asesor ? 'selected' : '' }}>{{ $asesor->nama_asesor }}</option>
+                                        @endforeach
                                     </select>
 
                                     @error('nama_asesor')
@@ -90,7 +74,7 @@
                             <div class="col-sm-6">
                                 <div class="mb-3">
                                     <label class="form-label">NO Reg</label>
-                                    <input type="text" id="textInput" class="form-control" id="no_reg" name="no_reg" placeholder="Pilih Nama Asesor" readonly>
+                                    <input type="text" id="no_reg_asesor" class="form-control" id="no_reg" name="no_reg" placeholder="Pilih Nama Asesor" readonly>
                                 </div>
                             </div>
                         </div>
@@ -165,68 +149,6 @@
 
 
     <script>
-        function fillText() {
-            var selectValue = document.getElementById("selectOption").value;
-            var textField = document.getElementById("textInput");
-            // Javascript untuk autofill asesor
-            switch (selectValue) {
-                case "Alit Aditya Angga Widiarsah":
-                    textField.value = "MET.000.005572 2018";
-                    break;
-                case "Anton Kurniawan":
-                    textField.value = "MET.000.005575 2018";
-                    break;
-                case "I Dewa Made Yudiarta":
-                    textField.value = "MET.000.000877 2020";
-                    break;
-                case "I Gede Sumerta":
-                    textField.value = "MET.000.009823 2018";
-                    break;
-                case "I Gede Swastika":
-                    textField.value = "MET.000.005573 2018";
-                    break;
-                case "I Gusti Agung Putu Prawira Deasy Suharta":
-                    textField.value = "MET.000.000882 2020";
-                    break;
-                case "I Gusti Made Sutama Arsa":
-                    textField.value = "MET. 000.001817.2018";
-                    break;
-                case "I Komang Sutarmika":
-                    textField.value = "MET.000.005577 2018";
-                    break;
-                case "I Made Arta":
-                    textField.value = "MET.000.005574 2018";
-                    break;
-                case "I Made Juni Suaryana":
-                    textField.value = "MET.000.005576 2018";
-                    break;
-                case "I Nengah Jati":
-                    textField.value = "MET.000.010638 2016";
-                    break;
-                case "I Putu Angga Sukma Primantara":
-                    textField.value = "MET.000.005590 2018";
-                    break;
-                case "I Wayan Mudiarta":
-                    textField.value = "MET.000.000880 2020";
-                    break;
-                case "I Wayan Widiyasa":
-                    textField.value = "MET.000.000878 2020";
-                    break;
-                case "Ribut Ponco Purnomo":
-                    textField.value = "MET.000.000879 2020";
-                    break;
-                case "I Gusti Agung Wahyu Paranagita":
-                    textField.value = "MET.000.005578 2018";
-                    break;
-                case "Ida Bagus Gde Widiantara, S.T., M.T.":
-                    textField.value = "MET.000.006969 2021";
-                    break;
-
-                default:
-                    textField.value = ""; // Bersihkan value jika tidak ada yang di select
-            }
-        }
-
         function capitalizeText() {
             var input = document.getElementById("nomor_surat");
             input.value = input.value.toUpperCase();
@@ -239,10 +161,9 @@
 
     <script type='text/javascript'>
         $(document).ready(function() {
-            // Fungsi yang akan dijalankan saat dokumen selesai dimuat
+
             loadDataTuk();
 
-                // Fungsi untuk mengambil data TUK berdasarkan ID
                 function loadDataTuk() {
                     var tuk_id = $("#nama_tuk").val();
                     $.ajax({
@@ -254,9 +175,31 @@
                         }
                     });
                 }
-            // Memanggil fungsi saat elemen dengan ID 'nama_tuk' berubah
             $('#nama_tuk').change(function() {
                 loadDataTuk();
+            });
+        });
+    </script>
+
+    {{-- Get Asesor NO Reg Automatic --}}
+    <script type='text/javascript'>
+        $(document).ready(function() {
+
+            loadDataAsesor();
+
+            function loadDataAsesor(){
+                var asesor_id = $("#nama_asesor").val();
+                $.ajax({
+                    url: '../../get_data_asesor/' + asesor_id,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response) {
+                        $("#no_reg_asesor").val(response['data'][0].no_reg);
+                    }
+                });
+            }
+            $('#nama_asesor').change(function(){
+                loadDataAsesor();
             });
         });
     </script>

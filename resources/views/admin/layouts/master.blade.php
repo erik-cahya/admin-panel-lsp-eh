@@ -43,6 +43,11 @@
             /* Tambahkan gaya yang ingin Anda terapkan di sini */
             cursor: not-allowed;
         }
+
+        /* Mengaktifkan word-wrap pada kolom Alamat dan Contact Person */
+        #dataTableExample td.text-wrap {
+            word-wrap: break-word;
+        }
     </style>
 
 </head>
@@ -81,11 +86,13 @@
   <script src="{{ asset('noble_panel') }}/assets/vendors/datatables.net-bs5/dataTables.bootstrap5.js"></script>
 	<!-- End plugin js for this page -->
 
-	@yield('js_partials')
 
     {{-- Sweet Alert JS --}}
     <script src="{{ asset('noble_panel') }}/assets/vendors/sweetalert2/sweetalert2.min.js"></script>
     <script src="{{ asset('noble_panel') }}/assets/js/sweet-alert.js"></script>
+
+    @yield('js_partials')
+
 
 
     {{-- Sweet Alert / Flash Massage --}}
@@ -101,6 +108,7 @@
             });
         @endif
     </script>
+
 
     {{-- /* End Sweet Alert / Flash Massage --}}
 </body>

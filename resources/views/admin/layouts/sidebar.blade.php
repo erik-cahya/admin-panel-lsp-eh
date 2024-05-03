@@ -126,6 +126,32 @@
                 </div>
             </li>
             {{-- /* End Asesor --}}
+
+            {{-- Skema --}}
+            <li class="nav-item {{ request()->segment(1) == 'skema' || request()->segment(1) == 'skemaAdd' ? 'active' : '' }}">
+                <a class="nav-link" data-bs-toggle="collapse" href="#data-skema" role="button" aria-expanded="false" aria-controls="data-skema">
+
+                    <i class="fas fa-pencil-alt"></i>
+                    <span class="link-title" style="margin-left: 18px">Skema Ujian</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+
+                </a>
+
+                <div class="collapse {{ request()->segment(1) == 'skema' || request()->segment(1) == 'skemaAdd' ? 'show' : '' }}" id="data-skema">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item list-group-item d-flex justify-content-between align-items-center" >
+                            <a href="/skema" class="nav-link {{ request()->segment(1)  == 'skema' && request()->segment(2) == null ? 'active' : '' }}">List Skema</a>
+                            <span class="badge bg-primary rounded-pill" style="font-size: 10px">{{ App\Models\SkemaModel::count() }}</span>
+
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="/skema/create" class="nav-link {{ request()->segment(1) == 'skema' && request()->segment(2) == 'create' ? 'active' : '' }}">Tambah Skema Ujian</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            {{-- /* End Skema --}}
         </ul>
     </div>
 </nav>

@@ -4,6 +4,12 @@
 
 
 
+    <style>
+        /* Mengaktifkan word-wrap pada kolom Alamat dan Contact Person */
+        #dataTableExample td.text-wrap {
+            word-wrap: break-word;
+        }
+    </style>
 @endsection
 
 {{-- Content Web --}}
@@ -11,7 +17,7 @@
 <div class="page-content">
     <div class="d-flex justify-content-between align-items-center flex-wrap grid-margin">
         <div>
-          <h4 class="mb-3 mb-md-0">Tempat Uji Kompetensi ( TUK )</h4>
+          <h4 class="mb-3 mb-md-0">Skema Ujian LSP Engineering</h4>
         </div>
     </div>
 
@@ -21,60 +27,44 @@
         <div class="col-md-12 grid-margin stretch-card">
             <div class="card">
                 <div class="card-body">
-                    <h6 class="card-title">Data TUK</h6>
+                    <h6 class="card-title">Data Skema</h6>
                     <div class="table-responsive">
                         <table id="dataTableExample" class="table table-bordered" style="min-height: 50vh">
                             <thead>
                                 <tr>
                                     <th width="10px" class="">No</th>
-                                    <th>Nama TUK</th>
-                                    <th>Alamat</th>
-                                    <th width="160px">Contact Person</th>
-                                    <th width="10px">Action</th>
+                                    <th>Nama Skema</th>
+                                    <th width="50px">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dataTuk as $tuk)
+                                @foreach ($dataSkema as $skema)
                                     <tr>
                                         <td>
                                             {{ $loop->iteration }}
                                         </td>
                                         <td class="text-left">
 
-                                            {{ $tuk->tuk_nama }}
+                                            {{ $skema->nama_skema }}
                                         </td>
-                                        <td class="text-left text-wrap">
-                                            {{ $tuk->tuk_alamat }}
-                                        </td>
-                                        <td class="text-left text-wrap">
-                                            {{ $tuk->tuk_namaCP }}
-                                            <br>
-                                            {{ $tuk->tuk_kontakCP }}
-                                        </td>
-
                                         <td>
                                                 <button type="button" class="btn btn-success btn-xs dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     Action
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
 
-                                                    {{-- Edit Button --}}
-                                                    <form action="{{ route('tukEdit', $tuk->id) }}"method="POST">
-                                                        {{ csrf_field() }}
-                                                        <input type="hidden" name="id_surat" value="{{ $tuk->id }}">
-                                                        <button type="submit" class="dropdown-item">
-                                                            <i class="link-icon" data-feather="edit" style="width:16px; height:auto;"></i><span style="margin-left:10px">Edit TUK</span>
-                                                        </button>
-                                                    </form>
+                                                     {{-- Edit Button --}}
+                                                     <a href="/skema/{{ $skema->id }}/edit" class="dropdown-item">
+                                                        <i class="link-icon" data-feather="edit" style="width:16px; height:auto;"></i><span style="margin-left:10px">Edit Skema</span>
+                                                    </a>
                                                     <div class="dropdown-divider"></div>
 
                                                     {{-- Delete Button --}}
-                                                    <form action="{{ route('tukDeleted', $tuk->id) }}" method="POST">
+                                                    <form action="/skema/{{ $skema->id }}" method="POST">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
-                                                        <input type="hidden" name="id_surat" value="{{ $tuk->id }}">
                                                         <button type="submit" class="dropdown-item">
-                                                            <i class="link-icon" data-feather="trash" style="width:16px; height:auto"></i><span style="margin-left:10px">Delete TUK</span>
+                                                            <i class="link-icon" data-feather="trash" style="width:16px; height:auto"></i><span style="margin-left:10px">Delete Skema</span>
                                                         </button>
                                                     </form>
 

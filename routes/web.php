@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataLSP\AsesorController;
+use App\Http\Controllers\DataLSP\SkemaController;
 use App\Http\Controllers\DataLSP\TUKController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\QRCode\QRCodeController;
@@ -67,4 +68,7 @@ Route::middleware(['auth'])->group(function () {
     // ############################################################ Asesor
     Route::resource('/asesor', AsesorController::class);
     Route::get('get_data_asesor/{id}', [SuratTugasAsesorController::class, 'get_data_asesor'])->name('get_data_asesor');
+
+    // ############################################################ Skema
+    Route::resource('/skema', SkemaController::class);
 });

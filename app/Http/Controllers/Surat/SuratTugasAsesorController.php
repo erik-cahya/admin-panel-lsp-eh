@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Surat;
 
 use App\Http\Controllers\Controller;
 use App\Models\AsesorModel;
+use App\Models\SkemaModel;
 use App\Models\TUKModel;
 use App\Models\SuratTugasModel;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -11,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
+
 
 use Illuminate\Support\Facades\DB;
 
@@ -33,6 +36,7 @@ class SuratTugasAsesorController extends Controller
     {
         // Ambil data nomor surat terakhir
         $data['dataAsesor'] = AsesorModel::get();
+        $data['dataSkema'] = SkemaModel::get();
 
         $nomorSuratTerakhir = SuratTugasModel::latest()->first();
 
@@ -77,6 +81,7 @@ class SuratTugasAsesorController extends Controller
         $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $request->tanggal_uji)->locale('id')->isoFormat('DD-MM-YYYY'));
 
         SuratTugasModel::create([
+            'id' => Str::random(40),
             'nama_surat' => $fileName,
             'nomor_surat' => $request->nomor_surat,
             'nama_asesor' => $request->nama_asesor,
@@ -100,8 +105,11 @@ class SuratTugasAsesorController extends Controller
     public function editSurat($id)
     {
         $data['dataSurat'] = SuratTugasModel::where('id', $id)->first();
-        $tuk['tuk'] = TUKModel::get();
-        return view('admin.surat.surat-tugas-asesor.edit', $data, $tuk);
+        $data['tuk'] = TUKModel::get();
+        $data['dataSkema'] = SkemaModel::get();
+        $data['dataAsesor'] = AsesorModel::get();
+
+        return view('admin.surat.surat-tugas-asesor.edit', $data);
     }
 
     public function updateSurat(Request $request, $id)

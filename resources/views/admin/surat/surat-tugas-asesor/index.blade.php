@@ -32,6 +32,7 @@
             <a href="javascript:void(0)" id="tanggalSuratFilterButton" class="badge border bg-primary">Tanggal Surat</a>
 
         </div>
+
     </div>
 
     <div class="row">
@@ -58,7 +59,7 @@
                                 @foreach ($data_surat as $dt_surat)
                                     <tr>
                                         <td>
-                                            <button type="button" class="btn btn-xs btn-danger btn-icon">
+                                            <button type="button" class="btn btn-xs btn-danger btn-icon" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $dt_surat->id }}">
                                                 <i data-feather="eye"></i>
                                             </button>
 
@@ -96,11 +97,12 @@
                                         <td class="">
                                             <span class="badge bg-warning text-dark">{{ $dt_surat->nomor_surat }}</span>
                                         </td>
-                                        <td class="">{{ $dt_surat->nama_asesor }}</td>
-                                        <td class="columnNoReg">{{ $dt_surat->no_reg }}</td>
-                                        <td class="columnTempatTuk">{{ $dt_surat->nama_tuk }}</td>
-                                        <td class="columnAlamatTuk">{{ Str::limit($dt_surat->alamat_tuk, 50) }}</td>
-                                        <td class="columnSkema">{{ $dt_surat->skema }}</td>
+                                        <td class="text-wrap">{{ $dt_surat->nama_asesor }}</td>
+                                        <td class="columnNoReg text-wrap">{{ $dt_surat->no_reg }}</td>
+                                        <td class="columnTempatTuk text-wrap">{{ $dt_surat->nama_tuk }}</td>
+                                        {{-- <td class="columnAlamatTuk text-wrap">{{ Str::limit($dt_surat->alamat_tuk, 50) }}</td> --}}
+                                        <td class="columnAlamatTuk text-wrap">{{ $dt_surat->alamat_tuk }}</td>
+                                        <td class="columnSkema text-wrap">{{ $dt_surat->skema }}</td>
                                         <td class="columnTanggalUji">{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
                                         <td class="columnTanggalSurat">{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
 
@@ -115,6 +117,111 @@
         </div>
     </div>
 </div>
+
+{{-- Modal --}}
+@foreach ($data_surat as $dt_surat)
+    <div class="modal fade" id="modalSurat{{ $dt_surat->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Surat Tugas {{ $dt_surat->nama_asesor }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                </div>
+                <div class="modal-body">
+                    {{-- Modal Content --}}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Nomor Surat</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $dt_surat->nomor_surat }}" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Skema</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $dt_surat->skema }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Asesor</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $dt_surat->nama_asesor }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">NO Reg</label>
+                                <input type="text" id="no_reg_asesor" class="form-control" id="no_reg" name="no_reg" value="{{ $dt_surat->no_reg }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Nama TUK</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $dt_surat->nama_tuk }}" disabled>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Alamat TUK</label>
+                                <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control" value="{{ $dt_surat->alamat_tuk }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Tanggal Ujian</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}" disabled>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tanggal Surat</label>
+                                <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control" value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tanggal Dibuat Surat</label>
+                                <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control" value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $dt_surat->created_at)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Download Surat</label>
+                                <div class="container">
+                                    <a class="btn btn-info btn-sm" href="{{ route('surat-tugas-asesor.download', $dt_surat->id) }}"><i class="far fa-file-word"></i> Download Word </a>
+                                    <a class="btn btn-warning btn-sm" href="{{ route('surat-tugas-asesor.generatePdf', $dt_surat->id) }}" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Modal Content --}}
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
+<!-- Modal -->
+
 @endsection
 
 @section('js_partials')
