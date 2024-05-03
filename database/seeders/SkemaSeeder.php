@@ -16,7 +16,7 @@ class SkemaSeeder extends Seeder
     {
         $dataSkema = [
             [
-                'nama_skema' => 'Mekanik Heating, Ventilation dan Air Condition (HVAC)',
+                'nama_skema' => 'Mekanik Heating, Ventilation Dan Air Condition (HVAC)',
             ],
             [
                 'nama_skema' => 'Pelaksanaan Instalasi AC',
