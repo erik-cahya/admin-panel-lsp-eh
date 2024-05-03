@@ -5,10 +5,6 @@
         .hide-column {
             display: none;
         }
-        .hidden {
-            display: none !important;
-        }
-
     </style>
 @endsection
 
@@ -365,14 +361,5 @@
         });
     </script>
 
-<script>
-    window.addEventListener('DOMContentLoaded', (event) => {
-      // Simulasikan waktu tunggu
-      setTimeout(function() {
-        // Setelah 2 detik, tampilkan data table dan sembunyikan loading spinner
-        document.getElementById('loading').classList.add('hidden');
-        document.getElementById('cardTable').classList.remove('hidden');
-      }, 2000); // 2 Detik
-    });
-</script>
+
 @endsection

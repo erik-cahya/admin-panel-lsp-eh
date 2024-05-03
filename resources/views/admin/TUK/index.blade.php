@@ -18,7 +18,13 @@
 
 
     <div class="row">
-        <div class="col-md-12 grid-margin stretch-card">
+            {{-- Loading --}}
+            <div class="spinnder d-flex justify-content-center">
+                <div id="loading" class="spinner-grow text-danger"></div>
+            </div>
+            {{-- /* End Loading --}}
+
+            <div class="col-md-12 grid-margin stretch-card hidden" id="cardTable">
             <div class="card">
                 <div class="card-body">
                     <h6 class="card-title">Data TUK</h6>

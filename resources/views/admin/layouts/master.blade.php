@@ -48,6 +48,9 @@
         #dataTableExample td.text-wrap {
             word-wrap: break-word;
         }
+        .hidden {
+            display: none !important;
+        }
     </style>
 
 </head>
@@ -108,9 +111,20 @@
             });
         @endif
     </script>
-
-
     {{-- /* End Sweet Alert / Flash Massage --}}
+
+    {{-- Loading Effect --}}
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+          // Simulasikan waktu tunggu
+          setTimeout(function() {
+            // Setelah 2 detik, tampilkan data table dan sembunyikan loading spinner
+            document.getElementById('loading').classList.add('hidden');
+            document.getElementById('cardTable').classList.remove('hidden');
+          }, 1100); // 2 Detik
+        });
+    </script>
+    {{-- /* End Loading Effect --}}
 </body>
 
 </html>
