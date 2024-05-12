@@ -249,7 +249,7 @@
 
             Swal.fire({
                     title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this QR code!",
+                    text: "Apakah anda yakin ingin mengapus surat tugas ini ?",
                     icon: "warning",
                     showCancelButton: true,
             }).then((willDelete) => {
