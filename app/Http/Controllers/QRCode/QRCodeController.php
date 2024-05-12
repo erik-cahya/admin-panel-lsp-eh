@@ -137,7 +137,10 @@ class QRCodeController extends Controller
         $imageFile = DB::table('qr_code')->where('id', $id)->value('qr_image');
         DB::table('qr_code')->where('id', $id)->delete();
         File::delete(public_path('img/qr_codes/' . $imageFile));
-        toast('QR Code Berhasil Dihapus', 'success');
-        return Redirect::to('/qr-code');
+        // toast('QR Code Berhasil Dihapus', 'success');
+        // return Redirect::to('/qr-code');
+
+        return response()->json(['message' => 'QR Code Berhasil Dihapus']);
+
     }
 }

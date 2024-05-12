@@ -37,10 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // ############################################################ QR Code
-    Route::resource('/qr-code', QRCodeController::class);
-    Route::get('/download-qrcode/{id}', [QRCodeController::class, 'download'])->name('download.qrcode');
-    Route::get('/download-qr/{content}', [QRCodeController::class, 'downloadQR'])->name('download.qr');
-
+    Route::resource('/qr-code', QRCodeController::class)->except(['create', 'show', 'edit', 'update']);
 
     // ############################################################ Surat Tugas Asesor
     Route::get('surat-tugas-asesor', [SuratTugasAsesorController::class, 'index'])->name('surat-tugas-asesor.view');

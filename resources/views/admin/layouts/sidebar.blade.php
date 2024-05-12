@@ -64,10 +64,6 @@
                         <li class="nav-item list-group-item d-flex justify-content-between align-items-center" >
                             <a href="/qr-code" class="nav-link {{ request()->segment(1)  == 'qr-code' && request()->segment(2) == null ? 'active' : '' }}">List QR Code</a>
                         </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('qr-code.create') }}" class="nav-link {{ request()->segment(1) == 'qr-code' && request()->segment(2) == 'create' ? 'active' : '' }}">Create QR</a>
-                        </li>
                     </ul>
                 </div>
             </li>
