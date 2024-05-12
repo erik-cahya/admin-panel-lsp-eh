@@ -94,9 +94,15 @@
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
-                                                        <button type="submit" class="dropdown-item">
+
+                                                        {{-- <button type="submit" class="dropdown-item">
+                                                            <i class="link-icon" data-feather="trash" style="width:16px; height:auto"></i>Delete Surat
+                                                        </button> --}}
+
+                                                        <button type="button" id="deleteButton-{{ $dt_surat->id }}" class="dropdown-item">
                                                             <i class="link-icon" data-feather="trash" style="width:16px; height:auto"></i>Delete Surat
                                                         </button>
+
                                                     </form>
 
                                                 </div>
@@ -228,13 +234,58 @@
         </div>
     </div>
 @endforeach
-<!-- Modal -->
+<!-- /* End Modal -->
 
 @endsection
 
 @section('js_partials')
 
     <script src="{{ asset('noble_panel') }}/assets/js/data-table.js"></script>
+
+    {{-- Sweet Alert --}}
+    <script>
+        @foreach ($data_surat as $dt_surat)
+            document.getElementById("deleteButton-{{ $dt_surat->id }}").addEventListener("click", function() {
+
+            Swal.fire({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this QR code!",
+                    icon: "warning",
+                    showCancelButton: true,
+            }).then((willDelete) => {
+                    if (willDelete.isConfirmed) {
+                        fetch("{{ route('surat-tugas-asesor.delete', $dt_surat->id) }}", {
+                            method: "DELETE",
+                            headers: {
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                            }
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                            Swal.fire(
+                                'Terhapus',
+                                'Surat Tugas Berhasil Dihapus',
+                                'success'
+                            ).then((result) =>{
+                                if (result.isConfirmed){
+                                window.location.href = "{{ route('surat-tugas-asesor.view') }}";
+                                }
+                            })
+                            }
+                        })
+                    } else {
+                    Swal.fire({
+                        title: "Dibatalkan",
+                        text: "Surat Tugas Batal Dihapus",
+                        icon: "error",});
+                    }
+                });
+            });
+        @endforeach
+    </script>
+    {{-- /* End Sweet Alert --}}
+
+
     <script>
 
         // Filter Data Skema Table

@@ -88,7 +88,7 @@
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     <input type="hidden" name="id_surat" value="{{ $tuk->id }}">
-                                                    <button type="submit" class="dropdown-item">
+                                                    <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure ?')">
                                                         <i class="link-icon" data-feather="trash" style="width:16px; height:auto"></i><span style="margin-left:10px">Delete TUK</span>
                                                     </button>
                                                 </form>

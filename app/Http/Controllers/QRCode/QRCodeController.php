@@ -72,7 +72,6 @@ class QRCodeController extends Controller
         // $logo = Logo::create(public_path('/img/1.jpg'))->setResizeToWidth(150)->setResizeToHeight(150);
 
         // Tulis QR code ke dalam sebuah buffer
-
         $buffer = $writer->write($qrCode)->getString();
 
         // Simpan buffer ke dalam file gambar di server
@@ -88,8 +87,12 @@ class QRCodeController extends Controller
             'updated_at' => now(),
         ]);
 
-        toast('QR Code Berhasil Dibuat', 'success');
-        return redirect('/qr-code');
+        $flashData = [
+            'judul' => 'Create QR Success',
+            'pesan' => 'QR Code Berhasil Dibuat',
+            'swalFlashIcon' => 'success',
+        ];
+        return redirect('/qr-code')->with('flashData', $flashData);
     }
 
     /**

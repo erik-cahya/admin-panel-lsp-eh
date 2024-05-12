@@ -58,18 +58,11 @@
                                                     Action
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-
-                                                     {{-- Edit Button --}}
-                                                     <a href="/skema/{{ $skema->id }}/edit" class="dropdown-item">
-                                                        <i class="link-icon" data-feather="edit" style="width:16px; height:auto;"></i><span style="margin-left:10px">Edit Skema</span>
-                                                    </a>
-                                                    <div class="dropdown-divider"></div>
-
                                                     {{-- Delete Button --}}
                                                     <form action="/skema/{{ $skema->id }}" method="POST">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
-                                                        <button type="submit" class="dropdown-item">
+                                                        <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure ?')">
                                                             <i class="link-icon" data-feather="trash" style="width:16px; height:auto"></i><span style="margin-left:10px">Delete Skema</span>
                                                         </button>
                                                     </form>

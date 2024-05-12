@@ -73,11 +73,7 @@
                       <h5 class="card-title">{{ $qr->name }}</h5>
                       <p class="card-text mb-3">{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $qr->created_at)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</p>
                       <button type="button" id="downloadButton-{{ $qr->id }}" class="btn btn-warning btn-icon btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Download QR Code"><i data-feather="download"></i></button>
-
-                      {{-- <button type="button" onclick="deleteQR({{ $qr->id }})" class="btn btn-danger btn-icon btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete QR Code"><i data-feather="trash-2"></i></button> --}}
-
                       <button type="button" id="deleteButton-{{ $qr->id }}" class="btn btn-danger btn-icon btn-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete QR Code"><i data-feather="trash-2"></i></button>
-
                     </div>
                     <div class="col-xl-6">
                       <img src="{{ asset('img/qr_codes/' . $qr->qr_image) }}" alt="" width="120px">
@@ -108,43 +104,44 @@
 
 @section('js_partials')
 
-<script>
-  @foreach ($data_qr as $qr)
-  document.getElementById("deleteButton-{{ $qr->id }}").addEventListener("click", function() {
+{{-- Sweet Alert --}}
+    <script>
+        @foreach ($data_qr as $qr)
+            document.getElementById("deleteButton-{{ $qr->id }}").addEventListener("click", function() {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "Once deleted, you will not be able to recover this QR code!",
+                    icon: "warning",
+                    showCancelButton: true,
+                }).then((willDelete) => {
+                    if (willDelete.isConfirmed) {
+                        fetch("{{ route('qr-code.destroy', $qr->id) }}", {
+                            method: "DELETE",
+                            headers: {
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                            }
+                        }).then(response => {
+                            if (response.ok) {
+                                Swal.fire(
+                                'Terhapus',
+                                'QR Code Telah Berhasil Dihapus',
+                                'success'
+                                ).then((result) =>{
+                                if (result.isConfirmed){
+                                    window.location.href = '/qr-code';
+                                }
+                                })
+                            }
+                        })
+                    } else {
+                        Swal.fire("Hapus QR Dibatalkan");
+                    }
+                });
+            });
+        @endforeach
+    </script>
+{{-- /* End Sweet Alert --}}
 
-    Swal.fire({
-          title: "Are you sure?",
-          text: "Once deleted, you will not be able to recover this QR code!",
-          icon: "warning",
-          showCancelButton: true,
-    }).then((willDelete) => {
-          if (willDelete.isConfirmed) {
-              fetch("{{ route('qr-code.destroy', $qr->id) }}", {
-                  method: "DELETE",
-                  headers: {
-                      "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                  }
-              })
-              .then(response => {
-                  if (response.ok) {
-                    Swal.fire(
-                      'Terhapus',
-                      'QR Code Telah Berhasil Dihapus',
-                      'success'
-                    ).then((result) =>{
-                      if (result.isConfirmed){
-                        window.location.href = '/qr-code';
-                      }
-                    })
-                  }
-              })
-          } else {
-            Swal.fire("Hapus QR Dibatalkan");
-          }
-      });
-  });
-  @endforeach
-  </script>
 
 
 @endsection

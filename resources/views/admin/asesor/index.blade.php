@@ -82,7 +82,7 @@
                                                     <form action="/asesor/{{ $asesor->id }}" method="POST">
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
-                                                        <button type="submit" class="dropdown-item">
+                                                        <button type="submit" class="dropdown-item" onclick="return confirm('Are you sure ?')">
                                                             <i class="link-icon" data-feather="trash" style="width:16px; height:auto"></i><span style="margin-left:10px">Delete Asesor</span>
                                                         </button>
                                                     </form>
@@ -101,13 +101,10 @@
             </div>
         </div>
     </div>
+
 </div>
 @endsection
 
 @section('js_partials')
     <script src="{{ asset('noble_panel') }}/assets/js/data-table.js"></script>
-
-
-
-
 @endsection

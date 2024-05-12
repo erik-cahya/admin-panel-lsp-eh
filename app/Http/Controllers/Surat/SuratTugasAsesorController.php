@@ -139,13 +139,7 @@ class SuratTugasAsesorController extends Controller
     public function destroy(Request $request)
     {
         SuratTugasModel::destroy($request->id);
-
-        $flashData = [
-            'judul' => 'Hapus Surat Success',
-            'pesan' => 'Surat Tugas Berhasil Di Hapus',
-            'swalFlashIcon' => 'success',
-        ];
-        return redirect('surat-tugas-asesor/')->with('flashData', $flashData);
+        return response()->json(['message' => 'QR Code Berhasil Dihapus']);
     }
 
 
