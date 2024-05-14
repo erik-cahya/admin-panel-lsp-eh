@@ -56,7 +56,8 @@ License: For each use you must have a valid license purchased only from above li
                         <div class="card">
                             <div class="row">
                                 <div class="col-md-4 pe-md-0">
-                                    <div class="auth-side-wrapper">
+                                    <div class="auth-side-wrapper" style="background-image: url({{ asset('img/office.jpg') }})";
+                                    ">
 
                                     </div>
                                 </div>
