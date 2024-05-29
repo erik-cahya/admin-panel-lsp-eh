@@ -26,6 +26,11 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 
 
+Route::get('analytics', function(){
+    return view('admin.analytics.index');
+});
+
+
 // Middleware Guest / Belum Login
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [AuthenticatedSessionController::class, 'create']);

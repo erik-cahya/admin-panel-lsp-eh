@@ -1,6 +1,13 @@
-<footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
-    <p class="text-muted mb-1 mb-md-0">Copyright © 2024.</p>
-    <p class="text-muted">
-        Handcrafted With <i class="mb-1 text-primary ms-1 icon-sm" data-feather="heart"></i>
+<footer class="footer">
+    <p class="fs-11 text-muted fw-medium text-uppercase mb-0 copyright">
+        <span>Copyright ©</span>
+        <script>
+            document.write(new Date().getFullYear());
+        </script>
     </p>
+    <div class="d-flex align-items-center gap-4">
+        <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Help</a>
+        <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Terms</a>
+        <a href="javascript:void(0);" class="fs-11 fw-semibold text-uppercase">Privacy</a>
+    </div>
 </footer>

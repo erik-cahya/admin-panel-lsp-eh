@@ -1,153 +1,247 @@
-  <!-- partial:../../partials/_sidebar.html -->
-  <nav class="sidebar">
-    <div class="sidebar-header">
-        <a href="#" class="sidebar-brand">
-            <img src="{{ asset('img/logo_lsp.png') }}" alt="" width="150px">
-        </a>
-        <div class="sidebar-toggler not-active">
-            <span></span>
-            <span></span>
-            <span></span>
+<div class="navbar-content">
+    <ul class="nxl-navbar">
+        <li class="nxl-item nxl-caption">
+            <label>Navigation</label>
+        </li>
+
+
+
+        <li class="nxl-item nxl-hasmenu {{ request()->segment(1)==='dashboard' ? 'active nxl-trigger' : '' }} ">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-airplay"></i></span>
+                <span class="nxl-mtext">Dashboards</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item {{ request()->segment(1)==='dashboard' ? 'active' : '' }}"><a class="nxl-link" href="/dashboard">CRM</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="/analytics">Analytics</a></li>
+            </ul>
+        </li>
+
+
+        <li class="nxl-item nxl-hasmenu {{ request()->segment(1)==='surat-tugas-asesor' ? 'active nxl-trigger' : '' }}">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-cast"></i></span>
+                <span class="nxl-mtext">Surat Tugas Asesor</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" href="{{ route('surat-tugas-asesor.view') }}">List Surat</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="reports-leads.html">Create Surat</a></li>
+            </ul>
+        </li>
+
+
+
+
+        {{-- Template Menu --}}
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-cast"></i></span>
+                <span class="nxl-mtext">Reports</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" href="reports-sales.html">Sales Report</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="reports-leads.html">Leads Report</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="reports-project.html">Project Report</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="reports-timesheets.html">Timesheets Report</a></li>
+            </ul>
+        </li>
+
+
+
+
+
+
+
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-send"></i></span>
+                <span class="nxl-mtext">Applications</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" href="apps-chat.html">Chat</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="apps-email.html">Email</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="apps-tasks.html">Tasks</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="apps-notes.html">Notes</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="apps-storage.html">Storage</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="apps-calendar.html">Calendar</a></li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-at-sign"></i></span>
+                <span class="nxl-mtext">Proposal</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" href="proposal.html">Proposal</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="proposal-view.html">Proposal View</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="proposal-edit.html">Proposal Edit</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="proposal-create.html">Proposal Create</a></li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-dollar-sign"></i></span>
+                <span class="nxl-mtext">Payment</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" href="payment.html">Payment</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="invoice-view.html">Invoice View</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="invoice-create.html">Invoice Create</a></li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-users"></i></span>
+                <span class="nxl-mtext">Customers</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" href="customers.html">Customers</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="customers-view.html">Customers View</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="customers-create.html">Customers Create</a></li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-alert-circle"></i></span>
+                <span class="nxl-mtext">Leads</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" href="leads.html">Leads</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="leads-view.html">Leads View</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="leads-create.html">Leads Create</a></li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-briefcase"></i></span>
+                <span class="nxl-mtext">Projects</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" href="projects.html">Projects</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="projects-view.html">Projects View</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="projects-create.html">Projects Create</a></li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-layout"></i></span>
+                <span class="nxl-mtext">Widgets</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" href="widgets-lists.html">Lists</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="widgets-tables.html">Tables</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="widgets-charts.html">Charts</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="widgets-statistics.html">Statistics</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="widgets-miscellaneous.html">Miscellaneous</a></li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-settings"></i></span>
+                <span class="nxl-mtext">Settings</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" href="settings-general.html">General</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-seo.html">SEO</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-tags.html">Tags</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-email.html">Email</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-tasks.html">Tasks</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-leads.html">Leads</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-support.html">Support</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-finance.html">Finance</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-gateways.html">Gateways</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-customers.html">Customers</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-localization.html">Localization</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-recaptcha.html">reCAPTCHA</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="settings-miscellaneous.html">Miscellaneous</a></li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-power"></i></span>
+                <span class="nxl-mtext">Authentication</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="javascript:void(0);" class="nxl-link">
+                        <span class="nxl-mtext">Login</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-login-cover.html">Cover</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-login-minimal.html">Minimal</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-login-creative.html">Creative</a></li>
+                    </ul>
+                </li>
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="javascript:void(0);" class="nxl-link">
+                        <span class="nxl-mtext">Register</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-register-cover.html">Cover</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-register-minimal.html">Minimal</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-register-creative.html">Creative</a></li>
+                    </ul>
+                </li>
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="javascript:void(0);" class="nxl-link">
+                        <span class="nxl-mtext">Error-404</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-404-cover.html">Cover</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-404-minimal.html">Minimal</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-404-creative.html">Creative</a></li>
+                    </ul>
+                </li>
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="javascript:void(0);" class="nxl-link">
+                        <span class="nxl-mtext">Reset Pass</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-reset-cover.html">Cover</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-reset-minimal.html">Minimal</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-reset-creative.html">Creative</a></li>
+                    </ul>
+                </li>
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="javascript:void(0);" class="nxl-link">
+                        <span class="nxl-mtext">Verify OTP</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-verify-cover.html">Cover</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-verify-minimal.html">Minimal</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-verify-creative.html">Creative</a></li>
+                    </ul>
+                </li>
+                <li class="nxl-item nxl-hasmenu">
+                    <a href="javascript:void(0);" class="nxl-link">
+                        <span class="nxl-mtext">Maintenance</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+                    </a>
+                    <ul class="nxl-submenu">
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-maintenance-cover.html">Cover</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-maintenance-minimal.html">Minimal</a></li>
+                        <li class="nxl-item"><a class="nxl-link" href="./auth-maintenance-creative.html">Creative</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li class="nxl-item nxl-hasmenu">
+            <a href="javascript:void(0);" class="nxl-link">
+                <span class="nxl-micon"><i class="feather-life-buoy"></i></span>
+                <span class="nxl-mtext">Help Center</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
+            </a>
+            <ul class="nxl-submenu">
+                <li class="nxl-item"><a class="nxl-link" href="https://themeforest.net/user/flexilecode">Support</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="help-knowledgebase.html">KnowledgeBase</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="#">Documentations</a></li>
+            </ul>
+        </li>
+    </ul>
+    <div class="card text-center">
+        <div class="card-body">
+            <i class="feather-sunrise fs-4 text-dark"></i>
+            <h6 class="mt-4 text-dark fw-bolder">Downloading Center</h6>
+            <p class="fs-11 my-3 text-dark">Duralux is a production ready CRM to get started up and running easily.</p>
+            <a href="javascript:void(0);" class="btn btn-primary text-dark w-100">Download Now</a>
         </div>
     </div>
-    <div class="sidebar-body">
-        <ul class="nav">
-            <li class="nav-item nav-category">Main</li>
-
-            <li class="nav-item {{ request()->segment(1) == 'dashboard' ? 'active' : '' }}">
-                <a href="{{ route('dashboard') }}" class="nav-link">
-                    <i class="link-icon" data-feather="box"></i>
-                    <span class="link-title">Dashboard</span>
-                </a>
-            </li>
-
-            {{-- Web Apps --}}
-            <li class="nav-item nav-category">Main menu</li>
-
-            {{-- Surat Tugas Asesor --}}
-            <li class="nav-item {{ request()->segment(1) == 'surat-tugas-asesor' ? 'active' : '' }}">
-                <a class="nav-link" data-bs-toggle="collapse" href="#surat-tugas" role="button" aria-expanded="false" aria-controls="surat-tugas">
-
-                    <i class="fas fa-print"></i>
-                    <span class="link-title" style="margin-left: 18px">Surat Tugas Asesor</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-
-                </a>
-
-                <div class="collapse {{ request()->segment(1) == 'surat-tugas-asesor' ? 'show' : '' }}" id="surat-tugas">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item list-group-item d-flex justify-content-between align-items-center" >
-                            <a href="{{ route('surat-tugas-asesor.view') }}" class="nav-link {{ request()->segment(1)  == 'surat-tugas-asesor' && request()->segment(2) == null ? 'active' : '' }}">List Surat</a>
-                            <span class="badge bg-primary rounded-pill" style="font-size: 10px">{{ App\Models\SuratTugasModel::count() }}</span>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('surat-tugas-asesor.create') }}" class="nav-link {{ request()->segment(1) == 'surat-tugas-asesor' && request()->segment(2) == 'create' ? 'active' : '' }}">Create Surat</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            {{-- /* End Surat Tugas Asesor --}}
-
-            {{-- QR Code --}}
-            <li class="nav-item {{ request()->segment(1) == 'qr-code' ? 'active' : '' }}">
-                <a class="nav-link" data-bs-toggle="collapse" href="#qr-code" role="button" aria-expanded="false" aria-controls="qr-code">
-
-                    <i class="mdi mdi-qrcode-scan"></i>
-                    <span class="link-title" style="margin-left: 18px">QR Code</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-
-                </a>
-
-                <div class="collapse {{ request()->segment(1) == 'qr-code' ? 'show' : '' }}" id="qr-code">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item list-group-item d-flex justify-content-between align-items-center" >
-                            <a href="/qr-code" class="nav-link {{ request()->segment(1)  == 'qr-code' && request()->segment(2) == null ? 'active' : '' }}">List QR Code</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            {{-- /* End QR Code --}}
-
-
-            {{-- /* End Web Apps --}}
-            <li class="nav-item nav-category">Data Internal LSP</li>
-
-            {{-- TUK --}}
-            <li class="nav-item {{ request()->segment(1) == 'tuk' || request()->segment(1) == 'tukAdd' ? 'active' : '' }}">
-                <a class="nav-link" data-bs-toggle="collapse" href="#tuk" role="button" aria-expanded="false" aria-controls="tuk">
-
-                    <i class="fas fa-hotel"></i>
-                    <span class="link-title" style="margin-left: 18px">TUK</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-
-                </a>
-
-                <div class="collapse {{ request()->segment(1) == 'tuk' || request()->segment(1) == 'tukAdd' ? 'show' : '' }}" id="tuk">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item list-group-item d-flex justify-content-between align-items-center" >
-                            <a href="{{ route('tuk') }}" class="nav-link {{ request()->segment(1)  == 'tuk' && request()->segment(2) == null ? 'active' : '' }}">List TUK</a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('tukAdd') }}" class="nav-link {{ request()->segment(1) == 'tukAdd' ? 'active' : '' }}">Tambah TUK</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            {{-- /* End TUK--}}
-
-            {{-- Asesor --}}
-            <li class="nav-item {{ request()->segment(1) == 'asesor' || request()->segment(1) == 'asesorAdd' ? 'active' : '' }}">
-                <a class="nav-link" data-bs-toggle="collapse" href="#data-asesor" role="button" aria-expanded="false" aria-controls="data-asesor">
-
-                    <i class="fas fa-user-tie"></i>
-                    <span class="link-title" style="margin-left: 18px">Asesor LSP</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-
-                </a>
-
-                <div class="collapse {{ request()->segment(1) == 'asesor' || request()->segment(1) == 'asesorAdd' ? 'show' : '' }}" id="data-asesor">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item list-group-item d-flex justify-content-between align-items-center" >
-                            <a href="/asesor" class="nav-link {{ request()->segment(1)  == 'asesor' && request()->segment(2) == null ? 'active' : '' }}">List Asesor</a>
-                            <span class="badge bg-primary rounded-pill" style="font-size: 10px">{{ App\Models\AsesorModel::count() }}</span>
-
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/asesor/create" class="nav-link {{ request()->segment(1) == 'asesor' && request()->segment(2) == 'create' ? 'active' : '' }}">Tambah Asesor</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            {{-- /* End Asesor --}}
-
-            {{-- Skema --}}
-            <li class="nav-item {{ request()->segment(1) == 'skema' || request()->segment(1) == 'skemaAdd' ? 'active' : '' }}">
-                <a class="nav-link" data-bs-toggle="collapse" href="#data-skema" role="button" aria-expanded="false" aria-controls="data-skema">
-
-                    <i class="fas fa-pencil-alt"></i>
-                    <span class="link-title" style="margin-left: 18px">Skema Ujian</span>
-                    <i class="link-arrow" data-feather="chevron-down"></i>
-
-                </a>
-
-                <div class="collapse {{ request()->segment(1) == 'skema' || request()->segment(1) == 'skemaAdd' ? 'show' : '' }}" id="data-skema">
-                    <ul class="nav sub-menu">
-                        <li class="nav-item list-group-item d-flex justify-content-between align-items-center" >
-                            <a href="/skema" class="nav-link {{ request()->segment(1)  == 'skema' && request()->segment(2) == null ? 'active' : '' }}">List Skema</a>
-                            <span class="badge bg-primary rounded-pill" style="font-size: 10px">{{ App\Models\SkemaModel::count() }}</span>
-
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="/skema/create" class="nav-link {{ request()->segment(1) == 'skema' && request()->segment(2) == 'create' ? 'active' : '' }}">Tambah Skema Ujian</a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-            {{-- /* End Skema --}}
-        </ul>
-    </div>
-</nav>
+</div>
