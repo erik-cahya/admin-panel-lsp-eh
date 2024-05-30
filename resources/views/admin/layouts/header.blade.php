@@ -969,7 +969,7 @@
                                                                             <div class="avatar-image avatar-sm">
                                                                                 <img src="{{ asset('admin_template') }}/assets/images/avatar/1.png" alt="" class="img-fluid" />
                                                                             </div>
-                                                                            <a href="javascript:void(0);" class="fs-12">Alexandra Della</a>
+                                                                            <a href="javascript:void(0);" class="fs-12">{{ Auth::user()->name }}</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -1520,7 +1520,7 @@
                                             <img src="{{ asset('admin_template') }}/assets/images/avatar/1.png" alt="" class="img-fluid" />
                                         </div>
                                         <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">Alexandra Della</a>
+                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">{{ Auth::user()->name }}</a>
                                             <p class="fs-11 text-muted mb-0">alex.della@outlook.com</p>
                                         </div>
                                     </div>
@@ -1636,100 +1636,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="dropdown nxl-h-item nxl-header-language d-none d-sm-flex">
-                    <a href="javascript:void(0);" class="nxl-head-link me-0 nxl-language-link" data-bs-toggle="dropdown" data-bs-auto-close="outside">
-                        <img src="{{ asset('admin_template') }}/assets/vendors/img/flags/4x3/us.svg" alt="" class="img-fluid wd-20" />
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-language-dropdown">
-                        <div class="dropdown-divider mt-0"></div>
-                        <div class="language-items-wrapper">
-                            <div class="select-language px-4 py-2 hstack justify-content-between gap-4">
-                                <div class="lh-lg">
-                                    <h6 class="mb-0">Select Language</h6>
-                                    <p class="fs-11 text-muted mb-0">12 languages avaiable!</p>
-                                </div>
-                                <a href="javascript:void(0);" class="avatar-text avatar-md" data-bs-toggle="tooltip" title="Add Language">
-                                    <i class="feather-plus"></i>
-                                </a>
-                            </div>
-                            <div class="dropdown-divider"></div>
-                            <div class="row px-4 pt-3">
-                                <div class="col-sm-4 col-6 language_select">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/sa.svg" alt="" class="img-fluid" /></div>
-                                        <span>Arabic</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/bd.svg" alt="" class="img-fluid" /></div>
-                                        <span>Bengali</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/ch.svg" alt="" class="img-fluid" /></div>
-                                        <span>Chinese</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/nl.svg" alt="" class="img-fluid" /></div>
-                                        <span>Dutch</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select active">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/us.svg" alt="" class="img-fluid" /></div>
-                                        <span>English</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/fr.svg" alt="" class="img-fluid" /></div>
-                                        <span>French</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/de.svg" alt="" class="img-fluid" /></div>
-                                        <span>German</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/in.svg" alt="" class="img-fluid" /></div>
-                                        <span>Hindi</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/ru.svg" alt="" class="img-fluid" /></div>
-                                        <span>Russian</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/es.svg" alt="" class="img-fluid" /></div>
-                                        <span>Spanish</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/tr.svg" alt="" class="img-fluid" /></div>
-                                        <span>Turkish</span>
-                                    </a>
-                                </div>
-                                <div class="col-sm-4 col-6 language_select">
-                                    <a href="javascript:void(0);" class="d-flex align-items-center gap-2">
-                                        <div class="avatar-image avatar-sm"><img src="{{ asset('admin_template') }}/assets/vendors/img/flags/1x1/pk.svg" alt="" class="img-fluid" /></div>
-                                        <span>Urdo</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="nxl-h-item d-none d-sm-flex">
                     <div class="full-screen-switcher">
                         <a href="javascript:void(0);" class="nxl-head-link me-0" onclick="$('body').fullScreenHelper('toggle');">
@@ -1738,7 +1645,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="nxl-h-item dark-light-theme">
+
+                <div class="nxl-h-item dark-light-theme" style="margin-right: 20px">
                     <a href="javascript:void(0);" class="nxl-head-link me-0 dark-button">
                         <i class="feather-moon"></i>
                     </a>
@@ -1746,92 +1654,8 @@
                         <i class="feather-sun"></i>
                     </a>
                 </div>
-                <div class="dropdown nxl-h-item">
-                    <a href="javascript:void(0);" class="nxl-head-link me-0" data-bs-toggle="dropdown" role="button" data-bs-auto-close="outside">
-                        <i class="feather-clock"></i>
-                        <span class="badge bg-success nxl-h-badge">2</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-timesheets-menu">
-                        <div class="d-flex justify-content-between align-items-center timesheets-head">
-                            <h6 class="fw-bold text-dark mb-0">Timesheets</h6>
-                            <a href="javascript:void(0);" class="fs-11 text-success text-end ms-auto" data-bs-toggle="tooltip" title="Upcomming Timers">
-                                <i class="feather-clock"></i>
-                                <span>3 Upcomming</span>
-                            </a>
-                        </div>
-                        <div class="d-flex justify-content-between align-items-center flex-column timesheets-body">
-                            <i class="feather-clock fs-1 mb-4"></i>
-                            <p class="text-muted">No started timers found yes!</p>
-                            <a href="javascript:void(0);" class="btn btn-sm btn-primary">Started Timer</a>
-                        </div>
-                        <div class="text-center timesheets-footer">
-                            <a href="javascript:void(0);" class="fs-13 fw-semibold text-dark">Alls Timesheets</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="dropdown nxl-h-item">
-                    <a class="nxl-head-link me-3" data-bs-toggle="dropdown" href="#" role="button" data-bs-auto-close="outside">
-                        <i class="feather-bell"></i>
-                        <span class="badge bg-danger nxl-h-badge">3</span>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-notifications-menu">
-                        <div class="d-flex justify-content-between align-items-center notifications-head">
-                            <h6 class="fw-bold text-dark mb-0">Notifications</h6>
-                            <a href="javascript:void(0);" class="fs-11 text-success text-end ms-auto" data-bs-toggle="tooltip" title="Make as Read">
-                                <i class="feather-check"></i>
-                                <span>Make as Read</span>
-                            </a>
-                        </div>
-                        <div class="notifications-item">
-                            <img src="{{ asset('admin_template') }}/assets/images/avatar/2.png" alt="" class="rounded me-3 border" />
-                            <div class="notifications-desc">
-                                <a href="javascript:void(0);" class="font-body text-truncate-2-line"> <span class="fw-semibold text-dark">Malanie Hanvey</span> We should talk about that at lunch!</a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="notifications-date text-muted border-bottom border-bottom-dashed">2 minutes ago</div>
-                                    <div class="d-flex align-items-center float-end gap-2">
-                                        <a href="javascript:void(0);" class="d-block wd-8 ht-8 rounded-circle bg-gray-300" data-bs-toggle="tooltip" title="Make as Read"></a>
-                                        <a href="javascript:void(0);" class="text-danger" data-bs-toggle="tooltip" title="Remove">
-                                            <i class="feather-x fs-12"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="notifications-item">
-                            <img src="{{ asset('admin_template') }}/assets/images/avatar/3.png" alt="" class="rounded me-3 border" />
-                            <div class="notifications-desc">
-                                <a href="javascript:void(0);" class="font-body text-truncate-2-line"> <span class="fw-semibold text-dark">Valentine Maton</span> You can download the latest invoices now.</a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="notifications-date text-muted border-bottom border-bottom-dashed">36 minutes ago</div>
-                                    <div class="d-flex align-items-center float-end gap-2">
-                                        <a href="javascript:void(0);" class="d-block wd-8 ht-8 rounded-circle bg-gray-300" data-bs-toggle="tooltip" title="Make as Read"></a>
-                                        <a href="javascript:void(0);" class="text-danger" data-bs-toggle="tooltip" title="Remove">
-                                            <i class="feather-x fs-12"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="notifications-item">
-                            <img src="{{ asset('admin_template') }}/assets/images/avatar/4.png" alt="" class="rounded me-3 border" />
-                            <div class="notifications-desc">
-                                <a href="javascript:void(0);" class="font-body text-truncate-2-line"> <span class="fw-semibold text-dark">Archie Cantones</span> Don't forget to pickup Jeremy after school!</a>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="notifications-date text-muted border-bottom border-bottom-dashed">53 minutes ago</div>
-                                    <div class="d-flex align-items-center float-end gap-2">
-                                        <a href="javascript:void(0);" class="d-block wd-8 ht-8 rounded-circle bg-gray-300" data-bs-toggle="tooltip" title="Make as Read"></a>
-                                        <a href="javascript:void(0);" class="text-danger" data-bs-toggle="tooltip" title="Remove">
-                                            <i class="feather-x fs-12"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center notifications-footer">
-                            <a href="javascript:void(0);" class="fs-13 fw-semibold text-dark">Alls Notifications</a>
-                        </div>
-                    </div>
-                </div>
+
+
                 <div class="dropdown nxl-h-item">
                     <a href="javascript:void(0);" data-bs-toggle="dropdown" role="button" data-bs-auto-close="outside">
                         <img src="{{ asset('admin_template') }}/assets/images/avatar/1.png" alt="user-image" class="img-fluid user-avtar me-0" />
@@ -1841,8 +1665,8 @@
                             <div class="d-flex align-items-center">
                                 <img src="{{ asset('admin_template') }}/assets/images/avatar/1.png" alt="user-image" class="img-fluid user-avtar" />
                                 <div>
-                                    <h6 class="text-dark mb-0">Alexandra Della <span class="badge bg-soft-success text-success ms-1">PRO</span></h6>
-                                    <span class="fs-12 fw-medium text-muted">alex.della@outlook.com</span>
+                                    <h6 class="text-dark mb-0">{{ Auth::user()->name }} <span class="badge bg-soft-success text-success ms-1">PRO</span></h6>
+                                    <span class="fs-12 fw-medium text-muted">{{ Auth::user()->email }}</span>
                                 </div>
                             </div>
                         </div>
@@ -1965,10 +1789,14 @@
                             <span>Account Settings</span>
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a href="./auth-login-minimal.html" class="dropdown-item">
-                            <i class="feather-log-out"></i>
-                            <span>Logout</span>
-                        </a>
+
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); this.closest('form').submit();">
+                                <i class="feather-log-out"></i>
+                                <span>Logout</span>
+                            </a>
+                        </form>
                     </div>
                 </div>
             </div>

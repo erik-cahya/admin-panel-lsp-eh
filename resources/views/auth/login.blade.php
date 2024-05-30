@@ -1,131 +1,145 @@
 <!DOCTYPE html>
-<!--
-Template Name: NobleUI - HTML Bootstrap 5 Admin Dashboard Template
-Author: NobleUI
-Website: https://www.nobleui.com
-Portfolio: https://themeforest.net/user/nobleui/portfolio
-Contact: nobleui123@gmail.com
-Purchase: https://1.envato.market/nobleui_admin
-License: For each use you must have a valid license purchased only from above link in order to legally use the theme for your project.
--->
-<html lang="en">
+<html lang="zxx">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Responsive HTML Admin Dashboard Template based on Bootstrap 5">
-    <meta name="author" content="NobleUI">
-    <meta name="keywords"
-        content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web">
-
-    <title>Login | LSP Engineering Hospitality Indonesia</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <!-- End fonts -->
-
-    <!-- core:css -->
-    <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/core/core.css">
-    <!-- endinject -->
-
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
-
-    <!-- inject:css -->
-    <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/fonts/feather-font/css/iconfont.css">
-    <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/vendors/flag-icon-css/css/flag-icon.min.css">
-    <!-- endinject -->
-
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('noble_panel') }}/assets/css/demo2/style.css">
-    <!-- End layout styles -->
-
-    <link rel="shortcut icon" href="{{ asset('noble_panel') }}/assets/images/favicon.png" />
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="keyword" content="">
+    <meta name="author" content="theme_ocean">
+    <!--! The above 6 meta tags *must* come first in the head; any other head content must come *after* these tags !-->
+    <!--! BEGIN: Apps Title-->
+    <title>Duralux || Login Minimal</title>
+    <!--! END:  Apps Title-->
+    <!--! BEGIN: Favicon-->
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('admin_template') }}/assets/images/favicon.ico">
+    <!--! END: Favicon-->
+    <!--! BEGIN: Bootstrap CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin_template') }}/assets/css/bootstrap.min.css">
+    <!--! END: Bootstrap CSS-->
+    <!--! BEGIN: Vendors CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin_template') }}/assets/vendors/css/vendors.min.css">
+    <!--! END: Vendors CSS-->
+    <!--! BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('admin_template') }}/assets/css/theme.min.css">
+    <!--! END: Custom CSS-->
+    <!--! HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries !-->
+    <!--! WARNING: Respond.js doesn"t work if you view the page via file: !-->
+    <!--[if lt IE 9]>
+			<script src="https:oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+			<script src="https:oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
 </head>
 
 <body>
-    <div class="main-wrapper">
-        <div class="page-wrapper full-page">
-            <div class="page-content d-flex align-items-center justify-content-center">
+    <!--! ================================================================ !-->
+    <!--! [Start] Main Content !-->
+    <!--! ================================================================ !-->
+    <main class="auth-minimal-wrapper">
+        <div class="auth-minimal-inner">
+            <div class="minimal-card-wrapper">
+                <div class="card mb-4 mt-5 mx-4 mx-sm-0 position-relative">
+                    <div class="wd-50 bg-white p-2 rounded-circle shadow-lg position-absolute translate-middle top-0 start-50">
+                        <img src="{{ asset('admin_template') }}/assets/images/logo-abbr.png" alt="" class="img-fluid">
+                    </div>
+                    <div class="card-body p-sm-5">
+                        <h2 class="fs-20 fw-bolder mb-4 text-center">LSP Engineering Hospitality Indonesia</h2>
+                        <h4 class="fs-13 fw-bold mb-2">Login to System Admin</h4>
+                        <p class="fs-12 fw-medium text-muted">Silahkan masukkan email dan password yang sudah terdaftar</p>
 
-                <div class="row w-100 mx-0 auth-page">
-                    <div class="col-md-8 col-xl-6 mx-auto">
-                        <div class="card">
-                            <div class="row">
-                                <div class="col-md-4 pe-md-0">
-                                    <div class="auth-side-wrapper" style="background-image: url({{ asset('img/office.jpg') }})";
-                                    ">
 
+                        @error ('email')
+                            <div class="alert alert-danger mt-4" role="alert">
+                                <i data-feather="alert-circle"></i>
+                                {{ $message }}
+                            </div>
+                        @enderror
+
+                        <form method="POST" action="{{ route('login') }}" class="w-100 mt-4 pt-2">
+                            @csrf
+                            <div class="mb-4">
+                                <input type="email" class="form-control" name="email" placeholder="Email or Username" required>
+                            </div>
+                            <div class="mb-3">
+                                <input type="password" class="form-control" name="password" placeholder="Password" required>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="rememberMe">
+                                        <label class="custom-control-label c-pointer" for="rememberMe">Remember Me</label>
                                     </div>
                                 </div>
-                                <div class="col-md-8 ps-md-0">
-                                    <div class="auth-form-wrapper px-4 py-5">
-                                        <a href="#" class="noble-ui-logo logo-light d-block mb-2">
-                                            <img src="{{ asset('img/logo_lsp.png') }}" alt="" width="300px">
-                                        </a>
-
-                                        @error ('email')
-                                            <div class="alert alert-danger mt-4" role="alert">
-                                                <i data-feather="alert-circle"></i>
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-
-
-                                        <form class="forms-sample mt-4" method="POST" action="{{ route('login') }}">
-                                            @csrf
-
-                                            <div class="mb-3">
-                                                <label for="email" class="form-label">Email address</label>
-                                                <input type="email" class="form-control" id="email" name="email"
-                                                    placeholder="Email">
-                                            </div>
-                                            <div class="mb-3">
-                                                <label for="password" class="form-label">Password</label>
-                                                <input type="password" class="form-control" id="password"
-                                                    name="password" autocomplete="current-password"
-                                                    placeholder="Password">
-                                            </div>
-                                            <div class="form-check mb-3">
-                                                <input type="checkbox" class="form-check-input" id="authCheck">
-                                                <label class="form-check-label" for="authCheck">
-                                                    Remember me
-                                                </label>
-                                            </div>
-                                            <div>
-                                                <button type="submit"
-                                                    class="btn btn-primary me-2 mb-2 mb-md-0 text-white">Login</button>
-                                            </div>
-                                        </form>
-
-                                    </div>
+                                <div>
+                                    <a href="auth-reset-minimal.html" class="fs-11 text-primary">Forget password?</a>
                                 </div>
                             </div>
-                        </div>
+                            <div class="mt-5">
+                                <button type="submit" class="btn btn-lg btn-primary w-100">Login</button>
+                            </div>
+                        </form>
+
+
                     </div>
                 </div>
             </div>
         </div>
+    </main>
+    <!--! ================================================================ !-->
+    <!--! [End] Main Content !-->
+    <!--! ================================================================ !-->
+    <!--! ================================================================ !-->
+    <!--! BEGIN: Theme Customizer !-->
+    <!--! ================================================================ !-->
+    <div class="theme-customizer">
+        <div class="customizer-handle">
+            <a href="javascript:void(0);" class="cutomizer-open-trigger bg-primary">
+                <i class="feather-settings"></i>
+            </a>
+        </div>
+        <div class="customizer-sidebar-wrapper">
+            <div class="customizer-sidebar-header px-4 ht-80 border-bottom d-flex align-items-center justify-content-between">
+                <h5 class="mb-0">Theme Settings</h5>
+                <a href="javascript:void(0);" class="cutomizer-close-trigger d-flex">
+                    <i class="feather-x"></i>
+                </a>
+            </div>
+            <div class="customizer-sidebar-body position-relative p-4" data-scrollbar-target="#psScrollbarInit">
+                <!--! BEGIN: [Skins] !-->
+                <div class="position-relative px-3 pb-3 pt-4 mt-3 mb-5 border border-gray-2 theme-options-set">
+                    <label class="py-1 px-2 fs-8 fw-bold text-uppercase text-muted text-spacing-2 bg-white border border-gray-2 position-absolute rounded-2 options-label" style="top: -12px">Skins</label>
+                    <div class="row g-2 theme-options-items app-skin" id="appSkinList">
+                        <div class="col-6 text-center position-relative single-option light-button active">
+                            <input type="radio" class="btn-check" id="app-skin-light" name="app-skin" value="1" data-app-skin="app-skin-light">
+                            <label class="py-2 fs-9 fw-bold text-dark text-uppercase text-spacing-1 border border-gray-2 w-100 h-100 c-pointer position-relative options-label" for="app-skin-light">Light</label>
+                        </div>
+                        <div class="col-6 text-center position-relative single-option dark-button">
+                            <input type="radio" class="btn-check" id="app-skin-dark" name="app-skin" value="2" data-app-skin="app-skin-dark">
+                            <label class="py-2 fs-9 fw-bold text-dark text-uppercase text-spacing-1 border border-gray-2 w-100 h-100 c-pointer position-relative options-label" for="app-skin-dark">Dark</label>
+                        </div>
+                    </div>
+                </div>
+                <!--! END: [Skins] !-->
+            </div>
+        </div>
     </div>
-
-    <!-- core:js -->
-    <script src="{{ asset('noble_panel') }}/assets/vendors/core/core.js"></script>
-    <!-- endinject -->
-
-    <!-- Plugin js for this page -->
-    <!-- End plugin js for this page -->
-
-    <!-- inject:js -->
-    <script src="{{ asset('noble_panel') }}/assets/vendors/feather-icons/feather.min.js"></script>
-    <script src="{{ asset('noble_panel') }}/assets/js/template.js"></script>
-    <!-- endinject -->
-
-    <!-- Custom js for this page -->
-    <!-- End custom js for this page -->
-
+    <!--! ================================================================ !-->
+    <!--! [End] Theme Customizer !-->
+    <!--! ================================================================ !-->
+    <!--! ================================================================ !-->
+    <!--! Footer Script !-->
+    <!--! ================================================================ !-->
+    <!--! BEGIN: Vendors JS !-->
+    <script src="{{ asset('admin_template') }}/assets/vendors/js/vendors.min.js"></script>
+    <!-- vendors.min.js {always must need to be top} -->
+    <!--! END: Vendors JS !-->
+    <!--! BEGIN: Apps Init  !-->
+    <script src="{{ asset('admin_template') }}/assets/js/common-init.min.js"></script>
+    <!--! END: Apps Init !-->
+    <!--! BEGIN: Theme Customizer  !-->
+    <script src="{{ asset('admin_template') }}/assets/js/theme-customizer-init.min.js"></script>
+    <!--! END: Theme Customizer !-->
 </body>
 
 </html>

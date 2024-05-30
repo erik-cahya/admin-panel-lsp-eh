@@ -29,8 +29,13 @@
             <div class="m-header">
                 <a href="index.html" class="b-brand">
                     <!-- ========   change your logo hear   ============ -->
-                    <img src="{{ asset('admin_template') }}/assets/images/logo-full.png" alt="" class="logo logo-lg" />
-                    <img src="{{ asset('admin_template') }}/assets/images/logo-abbr.png" alt="" class="logo logo-sm" />
+                    <style>
+                        .logo-lg{
+                            filter: none!important;
+                        }
+                    </style>
+                    <img src="{{ asset('img/logo_lsp.png') }}" alt="" class="logo logo-lg" width="200px" />
+                    <img src="{{ asset('img/no_title_logo.png') }}" alt="" class="logo logo-sm" />
                 </a>
             </div>
             <!-- navbar/header -->
