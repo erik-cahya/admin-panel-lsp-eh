@@ -25,7 +25,7 @@
             </a>
             <ul class="nxl-submenu">
                 <li class="nxl-item"><a class="nxl-link" href="{{ route('surat-tugas-asesor.view') }}">List Surat</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="reports-leads.html">Create Surat</a></li>
+                <li class="nxl-item"><a class="nxl-link" href="{{ route('surat-tugas-asesor.create') }}">Create Surat</a></li>
             </ul>
         </li>
 

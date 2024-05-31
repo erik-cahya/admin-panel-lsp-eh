@@ -34,7 +34,7 @@
                             filter: none!important;
                         }
                     </style>
-                    <img src="{{ asset('img/logo_lsp.png') }}" alt="" class="logo logo-lg" width="200px" />
+                    <img src="{{ asset('img/logo_lsp.png') }}" alt="" class="logo logo-lg" width="200px"/>
                     <img src="{{ asset('img/no_title_logo.png') }}" alt="" class="logo logo-sm" />
                 </a>
             </div>
@@ -61,14 +61,11 @@
     <!--! [Start] Main Content !-->
     <!--! ================================================================ !-->
     <main class="nxl-container">
+
         @yield('content')
 
-
         <!-- [ Footer ] start -->
-
         @include('admin.layouts.footer')
-
-
         <!-- [ Footer ] end -->
     </main>
     <!--! ================================================================ !-->
