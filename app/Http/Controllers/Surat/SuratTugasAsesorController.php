@@ -64,6 +64,8 @@ class SuratTugasAsesorController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
+
         $validated = $request->validate([
             'nomor_surat' => 'required|unique:surat_tugas',
             'nama_asesor' => 'required',
@@ -78,7 +80,7 @@ class SuratTugasAsesorController extends Controller
             'nomor_surat.unique' => 'Nomor surat sudah digunakan.',
         ]);
 
-        $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $request->tanggal_uji)->locale('id')->isoFormat('DD-MM-YYYY'));
+        $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('m/d/Y', $request->tanggal_uji)->locale('id')->isoFormat('DD-MM-YYYY'));
 
         SuratTugasModel::create([
             'id' => Str::random(40),
@@ -88,8 +90,8 @@ class SuratTugasAsesorController extends Controller
             'no_reg' => $request->no_reg,
             'nama_tuk' => $request->nama_tuk,
             'alamat_tuk' => $request->alamat_tuk,
-            'tanggal_uji' => $request->tanggal_uji,
-            'tanggal_surat' => $request->tanggal_surat,
+            'tanggal_uji' => str_replace('/', '-', Carbon::createFromFormat('m/d/Y', $request->tanggal_uji)->locale('id')->isoFormat('YYYY-MM-DD')),
+            'tanggal_surat' => str_replace('/', '-', Carbon::createFromFormat('m/d/Y', $request->tanggal_surat)->locale('id')->isoFormat('YYYY-MM-DD')),
             'skema' => $request->skema,
         ]);
 
