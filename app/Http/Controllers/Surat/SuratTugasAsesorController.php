@@ -22,7 +22,7 @@ class SuratTugasAsesorController extends Controller
 {
     public function index()
     {
-        $data['data_surat'] = SuratTugasModel::get();
+        $data['data_surat'] = SuratTugasModel::orderBy('nomor_surat', 'ASC')->get();
 
         $data['nomor_surat_terakhir'] = SuratTugasModel::latest()->first();
         if ($data['nomor_surat_terakhir'] == null) {

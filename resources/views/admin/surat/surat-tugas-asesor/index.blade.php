@@ -22,7 +22,6 @@
             <ul class="breadcrumb">
                 <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
                 <li class="breadcrumb-item">Surat Tugas Asesor</li>
-                <li class="breadcrumb-item">List Surat</li>
             </ul>
         </div>
 
@@ -141,13 +140,12 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">
                                 <a href="javascript:void(0);" class="fw-bold d-block">
-                                    <span class="d-block">Paid</span>
-                                    <span class="fs-20 fw-bold d-block">78/100</span>
+                                    <span class="d-block">Nomor Surat Terakhir</span>
+
+                                    <div class="badge bg-soft-success text-success mt-2" style="font-size: 14px">
+                                        <span>{{ $nomor_surat_terakhir['nomor_surat'] }}</span>
+                                    </div>
                                 </a>
-                                <div class="badge bg-soft-success text-success">
-                                    <i class="feather-arrow-up fs-10 me-1"></i>
-                                    <span>36.85%</span>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -157,7 +155,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">
                                 <a href="javascript:void(0);" class="fw-bold d-block">
-                                    <span class="d-block">Unpaid</span>
+                                    <span class="d-block">Jumlah Surat</span>
                                     <span class="fs-20 fw-bold d-block">38/50</span>
                                 </a>
                                 <div class="badge bg-soft-danger text-danger">
@@ -173,7 +171,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">
                                 <a href="javascript:void(0);" class="fw-bold d-block">
-                                    <span class="d-block">Overdue</span>
+                                    <span class="d-block">Jumlah TUK</span>
                                     <span class="fs-20 fw-bold d-block">15/30</span>
                                 </a>
                                 <div class="badge bg-soft-success text-success">
@@ -189,7 +187,7 @@
                         <div class="card-body">
                             <div class="d-flex align-items-center justify-content-between">
                                 <a href="javascript:void(0);" class="fw-bold d-block">
-                                    <span class="d-block">Draft</span>
+                                    <span class="d-block">Jumlah Asesor</span>
                                     <span class="fs-20 fw-bold d-block">3/10</span>
                                 </a>
                                 <div class="badge bg-soft-danger text-danger">
@@ -232,104 +230,109 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="single-item">
-                                        <td>
-                                            <div class="item-checkbox ms-1">
-                                                <div class="custom-control custom-checkbox">
-                                                    <input type="checkbox" class="custom-control-input checkbox" id="checkBox_1">
-                                                    <label class="custom-control-label" for="checkBox_1"></label>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="badge bg-soft-success text-success">001/ST-LSP-EHI/2024</div>
-                                        </td>
-                                        <td>
-                                            <a href="javascript:void(0)" class="hstack gap-3">
-                                                <div class="avatar-image avatar-md">
-                                                    <div class="avatar-image avatar-md bg-warning text-white">I</div>
-                                                </div>
-                                                <div>
-                                                    <span class="text-truncate-1-line">I Gusti Made Sutama Arsa</span>
-                                                    <small class="fs-12 fw-normal text-muted">MET. 000.001817.2018	</small>
-                                                </div>
-                                            </a>
-                                        </td>
-                                        <td><a href="javascript:void(0);">Mekanik Heating, Ventilation Dan Air Condition (HVAC)</a></td>
-
-                                        <td>
-                                            <a href="javascript:void(0)" class="hstack gap-3">
-                                                <div class="avatar-image avatar-md">
-                                                    <div class="avatar-image avatar-md bg-warning text-white">
-                                                        <span class="nxl-micon"><i class="feather-home"></i></span>
+                                    @foreach ($data_surat as $dt_surat)
+                                        <tr class="single-item">
+                                            <td>
+                                                <div class="item-checkbox ms-1">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input checkbox" id="checkBox_1">
+                                                        <label class="custom-control-label" for="checkBox_1"></label>
                                                     </div>
                                                 </div>
-                                                <div>
-                                                    <span class="text-truncate-1-line">Ayana Resort and Spa Bali</span>
-                                                    <small class="fs-12 fw-normal text-muted">Jalan Karang Mas Sejahtera, Jimbaran, Bali, Indonesia	</small>
-                                                </div>
-                                            </a>
-                                        </td>
-
-                                        <td>
-                                            <div class="badge bg-soft-success text-warning">Rabu, 17 April 2024	</div>
-                                        </td>
-                                        <td>
-                                            <div class="badge bg-soft-success text-info">Rabu, 17 April 2024	</div>
-                                        </td>
-                                        <td>
-                                            <div class="hstack gap-2 justify-content-end">
-                                                <a href="invoice-view.html" class="avatar-text avatar-md">
-                                                    <i class="feather feather-eye"></i>
+                                            </td>
+                                            <td>
+                                                <div class="badge bg-soft-success text-success">{{ $dt_surat->nomor_surat }}</div>
+                                            </td>
+                                            <td>
+                                                <a href="javascript:void(0)" class="hstack gap-3">
+                                                    <div class="avatar-image avatar-md">
+                                                        <div class="avatar-image avatar-md bg-warning text-white">
+                                                            <span class="nxl-micon"><i class="feather-user"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <span class="text-truncate-1-line">{{ $dt_surat->nama_asesor }}</span>
+                                                        <small class="fs-12 fw-normal text-muted">{{ $dt_surat->no_reg }}</small>
+                                                    </div>
                                                 </a>
-                                                <div class="dropdown">
-                                                    <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="dropdown" data-bs-offset="0,21">
-                                                        <i class="feather feather-more-horizontal"></i>
+                                            </td>
+                                            <td><a href="javascript:void(0);">{{ $dt_surat->skema }}</a></td>
+
+                                            <td>
+                                                <a href="javascript:void(0)" class="hstack gap-3">
+                                                    <div class="avatar-image avatar-md">
+                                                        <div class="avatar-image avatar-md bg-warning text-white">
+                                                            <span class="nxl-micon"><i class="feather-home"></i></span>
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <span class="text-truncate-1-line">{{ $dt_surat->nama_tuk }}</span>
+                                                        <small class="fs-12 fw-normal text-muted">{{ $dt_surat->alamat_tuk }}</small>
+                                                    </div>
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                <div class="badge bg-soft-success text-warning">{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</div>
+                                            </td>
+                                            <td>
+                                                <div class="badge bg-soft-success text-info">{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</div>
+                                            </td>
+                                            <td>
+                                                <div class="hstack gap-2 justify-content-end">
+                                                    <a href="invoice-view.html" class="avatar-text avatar-md">
+                                                        <i class="feather feather-eye"></i>
                                                     </a>
-                                                    <ul class="dropdown-menu">
-                                                        <li>
-                                                            <a class="dropdown-item" href="javascript:void(0)">
-                                                                <i class="feather feather-edit-3 me-3"></i>
-                                                                <span>Edit</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item printBTN" href="javascript:void(0)">
-                                                                <i class="feather feather-printer me-3"></i>
-                                                                <span>Print</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item" href="javascript:void(0)">
-                                                                <i class="feather feather-clock me-3"></i>
-                                                                <span>Remind</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="dropdown-divider"></li>
-                                                        <li>
-                                                            <a class="dropdown-item" href="javascript:void(0)">
-                                                                <i class="feather feather-archive me-3"></i>
-                                                                <span>Archive</span>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a class="dropdown-item" href="javascript:void(0)">
-                                                                <i class="feather feather-alert-octagon me-3"></i>
-                                                                <span>Report Spam</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="dropdown-divider"></li>
-                                                        <li>
-                                                            <a class="dropdown-item" href="javascript:void(0)">
-                                                                <i class="feather feather-trash-2 me-3"></i>
-                                                                <span>Delete</span>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
+                                                    <div class="dropdown">
+                                                        <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="dropdown" data-bs-offset="0,21">
+                                                            <i class="feather feather-more-horizontal"></i>
+                                                        </a>
+                                                        <ul class="dropdown-menu">
+                                                            <li>
+                                                                <a class="dropdown-item" href="javascript:void(0)">
+                                                                    <i class="feather feather-edit-3 me-3"></i>
+                                                                    <span>Edit</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item printBTN" href="javascript:void(0)">
+                                                                    <i class="feather feather-printer me-3"></i>
+                                                                    <span>Print</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="javascript:void(0)">
+                                                                    <i class="feather feather-clock me-3"></i>
+                                                                    <span>Remind</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-divider"></li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="javascript:void(0)">
+                                                                    <i class="feather feather-archive me-3"></i>
+                                                                    <span>Archive</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="javascript:void(0)">
+                                                                    <i class="feather feather-alert-octagon me-3"></i>
+                                                                    <span>Report Spam</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="dropdown-divider"></li>
+                                                            <li>
+                                                                <a class="dropdown-item" href="javascript:void(0)">
+                                                                    <i class="feather feather-trash-2 me-3"></i>
+                                                                    <span>Delete</span>
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+
 
 
                                 </tbody>

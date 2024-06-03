@@ -20,7 +20,7 @@
 
         <li class="nxl-item nxl-hasmenu {{ request()->segment(1)==='surat-tugas-asesor' ? 'active nxl-trigger' : '' }}">
             <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-cast"></i></span>
+                <span class="nxl-micon"><i class="feather-file-text"></i></span>
                 <span class="nxl-mtext">Surat Tugas Asesor</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
             </a>
             <ul class="nxl-submenu">
