@@ -289,11 +289,19 @@
                                                         </a>
                                                         <ul class="dropdown-menu">
                                                             <li>
-                                                                <a class="dropdown-item" href="javascript:void(0)">
-                                                                    <i class="feather feather-edit-3 me-3"></i>
-                                                                    <span>Edit</span>
-                                                                </a>
+                                                                {{-- Edit Button --}}
+                                                                <form action="{{ route('surat-tugas-asesor.edit', $dt_surat->id) }}"
+                                                                    method="POST">
+                                                                    {{ csrf_field() }}
+                                                                    <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <button type="submit" class="dropdown-item">
+                                                                        <i class="feather feather-edit-3 me-3"></i>
+                                                                        <span>Edit</span>
+                                                                    </button>
+                                                                </form>
                                                             </li>
+
                                                             <li>
                                                                 <a class="dropdown-item printBTN" href="javascript:void(0)">
                                                                     <i class="feather feather-printer me-3"></i>

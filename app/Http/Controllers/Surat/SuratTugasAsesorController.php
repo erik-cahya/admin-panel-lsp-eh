@@ -116,7 +116,8 @@ class SuratTugasAsesorController extends Controller
 
     public function updateSurat(Request $request, $id)
     {
-        $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('Y-m-d', $request->tanggal_uji)->locale('id')->isoFormat('DD-MM-YYYY'));
+        // dd($request->all());
+        $fileName =  'Surat Tugas_' . $request->nama_asesor . '_' . str_replace('/', '-', Carbon::createFromFormat('d/m/Y', $request->tanggal_uji)->locale('id')->isoFormat('DD-MM-YYYY'));
 
         SuratTugasModel::where('id', $id)->update([
             'nama_surat' => $fileName,
@@ -125,8 +126,8 @@ class SuratTugasAsesorController extends Controller
             'no_reg' => $request->no_reg,
             'nama_tuk' => $request->nama_tuk,
             'alamat_tuk' => $request->alamat_tuk,
-            'tanggal_uji' => $request->tanggal_uji,
-            'tanggal_surat' => $request->tanggal_surat,
+            'tanggal_uji' => Carbon::createFromFormat('d/m/Y', $request->tanggal_uji)->locale('id')->isoFormat('Y/mm/dd'),
+            'tanggal_surat' => Carbon::createFromFormat('d/m/Y', $request->tanggal_surat)->locale('id')->isoFormat('Y/mm/dd'),
             'skema' => $request->skema,
         ]);
 
