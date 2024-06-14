@@ -11,6 +11,10 @@
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('velonic_admin') }}/assets/images/favicon.ico">
 
+        {{-- Sweet Alert CDN --}}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.all.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.1/dist/sweetalert2.min.css" rel="stylesheet">
+
         @yield('css_page')
 
     </head>
@@ -232,6 +236,21 @@
         </div>
 
         @yield('js_page')
+
+        {{-- Sweet Alert / Flash Massage --}}
+        <script>
+            @if(session('flashData'))
+                var flashData = @json(session('flashData'));
+
+                Swal.fire({
+                    title: flashData.judul,
+                    text: flashData.pesan,
+                    icon: flashData.swalFlashIcon,
+                    confirmButtonText: 'OK'
+                });
+            @endif
+        </script>
+        {{-- /* End Sweet Alert / Flash Massage --}}
 
     </body>
 </html>

@@ -1,371 +1,352 @@
 @extends('admin.layouts.master')
 @section('css_page')
-    <!--! BEGIN: Bootstrap CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin_template') }}/assets/css/bootstrap.min.css" />
-    <!--! END: Bootstrap CSS-->
-    <!--! BEGIN: Vendors CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin_template') }}/assets/vendors/css/vendors.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin_template') }}/assets/vendors/css/daterangepicker.min.css" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin_template') }}/assets/vendors/css/dataTables.bs5.min.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('admin_template') }}/assets/css/theme.min.css" />
+    <!-- Datatables css -->
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <!-- Theme Config Js -->
+    <script src="{{ asset('velonic_admin') }}/assets/js/config.js"></script>
+    <!-- App css -->
+    <link href="{{ asset('velonic_admin') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
+    <!-- Icons css -->
+    <link href="{{ asset('velonic_admin') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 @endsection
-
-
 @section('content')
-<div class="nxl-content">
-    <!-- [ page-header ] start -->
-    <div class="page-header">
-        <div class="page-header-left d-flex align-items-center">
-            <div class="page-header-title">
-                <h5 class="m-b-10">Surat Tugas Asesor</h5>
-            </div>
-            <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                <li class="breadcrumb-item">Surat Tugas Asesor</li>
-            </ul>
-        </div>
 
+<div class="content">
 
-        <div class="page-header-right ms-auto">
-            <div class="page-header-right-items">
-                <div class="d-flex d-md-none">
-                    <a href="javascript:void(0)" class="page-header-right-close-toggle">
-                        <i class="feather-arrow-left me-2"></i>
-                        <span>Back</span>
-                    </a>
-                </div>
-                <div class="d-flex align-items-center gap-2 page-header-right-items-wrapper">
-                    <a href="javascript:void(0);" class="btn btn-icon btn-light-brand" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                        <i class="feather-bar-chart"></i>
-                    </a>
-                    <div class="dropdown">
-                        <a class="btn btn-icon btn-light-brand" data-bs-toggle="dropdown" data-bs-offset="0, 10" data-bs-auto-close="outside">
-                            <i class="feather-filter"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="feather-eye me-3"></i>
-                                <span>All</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="feather-send me-3"></i>
-                                <span>Sent</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="feather-book-open me-3"></i>
-                                <span>Open</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="feather-archive me-3"></i>
-                                <span>Draft</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="feather-bell me-3"></i>
-                                <span>Revised</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="feather-shield-off me-3"></i>
-                                <span>Declined</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="feather-check me-3"></i>
-                                <span>Accepted</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="feather-briefcase me-3"></i>
-                                <span>Leads</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="feather-wifi-off me-3"></i>
-                                <span>Expired</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="feather-users me-3"></i>
-                                <span>Customers</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="dropdown">
-                        <a class="btn btn-icon btn-light-brand" data-bs-toggle="dropdown" data-bs-offset="0, 10" data-bs-auto-close="outside">
-                            <i class="feather-paperclip"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-end">
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="bi bi-filetype-pdf me-3"></i>
-                                <span>PDF</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="bi bi-filetype-csv me-3"></i>
-                                <span>CSV</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="bi bi-filetype-xml me-3"></i>
-                                <span>XML</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="bi bi-filetype-txt me-3"></i>
-                                <span>Text</span>
-                            </a>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="bi bi-filetype-exe me-3"></i>
-                                <span>Excel</span>
-                            </a>
-                            <div class="dropdown-divider"></div>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="bi bi-printer me-3"></i>
-                                <span>Print</span>
-                            </a>
-                        </div>
-                    </div>
-                    <a href="invoice-create.html" class="btn btn-primary">
-                        <i class="feather-plus me-2"></i>
-                        <span>Create Invoice</span>
-                    </a>
-                </div>
-            </div>
-            <div class="d-md-none d-flex align-items-center">
-                <a href="javascript:void(0)" class="page-header-right-open-toggle">
-                    <i class="feather-align-right fs-20"></i>
-                </a>
-            </div>
-        </div>
-    </div>
+    <!-- Start Content-->
+    <div class="container-fluid">
 
-    <div id="collapseOne" class="accordion-collapse collapse page-header-collapse">
-        <div class="accordion-body pb-2">
-            <div class="row">
-                <div class="col-xxl-3 col-md-6">
-                    <div class="card stretch stretch-full">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <a href="javascript:void(0);" class="fw-bold d-block">
-                                    <span class="d-block">Nomor Surat Terakhir</span>
-
-                                    <div class="badge bg-soft-success text-success mt-2" style="font-size: 14px">
-                                        <span>{{ $nomor_surat_terakhir['nomor_surat'] }}</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-3 col-md-6">
-                    <div class="card stretch stretch-full">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <a href="javascript:void(0);" class="fw-bold d-block">
-                                    <span class="d-block">Jumlah Surat</span>
-                                    <span class="fs-20 fw-bold d-block">38/50</span>
-                                </a>
-                                <div class="badge bg-soft-danger text-danger">
-                                    <i class="feather-arrow-down fs-10 me-1"></i>
-                                    <span>23.45%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-3 col-md-6">
-                    <div class="card stretch stretch-full">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <a href="javascript:void(0);" class="fw-bold d-block">
-                                    <span class="d-block">Jumlah TUK</span>
-                                    <span class="fs-20 fw-bold d-block">15/30</span>
-                                </a>
-                                <div class="badge bg-soft-success text-success">
-                                    <i class="feather-arrow-up fs-10 me-1"></i>
-                                    <span>25.44%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xxl-3 col-md-6">
-                    <div class="card stretch stretch-full">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center justify-content-between">
-                                <a href="javascript:void(0);" class="fw-bold d-block">
-                                    <span class="d-block">Jumlah Asesor</span>
-                                    <span class="fs-20 fw-bold d-block">3/10</span>
-                                </a>
-                                <div class="badge bg-soft-danger text-danger">
-                                    <i class="feather-arrow-down fs-10 me-1"></i>
-                                    <span>12.68%</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- [ page-header ] end -->
-    <!-- [ Main Content ] start -->
-    <div class="main-content">
+        <!-- start page title -->
         <div class="row">
-            <div class="col-lg-12">
-                <div class="card stretch stretch-full">
-                    <div class="card-body p-0">
-                        <div class="table-responsive">
-                            <table class="table table-hover" id="paymentList">
-                                <thead>
-                                    <tr>
-                                        <th class="wd-30">
-                                            <div class="btn-group mb-1">
-                                                <div class="custom-control custom-checkbox ms-1">
-                                                    <input type="checkbox" class="custom-control-input" id="checkAllPayment">
-                                                    <label class="custom-control-label" for="checkAllPayment"></label>
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Surat</a></li>
+                            <li class="breadcrumb-item active">Surat Tugas Asesor</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Surat Tugas Asesor</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="header-title">Data Surat Tugas</h4>
+                        <p class="text-muted mb-0">
+                            Anda bisa mendownload surat dengan format .pdf ataupun .doc
+                        </p>
+                    </div>
+                    <div class="card-body">
+
+                        <table id="scroll-horizontal-datatable" class="table table-striped w-100 nowrap">
+                            <thead>
+                                <tr>
+                                    <th>No Surat</th>
+                                    <th>Nama Asesor</th>
+                                    <th>Tempat TUK</th>
+                                    <th>Skema</th>
+                                    <th>Tanggal Uji</th>
+                                    <th>Tanggal Surat</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($data_surat as $dt_surat)
+
+                                <tr>
+                                    <td><span class="badge bg-success">{{ $dt_surat->nomor_surat }}</span></td>
+                                    <td>
+
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="d-flex">
+                                                <a class="me-2" href="#">
+                                                    <img class="avatar-sm rounded-circle bx-s" src="{{ asset('velonic_admin') }}/assets/images/users/avatar-2.jpg" alt="">
+                                                </a>
+
+                                                <div class="info">
+                                                    <h5 class="fs-14 my-1">{{ $dt_surat->nama_asesor }}</h5>
+                                                    <p class="text-muted fs-12">{{ $dt_surat->no_reg }}</p>
                                                 </div>
                                             </div>
-                                        </th>
-                                        <th>Nomor Surat</th>
-                                        <th>Nama Asesor</th>
-                                        <th>Skema</th>
-                                        <th>Tempat TUK</th>
-                                        <th>Tanggal Ujian</th>
-                                        <th>Tanggal Surat</th>
-                                        <th class="text-end">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data_surat as $dt_surat)
-                                        <tr class="single-item">
-                                            <td>
-                                                <div class="item-checkbox ms-1">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input checkbox" id="checkBox_1">
-                                                        <label class="custom-control-label" for="checkBox_1"></label>
-                                                    </div>
+                                        </div>
+
+                                    </td>
+                                    <td>
+
+                                        <div class="d-flex align-items-start justify-content-between">
+                                            <div class="d-flex">
+
+
+                                                <a class="social-list-item bg-dark-subtle text-secondary fs-16 border-0 me-2"
+                                                title="" data-bs-toggle="tooltip" data-bs-placement="top"
+                                                class="tooltips" href="" data-bs-title="Facebook"><i
+                                                    class="ri-building-line"></i></a>
+
+                                                <div class="info">
+                                                    <h5 class="fs-14 my-1">{{ $dt_surat->nama_tuk }}</h5>
+                                                    <p class="text-muted fs-12">{{ Str::limit($dt_surat->alamat_tuk, 50) }}</p>
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <div class="badge bg-soft-success text-success">{{ $dt_surat->nomor_surat }}</div>
-                                            </td>
-                                            <td>
-                                                <a href="javascript:void(0)" class="hstack gap-3">
-                                                    <div class="avatar-image avatar-md">
-                                                        <div class="avatar-image avatar-md bg-warning text-white">
-                                                            <span class="nxl-micon"><i class="feather-user"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <span class="text-truncate-1-line">{{ $dt_surat->nama_asesor }}</span>
-                                                        <small class="fs-12 fw-normal text-muted">{{ $dt_surat->no_reg }}</small>
-                                                    </div>
-                                                </a>
-                                            </td>
-                                            <td><a href="javascript:void(0);">{{ $dt_surat->skema }}</a></td>
+                                            </div>
+                                        </div>
 
-                                            <td>
-                                                <a href="javascript:void(0)" class="hstack gap-3">
-                                                    <div class="avatar-image avatar-md">
-                                                        <div class="avatar-image avatar-md bg-warning text-white">
-                                                            <span class="nxl-micon"><i class="feather-home"></i></span>
-                                                        </div>
-                                                    </div>
-                                                    <div>
-                                                        <span class="text-truncate-1-line">{{ $dt_surat->nama_tuk }}</span>
-                                                        <small class="fs-12 fw-normal text-muted">{{ $dt_surat->alamat_tuk }}</small>
-                                                    </div>
-                                                </a>
-                                            </td>
+                                    </td>
+                                    <td>{{ Str::limit($dt_surat->skema, 40) }}</td>
+                                    <td>{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
+                                    <td>{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
+                                    <td>
+                                        <div class="btn-group mb-2">
 
-                                            <td>
-                                                <div class="badge bg-soft-success text-warning">{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</div>
-                                            </td>
-                                            <td>
-                                                <div class="badge bg-soft-success text-info">{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</div>
-                                            </td>
-                                            <td>
-                                                <div class="hstack gap-2 justify-content-end">
-                                                    <a href="invoice-view.html" class="avatar-text avatar-md">
-                                                        <i class="feather feather-eye"></i>
-                                                    </a>
-                                                    <div class="dropdown">
-                                                        <a href="javascript:void(0)" class="avatar-text avatar-md" data-bs-toggle="dropdown" data-bs-offset="0,21">
-                                                            <i class="feather feather-more-horizontal"></i>
-                                                        </a>
-                                                        <ul class="dropdown-menu">
-                                                            <li>
-                                                                {{-- Edit Button --}}
-                                                                <form action="{{ route('surat-tugas-asesor.edit', $dt_surat->id) }}"
-                                                                    method="POST">
-                                                                    {{ csrf_field() }}
-                                                                    <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
-                                                                    <div class="dropdown-divider"></div>
-                                                                    <button type="submit" class="dropdown-item">
-                                                                        <i class="feather feather-edit-3 me-3"></i>
-                                                                        <span>Edit</span>
-                                                                    </button>
-                                                                </form>
-                                                            </li>
+                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $dt_surat->id }}"><i class="ri-eye-line"></i> </button>
 
-                                                            <li>
-                                                                <a class="dropdown-item printBTN" href="javascript:void(0)">
-                                                                    <i class="feather feather-printer me-3"></i>
-                                                                    <span>Print</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item" href="javascript:void(0)">
-                                                                    <i class="feather feather-clock me-3"></i>
-                                                                    <span>Remind</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="dropdown-divider"></li>
-                                                            <li>
-                                                                <a class="dropdown-item" href="javascript:void(0)">
-                                                                    <i class="feather feather-archive me-3"></i>
-                                                                    <span>Archive</span>
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="dropdown-item" href="javascript:void(0)">
-                                                                    <i class="feather feather-alert-octagon me-3"></i>
-                                                                    <span>Report Spam</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="dropdown-divider"></li>
-                                                            <li>
-                                                                <a class="dropdown-item" href="javascript:void(0)">
-                                                                    <i class="feather feather-trash-2 me-3"></i>
-                                                                    <span>Delete</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                            <div class="btn-group">
+                                                {{-- <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown <span class="caret"></span> </button> --}}
+
+                                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="false"><i class="ri-equalizer-line me-1"></i> Details</button>
+
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="{{ route('surat-tugas-asesor.generatePdf', $dt_surat->id) }}" target="_blank"><i class="ri-file-pdf-fill"></i> Download PDF</a>
+                                                    <a class="dropdown-item" href="{{ route('surat-tugas-asesor.download', $dt_surat->id) }}"><i class="ri-file-word-fill"></i> Download DOC</a>
+                                                    <hr>
+                                                    <a class="dropdown-item" href="#"><i class="ri-edit-fill"></i> Edit</a>
+                                                    {{-- <a class="dropdown-item" href="#"><i class="ri-delete-bin-2-fill"></i> Delete</a> --}}
+
+                                                    {{-- Delete Button --}}
+                                                    <form action="{{ route('surat-tugas-asesor.delete', $dt_surat->id) }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+                                                        <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
+
+                                                        {{-- <button type="submit" class="dropdown-item">
+                                                            <i class="link-icon" data-feather="trash" style="width:16px; height:auto"></i>Delete Surat
+                                                        </button> --}}
+
+                                                        <button type="button" id="deleteButton-{{ $dt_surat->id }}" class="dropdown-item">
+                                                            <i class="ri-delete-bin-2-fill"></i> Delete Surat
+                                                        </button>
+
+                                                    </form>
                                                 </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
+                    </div> <!-- end card body-->
+                </div> <!-- end card -->
+            </div><!-- end col-->
+        </div> <!-- end row-->
 
 
 
-                                </tbody>
-                            </table>
+    </div> <!-- container -->
+
+</div> <!-- content -->
+
+
+{{-- Modal --}}
+@foreach ($data_surat as $dt_surat)
+    <div class="modal fade" id="modalSurat{{ $dt_surat->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header modal-colored-header bg-info">
+                    <h4 class="modal-title" id="info-header-modalLabel">Surat Tugas {{ $dt_surat->nama_asesor }}
+                    </h4>
+                    <button type="button" class="btn-close btn-close-white"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{-- Modal Content --}}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Nomor Surat</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $dt_surat->nomor_surat }}" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Skema</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $dt_surat->skema }}" disabled>
+                            </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Asesor</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $dt_surat->nama_asesor }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">NO Reg</label>
+                                <input type="text" id="no_reg_asesor" class="form-control" id="no_reg" name="no_reg" value="{{ $dt_surat->no_reg }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Nama TUK</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $dt_surat->nama_tuk }}" disabled>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Alamat TUK</label>
+                                <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control" value="{{ $dt_surat->alamat_tuk }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Tanggal Ujian</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}" disabled>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tanggal Surat</label>
+                                <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control" value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tanggal Dibuat Surat</label>
+                                <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control" value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d H:i:s', $dt_surat->created_at)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Download Surat</label>
+                                <div class="container">
+                                    <a class="btn btn-info btn-sm" href="{{ route('surat-tugas-asesor.download', $dt_surat->id) }}"><i class="far fa-file-word"></i> Download Word </a>
+                                    <a class="btn btn-warning btn-sm" href="{{ route('surat-tugas-asesor.generatePdf', $dt_surat->id) }}" target="_blank"><i class="fas fa-file-pdf"></i> Download PDF</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Modal Content --}}
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-    <!-- [ Main Content ] end -->
-</div>
+@endforeach
+<!-- /* End Modal -->
 @endsection
 @section('js_page')
-    <script src="{{ asset('admin_template') }}/assets/vendors/js/vendors.min.js"></script>
-    <script src="{{ asset('admin_template') }}/assets/vendors/js/dataTables.min.js"></script>
-    <script src="{{ asset('admin_template') }}/assets/vendors/js/dataTables.bs5.min.js"></script>
+    <!-- Vendor js -->
+    <script src="{{ asset('velonic_admin') }}/assets/js/vendor.min.js"></script>
 
-    <script src="{{ asset('admin_template') }}/assets/vendors/js/daterangepicker.min.js"></script>
-    <script src="{{ asset('admin_template') }}/assets/vendors/js/apexcharts.min.js"></script>
-    <script src="{{ asset('admin_template') }}/assets/vendors/js/circle-progress.min.js"></script>
+    <!-- Datatables js -->
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedcolumns-bs5/js/fixedColumns.bootstrap5.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
 
-    <script src="{{ asset('admin_template') }}/assets/js/common-init.min.js"></script>
-    <script src="{{ asset('admin_template') }}/assets/js/dashboard-init.min.js"></script>
-    <script src="{{ asset('admin_template') }}/assets/js/payment-init.min.js"></script>
+    <!-- Datatable Demo Aapp js -->
+    <script src="{{ asset('velonic_admin') }}/assets/js/pages/datatable.init.js"></script>
 
-    <script src="{{ asset('admin_template') }}/assets/js/theme-customizer-init.min.js"></script>
+    <!-- App js -->
+    <script src="{{ asset('velonic_admin') }}/assets/js/app.min.js"></script>
+
+    <script>
+        const exampleModal = document.getElementById('exampleModal')
+        exampleModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            const recipient = button.getAttribute('data-bs-whatever')
+            // If necessary, you could initiate an AJAX request here
+            // and then do the updating in a callback.
+            //
+            // Update the modal's content.
+            const modalTitle = exampleModal.querySelector('.modal-title')
+            const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+            modalTitle.textContent = `New message to ${recipient}`
+            modalBodyInput.value = recipient
+        })
+    </script>
+
+    {{-- Sweet Alert --}}
+    <script>
+        @foreach ($data_surat as $dt_surat)
+            document.getElementById("deleteButton-{{ $dt_surat->id }}").addEventListener("click", function() {
+
+            Swal.fire({
+                    title: "Are you sure?",
+                    text: "Apakah anda yakin ingin mengapus surat tugas ini ?",
+                    icon: "warning",
+                    showCancelButton: true,
+            }).then((willDelete) => {
+                    if (willDelete.isConfirmed) {
+                        fetch("{{ route('surat-tugas-asesor.delete', $dt_surat->id) }}", {
+                            method: "DELETE",
+                            headers: {
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                            }
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                            Swal.fire(
+                                'Terhapus',
+                                'Surat Tugas Berhasil Dihapus',
+                                'success'
+                            ).then((result) =>{
+                                if (result.isConfirmed){
+                                window.location.href = "{{ route('surat-tugas-asesor.view') }}";
+                                }
+                            })
+                            }
+                        })
+                    } else {
+                    Swal.fire({
+                        title: "Dibatalkan",
+                        text: "Surat Tugas Batal Dihapus",
+                        icon: "error",});
+                    }
+                });
+            });
+        @endforeach
+    </script>
+    {{-- /* End Sweet Alert --}}
 @endsection

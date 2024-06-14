@@ -4,20 +4,20 @@
     <!-- Brand Logo Light -->
     <a href="index.html" class="logo logo-light">
         <span class="logo-lg">
-            <img src="{{ asset('velonic_admin') }}/assets/images/logo.png" alt="logo">
+            <img src="{{ asset('img/logo_lsp.png') }}" alt="logo" style="width: 200px; min-height: 40px">
         </span>
         <span class="logo-sm">
-            <img src="{{ asset('velonic_admin') }}/assets/images/logo-sm.png" alt="small logo">
+            <img src="{{ asset('img/no_title_logo.png') }}" alt="small logo" style="width: 40px; min-height: 40px">
         </span>
     </a>
 
     <!-- Brand Logo Dark -->
     <a href="index.html" class="logo logo-dark">
         <span class="logo-lg">
-            <img src="{{ asset('velonic_admin') }}/assets/images/logo-dark.png" alt="dark logo">
+            <img src="{{ asset('img/logo_lsp.png') }}" alt="dark logo" style="width: 200px; min-height: 40px">
         </span>
         <span class="logo-sm">
-            <img src="{{ asset('velonic_admin') }}/assets/images/logo-sm.png" alt="small logo">
+            <img src="{{ asset('img/no_title_logo.png') }}" alt="small logo" style="width: 40px; min-height: 40px">
         </span>
     </a>
 
@@ -29,9 +29,8 @@
             <li class="side-nav-title">Main</li>
 
             <li class="side-nav-item {{ request()->segment(1) === 'dashboard' ? 'menuitem-active' : ''}} ">
-                <a href="index.html" class="side-nav-link ">
+                <a href="{{ route('dashboard') }}" class="side-nav-link ">
                     <i class="ri-dashboard-3-line"></i>
-                    <span class="badge bg-success float-end">9+</span>
                     <span> Dashboard </span>
                 </a>
             </li>
@@ -47,10 +46,13 @@
                 <div class="collapse" id="suratTugasAsesor">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="ui-accordions.html">List Surat</a>
+                            <a href="{{ route('surat-tugas-asesor.view') }}">
+                                <span class="badge bg-success float-end">{{ App\Models\SuratTugasModel::count() }}</span>
+                                List Surat
+                            </a>
                         </li>
                         <li>
-                            <a href="ui-alerts.html">Create Surat</a>
+                            <a href="{{ route('surat-tugas-asesor.create') }}">Create Surat</a>
                         </li>
                     </ul>
                 </div>
