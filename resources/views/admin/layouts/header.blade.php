@@ -1,1806 +1,392 @@
-<header class="nxl-header">
-    <div class="header-wrapper">
-        <!--! [Start] Header Left !-->
-        <div class="header-left d-flex align-items-center gap-4">
-            <!--! [Start] nxl-head-mobile-toggler !-->
-            <a href="javascript:void(0);" class="nxl-head-mobile-toggler" id="mobile-collapse">
-                <div class="hamburger hamburger--arrowturn">
-                    <div class="hamburger-box">
-                        <div class="hamburger-inner"></div>
-                    </div>
-                </div>
-            </a>
-            <!--! [Start] nxl-head-mobile-toggler !-->
-            <!--! [Start] nxl-navigation-toggle !-->
-            <div class="nxl-navigation-toggle">
-                <a href="javascript:void(0);" id="menu-mini-button">
-                    <i class="feather-align-left"></i>
+<!-- ========== Topbar Start ========== -->
+<div class="navbar-custom">
+    <div class="topbar container-fluid">
+        <div class="d-flex align-items-center gap-1">
+
+            <!-- Topbar Brand Logo -->
+            <div class="logo-topbar">
+                <!-- Logo light -->
+                <a href="index.html" class="logo-light">
+                    <span class="logo-lg">
+                        <img src="{{ asset('velonic_admin') }}/assets/images/logo.png" alt="logo">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="{{ asset('velonic_admin') }}/assets/images/logo-sm.png" alt="small logo">
+                    </span>
                 </a>
-                <a href="javascript:void(0);" id="menu-expend-button" style="display: none">
-                    <i class="feather-arrow-right"></i>
-                </a>
-            </div>
-            <!--! [End] nxl-navigation-toggle !-->
-            <!--! [Start] nxl-lavel-mega-menu-toggle !-->
-            <div class="nxl-lavel-mega-menu-toggle d-flex d-lg-none">
-                <a href="javascript:void(0);" id="nxl-lavel-mega-menu-open">
-                    <i class="feather-align-left"></i>
+
+                <!-- Logo Dark -->
+                <a href="index.html" class="logo-dark">
+                    <span class="logo-lg">
+                        <img src="{{ asset('velonic_admin') }}/assets/images/logo-dark.png" alt="dark logo">
+                    </span>
+                    <span class="logo-sm">
+                        <img src="{{ asset('velonic_admin') }}/assets/images/logo-sm.png" alt="small logo">
+                    </span>
                 </a>
             </div>
-            <!--! [End] nxl-lavel-mega-menu-toggle !-->
-            <!--! [Start] nxl-lavel-mega-menu !-->
-            <div class="nxl-drp-link nxl-lavel-mega-menu">
-                <div class="nxl-lavel-mega-menu-toggle d-flex d-lg-none">
-                    <a href="javascript:void(0)" id="nxl-lavel-mega-menu-hide">
-                        <i class="feather-arrow-left me-2"></i>
-                        <span>Back</span>
-                    </a>
-                </div>
-                <!--! [Start] nxl-lavel-mega-menu-wrapper !-->
-                <div class="nxl-lavel-mega-menu-wrapper d-flex gap-3">
-                    <!--! [Start] nxl-lavel-menu !-->
-                    <div class="dropdown nxl-h-item nxl-lavel-menu">
-                        <a href="javascript:void(0);" class="avatar-text avatar-md bg-primary text-white" data-bs-toggle="dropdown" data-bs-auto-close="outside">
-                            <i class="feather-plus"></i>
-                        </a>
-                        <div class="dropdown-menu nxl-h-dropdown">
-                            <div class="dropdown nxl-level-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="feather-send"></i>
-                                        <span>Applications</span>
-                                    </span>
-                                    <i class="feather-chevron-right ms-auto me-0"></i>
-                                </a>
-                                <div class="dropdown-menu nxl-h-dropdown">
-                                    <a href="apps-chat.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Chat</span>
-                                    </a>
-                                    <a href="apps-email.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Email</span>
-                                    </a>
-                                    <a href="apps-tasks.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Tasks</span>
-                                    </a>
-                                    <a href="apps-notes.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Notes</span>
-                                    </a>
-                                    <a href="apps-storage.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Storage</span>
-                                    </a>
-                                    <a href="apps-calendar.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Calendar</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="dropdown-divider"></div>
-                            <div class="dropdown nxl-level-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="feather-cast"></i>
-                                        <span>Reports</span>
-                                    </span>
-                                    <i class="feather-chevron-right ms-auto me-0"></i>
-                                </a>
-                                <div class="dropdown-menu nxl-h-dropdown">
-                                    <a href="reports-sales.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Sales Report</span>
-                                    </a>
-                                    <a href="reports-leads.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Leads Report</span>
-                                    </a>
-                                    <a href="reports-project.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Project Report</span>
-                                    </a>
-                                    <a href="reports-timesheets.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Timesheets Report</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="dropdown nxl-level-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="feather-at-sign"></i>
-                                        <span>Proposal</span>
-                                    </span>
-                                    <i class="feather-chevron-right ms-auto me-0"></i>
-                                </a>
-                                <div class="dropdown-menu nxl-h-dropdown">
-                                    <a href="proposal.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Proposal</span>
-                                    </a>
-                                    <a href="proposal-view.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Proposal View</span>
-                                    </a>
-                                    <a href="proposal-edit.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Proposal Edit</span>
-                                    </a>
-                                    <a href="proposal-create.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Proposal Create</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="dropdown nxl-level-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="feather-dollar-sign"></i>
-                                        <span>Payment</span>
-                                    </span>
-                                    <i class="feather-chevron-right ms-auto me-0"></i>
-                                </a>
-                                <div class="dropdown-menu nxl-h-dropdown">
-                                    <a href="payment.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Payment</span>
-                                    </a>
-                                    <a href="invoice-view.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Invoice View</span>
-                                    </a>
-                                    <a href="invoice-create.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Invoice Create</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="dropdown nxl-level-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="feather-users"></i>
-                                        <span>Customers</span>
-                                    </span>
-                                    <i class="feather-chevron-right ms-auto me-0"></i>
-                                </a>
-                                <div class="dropdown-menu nxl-h-dropdown">
-                                    <a href="customers.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Customers</span>
-                                    </a>
-                                    <a href="customers-view.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Customers View</span>
-                                    </a>
-                                    <a href="customers-create.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Customers Create</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="dropdown nxl-level-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="feather-alert-circle"></i>
-                                        <span>Leads</span>
-                                    </span>
-                                    <i class="feather-chevron-right ms-auto me-0"></i>
-                                </a>
-                                <div class="dropdown-menu nxl-h-dropdown">
-                                    <a href="leads.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Leads</span>
-                                    </a>
-                                    <a href="leads-view.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Leads View</span>
-                                    </a>
-                                    <a href="leads-create.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Leads Create</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="dropdown nxl-level-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="feather-briefcase"></i>
-                                        <span>Projects</span>
-                                    </span>
-                                    <i class="feather-chevron-right ms-auto me-0"></i>
-                                </a>
-                                <div class="dropdown-menu nxl-h-dropdown">
-                                    <a href="projects.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Projects</span>
-                                    </a>
-                                    <a href="projects-view.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Projects View</span>
-                                    </a>
-                                    <a href="projects-create.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Projects Create</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="dropdown nxl-level-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="feather-layout"></i>
-                                        <span>Widgets</span>
-                                    </span>
-                                    <i class="feather-chevron-right ms-auto me-0"></i>
-                                </a>
-                                <div class="dropdown-menu nxl-h-dropdown">
-                                    <a href="widgets-lists.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Lists</span>
-                                    </a>
-                                    <a href="widgets-tables.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Tables</span>
-                                    </a>
-                                    <a href="widgets-charts.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Charts</span>
-                                    </a>
-                                    <a href="widgets-statistics.html" class="dropdown-item">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Statistics</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="dropdown nxl-level-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="feather-power"></i>
-                                        <span>Authentication</span>
-                                    </span>
-                                    <i class="feather-chevron-right ms-auto me-0"></i>
-                                </a>
-                                <div class="dropdown-menu nxl-h-dropdown">
-                                    <div class="dropdown nxl-level-menu">
-                                        <a href="javascript:void(0);" class="dropdown-item">
-                                            <span class="hstack">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Login</span>
-                                            </span>
-                                            <i class="feather-chevron-right ms-auto me-0"></i>
-                                        </a>
-                                        <div class="dropdown-menu nxl-h-dropdown">
-                                            <a href="./auth-login-cover.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Cover</span>
-                                            </a>
-                                            <a href="./auth-login-minimal.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Minimal</span>
-                                            </a>
-                                            <a href="./auth-login-creative.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Creative</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown nxl-level-menu">
-                                        <a href="javascript:void(0);" class="dropdown-item">
-                                            <span class="hstack">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Register</span>
-                                            </span>
-                                            <i class="feather-chevron-right ms-auto me-0"></i>
-                                        </a>
-                                        <div class="dropdown-menu nxl-h-dropdown">
-                                            <a href="./auth-register-cover.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Cover</span>
-                                            </a>
-                                            <a href="./auth-register-minimal.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Minimal</span>
-                                            </a>
-                                            <a href="./auth-register-creative.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Creative</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown nxl-level-menu">
-                                        <a href="javascript:void(0);" class="dropdown-item">
-                                            <span class="hstack">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Error-404</span>
-                                            </span>
-                                            <i class="feather-chevron-right ms-auto me-0"></i>
-                                        </a>
-                                        <div class="dropdown-menu nxl-h-dropdown">
-                                            <a href="./auth-404-cover.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Cover</span>
-                                            </a>
-                                            <a href="./auth-404-minimal.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Minimal</span>
-                                            </a>
-                                            <a href="./auth-404-creative.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Creative</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown nxl-level-menu">
-                                        <a href="javascript:void(0);" class="dropdown-item">
-                                            <span class="hstack">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Reset Pass</span>
-                                            </span>
-                                            <i class="feather-chevron-right ms-auto me-0"></i>
-                                        </a>
-                                        <div class="dropdown-menu nxl-h-dropdown">
-                                            <a href="./auth-reset-cover.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Cover</span>
-                                            </a>
-                                            <a href="./auth-reset-minimal.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Minimal</span>
-                                            </a>
-                                            <a href="./auth-reset-creative.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Creative</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown nxl-level-menu">
-                                        <a href="javascript:void(0);" class="dropdown-item">
-                                            <span class="hstack">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Verify OTP</span>
-                                            </span>
-                                            <i class="feather-chevron-right ms-auto me-0"></i>
-                                        </a>
-                                        <div class="dropdown-menu nxl-h-dropdown">
-                                            <a href="./auth-verify-cover.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Cover</span>
-                                            </a>
-                                            <a href="./auth-verify-minimal.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Minimal</span>
-                                            </a>
-                                            <a href="./auth-verify-creative.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Creative</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="dropdown nxl-level-menu">
-                                        <a href="javascript:void(0);" class="dropdown-item">
-                                            <span class="hstack">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Maintenance</span>
-                                            </span>
-                                            <i class="feather-chevron-right ms-auto me-0"></i>
-                                        </a>
-                                        <div class="dropdown-menu nxl-h-dropdown">
-                                            <a href="./auth-maintenance-cover.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Cover</span>
-                                            </a>
-                                            <a href="./auth-maintenance-minimal.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Minimal</span>
-                                            </a>
-                                            <a href="./auth-maintenance-creative.html" class="dropdown-item">
-                                                <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                <span>Creative</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dropdown-divider"></div>
-                            <a href="javascript:void(0);" class="dropdown-item">
-                                <i class="feather-plus"></i>
-                                <span>Add New Items</span>
-                            </a>
-                        </div>
-                    </div>
-                    <!--! [End] nxl-lavel-menu !-->
-                    <!--! [Start] nxl-h-item nxl-mega-menu !-->
-                    <div class="dropdown nxl-h-item nxl-mega-menu">
-                        <a href="javascript:void(0);" class="btn btn-light-brand" data-bs-toggle="dropdown" data-bs-auto-close="outside"> Mega Menu </a>
-                        <div class="dropdown-menu nxl-h-dropdown" id="mega-menu-dropdown">
-                            <div class="d-lg-flex align-items-start">
-                                <!--! [Start] nxl-mega-menu-tabs !-->
-                                <div class="nav flex-column nxl-mega-menu-tabs" role="tablist" aria-orientation="vertical">
-                                    <button class="nav-link active nxl-mega-menu-sm" data-bs-toggle="pill" data-bs-target="#v-pills-general" type="button" role="tab">
-                                        <span class="menu-icon">
-                                            <i class="feather-airplay"></i>
-                                        </span>
-                                        <span class="menu-title">General</span>
-                                        <span class="menu-arrow">
-                                            <i class="feather-chevron-right"></i>
-                                        </span>
-                                    </button>
-                                    <button class="nav-link nxl-mega-menu-md" data-bs-toggle="pill" data-bs-target="#v-pills-applications" type="button" role="tab">
-                                        <span class="menu-icon">
-                                            <i class="feather-send"></i>
-                                        </span>
-                                        <span class="menu-title">Applications</span>
-                                        <span class="menu-arrow">
-                                            <i class="feather-chevron-right"></i>
-                                        </span>
-                                    </button>
-                                    <button class="nav-link nxl-mega-menu-lg" data-bs-toggle="pill" data-bs-target="#v-pills-integrations" type="button" role="tab">
-                                        <span class="menu-icon">
-                                            <i class="feather-link-2"></i>
-                                        </span>
-                                        <span class="menu-title">Integrations</span>
-                                        <span class="menu-arrow">
-                                            <i class="feather-chevron-right"></i>
-                                        </span>
-                                    </button>
-                                    <button class="nav-link nxl-mega-menu-xl" data-bs-toggle="pill" data-bs-target="#v-pills-components" type="button" role="tab">
-                                        <span class="menu-icon">
-                                            <i class="feather-layers"></i>
-                                        </span>
-                                        <span class="menu-title">Components</span>
-                                        <span class="menu-arrow">
-                                            <i class="feather-chevron-right"></i>
-                                        </span>
-                                    </button>
-                                    <button class="nav-link nxl-mega-menu-xxl" data-bs-toggle="pill" data-bs-target="#v-pills-authentication" type="button" role="tab">
-                                        <span class="menu-icon">
-                                            <i class="feather-cpu"></i>
-                                        </span>
-                                        <span class="menu-title">Authentication</span>
-                                        <span class="menu-arrow">
-                                            <i class="feather-chevron-right"></i>
-                                        </span>
-                                    </button>
-                                    <button class="nav-link nxl-mega-menu-full" data-bs-toggle="pill" data-bs-target="#v-pills-miscellaneous" type="button" role="tab">
-                                        <span class="menu-icon">
-                                            <i class="feather-bluetooth"></i>
-                                        </span>
-                                        <span class="menu-title">Miscellaneous</span>
-                                        <span class="menu-arrow">
-                                            <i class="feather-chevron-right"></i>
-                                        </span>
-                                    </button>
-                                </div>
-                                <!--! [End] nxl-mega-menu-tabs !-->
-                                <!--! [Start] nxl-mega-menu-tabs-content !-->
-                                <div class="tab-content nxl-mega-menu-tabs-content">
-                                    <!--! [Start] v-pills-general !-->
-                                    <div class="tab-pane fade show active" id="v-pills-general" role="tabpanel">
-                                        <div class="mb-4 rounded-3 border">
-                                            <img src="{{ asset('admin_template') }}/assets/images/banner/mockup.png" alt="" class="img-fluid rounded-3" />
-                                        </div>
-                                        <h6 class="fw-bolder">Duralux - Admin Dashboard UiKit</h6>
-                                        <p class="fs-12 fw-normal text-muted text-truncate-3-line">Get started Duralux with Duralux up and running. Duralux bootstrap template docs helps you to get started with simple html codes.</p>
-                                        <a href="javascript:void(0);" class="fs-13 fw-bold text-primary">Get Started &rarr;</a>
-                                    </div>
-                                    <!--! [End] v-pills-general !-->
-                                    <!--! [Start] v-pills-applications !-->
-                                    <div class="tab-pane fade" id="v-pills-applications" role="tabpanel">
-                                        <div class="row g-4">
-                                            <div class="col-lg-6">
-                                                <h6 class="dropdown-item-title">Applications</h6>
-                                                <a href="apps-chat.html" class="dropdown-item">
-                                                    <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                    <span>Chat</span>
-                                                </a>
-                                                <a href="apps-email.html" class="dropdown-item">
-                                                    <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                    <span>Email</span>
-                                                </a>
-                                                <a href="apps-tasks.html" class="dropdown-item">
-                                                    <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                    <span>Tasks</span>
-                                                </a>
-                                                <a href="apps-notes.html" class="dropdown-item">
-                                                    <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                    <span>Notes</span>
-                                                </a>
-                                                <a href="apps-storage.html" class="dropdown-item">
-                                                    <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                    <span>Storage</span>
-                                                </a>
-                                                <a href="apps-calendar.html" class="dropdown-item">
-                                                    <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                    <span>Calendar</span>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-6">
-                                                <div class="nxl-mega-menu-image">
-                                                    <img src="{{ asset('admin_template') }}/assets/images/general/full-avatar.png" alt="" class="img-fluid full-user-avtar" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr class="border-top-dashed" />
-                                        <div class="d-lg-flex align-items-center justify-content-between">
-                                            <div>
-                                                <h6 class="menu-item-heading text-truncate-1-line">Need more application?</h6>
-                                                <p class="fs-12 text-muted mb-0 text-truncate-3-line">We are ready to build custom applications.</p>
-                                            </div>
-                                            <div class="mt-2 mt-lg-0">
-                                                <a href="mailto:theme_ocean@gmail.com" class="fs-13 fw-bold text-primary">Contact Us &rarr;</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--! [End] v-pills-applications !-->
-                                    <!--! [Start] v-pills-integrations !-->
-                                    <div class="tab-pane fade" id="v-pills-integrations" role="tabpanel">
-                                        <div class="row g-lg-4 nxl-mega-menu-integrations">
-                                            <div class="col-lg-12 d-lg-flex align-items-center justify-content-between mb-4 mb-lg-0">
-                                                <div>
-                                                    <h6 class="fw-bolder text-dark">Integrations</h6>
-                                                    <p class="fs-12 text-muted mb-0">Connect amazing apps on your bucket.</p>
-                                                </div>
-                                                <div class="mt-2 mt-lg-0">
-                                                    <a href="javascript:void(0);" class="fs-13 text-primary">Add New &rarr;</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/app-store.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">App Store</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/spotify.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Spotify</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/figma.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Figma</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/shopify.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Shopify</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/paypal.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Paypal</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/gmail.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Gmail</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/dropbox.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Dropbox</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/google-drive.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Google Drive</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/github.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Github</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/gitlab.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Gitlab</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/facebook.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Facebook</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/pinterest.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Pinterest</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/instagram.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Instagram</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/twitter.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Twitter</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                                <a href="javascript:void(0);" class="dropdown-item">
-                                                    <div class="menu-item-icon">
-                                                        <img src="{{ asset('admin_template') }}/assets/images/brand/youtube.png" alt="" class="img-fluid" />
-                                                    </div>
-                                                    <div class="menu-item-title">Youtube</div>
-                                                    <div class="menu-item-arrow">
-                                                        <i class="feather-arrow-right"></i>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        <hr class="border-top-dashed" />
-                                        <p class="fs-13 text-muted mb-0">Need help? Contact our <a href="javascript:void(0);" class="fst-italic">support center</a></p>
-                                    </div>
-                                    <!--! [End] v-pills-integrations !-->
-                                    <!--! [Start] v-pills-components !-->
-                                    <div class="tab-pane fade" id="v-pills-components" role="tabpanel">
-                                        <div class="row g-4 align-items-center">
-                                            <div class="col-xl-8">
-                                                <div class="row g-4">
-                                                    <div class="col-lg-4">
-                                                        <h6 class="dropdown-item-title">Navigation</h6>
-                                                        <a href="javascript:void(0);" class="dropdown-item">CRM</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Analytics</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Sales</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Leads</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Projects</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Timesheets</a>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <h6 class="dropdown-item-title">Pages</h6>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Leads </a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Payments</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Projects</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Proposals</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Customers</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Documentations</a>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <h6 class="dropdown-item-title">Authentication</h6>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Login</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Regiser</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Error-404</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Reset Pass</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Verify OTP</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Maintenance</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-4">
-                                                <div class="nxl-mega-menu-image">
-                                                    <img src="{{ asset('admin_template') }}/assets/images/banner/1.jpg" alt="" class="img-fluid" />
-                                                </div>
-                                                <div class="mt-4">
-                                                    <a href="mailto:theme_ocean@gmail.com" class="fs-13 fw-bold">View all resources on Duralux &rarr;</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--! [End] v-pills-components !-->
-                                    <!--! [Start] v-pills-authentication !-->
-                                    <div class="tab-pane fade" id="v-pills-authentication" role="tabpanel">
-                                        <div class="row g-4 align-items-center nxl-mega-menu-authentication">
-                                            <div class="col-xl-8">
-                                                <div class="row g-4">
-                                                    <div class="col-lg-4">
-                                                        <h6 class="dropdown-item-title">Cover</h6>
-                                                        <a href="./auth-login-cover.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Login</span>
-                                                        </a>
-                                                        <a href="./auth-register-cover.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Register</span>
-                                                        </a>
-                                                        <a href="./auth-404-cover.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Error-404</span>
-                                                        </a>
-                                                        <a href="./auth-reset-cover.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Reset Pass</span>
-                                                        </a>
-                                                        <a href="./auth-verify-cover.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Verify OTP</span>
-                                                        </a>
-                                                        <a href="./auth-maintenance-cover.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Maintenance</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <h6 class="dropdown-item-title">Minimal</h6>
-                                                        <a href="./auth-login-minimal.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Login</span>
-                                                        </a>
-                                                        <a href="./auth-register-minimal.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Register</span>
-                                                        </a>
-                                                        <a href="./auth-404-minimal.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Error-404</span>
-                                                        </a>
-                                                        <a href="./auth-reset-minimal.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Reset Pass</span>
-                                                        </a>
-                                                        <a href="./auth-verify-minimal.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Verify OTP</span>
-                                                        </a>
-                                                        <a href="./auth-maintenance-minimal.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Maintenance</span>
-                                                        </a>
-                                                    </div>
-                                                    <div class="col-lg-4">
-                                                        <h6 class="dropdown-item-title">Creative</h6>
-                                                        <a href="./auth-login-creative.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Login</span>
-                                                        </a>
-                                                        <a href="./auth-register-creative.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Register</span>
-                                                        </a>
-                                                        <a href="./auth-404-creative.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Error-404</span>
-                                                        </a>
-                                                        <a href="./auth-reset-creative.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Reset Pass</span>
-                                                        </a>
-                                                        <a href="./auth-verify-creative.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Verify OTP</span>
-                                                        </a>
-                                                        <a href="./auth-maintenance-creative.html" class="dropdown-item">
-                                                            <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                                            <span>Maintenance</span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-4">
-                                                <div id="carouselResourcesCaptions" class="carousel slide" data-bs-ride="carousel">
-                                                    <div class="carousel-indicators">
-                                                        <button type="button" data-bs-target="#carouselResourcesCaptions" data-bs-slide-to="0" class="active" aria-current="true"></button>
-                                                        <button type="button" data-bs-target="#carouselResourcesCaptions" data-bs-slide-to="1"></button>
-                                                        <button type="button" data-bs-target="#carouselResourcesCaptions" data-bs-slide-to="2"></button>
-                                                        <button type="button" data-bs-target="#carouselResourcesCaptions" data-bs-slide-to="3"></button>
-                                                        <button type="button" data-bs-target="#carouselResourcesCaptions" data-bs-slide-to="4"></button>
-                                                        <button type="button" data-bs-target="#carouselResourcesCaptions" data-bs-slide-to="5"></button>
-                                                    </div>
-                                                    <div class="carousel-inner rounded-3">
-                                                        <div class="carousel-item active">
-                                                            <div class="nxl-mega-menu-image">
-                                                                <img src="{{ asset('admin_template') }}/assets/images/banner/6.jpg" alt="" class="img-fluid d-block w-100" />
-                                                            </div>
-                                                            <div class="carousel-caption">
-                                                                <h5 class="carousel-caption-title text-truncate-1-line">Shopify eCommerce Store</h5>
-                                                                <p class="carousel-caption-desc">Some representative placeholder content for the first slide.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <div class="nxl-mega-menu-image">
-                                                                <img src="{{ asset('admin_template') }}/assets/images/banner/5.jpg" alt="" class="img-fluid d-block w-100" />
-                                                            </div>
-                                                            <div class="carousel-caption">
-                                                                <h5 class="carousel-caption-title text-truncate-1-line">iOS Apps Development</h5>
-                                                                <p class="carousel-caption-desc">Some representative placeholder content for the second slide.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <div class="nxl-mega-menu-image">
-                                                                <img src="{{ asset('admin_template') }}/assets/images/banner/4.jpg" alt="" class="img-fluid d-block w-100" />
-                                                            </div>
-                                                            <div class="carousel-caption">
-                                                                <h5 class="carousel-caption-title text-truncate-1-line">Figma Dashboard Design</h5>
-                                                                <p class="carousel-caption-desc">Some representative placeholder content for the third slide.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <div class="nxl-mega-menu-image">
-                                                                <img src="{{ asset('admin_template') }}/assets/images/banner/3.jpg" alt="" class="img-fluid d-block w-100" />
-                                                            </div>
-                                                            <div class="carousel-caption">
-                                                                <h5 class="carousel-caption-title text-truncate-1-line">React Dashboard Design</h5>
-                                                                <p class="carousel-caption-desc">Some representative placeholder content for the third slide.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <div class="nxl-mega-menu-image">
-                                                                <img src="{{ asset('admin_template') }}/assets/images/banner/2.jpg" alt="" class="img-fluid d-block w-100" />
-                                                            </div>
-                                                            <div class="carousel-caption">
-                                                                <h5 class="carousel-caption-title text-truncate-1-line">Standup Team Meeting</h5>
-                                                                <p class="carousel-caption-desc">Some representative placeholder content for the third slide.</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="carousel-item">
-                                                            <div class="nxl-mega-menu-image">
-                                                                <img src="{{ asset('admin_template') }}/assets/images/banner/1.jpg" alt="" class="img-fluid d-block w-100" />
-                                                            </div>
-                                                            <div class="carousel-caption">
-                                                                <h5 class="carousel-caption-title text-truncate-1-line">Zoom Team Meeting</h5>
-                                                                <p class="carousel-caption-desc">Some representative placeholder content for the third slide.</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselResourcesCaptions" data-bs-slide="prev">
-                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                        <span class="visually-hidden">Previous</span>
-                                                    </button>
-                                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselResourcesCaptions" data-bs-slide="next">
-                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                        <span class="visually-hidden">Next</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--! [End] v-pills-authentication !-->
-                                    <!--! [Start] v-pills-miscellaneous !-->
-                                    <div class="tab-pane fade nxl-mega-menu-miscellaneous" id="v-pills-miscellaneous" role="tabpanel">
-                                        <!-- Nav tabs -->
-                                        <ul class="nav nav-tabs flex-column flex-lg-row nxl-mega-menu-miscellaneous-tabs" role="tablist">
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#v-pills-projects" type="button" role="tab">
-                                                    <span class="menu-icon">
-                                                        <i class="feather-cast"></i>
-                                                    </span>
-                                                    <span class="menu-title">Projects</span>
-                                                </button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#v-pills-services" type="button" role="tab">
-                                                    <span class="menu-icon">
-                                                        <i class="feather-check-square"></i>
-                                                    </span>
-                                                    <span class="menu-title">Services</span>
-                                                </button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#v-pills-features" type="button" role="tab">
-                                                    <span class="menu-icon">
-                                                        <i class="feather-airplay"></i>
-                                                    </span>
-                                                    <span class="menu-title">Features</span>
-                                                </button>
-                                            </li>
-                                            <li class="nav-item" role="presentation">
-                                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#v-pills-blogs" type="button" role="tab">
-                                                    <span class="menu-icon">
-                                                        <i class="feather-bold"></i>
-                                                    </span>
-                                                    <span class="menu-title">Blogs</span>
-                                                </button>
-                                            </li>
-                                        </ul>
-                                        <!-- Tab panes -->
-                                        <div class="tab-content nxl-mega-menu-miscellaneous-content">
-                                            <div class="tab-pane fade active show" id="v-pills-projects" role="tabpanel">
-                                                <div class="row g-4">
-                                                    <div class="col-xxl-2 d-lg-none d-xxl-block">
-                                                        <h6 class="dropdown-item-title">Categories</h6>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Support</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Services</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Applicatios</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">eCommerce</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Development</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Miscellaneous</a>
-                                                    </div>
-                                                    <div class="col-xxl-10">
-                                                        <div class="row g-4">
-                                                            <div class="col-xl-6">
-                                                                <div class="d-lg-flex align-items-center gap-3">
-                                                                    <div class="wd-150 rounded-3">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/1.jpg" alt="" class="img-fluid rounded-3" />
-                                                                    </div>
-                                                                    <div class="mt-3 mt-lg-0 ms-lg-3 item-text">
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Shopify eCommerce Store</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint nam ullam iure eum sed rerum libero quis doloremque maiores veritatis?</p>
-                                                                        <div class="hstack gap-2 mt-3">
-                                                                            <div class="avatar-image avatar-sm">
-                                                                                <img src="{{ asset('admin_template') }}/assets/images/avatar/1.png" alt="" class="img-fluid" />
-                                                                            </div>
-                                                                            <a href="javascript:void(0);" class="fs-12">{{ Auth::user()->name }}</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-6">
-                                                                <div class="d-lg-flex align-items-center gap-3">
-                                                                    <div class="wd-150 rounded-3">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/2.jpg" alt="" class="img-fluid rounded-3" />
-                                                                    </div>
-                                                                    <div class="mt-3 mt-lg-0 ms-lg-3 item-text">
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">iOS Apps Development</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint nam ullam iure eum sed rerum libero quis doloremque maiores veritatis?</p>
-                                                                        <div class="hstack gap-2 mt-3">
-                                                                            <div class="avatar-image avatar-sm">
-                                                                                <img src="{{ asset('admin_template') }}/assets/images/avatar/2.png" alt="" class="img-fluid" />
-                                                                            </div>
-                                                                            <a href="javascript:void(0);" class="fs-12">Green Cute</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-6">
-                                                                <div class="d-lg-flex align-items-center gap-3">
-                                                                    <div class="wd-150 rounded-3">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/3.jpg" alt="" class="img-fluid rounded-3" />
-                                                                    </div>
-                                                                    <div class="mt-3 mt-lg-0 ms-lg-3 item-text">
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Figma Dashboard Design</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint nam ullam iure eum sed rerum libero quis doloremque maiores veritatis?</p>
-                                                                        <div class="hstack gap-2 mt-3">
-                                                                            <div class="avatar-image avatar-sm">
-                                                                                <img src="{{ asset('admin_template') }}/assets/images/avatar/3.png" alt="" class="img-fluid" />
-                                                                            </div>
-                                                                            <a href="javascript:void(0);" class="fs-12">Malanie Hanvey</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-6">
-                                                                <div class="d-lg-flex align-items-center gap-3">
-                                                                    <div class="wd-150 rounded-3">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/4.jpg" alt="" class="img-fluid rounded-3" />
-                                                                    </div>
-                                                                    <div class="mt-3 mt-lg-0 ms-lg-3 item-text">
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">React Dashboard Design</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint nam ullam iure eum sed rerum libero quis doloremque maiores veritatis?</p>
-                                                                        <div class="hstack gap-2 mt-3">
-                                                                            <div class="avatar-image avatar-sm">
-                                                                                <img src="{{ asset('admin_template') }}/assets/images/avatar/4.png" alt="" class="img-fluid" />
-                                                                            </div>
-                                                                            <a href="javascript:void(0);" class="fs-12">Kenneth Hune</a>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-services" role="tabpanel">
-                                                <div class="row g-4 nxl-mega-menu-miscellaneous-services">
-                                                    <div class="col-xl-8">
-                                                        <div class="row g-4">
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg rounded bg-primary text-white">
-                                                                        <i class="feather-bar-chart-2 mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Analytics Services</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg rounded bg-danger text-white">
-                                                                        <i class="feather-feather mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Content Writing</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg rounded bg-warning text-white">
-                                                                        <i class="feather-bell mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">SEO (Search Engine Optimization)</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg rounded bg-success text-white">
-                                                                        <i class="feather-shield mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Security Services</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg rounded bg-teal text-white">
-                                                                        <i class="feather-shopping-cart mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">eCommerce Services</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg rounded bg-dark text-white">
-                                                                        <i class="feather-life-buoy mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Support Services</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-12">
-                                                                <div class="p-3 bg-soft-dark text-dark rounded d-lg-flex align-items-center justify-content-between">
-                                                                    <div class="fs-13">
-                                                                        <i class="feather-star me-2"></i>
-                                                                        <span>View all services on Duralux.</span>
-                                                                    </div>
-                                                                    <div class="mt-2 mt-lg-0">
-                                                                        <a href="javascript:void(0);" class="fs-13 text-primary">Learn More &rarr;</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xl-4">
-                                                        <div id="carouselServicesCaptions" class="carousel slide" data-bs-ride="carousel">
-                                                            <div class="carousel-indicators">
-                                                                <button type="button" data-bs-target="#carouselServicesCaptions" data-bs-slide-to="0" class="active" aria-current="true"></button>
-                                                                <button type="button" data-bs-target="#carouselServicesCaptions" data-bs-slide-to="1"></button>
-                                                                <button type="button" data-bs-target="#carouselServicesCaptions" data-bs-slide-to="2"></button>
-                                                                <button type="button" data-bs-target="#carouselServicesCaptions" data-bs-slide-to="3"></button>
-                                                                <button type="button" data-bs-target="#carouselServicesCaptions" data-bs-slide-to="4"></button>
-                                                                <button type="button" data-bs-target="#carouselServicesCaptions" data-bs-slide-to="5"></button>
-                                                            </div>
-                                                            <div class="carousel-inner rounded-3">
-                                                                <div class="carousel-item active">
-                                                                    <div class="nxl-mega-menu-image">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/6.jpg" alt="" class="img-fluid d-block w-100" />
-                                                                    </div>
-                                                                    <div class="carousel-caption">
-                                                                        <h5 class="carousel-caption-title text-truncate-1-line">Shopify eCommerce Store</h5>
-                                                                        <p class="carousel-caption-desc">Some representative placeholder content for the first slide.</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="carousel-item">
-                                                                    <div class="nxl-mega-menu-image">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/5.jpg" alt="" class="img-fluid d-block w-100" />
-                                                                    </div>
-                                                                    <div class="carousel-caption">
-                                                                        <h5 class="carousel-caption-title text-truncate-1-line">iOS Apps Development</h5>
-                                                                        <p class="carousel-caption-desc">Some representative placeholder content for the second slide.</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="carousel-item">
-                                                                    <div class="nxl-mega-menu-image">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/4.jpg" alt="" class="img-fluid d-block w-100" />
-                                                                    </div>
-                                                                    <div class="carousel-caption">
-                                                                        <h5 class="carousel-caption-title text-truncate-1-line">Figma Dashboard Design</h5>
-                                                                        <p class="carousel-caption-desc">Some representative placeholder content for the third slide.</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="carousel-item">
-                                                                    <div class="nxl-mega-menu-image">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/3.jpg" alt="" class="img-fluid d-block w-100" />
-                                                                    </div>
-                                                                    <div class="carousel-caption">
-                                                                        <h5 class="carousel-caption-title text-truncate-1-line">React Dashboard Design</h5>
-                                                                        <p class="carousel-caption-desc">Some representative placeholder content for the third slide.</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="carousel-item">
-                                                                    <div class="nxl-mega-menu-image">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/2.jpg" alt="" class="img-fluid d-block w-100" />
-                                                                    </div>
-                                                                    <div class="carousel-caption">
-                                                                        <h5 class="carousel-caption-title text-truncate-1-line">Standup Team Meeting</h5>
-                                                                        <p class="carousel-caption-desc">Some representative placeholder content for the third slide.</p>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="carousel-item">
-                                                                    <div class="nxl-mega-menu-image">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/1.jpg" alt="" class="img-fluid d-block w-100" />
-                                                                    </div>
-                                                                    <div class="carousel-caption">
-                                                                        <h5 class="carousel-caption-title text-truncate-1-line">Zoom Team Meeting</h5>
-                                                                        <p class="carousel-caption-desc">Some representative placeholder content for the third slide.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselServicesCaptions" data-bs-slide="prev">
-                                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                                <span class="visually-hidden">Previous</span>
-                                                            </button>
-                                                            <button class="carousel-control-next" type="button" data-bs-target="#carouselServicesCaptions" data-bs-slide="next">
-                                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                                <span class="visually-hidden">Next</span>
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-features" role="tabpanel">
-                                                <div class="row g-4 nxl-mega-menu-miscellaneous-features">
-                                                    <div class="col-xl-8">
-                                                        <div class="row g-4">
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg bg-soft-primary text-primary border-soft-primary rounded">
-                                                                        <i class="feather-bell mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Notifications</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg bg-soft-danger text-danger border-soft-danger rounded">
-                                                                        <i class="feather-bar-chart-2 mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Analytics</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg bg-soft-success text-success border-soft-success rounded">
-                                                                        <i class="feather-link-2 mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Ingetrations</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg bg-soft-indigo text-indigo border-soft-indigo rounded">
-                                                                        <i class="feather-book mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Documentations</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg bg-soft-warning text-warning border-soft-warning rounded">
-                                                                        <i class="feather-shield mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Security</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="d-flex align-items-start gap-3">
-                                                                    <div class="avatar-text avatar-lg bg-soft-teal text-teal border-soft-teal rounded">
-                                                                        <i class="feather-life-buoy mx-auto"></i>
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Support</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum dolor sit amet consectetur adipisicing elit Unde numquam rem dignissimos. elit Unde numquam rem dignissimos.</p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xxl-3 offset-xxl-1 col-xl-4">
-                                                        <div class="nxl-mega-menu-image">
-                                                            <img src="{{ asset('admin_template') }}/assets/images/banner/1.jpg" alt="" class="img-fluid" />
-                                                        </div>
-                                                        <div class="mt-4">
-                                                            <a href="mailto:theme_ocean@gmail.com" class="fs-13 fw-bold">View all features on Duralux &rarr;</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="v-pills-blogs" role="tabpanel">
-                                                <div class="row g-4">
-                                                    <div class="col-xxl-2 d-lg-none d-xxl-block">
-                                                        <h6 class="dropdown-item-title">Categories</h6>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Support</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Services</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Applicatios</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">eCommerce</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Development</a>
-                                                        <a href="javascript:void(0);" class="dropdown-item">Miscellaneous</a>
-                                                    </div>
-                                                    <div class="col-xxl-10">
-                                                        <div class="row g-4">
-                                                            <div class="col-xxl-4 col-lg-6">
-                                                                <div class="d-flex align-items-center gap-3">
-                                                                    <div class="wd-100 rounded-3">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/1.jpg" alt="" class="img-fluid rounded-3 border border-3" />
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Lorem ipsum dolor sit</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius dolor quo commodi nisi animi error minus quia aliquam.</p>
-                                                                        <span class="fs-11 text-gray-500">26 March, 2023</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xxl-4 col-lg-6">
-                                                                <div class="d-flex align-items-center gap-3">
-                                                                    <div class="wd-100 rounded-3">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/2.jpg" alt="" class="img-fluid rounded-3 border border-3" />
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Lorem ipsum dolor sit</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius dolor quo commodi nisi animi error minus quia aliquam.</p>
-                                                                        <span class="fs-11 text-gray-500">26 March, 2023</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xxl-4 col-lg-6">
-                                                                <div class="d-flex align-items-center gap-3">
-                                                                    <div class="wd-100 rounded-3">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/3.jpg" alt="" class="img-fluid rounded-3 border border-3" />
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Lorem ipsum dolor sit</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius dolor quo commodi nisi animi error minus quia aliquam.</p>
-                                                                        <span class="fs-11 text-gray-500">26 March, 2023</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xxl-4 col-lg-6">
-                                                                <div class="d-flex align-items-center gap-3">
-                                                                    <div class="wd-100 rounded-3">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/4.jpg" alt="" class="img-fluid rounded-3 border border-3" />
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Lorem ipsum dolor sit</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius dolor quo commodi nisi animi error minus quia aliquam.</p>
-                                                                        <span class="fs-11 text-gray-500">26 March, 2023</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xxl-4 col-lg-6">
-                                                                <div class="d-flex align-items-center gap-3">
-                                                                    <div class="wd-100 rounded-3">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/5.jpg" alt="" class="img-fluid rounded-3 border border-3" />
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Lorem ipsum dolor sit</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius dolor quo commodi nisi animi error minus quia aliquam.</p>
-                                                                        <span class="fs-11 text-gray-500">26 March, 2023</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xxl-4 col-lg-6">
-                                                                <div class="d-flex align-items-center gap-3">
-                                                                    <div class="wd-100 rounded-3">
-                                                                        <img src="{{ asset('admin_template') }}/assets/images/banner/6.jpg" alt="" class="img-fluid rounded-3 border border-3" />
-                                                                    </div>
-                                                                    <div>
-                                                                        <a href="javascript:void(0);">
-                                                                            <h6 class="menu-item-heading text-truncate-1-line">Lorem ipsum dolor sit</h6>
-                                                                        </a>
-                                                                        <p class="fs-12 fw-normal text-muted mb-0 text-truncate-2-line">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eius dolor quo commodi nisi animi error minus quia aliquam.</p>
-                                                                        <span class="fs-11 text-gray-500">26 March, 2023</span>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-12">
-                                                                <div class="p-3 bg-soft-dark text-dark rounded d-flex align-items-center justify-content-between gap-4">
-                                                                    <div class="fs-13 text-truncate-1-line">
-                                                                        <i class="feather-star me-2"></i>
-                                                                        <strong>Version 2.3.2 is out!</strong>
-                                                                        <span>Learn more about our news and schedule reporting.</span>
-                                                                    </div>
-                                                                    <div class="wd-100 text-end">
-                                                                        <a href="javascript:void(0);" class="fs-13 text-primary">Learn More &rarr;</a>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--! [End] v-pills-miscellaneous !-->
-                                </div>
-                                <!--! [End] nxl-mega-menu-tabs-content !-->
-                            </div>
-                        </div>
-                    </div>
-                    <!--! [End] nxl-h-item nxl-mega-menu !-->
-                </div>
-                <!--! [End] nxl-lavel-mega-menu-wrapper !-->
-            </div>
-            <!--! [End] nxl-lavel-mega-menu !-->
-        </div>
-        <!--! [End] Header Left !-->
-        <!--! [Start] Header Right !-->
-        <div class="header-right ms-auto">
-            <div class="d-flex align-items-center">
-                <div class="dropdown nxl-h-item nxl-header-search">
-                    <a href="javascript:void(0);" class="nxl-head-link me-0" data-bs-toggle="dropdown" data-bs-auto-close="outside">
-                        <i class="feather-search"></i>
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-search-dropdown">
-                        <div class="input-group search-form">
-                            <span class="input-group-text">
-                                <i class="feather-search fs-6 text-muted"></i>
-                            </span>
-                            <input type="text" class="form-control search-input-field" placeholder="Search...." />
-                            <span class="input-group-text">
-                                <button type="button" class="btn-close"></button>
-                            </span>
-                        </div>
-                        <div class="dropdown-divider mt-0"></div>
-                        <div class="search-items-wrapper">
-                            <div class="searching-for px-4 py-2">
-                                <p class="fs-11 fw-medium text-muted">I'm searching for...</p>
-                                <div class="d-flex flex-wrap gap-1">
-                                    <a href="javascript:void(0);" class="flex-fill border rounded py-1 px-2 text-center fs-11 fw-semibold">Projects</a>
-                                    <a href="javascript:void(0);" class="flex-fill border rounded py-1 px-2 text-center fs-11 fw-semibold">Leads</a>
-                                    <a href="javascript:void(0);" class="flex-fill border rounded py-1 px-2 text-center fs-11 fw-semibold">Contacts</a>
-                                    <a href="javascript:void(0);" class="flex-fill border rounded py-1 px-2 text-center fs-11 fw-semibold">Inbox</a>
-                                    <a href="javascript:void(0);" class="flex-fill border rounded py-1 px-2 text-center fs-11 fw-semibold">Invoices</a>
-                                    <a href="javascript:void(0);" class="flex-fill border rounded py-1 px-2 text-center fs-11 fw-semibold">Tasks</a>
-                                    <a href="javascript:void(0);" class="flex-fill border rounded py-1 px-2 text-center fs-11 fw-semibold">Customers</a>
-                                    <a href="javascript:void(0);" class="flex-fill border rounded py-1 px-2 text-center fs-11 fw-semibold">Notes</a>
-                                    <a href="javascript:void(0);" class="flex-fill border rounded py-1 px-2 text-center fs-11 fw-semibold">Affiliate</a>
-                                    <a href="javascript:void(0);" class="flex-fill border rounded py-1 px-2 text-center fs-11 fw-semibold">Storage</a>
-                                    <a href="javascript:void(0);" class="flex-fill border rounded py-1 px-2 text-center fs-11 fw-semibold">Calendar</a>
-                                </div>
-                            </div>
-                            <div class="dropdown-divider"></div>
-                            <div class="recent-result px-4 py-2">
-                                <h4 class="fs-13 fw-normal text-gray-600 mb-3">Recnet <span class="badge small bg-gray-200 rounded ms-1 text-dark">3</span></h4>
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-text rounded">
-                                            <i class="feather-airplay"></i>
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">CRM dashboard redesign</a>
-                                            <p class="fs-11 text-muted mb-0">Home / project / crm</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <a href="javascript:void(0);" class="badge border rounded text-dark">/<i class="feather-command ms-1 fs-10"></i></a>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-text rounded">
-                                            <i class="feather-file-plus"></i>
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">Create new document</a>
-                                            <p class="fs-11 text-muted mb-0">Home / tasks / docs</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <a href="javascript:void(0);" class="badge border rounded text-dark">N /<i class="feather-command ms-1 fs-10"></i></a>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-text rounded">
-                                            <i class="feather-user-plus"></i>
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">Invite project colleagues</a>
-                                            <p class="fs-11 text-muted mb-0">Home / project / invite</p>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <a href="javascript:void(0);" class="badge border rounded text-dark">P /<i class="feather-command ms-1 fs-10"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dropdown-divider my-3"></div>
-                            <div class="users-result px-4 py-2">
-                                <h4 class="fs-13 fw-normal text-gray-600 mb-3">Users <span class="badge small bg-gray-200 rounded ms-1 text-dark">5</span></h4>
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-image rounded">
-                                            <img src="{{ asset('admin_template') }}/assets/images/avatar/1.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">{{ Auth::user()->name }}</a>
-                                            <p class="fs-11 text-muted mb-0">alex.della@outlook.com</p>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="avatar-text avatar-md">
-                                        <i class="feather-chevron-right"></i>
-                                    </a>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-image rounded">
-                                            <img src="{{ asset('admin_template') }}/assets/images/avatar/2.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">Green Cute</a>
-                                            <p class="fs-11 text-muted mb-0">green.cute@outlook.com</p>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="avatar-text avatar-md">
-                                        <i class="feather-chevron-right"></i>
-                                    </a>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-image rounded">
-                                            <img src="{{ asset('admin_template') }}/assets/images/avatar/3.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">Malanie Hanvey</a>
-                                            <p class="fs-11 text-muted mb-0">malanie.anvey@outlook.com</p>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="avatar-text avatar-md">
-                                        <i class="feather-chevron-right"></i>
-                                    </a>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-image rounded">
-                                            <img src="{{ asset('admin_template') }}/assets/images/avatar/4.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">Kenneth Hune</a>
-                                            <p class="fs-11 text-muted mb-0">kenth.hune@outlook.com</p>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="avatar-text avatar-md">
-                                        <i class="feather-chevron-right"></i>
-                                    </a>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-0">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-image rounded">
-                                            <img src="{{ asset('admin_template') }}/assets/images/avatar/5.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">Archie Cantones</a>
-                                            <p class="fs-11 text-muted mb-0">archie.cones@outlook.com</p>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="avatar-text avatar-md">
-                                        <i class="feather-chevron-right"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="dropdown-divider my-3"></div>
-                            <div class="file-result px-4 py-2">
-                                <h4 class="fs-13 fw-normal text-gray-600 mb-3">Files <span class="badge small bg-gray-200 rounded ms-1 text-dark">3</span></h4>
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-image bg-gray-200 rounded">
-                                            <img src="{{ asset('admin_template') }}/assets/images/file-icons/css.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">Project Style CSS</a>
-                                            <p class="fs-11 text-muted mb-0">05.74 MB</p>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="avatar-text avatar-md">
-                                        <i class="feather-download"></i>
-                                    </a>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-4">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-image bg-gray-200 rounded">
-                                            <img src="{{ asset('admin_template') }}/assets/images/file-icons/zip.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">Dashboard Project Zip</a>
-                                            <p class="fs-11 text-muted mb-0">46.83 MB</p>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="avatar-text avatar-md">
-                                        <i class="feather-download"></i>
-                                    </a>
-                                </div>
-                                <div class="d-flex align-items-center justify-content-between mb-0">
-                                    <div class="d-flex align-items-center gap-3">
-                                        <div class="avatar-image bg-gray-200 rounded">
-                                            <img src="{{ asset('admin_template') }}/assets/images/file-icons/pdf.png" alt="" class="img-fluid" />
-                                        </div>
-                                        <div>
-                                            <a href="javascript:void(0);" class="font-body fw-bold d-block mb-1">Project Document PDF</a>
-                                            <p class="fs-11 text-muted mb-0">12.85 MB</p>
-                                        </div>
-                                    </div>
-                                    <a href="javascript:void(0);" class="avatar-text avatar-md">
-                                        <i class="feather-download"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="dropdown-divider mt-3 mb-0"></div>
-                            <a href="javascript:void(0);" class="p-3 fs-10 fw-bold text-uppercase text-center d-block">Loar More</a>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="nxl-h-item d-none d-sm-flex">
-                    <div class="full-screen-switcher">
-                        <a href="javascript:void(0);" class="nxl-head-link me-0" onclick="$('body').fullScreenHelper('toggle');">
-                            <i class="feather-maximize maximize"></i>
-                            <i class="feather-minimize minimize"></i>
-                        </a>
+            <!-- Sidebar Menu Toggle Button -->
+            <button class="button-toggle-menu">
+                <i class="ri-menu-line"></i>
+            </button>
+
+            <!-- Horizontal Menu Toggle Button -->
+            <button class="navbar-toggle" data-bs-toggle="collapse" data-bs-target="#topnav-menu-content">
+                <div class="lines">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </button>
+
+            <!-- Topbar Search Form -->
+            <div class="app-search d-none d-lg-block">
+                <form>
+                    <div class="input-group">
+                        <input type="search" class="form-control" placeholder="Search...">
+                        <span class="ri-search-line search-icon text-muted"></span>
                     </div>
-                </div>
-
-                <div class="nxl-h-item dark-light-theme" style="margin-right: 20px">
-                    <a href="javascript:void(0);" class="nxl-head-link me-0 dark-button">
-                        <i class="feather-moon"></i>
-                    </a>
-                    <a href="javascript:void(0);" class="nxl-head-link me-0 light-button" style="display: none">
-                        <i class="feather-sun"></i>
-                    </a>
-                </div>
-
-
-                <div class="dropdown nxl-h-item">
-                    <a href="javascript:void(0);" data-bs-toggle="dropdown" role="button" data-bs-auto-close="outside">
-                        <img src="{{ asset('admin_template') }}/assets/images/avatar/1.png" alt="user-image" class="img-fluid user-avtar me-0" />
-                    </a>
-                    <div class="dropdown-menu dropdown-menu-end nxl-h-dropdown nxl-user-dropdown">
-                        <div class="dropdown-header">
-                            <div class="d-flex align-items-center">
-                                <img src="{{ asset('admin_template') }}/assets/images/avatar/1.png" alt="user-image" class="img-fluid user-avtar" />
-                                <div>
-                                    <h6 class="text-dark mb-0">{{ Auth::user()->name }} <span class="badge bg-soft-success text-success ms-1">PRO</span></h6>
-                                    <span class="fs-12 fw-medium text-muted">{{ Auth::user()->email }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="dropdown">
-                                <span class="hstack">
-                                    <i class="wd-10 ht-10 border border-2 border-gray-1 bg-success rounded-circle me-2"></i>
-                                    <span>Active</span>
-                                </span>
-                                <i class="feather-chevron-right ms-auto me-0"></i>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-warning rounded-circle me-2"></i>
-                                        <span>Always</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-success rounded-circle me-2"></i>
-                                        <span>Active</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-danger rounded-circle me-2"></i>
-                                        <span>Bussy</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-info rounded-circle me-2"></i>
-                                        <span>Inactive</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-dark rounded-circle me-2"></i>
-                                        <span>Disabled</span>
-                                    </span>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-10 ht-10 border border-2 border-gray-1 bg-primary rounded-circle me-2"></i>
-                                        <span>Cutomization</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown">
-                            <a href="javascript:void(0);" class="dropdown-item" data-bs-toggle="dropdown">
-                                <span class="hstack">
-                                    <i class="feather-dollar-sign me-2"></i>
-                                    <span>Subscriptions</span>
-                                </span>
-                                <i class="feather-chevron-right ms-auto me-0"></i>
-                            </a>
-                            <div class="dropdown-menu">
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Plan</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Billings</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Referrals</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Payments</span>
-                                    </span>
-                                </a>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Statements</span>
-                                    </span>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a href="javascript:void(0);" class="dropdown-item">
-                                    <span class="hstack">
-                                        <i class="wd-5 ht-5 bg-gray-500 rounded-circle me-3"></i>
-                                        <span>Subscriptions</span>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <i class="feather-user"></i>
-                            <span>Profile Details</span>
-                        </a>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <i class="feather-activity"></i>
-                            <span>Activity Feed</span>
-                        </a>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <i class="feather-dollar-sign"></i>
-                            <span>Billing Details</span>
-                        </a>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <i class="feather-bell"></i>
-                            <span>Notifications</span>
-                        </a>
-                        <a href="javascript:void(0);" class="dropdown-item">
-                            <i class="feather-settings"></i>
-                            <span>Account Settings</span>
-                        </a>
-                        <div class="dropdown-divider"></div>
-
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); this.closest('form').submit();">
-                                <i class="feather-log-out"></i>
-                                <span>Logout</span>
-                            </a>
-                        </form>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
-        <!--! [End] Header Right !-->
+
+        <ul class="topbar-menu d-flex align-items-center gap-3">
+            <li class="dropdown d-lg-none">
+                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="false" aria-expanded="false">
+                    <i class="ri-search-line fs-22"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-animated dropdown-lg p-0">
+                    <form class="p-3">
+                        <input type="search" class="form-control" placeholder="Search ..."
+                            aria-label="Recipient's username">
+                    </form>
+                </div>
+            </li>
+
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="false" aria-expanded="false">
+                    <img src="{{ asset('velonic_admin') }}/assets/images/flags/us.jpg" alt="user-image" class="me-0 me-sm-1" height="12">
+                    <span class="align-middle d-none d-lg-inline-block">English</span> <i
+                        class="ri-arrow-down-s-line d-none d-sm-inline-block align-middle"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <img src="{{ asset('velonic_admin') }}/assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span
+                            class="align-middle">German</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <img src="{{ asset('velonic_admin') }}/assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span
+                            class="align-middle">Italian</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <img src="{{ asset('velonic_admin') }}/assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span
+                            class="align-middle">Spanish</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item">
+                        <img src="{{ asset('velonic_admin') }}/assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span
+                            class="align-middle">Russian</span>
+                    </a>
+
+                </div>
+            </li>
+
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="false" aria-expanded="false">
+                    <i class="ri-mail-line fs-22"></i>
+                    <span class="noti-icon-badge badge text-bg-purple">4</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg py-0">
+                    <div class="p-2 border-top-0 border-start-0 border-end-0 border-dashed border">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="m-0 fs-16 fw-semibold"> Messages</h6>
+                            </div>
+                            <div class="col-auto">
+                                <a href="javascript: void(0);" class="text-dark text-decoration-underline">
+                                    <small>Clear All</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 300px;" data-simplebar>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);"
+                            class="dropdown-item p-0 notify-item read-noti card m-0 shadow-none">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="notify-icon">
+                                            <img src="{{ asset('velonic_admin') }}/assets/images/users/avatar-1.jpg" class="img-fluid rounded-circle"
+                                                alt="" />
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 text-truncate ms-2">
+                                        <h5 class="noti-item-title fw-semibold fs-14">Cristina Pride <small
+                                                class="fw-normal text-muted float-end ms-1">1 day ago</small></h5>
+                                        <small class="noti-item-subtitle text-muted">Hi, How are you? What about our
+                                            next meeting</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);"
+                            class="dropdown-item p-0 notify-item read-noti card m-0 shadow-none">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="notify-icon">
+                                            <img src="{{ asset('velonic_admin') }}/assets/images/users/avatar-2.jpg" class="img-fluid rounded-circle"
+                                                alt="" />
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 text-truncate ms-2">
+                                        <h5 class="noti-item-title fw-semibold fs-14">Sam Garret <small
+                                                class="fw-normal text-muted float-end ms-1">2 day ago</small></h5>
+                                        <small class="noti-item-subtitle text-muted">Yeah everything is fine</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);"
+                            class="dropdown-item p-0 notify-item read-noti card m-0 shadow-none">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="notify-icon">
+                                            <img src="{{ asset('velonic_admin') }}/assets/images/users/avatar-3.jpg" class="img-fluid rounded-circle"
+                                                alt="" />
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 text-truncate ms-2">
+                                        <h5 class="noti-item-title fw-semibold fs-14">Karen Robinson <small
+                                                class="fw-normal text-muted float-end ms-1">2 day ago</small></h5>
+                                        <small class="noti-item-subtitle text-muted">Wow that's great</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);"
+                            class="dropdown-item p-0 notify-item read-noti card m-0 shadow-none">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="notify-icon">
+                                            <img src="{{ asset('velonic_admin') }}/assets/images/users/avatar-4.jpg" class="img-fluid rounded-circle"
+                                                alt="" />
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 text-truncate ms-2">
+                                        <h5 class="noti-item-title fw-semibold fs-14">Sherry Marshall <small
+                                                class="fw-normal text-muted float-end ms-1">3 day ago</small></h5>
+                                        <small class="noti-item-subtitle text-muted">Hi, How are you? What about our
+                                            next meeting</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);"
+                            class="dropdown-item p-0 notify-item read-noti card m-0 shadow-none">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center">
+                                    <div class="flex-shrink-0">
+                                        <div class="notify-icon">
+                                            <img src="{{ asset('velonic_admin') }}/assets/images/users/avatar-5.jpg" class="img-fluid rounded-circle"
+                                                alt="" />
+                                        </div>
+                                    </div>
+                                    <div class="flex-grow-1 text-truncate ms-2">
+                                        <h5 class="noti-item-title fw-semibold fs-14">Shawn Millard <small
+                                                class="fw-normal text-muted float-end ms-1">4 day ago</small></h5>
+                                        <small class="noti-item-subtitle text-muted">Yeah everything is fine</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- All-->
+                    <a href="javascript:void(0);"
+                        class="dropdown-item text-center text-primary text-decoration-underline fw-bold notify-item border-top border-light py-2">
+                        View All
+                    </a>
+
+                </div>
+            </li>
+
+            <li class="dropdown notification-list">
+                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="false" aria-expanded="false">
+                    <i class="ri-notification-3-line fs-22"></i>
+                    <span class="noti-icon-badge badge text-bg-pink">3</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated dropdown-lg py-0">
+                    <div class="p-2 border-top-0 border-start-0 border-end-0 border-dashed border">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="m-0 fs-16 fw-semibold"> Notification</h6>
+                            </div>
+                            <div class="col-auto">
+                                <a href="javascript: void(0);" class="text-dark text-decoration-underline">
+                                    <small>Clear All</small>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="max-height: 300px;" data-simplebar>
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-primary-subtle">
+                                <i class="mdi mdi-comment-account-outline text-primary"></i>
+                            </div>
+                            <p class="notify-details">Caleb Flakelar commented on Admin
+                                <small class="noti-time">1 min ago</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-warning-subtle">
+                                <i class="mdi mdi-account-plus text-warning"></i>
+                            </div>
+                            <p class="notify-details">New user registered.
+                                <small class="noti-time">5 hours ago</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-danger-subtle">
+                                <i class="mdi mdi-heart text-danger"></i>
+                            </div>
+                            <p class="notify-details">Carlos Crouch liked
+                                <small class="noti-time">3 days ago</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-pink-subtle">
+                                <i class="mdi mdi-comment-account-outline text-pink"></i>
+                            </div>
+                            <p class="notify-details">Caleb Flakelar commented on Admi
+                                <small class="noti-time">4 days ago</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-purple-subtle">
+                                <i class="mdi mdi-account-plus text-purple"></i>
+                            </div>
+                            <p class="notify-details">New user registered.
+                                <small class="noti-time">7 days ago</small>
+                            </p>
+                        </a>
+
+                        <!-- item-->
+                        <a href="javascript:void(0);" class="dropdown-item notify-item">
+                            <div class="notify-icon bg-success-subtle">
+                                <i class="mdi mdi-heart text-success"></i>
+                            </div>
+                            <p class="notify-details">Carlos Crouch liked <b>Admin</b>.
+                                <small class="noti-time">Carlos Crouch liked</small>
+                            </p>
+                        </a>
+                    </div>
+
+                    <!-- All-->
+                    <a href="javascript:void(0);"
+                        class="dropdown-item text-center text-primary text-decoration-underline fw-bold notify-item border-top border-light py-2">
+                        View All
+                    </a>
+
+                </div>
+            </li>
+
+            <li class="d-none d-sm-inline-block">
+                <a class="nav-link" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
+                    <i class="ri-settings-3-line fs-22"></i>
+                </a>
+            </li>
+
+            <li class="d-none d-sm-inline-block">
+                <div class="nav-link" id="light-dark-mode">
+                    <i class="ri-moon-line fs-22"></i>
+                </div>
+            </li>
+
+            <li class="dropdown">
+                <a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="false" aria-expanded="false">
+                    <span class="account-user-avatar">
+                        <img src="{{ asset('velonic_admin') }}/assets/images/users/avatar-1.jpg" alt="user-image" width="32" class="rounded-circle">
+                    </span>
+                    <span class="d-lg-block d-none">
+                        <h5 class="my-0 fw-normal">Thomson <i
+                                class="ri-arrow-down-s-line d-none d-sm-inline-block align-middle"></i></h5>
+                    </span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated profile-dropdown">
+                    <!-- item-->
+                    <div class=" dropdown-header noti-title">
+                        <h6 class="text-overflow m-0">Welcome !</h6>
+                    </div>
+
+                    <!-- item-->
+                    <a href="pages-profile.html" class="dropdown-item">
+                        <i class="ri-account-circle-line fs-18 align-middle me-1"></i>
+                        <span>My Account</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="pages-profile.html" class="dropdown-item">
+                        <i class="ri-settings-4-line fs-18 align-middle me-1"></i>
+                        <span>Settings</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="pages-faq.html" class="dropdown-item">
+                        <i class="ri-customer-service-2-line fs-18 align-middle me-1"></i>
+                        <span>Support</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="auth-lock-screen.html" class="dropdown-item">
+                        <i class="ri-lock-password-line fs-18 align-middle me-1"></i>
+                        <span>Lock Screen</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="auth-logout-2.html" class="dropdown-item">
+                        <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
     </div>
-</header>
+</div>
+<!-- ========== Topbar End ========== -->

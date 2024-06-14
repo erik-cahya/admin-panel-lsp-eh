@@ -1,247 +1,362 @@
-<div class="navbar-content">
-    <ul class="nxl-navbar">
-        <li class="nxl-item nxl-caption">
-            <label>Navigation</label>
-        </li>
+<!-- ========== Left Sidebar Start ========== -->
+<div class="leftside-menu">
 
+    <!-- Brand Logo Light -->
+    <a href="index.html" class="logo logo-light">
+        <span class="logo-lg">
+            <img src="{{ asset('velonic_admin') }}/assets/images/logo.png" alt="logo">
+        </span>
+        <span class="logo-sm">
+            <img src="{{ asset('velonic_admin') }}/assets/images/logo-sm.png" alt="small logo">
+        </span>
+    </a>
 
+    <!-- Brand Logo Dark -->
+    <a href="index.html" class="logo logo-dark">
+        <span class="logo-lg">
+            <img src="{{ asset('velonic_admin') }}/assets/images/logo-dark.png" alt="dark logo">
+        </span>
+        <span class="logo-sm">
+            <img src="{{ asset('velonic_admin') }}/assets/images/logo-sm.png" alt="small logo">
+        </span>
+    </a>
 
-        <li class="nxl-item nxl-hasmenu {{ request()->segment(1)==='dashboard' ? 'active nxl-trigger' : '' }} ">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-airplay"></i></span>
-                <span class="nxl-mtext">Dashboards</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item {{ request()->segment(1)==='dashboard' ? 'active' : '' }}"><a class="nxl-link" href="/dashboard">CRM</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="/analytics">Analytics</a></li>
-            </ul>
-        </li>
+    <!-- Sidebar -left -->
+    <div class="h-100" id="leftside-menu-container" data-simplebar>
+        <!--- Sidemenu -->
+        <ul class="side-nav">
 
+            <li class="side-nav-title">Main</li>
 
-        <li class="nxl-item nxl-hasmenu {{ request()->segment(1)==='surat-tugas-asesor' ? 'active nxl-trigger' : '' }}">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-file-text"></i></span>
-                <span class="nxl-mtext">Surat Tugas Asesor</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item"><a class="nxl-link" href="{{ route('surat-tugas-asesor.view') }}">List Surat</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="{{ route('surat-tugas-asesor.create') }}">Create Surat</a></li>
-            </ul>
-        </li>
+            <li class="side-nav-item {{ request()->segment(1) === 'dashboard' ? 'menuitem-active' : ''}} ">
+                <a href="index.html" class="side-nav-link ">
+                    <i class="ri-dashboard-3-line"></i>
+                    <span class="badge bg-success float-end">9+</span>
+                    <span> Dashboard </span>
+                </a>
+            </li>
 
+            <li class="side-nav-title">Main Menu</li>
 
-
-
-        {{-- Template Menu --}}
-        <li class="nxl-item nxl-hasmenu">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-cast"></i></span>
-                <span class="nxl-mtext">Reports</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item"><a class="nxl-link" href="reports-sales.html">Sales Report</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="reports-leads.html">Leads Report</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="reports-project.html">Project Report</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="reports-timesheets.html">Timesheets Report</a></li>
-            </ul>
-        </li>
-
-
-
-
-
-
-
-        <li class="nxl-item nxl-hasmenu">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-send"></i></span>
-                <span class="nxl-mtext">Applications</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item"><a class="nxl-link" href="apps-chat.html">Chat</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="apps-email.html">Email</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="apps-tasks.html">Tasks</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="apps-notes.html">Notes</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="apps-storage.html">Storage</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="apps-calendar.html">Calendar</a></li>
-            </ul>
-        </li>
-        <li class="nxl-item nxl-hasmenu">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-at-sign"></i></span>
-                <span class="nxl-mtext">Proposal</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item"><a class="nxl-link" href="proposal.html">Proposal</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="proposal-view.html">Proposal View</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="proposal-edit.html">Proposal Edit</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="proposal-create.html">Proposal Create</a></li>
-            </ul>
-        </li>
-        <li class="nxl-item nxl-hasmenu">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-dollar-sign"></i></span>
-                <span class="nxl-mtext">Payment</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item"><a class="nxl-link" href="payment.html">Payment</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="invoice-view.html">Invoice View</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="invoice-create.html">Invoice Create</a></li>
-            </ul>
-        </li>
-        <li class="nxl-item nxl-hasmenu">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-users"></i></span>
-                <span class="nxl-mtext">Customers</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item"><a class="nxl-link" href="customers.html">Customers</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="customers-view.html">Customers View</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="customers-create.html">Customers Create</a></li>
-            </ul>
-        </li>
-        <li class="nxl-item nxl-hasmenu">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-alert-circle"></i></span>
-                <span class="nxl-mtext">Leads</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item"><a class="nxl-link" href="leads.html">Leads</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="leads-view.html">Leads View</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="leads-create.html">Leads Create</a></li>
-            </ul>
-        </li>
-        <li class="nxl-item nxl-hasmenu">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-briefcase"></i></span>
-                <span class="nxl-mtext">Projects</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item"><a class="nxl-link" href="projects.html">Projects</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="projects-view.html">Projects View</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="projects-create.html">Projects Create</a></li>
-            </ul>
-        </li>
-        <li class="nxl-item nxl-hasmenu">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-layout"></i></span>
-                <span class="nxl-mtext">Widgets</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item"><a class="nxl-link" href="widgets-lists.html">Lists</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="widgets-tables.html">Tables</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="widgets-charts.html">Charts</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="widgets-statistics.html">Statistics</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="widgets-miscellaneous.html">Miscellaneous</a></li>
-            </ul>
-        </li>
-        <li class="nxl-item nxl-hasmenu">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-settings"></i></span>
-                <span class="nxl-mtext">Settings</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item"><a class="nxl-link" href="settings-general.html">General</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-seo.html">SEO</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-tags.html">Tags</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-email.html">Email</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-tasks.html">Tasks</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-leads.html">Leads</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-support.html">Support</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-finance.html">Finance</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-gateways.html">Gateways</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-customers.html">Customers</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-localization.html">Localization</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-recaptcha.html">reCAPTCHA</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="settings-miscellaneous.html">Miscellaneous</a></li>
-            </ul>
-        </li>
-        <li class="nxl-item nxl-hasmenu">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-power"></i></span>
-                <span class="nxl-mtext">Authentication</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item nxl-hasmenu">
-                    <a href="javascript:void(0);" class="nxl-link">
-                        <span class="nxl-mtext">Login</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-                    </a>
-                    <ul class="nxl-submenu">
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-login-cover.html">Cover</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-login-minimal.html">Minimal</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-login-creative.html">Creative</a></li>
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#suratTugasAsesor" aria-expanded="false" aria-controls="suratTugasAsesor" class="side-nav-link">
+                    <i class="ri-briefcase-line"></i>
+                    <span> Surat Tugas Asesor </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="suratTugasAsesor">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="ui-accordions.html">List Surat</a>
+                        </li>
+                        <li>
+                            <a href="ui-alerts.html">Create Surat</a>
+                        </li>
                     </ul>
-                </li>
-                <li class="nxl-item nxl-hasmenu">
-                    <a href="javascript:void(0);" class="nxl-link">
-                        <span class="nxl-mtext">Register</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-                    </a>
-                    <ul class="nxl-submenu">
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-register-cover.html">Cover</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-register-minimal.html">Minimal</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-register-creative.html">Creative</a></li>
+                </div>
+            </li>
+
+
+            <li class="side-nav-title">Components</li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarBaseUI" aria-expanded="false" aria-controls="sidebarBaseUI" class="side-nav-link">
+                    <i class="ri-briefcase-line"></i>
+                    <span> Base UI </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarBaseUI">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="ui-accordions.html">Accordions</a>
+                        </li>
+                        <li>
+                            <a href="ui-alerts.html">Alerts</a>
+                        </li>
+                        <li>
+                            <a href="ui-avatars.html">Avatars</a>
+                        </li>
+                        <li>
+                            <a href="ui-buttons.html">Buttons</a>
+                        </li>
+                        <li>
+                            <a href="ui-badges.html">Badges</a>
+                        </li>
+                        <li>
+                            <a href="ui-breadcrumb.html">Breadcrumb</a>
+                        </li>
+                        <li>
+                            <a href="ui-cards.html">Cards</a>
+                        </li>
+                        <li>
+                            <a href="ui-carousel.html">Carousel</a>
+                        </li>
+                        <li>
+                            <a href="ui-collapse.html">Collapse</a>
+                        </li>
+                        <li>
+                            <a href="ui-dropdowns.html">Dropdowns</a>
+                        </li>
+                        <li>
+                            <a href="ui-embed-video.html">Embed Video</a>
+                        </li>
+                        <li>
+                            <a href="ui-grid.html">Grid</a>
+                        </li>
+                        <li>
+                            <a href="ui-links.html">Links</a>
+                        </li>
+                        <li>
+                            <a href="ui-list-group.html">List Group</a>
+                        </li>
+                        <li>
+                            <a href="ui-modals.html">Modals</a>
+                        </li>
+                        <li>
+                            <a href="ui-notifications.html">Notifications</a>
+                        </li>
+                        <li>
+                            <a href="ui-offcanvas.html">Offcanvas</a>
+                        </li>
+                        <li>
+                            <a href="ui-placeholders.html">Placeholders</a>
+                        </li>
+                        <li>
+                            <a href="ui-pagination.html">Pagination</a>
+                        </li>
+                        <li>
+                            <a href="ui-popovers.html">Popovers</a>
+                        </li>
+                        <li>
+                            <a href="ui-progress.html">Progress</a>
+                        </li>
+                        <li>
+                            <a href="ui-spinners.html">Spinners</a>
+                        </li>
+                        <li>
+                            <a href="ui-tabs.html">Tabs</a>
+                        </li>
+                        <li>
+                            <a href="ui-tooltips.html">Tooltips</a>
+                        </li>
+                        <li>
+                            <a href="ui-typography.html">Typography</a>
+                        </li>
+                        <li>
+                            <a href="ui-utilities.html">Utilities</a>
+                        </li>
                     </ul>
-                </li>
-                <li class="nxl-item nxl-hasmenu">
-                    <a href="javascript:void(0);" class="nxl-link">
-                        <span class="nxl-mtext">Error-404</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-                    </a>
-                    <ul class="nxl-submenu">
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-404-cover.html">Cover</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-404-minimal.html">Minimal</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-404-creative.html">Creative</a></li>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarExtendedUI" aria-expanded="false" aria-controls="sidebarExtendedUI" class="side-nav-link">
+                    <i class="ri-compasses-2-line"></i>
+                    <span> Extended UI </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarExtendedUI">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="extended-portlets.html">Portlets</a>
+                        </li>
+                        <li>
+                            <a href="extended-scrollbar.html">Scrollbar</a>
+                        </li>
+                        <li>
+                            <a href="extended-range-slider.html">Range Slider</a>
+                        </li>
+                        <li>
+                            <a href="extended-scrollspy.html">Scrollspy</a>
+                        </li>
                     </ul>
-                </li>
-                <li class="nxl-item nxl-hasmenu">
-                    <a href="javascript:void(0);" class="nxl-link">
-                        <span class="nxl-mtext">Reset Pass</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-                    </a>
-                    <ul class="nxl-submenu">
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-reset-cover.html">Cover</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-reset-minimal.html">Minimal</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-reset-creative.html">Creative</a></li>
+                </div>
+            </li>
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarIcons" aria-expanded="false" aria-controls="sidebarIcons" class="side-nav-link">
+                    <i class="ri-pencil-ruler-2-line"></i>
+                    <span> Icons </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarIcons">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="icons-remixicons.html">Remix Icons</a>
+                        </li>
+                        <li>
+                            <a href="icons-bootstrap.html">Bootstrap Icons</a>
+                        </li>
+                        <li>
+                            <a href="icons-mdi.html">Material Design Icons</a>
+                        </li>
                     </ul>
-                </li>
-                <li class="nxl-item nxl-hasmenu">
-                    <a href="javascript:void(0);" class="nxl-link">
-                        <span class="nxl-mtext">Verify OTP</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-                    </a>
-                    <ul class="nxl-submenu">
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-verify-cover.html">Cover</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-verify-minimal.html">Minimal</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-verify-creative.html">Creative</a></li>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarCharts" aria-expanded="false" aria-controls="sidebarCharts" class="side-nav-link">
+                    <i class="ri-donut-chart-fill"></i>
+                    <span> Charts </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarCharts">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="charts-apex.html">Apex Charts</a>
+                        </li>
+                        <li>
+                            <a href="charts-chartjs.html">Chartjs</a>
+                        </li>
+                        <li>
+                            <a href="charts-sparklines.html">Sparkline Charts</a>
+                        </li>
                     </ul>
-                </li>
-                <li class="nxl-item nxl-hasmenu">
-                    <a href="javascript:void(0);" class="nxl-link">
-                        <span class="nxl-mtext">Maintenance</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-                    </a>
-                    <ul class="nxl-submenu">
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-maintenance-cover.html">Cover</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-maintenance-minimal.html">Minimal</a></li>
-                        <li class="nxl-item"><a class="nxl-link" href="./auth-maintenance-creative.html">Creative</a></li>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarForms" aria-expanded="false" aria-controls="sidebarForms" class="side-nav-link">
+                    <i class="ri-survey-line"></i>
+                    <span> Forms </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarForms">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="form-elements.html">Basic Elements</a>
+                        </li>
+                        <li>
+                            <a href="form-advanced.html">Form Advanced</a>
+                        </li>
+                        <li>
+                            <a href="form-validation.html">Form Validation</a>
+                        </li>
+                        <li>
+                            <a href="form-wizard.html">Form Wizard</a>
+                        </li>
+                        <li>
+                            <a href="form-fileuploads.html">File Uploads</a>
+                        </li>
+                        <li>
+                            <a href="form-editors.html">Form Editors</a>
+                        </li>
+                        <li>
+                            <a href="form-image-crop.html">Image Crop</a>
+                        </li>
+                        <li>
+                            <a href="form-x-editable.html">X Editable</a>
+                        </li>
                     </ul>
-                </li>
-            </ul>
-        </li>
-        <li class="nxl-item nxl-hasmenu">
-            <a href="javascript:void(0);" class="nxl-link">
-                <span class="nxl-micon"><i class="feather-life-buoy"></i></span>
-                <span class="nxl-mtext">Help Center</span><span class="nxl-arrow"><i class="feather-chevron-right"></i></span>
-            </a>
-            <ul class="nxl-submenu">
-                <li class="nxl-item"><a class="nxl-link" href="https://themeforest.net/user/flexilecode">Support</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="help-knowledgebase.html">KnowledgeBase</a></li>
-                <li class="nxl-item"><a class="nxl-link" href="#">Documentations</a></li>
-            </ul>
-        </li>
-    </ul>
-    <div class="card text-center">
-        <div class="card-body">
-            <i class="feather-sunrise fs-4 text-dark"></i>
-            <h6 class="mt-4 text-dark fw-bolder">Downloading Center</h6>
-            <p class="fs-11 my-3 text-dark">Duralux is a production ready CRM to get started up and running easily.</p>
-            <a href="javascript:void(0);" class="btn btn-primary text-dark w-100">Download Now</a>
-        </div>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarTables" aria-expanded="false" aria-controls="sidebarTables" class="side-nav-link">
+                    <i class="ri-table-line"></i>
+                    <span> Tables </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarTables">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="tables-basic.html">Basic Tables</a>
+                        </li>
+                        <li>
+                            <a href="tables-datatable.html">Data Tables</a>
+                        </li>
+                        <li>
+                            <a href="tables-editable.html">Editable Tables</a>
+                        </li>
+                        <li>
+                            <a href="tables-responsive.html">Responsive Table</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarMaps" aria-expanded="false" aria-controls="sidebarMaps" class="side-nav-link">
+                    <i class="ri-map-pin-line"></i>
+                    <span> Maps </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarMaps">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="maps-google.html">Google Maps</a>
+                        </li>
+                        <li>
+                            <a href="maps-vector.html">Vector Maps</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#sidebarMultiLevel" aria-expanded="false" aria-controls="sidebarMultiLevel" class="side-nav-link">
+                    <i class="ri-share-line"></i>
+                    <span> Multi Level </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="sidebarMultiLevel">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="javascript: void(0);">Level 1.1</a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarSecondLevel" aria-expanded="false" aria-controls="sidebarSecondLevel">
+                                <span> Level 1.2 </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarSecondLevel">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="javascript: void(0);">Item 1</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0);">Item 2</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="side-nav-item">
+                            <a data-bs-toggle="collapse" href="#sidebarThirdLevel" aria-expanded="false" aria-controls="sidebarThirdLevel">
+                                <span> Level 1.3 </span>
+                                <span class="menu-arrow"></span>
+                            </a>
+                            <div class="collapse" id="sidebarThirdLevel">
+                                <ul class="side-nav-third-level">
+                                    <li>
+                                        <a href="javascript: void(0);">Item 1</a>
+                                    </li>
+                                    <li class="side-nav-item">
+                                        <a data-bs-toggle="collapse" href="#sidebarFourthLevel" aria-expanded="false" aria-controls="sidebarFourthLevel">
+                                            <span> Item 2 </span>
+                                            <span class="menu-arrow"></span>
+                                        </a>
+                                        <div class="collapse" id="sidebarFourthLevel">
+                                            <ul class="side-nav-forth-level">
+                                                <li>
+                                                    <a href="javascript: void(0);">Item 2.1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript: void(0);">Item 2.2</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+
+        </ul>
+        <!--- End Sidemenu -->
+
+        <div class="clearfix"></div>
     </div>
 </div>
+<!-- ========== Left Sidebar End ========== -->
