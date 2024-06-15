@@ -134,20 +134,36 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-lg-6 mb-4">
-                                                <label class="form-label">Tanggal Uji <span class="text-danger">*</span></label>
-                                                <input class="form-control" id="startDate" placeholder="Pilih Tanggal Ujian" name="tanggal_uji">
+                                                <div class="mb-3 position-relative" id="tanggalUji">
+                                                    <label class="form-label">Tanggal Uji</label>
+                                                    <input type="text" class="form-control" placeholder="Select Date" data-provide="datepicker" data-date-format="dd-MM-yyyy" name="tanggal_uji" data-date-container="#tanggalUji" autocomplete="off">
+                                                </div>
                                                 @error('tanggal_uji')
                                                     <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
                                                 @enderror
                                             </div>
+
                                             <div class="col-lg-6 mb-4">
-                                                <label class="form-label">Tanggal Surat <span class="text-danger">*</span></label>
-                                                <input class="form-control" id="dueDate" placeholder="Pilih Tanggal Surat" name="tanggal_surat">
+                                                <div class="mb-3 position-relative" id="tanggalSurat">
+                                                    <label class="form-label">Tanggal Surat</label>
+                                                    <input type="text" class="form-control" placeholder="Select Date" data-provide="datepicker" data-date-format="dd-MM-yyyy" name="tanggal_surat" data-date-container="#tanggalSurat" autocomplete="off">
+                                                </div>
                                                 @error('tanggal_surat')
                                                     <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                         </div>
+
+                                        {{-- <div class="row">
+                                            <div class="col-lg-6">
+                                                <div class="mb-3 position-relative" id="datepicker2">
+                                                    <label class="form-label">Date View</label>
+                                                    <input type="text" class="form-control" placeholder="Select Date"
+                                                        data-provide="datepicker" data-date-format="d-MM-yyyy" value="Value"
+                                                        data-date-container="#datepicker2">
+                                                </div>
+                                            </div>
+                                        </div> --}}
 
                                         <div class="justify-content-start row">
                                             <div class="col-3">
@@ -254,15 +270,4 @@
 
     <!-- App js -->
     <script src="{{ asset('velonic_admin') }}/assets/js/app.min.js"></script>
-
-
-
-
-
-    <!-- Custom js for this page -->
-	{{-- <script src="{{ asset('noble_panel') }}/assets/js/flatpickr.js"></script> --}}
-
-
-    <!-- Plugin js for this page -->
-	{{-- <script src="{{ asset('noble_panel') }}/assets/vendors/flatpickr/flatpickr.min.js"></script> --}}
 @endsection

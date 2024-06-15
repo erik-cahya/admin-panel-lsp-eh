@@ -117,9 +117,19 @@
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item" href="{{ route('surat-tugas-asesor.generatePdf', $dt_surat->id) }}" target="_blank"><i class="ri-file-pdf-fill"></i> Download PDF</a>
                                                     <a class="dropdown-item" href="{{ route('surat-tugas-asesor.download', $dt_surat->id) }}"><i class="ri-file-word-fill"></i> Download DOC</a>
-                                                    <hr>
-                                                    <a class="dropdown-item" href="#"><i class="ri-edit-fill"></i> Edit</a>
-                                                    {{-- <a class="dropdown-item" href="#"><i class="ri-delete-bin-2-fill"></i> Delete</a> --}}
+
+                                                     {{-- Edit Button --}}
+                                                     <form action="{{ route('surat-tugas-asesor.edit', $dt_surat->id) }}"
+                                                        method="POST">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
+                                                        <div class="dropdown-divider"></div>
+
+                                                        <button type="submit" class="dropdown-item">
+                                                            <i class="ri-edit-fill"></i> Edit
+                                                        </button>
+
+                                                    </form>
 
                                                     {{-- Delete Button --}}
                                                     <form action="{{ route('surat-tugas-asesor.delete', $dt_surat->id) }}" method="POST">
