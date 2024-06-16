@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 require __DIR__ . '/auth.php';
 
 
-Route::get('analytics', function(){
+Route::get('analytics', function () {
     return view('admin.analytics.index');
 });
 

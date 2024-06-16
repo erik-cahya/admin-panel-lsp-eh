@@ -58,6 +58,21 @@
                 </div>
             </li>
 
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#suratTugasAsesor" aria-expanded="false" aria-controls="suratTugasAsesor" class="side-nav-link">
+                    <i class="ri-qr-code-line"></i>
+                    <span> QR Code </span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="suratTugasAsesor">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/qr-code">QR Code List</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
 
             <li class="side-nav-title">Components</li>
 

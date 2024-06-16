@@ -110,7 +110,6 @@
                                             <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $dt_surat->id }}"><i class="ri-eye-line"></i> </button>
 
                                             <div class="btn-group">
-                                                {{-- <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown <span class="caret"></span> </button> --}}
 
                                                 <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="false"><i class="ri-equalizer-line me-1"></i> Details</button>
 
@@ -136,11 +135,6 @@
                                                         {{ csrf_field() }}
                                                         {{ method_field('DELETE') }}
                                                         <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
-
-                                                        {{-- <button type="submit" class="dropdown-item">
-                                                            <i class="link-icon" data-feather="trash" style="width:16px; height:auto"></i>Delete Surat
-                                                        </button> --}}
-
                                                         <button type="button" id="deleteButton-{{ $dt_surat->id }}" class="dropdown-item">
                                                             <i class="ri-delete-bin-2-fill"></i> Delete Surat
                                                         </button>
@@ -154,17 +148,12 @@
                                 @endforeach
                             </tbody>
                         </table>
-
-                    </div> <!-- end card body-->
-                </div> <!-- end card -->
-            </div><!-- end col-->
-        </div> <!-- end row-->
-
-
-
-    </div> <!-- container -->
-
-</div> <!-- content -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {{-- Modal --}}
