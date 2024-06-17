@@ -65,41 +65,6 @@
                 </div>
             </li>
 
-            <li class="dropdown">
-                <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
-                    aria-haspopup="false" aria-expanded="false">
-                    <img src="{{ asset('velonic_admin') }}/assets/images/flags/us.jpg" alt="user-image" class="me-0 me-sm-1" height="12">
-                    <span class="align-middle d-none d-lg-inline-block">English</span> <i
-                        class="ri-arrow-down-s-line d-none d-sm-inline-block align-middle"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('velonic_admin') }}/assets/images/flags/germany.jpg" alt="user-image" class="me-1" height="12"> <span
-                            class="align-middle">German</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('velonic_admin') }}/assets/images/flags/italy.jpg" alt="user-image" class="me-1" height="12"> <span
-                            class="align-middle">Italian</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('velonic_admin') }}/assets/images/flags/spain.jpg" alt="user-image" class="me-1" height="12"> <span
-                            class="align-middle">Spanish</span>
-                    </a>
-
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="{{ asset('velonic_admin') }}/assets/images/flags/russia.jpg" alt="user-image" class="me-1" height="12"> <span
-                            class="align-middle">Russian</span>
-                    </a>
-
-                </div>
-            </li>
 
             <li class="dropdown notification-list">
                 <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button"
@@ -345,7 +310,7 @@
                         <img src="{{ asset('velonic_admin') }}/assets/images/users/avatar-1.jpg" alt="user-image" width="32" class="rounded-circle">
                     </span>
                     <span class="d-lg-block d-none">
-                        <h5 class="my-0 fw-normal">Thomson <i
+                        <h5 class="my-0 fw-normal">{{ Auth::user()->name }} <i
                                 class="ri-arrow-down-s-line d-none d-sm-inline-block align-middle"></i></h5>
                     </span>
                 </a>
@@ -362,28 +327,22 @@
                     </a>
 
                     <!-- item-->
-                    <a href="pages-profile.html" class="dropdown-item">
+                    <a class="dropdown-item" data-bs-toggle="offcanvas" href="#theme-settings-offcanvas">
                         <i class="ri-settings-4-line fs-18 align-middle me-1"></i>
                         <span>Settings</span>
                     </a>
 
-                    <!-- item-->
-                    <a href="pages-faq.html" class="dropdown-item">
-                        <i class="ri-customer-service-2-line fs-18 align-middle me-1"></i>
-                        <span>Support</span>
-                    </a>
 
                     <!-- item-->
-                    <a href="auth-lock-screen.html" class="dropdown-item">
-                        <i class="ri-lock-password-line fs-18 align-middle me-1"></i>
-                        <span>Lock Screen</span>
-                    </a>
 
-                    <!-- item-->
-                    <a href="auth-logout-2.html" class="dropdown-item">
-                        <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
-                        <span>Logout</span>
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{ route('logout') }}" class="dropdown-item"
+                            onclick="event.preventDefault(); this.closest('form').submit();">
+                            <i class="ri-logout-box-line fs-18 align-middle me-1"></i>
+                            <span>Log Out</span>
+                        </a>
+                    </form>
                 </div>
             </li>
         </ul>

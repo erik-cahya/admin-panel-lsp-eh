@@ -71,7 +71,6 @@
                                                     <a class="me-2" href="#">
                                                         <img class="avatar-sm rounded-circle bx-s" src="{{ asset('velonic_admin') }}/assets/images/users/avatar-2.jpg" alt="">
                                                     </a>
-
                                                     <div class="info">
                                                         <h5 class="fs-14 my-1">{{ $dt_surat->nama_asesor }}</h5>
                                                         <p class="text-muted fs-12">{{ $dt_surat->no_reg }}</p>
@@ -80,7 +79,6 @@
                                             </div>
                                         </td>
                                         <td>
-
                                             <div class="d-flex align-items-start justify-content-between">
                                                 <div class="d-flex">
                                                     <a class="social-list-item bg-dark-subtle text-secondary fs-16 border-0 me-2" title="" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Facebook">
@@ -92,7 +90,6 @@
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </td>
                                         <td>{{ Str::limit($dt_surat->skema, 40) }}</td>
                                         <td>{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
