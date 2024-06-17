@@ -63,88 +63,82 @@
                             </thead>
                             <tbody>
                                 @foreach ($data_surat as $dt_surat)
+                                    <tr>
+                                        <td><span class="badge bg-success">{{ $dt_surat->nomor_surat }}</span></td>
+                                        <td>
+                                            <div class="d-flex align-items-start justify-content-between">
+                                                <div class="d-flex">
+                                                    <a class="me-2" href="#">
+                                                        <img class="avatar-sm rounded-circle bx-s" src="{{ asset('velonic_admin') }}/assets/images/users/avatar-2.jpg" alt="">
+                                                    </a>
 
-                                <tr>
-                                    <td><span class="badge bg-success">{{ $dt_surat->nomor_surat }}</span></td>
-                                    <td>
-
-                                        <div class="d-flex align-items-start justify-content-between">
-                                            <div class="d-flex">
-                                                <a class="me-2" href="#">
-                                                    <img class="avatar-sm rounded-circle bx-s" src="{{ asset('velonic_admin') }}/assets/images/users/avatar-2.jpg" alt="">
-                                                </a>
-
-                                                <div class="info">
-                                                    <h5 class="fs-14 my-1">{{ $dt_surat->nama_asesor }}</h5>
-                                                    <p class="text-muted fs-12">{{ $dt_surat->no_reg }}</p>
+                                                    <div class="info">
+                                                        <h5 class="fs-14 my-1">{{ $dt_surat->nama_asesor }}</h5>
+                                                        <p class="text-muted fs-12">{{ $dt_surat->no_reg }}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </td>
+                                        <td>
 
-                                    </td>
-                                    <td>
-
-                                        <div class="d-flex align-items-start justify-content-between">
-                                            <div class="d-flex">
-
-
-                                                <a class="social-list-item bg-dark-subtle text-secondary fs-16 border-0 me-2"
-                                                title="" data-bs-toggle="tooltip" data-bs-placement="top"
-                                                class="tooltips" href="" data-bs-title="Facebook"><i
-                                                    class="ri-building-line"></i></a>
-
-                                                <div class="info">
-                                                    <h5 class="fs-14 my-1">{{ $dt_surat->nama_tuk }}</h5>
-                                                    <p class="text-muted fs-12">{{ Str::limit($dt_surat->alamat_tuk, 50) }}</p>
+                                            <div class="d-flex align-items-start justify-content-between">
+                                                <div class="d-flex">
+                                                    <a class="social-list-item bg-dark-subtle text-secondary fs-16 border-0 me-2" title="" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Facebook">
+                                                        <i class="ri-building-line"></i>
+                                                    </a>
+                                                    <div class="info">
+                                                        <h5 class="fs-14 my-1">{{ $dt_surat->nama_tuk }}</h5>
+                                                        <p class="text-muted fs-12">{{ Str::limit($dt_surat->alamat_tuk, 50) }}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                    </td>
-                                    <td>{{ Str::limit($dt_surat->skema, 40) }}</td>
-                                    <td>{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
-                                    <td>{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
-                                    <td>
-                                        <div class="btn-group mb-2">
+                                        </td>
+                                        <td>{{ Str::limit($dt_surat->skema, 40) }}</td>
+                                        <td>{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_uji)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
+                                        <td>{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dt_surat->tanggal_surat)->locale('id')->isoFormat('dddd, DD MMMM YYYY') }}</td>
+                                        <td>
+                                            <div class="btn-group mb-2">
 
-                                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $dt_surat->id }}"><i class="ri-eye-line"></i> </button>
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $dt_surat->id }}"><i class="ri-eye-line"></i> </button>
 
-                                            <div class="btn-group">
+                                                <div class="btn-group">
 
-                                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="false"><i class="ri-equalizer-line me-1"></i> Details</button>
+                                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="false"><i class="ri-equalizer-line me-1"></i> Details</button>
 
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="{{ route('surat-tugas-asesor.generatePdf', $dt_surat->id) }}" target="_blank"><i class="ri-file-pdf-fill"></i> Download PDF</a>
-                                                    <a class="dropdown-item" href="{{ route('surat-tugas-asesor.download', $dt_surat->id) }}"><i class="ri-file-word-fill"></i> Download DOC</a>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="{{ route('surat-tugas-asesor.generatePdf', $dt_surat->id) }}" target="_blank"><i class="ri-file-pdf-fill"></i> Download PDF</a>
+                                                        <a class="dropdown-item" href="{{ route('surat-tugas-asesor.download', $dt_surat->id) }}"><i class="ri-file-word-fill"></i> Download DOC</a>
 
-                                                     {{-- Edit Button --}}
-                                                     <form action="{{ route('surat-tugas-asesor.edit', $dt_surat->id) }}"
-                                                        method="POST">
-                                                        {{ csrf_field() }}
-                                                        <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
-                                                        <div class="dropdown-divider"></div>
+                                                        {{-- Edit Button --}}
+                                                        <form action="{{ route('surat-tugas-asesor.edit', $dt_surat->id) }}" method="POST">
+                                                            {{ csrf_field() }}
+                                                            <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
 
-                                                        <button type="submit" class="dropdown-item">
-                                                            <i class="ri-edit-fill"></i> Edit
-                                                        </button>
+                                                            <div class="dropdown-divider"></div>
 
-                                                    </form>
+                                                            <button type="submit" class="dropdown-item">
+                                                                <i class="ri-edit-fill"></i> Edit
+                                                            </button>
+                                                        </form>
 
-                                                    {{-- Delete Button --}}
-                                                    <form action="{{ route('surat-tugas-asesor.delete', $dt_surat->id) }}" method="POST">
-                                                        {{ csrf_field() }}
-                                                        {{ method_field('DELETE') }}
-                                                        <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
-                                                        <button type="button" id="deleteButton-{{ $dt_surat->id }}" class="dropdown-item">
-                                                            <i class="ri-delete-bin-2-fill"></i> Delete Surat
-                                                        </button>
+                                                        {{-- Delete Button --}}
+                                                        <form action="{{ route('surat-tugas-asesor.delete', $dt_surat->id) }}" method="POST">
+                                                            {{ csrf_field() }}
+                                                            {{ method_field('DELETE') }}
 
-                                                    </form>
+                                                            <input type="hidden" name="id_surat" value="{{ $dt_surat->id }}">
+
+                                                            <button type="button" id="deleteButton-{{ $dt_surat->id }}" class="dropdown-item">
+                                                                <i class="ri-delete-bin-2-fill"></i> Delete Surat
+                                                            </button>
+
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
                                 @endforeach
                             </tbody>
                         </table>
