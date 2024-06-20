@@ -58,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     // ############################################################ TUK
-    Route::get('tuk', [TUKController::class, 'tuk'])->name('tuk');
+    Route::get('data-tuk', [TUKController::class, 'tuk'])->name('tuk');
     Route::get('tukAdd', [TUKController::class, 'tukAdd'])->name('tukAdd');
     Route::post('tukAdded', [TUKController::class, 'tukAdded'])->name('tukAdded');
     Route::get('tukEdit', [TUKController::class, 'tukEdit'])->name('tukEdit');
