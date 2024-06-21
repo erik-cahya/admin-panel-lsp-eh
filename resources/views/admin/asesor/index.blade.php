@@ -76,7 +76,7 @@
                                         <div class="d-flex align-items-start justify-content-between">
                                             <div class="d-flex">
                                                 <a class="me-2" href="#">
-                                                    <img class="avatar-sm rounded-circle bx-s" src="{{ asset('velonic_admin') }}/assets/images/users/avatar-2.jpg" alt="">
+                                                    <img class="avatar-sm rounded-circle bx-s" src="{{ $asesor->foto_asesor == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_asesor/' . $asesor->foto_asesor)  }}" alt="">
                                                 </a>
                                                 <div class="info">
                                                     <h5 class="fs-14 my-1">{{ $asesor->nama_asesor }}</h5>

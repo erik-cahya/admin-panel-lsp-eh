@@ -17,7 +17,7 @@
     <!-- Start Content-->
     <div class="container-fluid">
 
-        <form enctype="multipart/form-data" method="POST" action="{{ route('surat-tugas-asesor.store') }}">
+        <form enctype="multipart/form-data" method="POST" action="/asesor">
             @csrf
                <!-- start page title -->
                <div class="row">
@@ -51,7 +51,7 @@
                                                 <label class="form-label">Nama Asesor<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan Nama Asesor">
+                                                    <input type="text" class="form-control" placeholder="Inputkan Nama Asesor" name="nama_asesor">
                                                 </div>
 
                                                 @error('nomor_surat')
@@ -63,7 +63,7 @@
                                                 <label class="form-label">No REG<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan No REG">
+                                                    <input type="text" class="form-control" placeholder="Inputkan No REG" name="no_reg">
                                                 </div>
 
                                                 @error('nomor_surat')
@@ -75,7 +75,7 @@
                                                 <label class="form-label">No Telp<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan Nama Asesor">
+                                                    <input type="text" class="form-control" placeholder="Inputkan No Telp Asesor" name="no_telp">
                                                 </div>
 
                                                 @error('nomor_surat')
@@ -87,12 +87,32 @@
                                                 <label class="form-label">Alamat<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan No REG">
+                                                    <input type="text" class="form-control" placeholder="Inputkan Alamat Asesor" name="alamat">
                                                 </div>
 
                                                 @error('nomor_surat')
                                                     <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
                                                 @enderror
+                                            </div>
+
+                                            <div class="col-lg-6 mb-4">
+                                                <label for="foto_asesor" class="form-label">Upload Gambar Asesor (Opsional)</label>
+                                                <input type="file" id="foto_asesor" name="foto_asesor" class="form-control" onchange="previewImage()">
+                                            </div>
+
+
+                                            <div class="col-lg-6 mb-4">
+                                                <label for="gambar_tanda_tangan" class="form-label">Upload Tanda Tangan (Opsional)</label>
+                                                <input type="file" id="gambar_tanda_tangan" name="gambar_tanda_tangan" class="form-control" onchange="previewImageTandaTangan()">
+                                            </div>
+
+
+                                            <div class="col-lg-6 mb-4">
+                                                <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="foto_asesor img-thumbnail" width="200px">
+                                            </div>
+
+                                            <div class="col-lg-6 mb-4">
+                                                <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="gambar_tanda_tangan img-thumbnail" width="200px">
                                             </div>
 
                                         </div>
@@ -117,6 +137,36 @@
 </div>
 @endsection
 @section('js_page')
+<script>
+    // untuk membuat preview gambar
+    function previewImage() {
+        const image = document.querySelector('#foto_asesor');
+        const imgPreview = document.querySelector('.foto_asesor');
+
+        imgPreview.style.display = 'block';
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>
+<script>
+    // untuk membuat preview gambar
+    function previewImageTandaTangan() {
+        const image = document.querySelector('#gambar_tanda_tangan');
+        const imgPreview = document.querySelector('.gambar_tanda_tangan');
+
+        imgPreview.style.display = 'block';
+        const oFReader = new FileReader();
+        oFReader.readAsDataURL(image.files[0]);
+
+        oFReader.onload = function(oFREvent) {
+            imgPreview.src = oFREvent.target.result;
+        }
+    }
+</script>
      <!-- Vendor js -->
      <script src="{{ asset('velonic_admin') }}/assets/js/vendor.min.js"></script>
      <!-- Daterangepicker js -->

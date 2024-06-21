@@ -5,6 +5,8 @@ namespace App\Http\Controllers\DataLSP;
 use App\Http\Controllers\Controller;
 use App\Models\AsesorModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
 
 class AsesorController extends Controller
 {
@@ -22,11 +24,31 @@ class AsesorController extends Controller
 
     public function store(Request $request)
     {
+
+        // image upload handler
+        if ($request->foto_asesor === null) {
+            $fotoAsesor = 'default-img.png';
+        } else {
+
+            $fotoAsesor = 'foto_' . $request->nama_asesor . '.' . $request->foto_asesor->extension();
+            $request->foto_asesor->move(public_path('img/foto_asesor'), $fotoAsesor);
+        }
+
+        // image upload handler
+        if ($request->gambar_tanda_tangan === null) {
+            $fotoAsesor = 'default-img.png';
+        } else {
+
+            $gambarTandaTangan = 'tanda_tangan_' . $request->nama_asesor . '.' . $request->gambar_tanda_tangan->extension();
+            $request->gambar_tanda_tangan->move(public_path('img/gambar_tanda_tangan'), $gambarTandaTangan);
+        }
         AsesorModel::create([
             'nama_asesor' => $request->nama_asesor,
             'no_reg' => $request->no_reg,
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
+            'foto_asesor' => $fotoAsesor,
+            'gambar_tanda_tangan' => $gambarTandaTangan
         ]);
         $dataPesan = [
             'judul' => 'Success',
