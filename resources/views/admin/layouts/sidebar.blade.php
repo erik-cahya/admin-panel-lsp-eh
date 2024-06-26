@@ -96,6 +96,26 @@
                 </div>
             </li>
 
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#tukLSP" aria-expanded="false" aria-controls="tukLSP" class="side-nav-link">
+                    <i class="ri-building-line"></i>
+                    <span>TUK LSP</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="tukLSP">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{ route('tuk') }}">List TUK</a>
+                        </li>
+                    </ul>
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{ route('tukAdd') }}">Create Data TUK</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
 
 
         </ul>
