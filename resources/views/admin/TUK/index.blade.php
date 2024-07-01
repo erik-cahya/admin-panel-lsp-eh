@@ -2,29 +2,22 @@
 @section('css_page')
     <!-- Datatables css -->
     <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet"
-        type="text/css" />
-
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme Config Js -->
     <script src="{{ asset('velonic_admin') }}/assets/js/config.js"></script>
-
     <!-- App css -->
     <link href="{{ asset('velonic_admin') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
-
     <!-- Icons css -->
     <link href="{{ asset('velonic_admin') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
 @endsection
-
 @section('content')
+
 <div class="content">
+
     <!-- Start Content-->
     <div class="container-fluid">
 
@@ -49,97 +42,248 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="header-title">Data Asesor</h4>
+                        <h4 class="header-title">Data Surat Tugas</h4>
                         <p class="text-muted mb-0">
-                            Anda bisa menambahkan dan mendownload data asesor, foto, serta tanda tangan.
+                            Anda bisa mendownload surat dengan format .pdf ataupun .doc
                         </p>
                     </div>
                     <div class="card-body">
-                        <table id="datatable-buttons"
-                            class="table table-striped dt-responsive nowrap w-100">
+
+                        <table id="scroll-horizontal-datatable" class="table table-striped w-100 nowrap">
                             <thead>
                                 <tr>
-                                    <th>Nama Asesor</th>
-                                    <th>No REG</th>
-                                    <th>No Telp</th>
-                                    <th>Alamat</th>
-                                    <th>Data</th>
+                                    <th>No</th>
+                                    <th>Tempat TUK</th>
+                                    <th>Pengelola TUK</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($dataTuk as $tuk)
-
-                                <tr>
-                                    <td>
-
-                                        <div class="d-flex align-items-start justify-content-between">
-                                            <div class="d-flex">
-                                                <a class="me-2" href="#">
-                                                    <img class="avatar-sm rounded-circle bx-s" src="{{ $tuk->foto_asesor == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_asesor/' . $tuk->foto_asesor)  }}" alt="">
-                                                </a>
-                                                <div class="info">
-                                                    <h5 class="fs-14 my-1">{{ $tuk->nama_asesor }}</h5>
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                            <div class="d-flex align-items-start justify-content-between">
+                                                <div class="d-flex">
+                                                    <a class="social-list-item bg-dark-subtle text-secondary fs-16 border-0 me-2">
+                                                        <i class="ri-building-line"></i>
+                                                    </a>
+                                                    <div class="info">
+                                                        <h5 class="my-1">{{ $tuk->tuk_nama }}</h5>
+                                                        <p class="text-muted">{{ $tuk->tuk_alamat }}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-flex align-items-start justify-content-between">
+                                                <div class="d-flex">
+                                                    <a class="social-list-item bg-dark-subtle text-secondary fs-16 border-0 me-2" >
+                                                        <i class="ri-user-line"></i>
+                                                    </a>
+                                                    @if ($tuk->tuk_namaCP !== null)
+                                                        <div class="info">
+                                                            <h5 class="my-1">{{ $tuk->tuk_namaCP }}</h5>
+                                                            <p class="text-muted">{{ preg_replace('/(\d{4})(\d{4})(\d{4})/', '$1-$2-$3', str_pad($tuk->tuk_kontakCP, 12, '0', STR_PAD_RIGHT)) }}</p>
+                                                        </div>
+                                                    @else
+                                                        <p class="text-muted">Tidak Ada Kontak</p>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </td>
 
-                                    </td>
-                                    <td>{{ $tuk->no_reg }}</td>
-                                    <td>{{ $tuk->no_telp }}</td>
-                                    <td>
-                                        {{ Str::limit($tuk->alamat, 50) }}
-                                    </td>
-                                    <td>
-                                        <a class="d-block" href="#">Download Foto</a>
-                                        <a class="d-block" href="#">Download Tanda Tangan</a>
-                                    </td>
-                                    <td>
-                                        <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i
-                                        class="ri-delete-bin-2-line"></i></a>
+                                        <td>
+                                            <div class="btn-group mb-2">
+                                                <div class="btn-group">
+                                                    <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="false"><i class="ri-equalizer-line me-1"></i> Details</button>
+                                                    <div class="dropdown-menu">
+                                                            <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $tuk->id }}">
+                                                                <i class="ri-edit-fill"></i> Edit
+                                                            </button>
+                                                        {{-- Delete Button --}}
+                                                        <form action="{{ route('tukDeleted', $tuk->id) }}" method="POST">
+                                                            {{ csrf_field() }}
+                                                            {{ method_field('DELETE') }}
 
-                                        <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i
-                                        class="ri-edit-line"></i></a>
-                                    </td>
-                                </tr>
+                                                            <input type="hidden" name="id_surat" value="{{ $tuk->id }}">
+
+                                                            <button type="button" id="deleteButton-{{ $tuk->id }}" class="dropdown-item">
+                                                                <i class="ri-delete-bin-2-fill"></i> Delete TUK
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
-
-                    </div> <!-- end card body-->
-                </div> <!-- end card -->
-            </div><!-- end col-->
-        </div> <!-- end row-->
-
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- container -->
-
 </div>
+
+
+{{-- Modal --}}
+@foreach ($dataTuk as $tuk)
+    <div class="modal fade" id="modalSurat{{ $tuk->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header modal-colored-header bg-info">
+                    <h4 class="modal-title" id="info-header-modalLabel">Surat Tugas {{ $tuk->nama_asesor }}
+                    </h4>
+                    <button type="button" class="btn-close btn-close-white"
+                        data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{-- Modal Content --}}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Nomor Surat</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $tuk->nomor_surat }}" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Skema</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $tuk->skema }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Asesor</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $tuk->nama_asesor }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">NO Reg</label>
+                                <input type="text" id="no_reg_asesor" class="form-control" id="no_reg" name="no_reg" value="{{ $tuk->no_reg }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Nama TUK</label>
+                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $tuk->nama_tuk }}" disabled>
+
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Alamat TUK</label>
+                                <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control" value="{{ $tuk->alamat_tuk }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Modal Content --}}
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
+<!-- /* End Modal -->
 @endsection
 @section('js_page')
-     <!-- Vendor js -->
-     <script src="{{ asset('velonic_admin') }}/assets/js/vendor.min.js"></script>
+    <!-- Vendor js -->
+    <script src="{{ asset('velonic_admin') }}/assets/js/vendor.min.js"></script>
 
-     <!-- Datatables js -->
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedcolumns-bs5/js/fixedColumns.bootstrap5.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
-     <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
+    <!-- Datatables js -->
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedcolumns-bs5/js/fixedColumns.bootstrap5.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
 
-     <!-- Datatable Demo Aapp js -->
-     <script src="{{ asset('velonic_admin') }}/assets/js/pages/datatable.init.js"></script>
+    <!-- Datatable Demo Aapp js -->
+    <script src="{{ asset('velonic_admin') }}/assets/js/pages/datatable.init.js"></script>
 
-     <!-- App js -->
-     <script src="{{ asset('velonic_admin') }}/assets/js/app.min.js"></script>
+    <!-- App js -->
+    <script src="{{ asset('velonic_admin') }}/assets/js/app.min.js"></script>
 
+    <script>
+        const exampleModal = document.getElementById('exampleModal')
+        exampleModal.addEventListener('show.bs.modal', event => {
+            // Button that triggered the modal
+            const button = event.relatedTarget
+            // Extract info from data-bs-* attributes
+            const recipient = button.getAttribute('data-bs-whatever')
+            // If necessary, you could initiate an AJAX request here
+            // and then do the updating in a callback.
+            //
+            // Update the modal's content.
+            const modalTitle = exampleModal.querySelector('.modal-title')
+            const modalBodyInput = exampleModal.querySelector('.modal-body input')
+
+            modalTitle.textContent = `New message to ${recipient}`
+            modalBodyInput.value = recipient
+        })
+    </script>
+
+    {{-- Sweet Alert --}}
+    <script>
+        @foreach ($dataTuk as $tuk)
+            document.getElementById("deleteButton-{{ $tuk->id }}").addEventListener("click", function() {
+
+            Swal.fire({
+                    title: "Are you sure?",
+                    text: "Apakah anda yakin ingin mengapus TUK ?",
+                    icon: "warning",
+                    showCancelButton: true,
+            }).then((willDelete) => {
+                    if (willDelete.isConfirmed) {
+                        fetch("{{ route('tukDeleted', $tuk->id) }}", {
+                            method: "DELETE",
+                            headers: {
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                            }
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                            Swal.fire(
+                                'Terhapus',
+                                'Data TUK Berhasil Dihapus',
+                                'success'
+                            ).then((result) =>{
+                                if (result.isConfirmed){
+                                window.location.href = "{{ route('tuk') }}";
+                                }
+                            })
+                            }
+                        })
+                    } else {
+                    Swal.fire({
+                        title: "Dibatalkan",
+                        text: "Data TUK Batal Dihapus",
+                        icon: "error",});
+                    }
+                });
+            });
+        @endforeach
+    </script>
+    {{-- /* End Sweet Alert --}}
 @endsection

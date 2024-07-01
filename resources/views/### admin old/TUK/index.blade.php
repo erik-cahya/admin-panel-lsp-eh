@@ -62,9 +62,6 @@
                                             {{ $tuk->tuk_namaCP }}
                                         </button>
                                         @endif
-
-
-
                                     </td>
 
                                     <td>
