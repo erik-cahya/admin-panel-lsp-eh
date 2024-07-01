@@ -95,8 +95,18 @@
                                         <a class="d-block" href="#">Download Tanda Tangan</a>
                                     </td>
                                     <td>
-                                        <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i
-                                        class="ri-delete-bin-2-line"></i></a>
+                                        {{-- <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i
+                                        class="ri-delete-bin-2-line"></i></a> --}}
+
+                                         {{-- Delete Button --}}
+                                         <form action="/asesor/{{ $asesor->id }}" method="POST">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure ?')">
+                                                <i class="ri-delete-bin-2-line"></i>
+                                            </button>
+                                        </form>
 
                                         <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i
                                         class="ri-edit-line"></i></a>
