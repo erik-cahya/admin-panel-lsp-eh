@@ -14,6 +14,7 @@ class SkemaController extends Controller
     {
         $data['dataSkema'] = SkemaModel::get();
 
+
         return view('admin.skema.index', $data);
     }
 

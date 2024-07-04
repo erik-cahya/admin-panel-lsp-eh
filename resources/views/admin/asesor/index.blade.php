@@ -91,7 +91,13 @@
                                         {{ Str::limit($asesor->alamat, 50) }}
                                     </td>
                                     <td>
-                                        <a class="d-block" href="#">Download Foto</a>
+                                        {{-- Download Foto Profile --}}
+                                        @if ($asesor->foto_asesor == null)
+                                                <span class="text-muted">Tidak Ada Gambar</span>
+                                            @else
+                                                <a class="d-block" href="{{ asset('img/foto_asesor/' . $asesor->foto_asesor) }}" download="{{ $asesor->foto_asesor }}">Download Foto</a>
+                                        @endif
+
                                         <a class="d-block" href="#">Download Tanda Tangan</a>
                                     </td>
                                     <td>
