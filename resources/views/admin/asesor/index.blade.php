@@ -93,12 +93,17 @@
                                     <td>
                                         {{-- Download Foto Profile --}}
                                         @if ($asesor->foto_asesor == null)
-                                                <span class="text-muted">Tidak Ada Gambar</span>
+                                                <span class="text-muted d-block">Tidak Ada Gambar Profile</span>
                                             @else
-                                                <a class="d-block" href="{{ asset('img/foto_asesor/' . $asesor->foto_asesor) }}" download="{{ $asesor->foto_asesor }}">Download Foto</a>
+                                                <a class="d-block" href="{{ asset('img/foto_asesor/' . $asesor->foto_asesor) }}" download="{{ $asesor->foto_asesor }}">Download Profile</a>
                                         @endif
 
-                                        <a class="d-block" href="#">Download Tanda Tangan</a>
+                                        {{-- Download Foto Profile --}}
+                                        @if ($asesor->gambar_tanda_tangan == null)
+                                                <span class="text-muted d-block">Tidak ada Tanda Tangan</span>
+                                            @else
+                                                <a class="d-block" href="{{ asset('img/gambar_tanda_tangan/' . $asesor->gambar_tanda_tangan) }}" download="{{ $asesor->gambar_tanda_tangan }}">Download Tanda Tangan</a>
+                                        @endif
                                     </td>
                                     <td>
                                         {{-- <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i
