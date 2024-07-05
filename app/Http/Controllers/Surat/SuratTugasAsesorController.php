@@ -145,7 +145,7 @@ class SuratTugasAsesorController extends Controller
     public function destroy(Request $request)
     {
         SuratTugasModel::destroy($request->id);
-        return response()->json(['message' => 'QR Code Berhasil Dihapus']);
+        return response()->json(['message' => 'Data Surat Berhasil Dihapus']);
     }
 
 

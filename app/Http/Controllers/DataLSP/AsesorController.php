@@ -27,7 +27,7 @@ class AsesorController extends Controller
 
         // image upload handler
         if ($request->foto_asesor === null) {
-            $fotoAsesor = 'default-img.png';
+            $fotoAsesor = null;
         } else {
 
             $fotoAsesor = 'foto_' . $request->nama_asesor . '.' . $request->foto_asesor->extension();
@@ -36,7 +36,7 @@ class AsesorController extends Controller
 
         // image upload handler
         if ($request->gambar_tanda_tangan === null) {
-            $fotoAsesor = 'default-img.png';
+            $gambarTandaTangan = null;
         } else {
 
             $gambarTandaTangan = 'tanda_tangan_' . $request->nama_asesor . '.' . $request->gambar_tanda_tangan->extension();
@@ -85,11 +85,13 @@ class AsesorController extends Controller
     {
         AsesorModel::destroy($id);
 
-        $flashData = [
-            'judul' => 'Delete Data Success',
-            'pesan' => 'Data Asesor Berhasil Di Hapus',
-            'swalFlashIcon' => 'success',
-        ];
-        return redirect('/asesor')->with('flashData', $flashData);
+        return response()->json(['message' => 'QR Code Berhasil Dihapus']);
+
+        // $flashData = [
+        //     'judul' => 'Delete Data Success',
+        //     'pesan' => 'Data Asesor Berhasil Di Hapus',
+        //     'swalFlashIcon' => 'success',
+        // ];
+        // return redirect('/asesor')->with('flashData', $flashData);
     }
 }

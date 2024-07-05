@@ -55,8 +55,10 @@
                         </p>
                     </div>
                     <div class="card-body">
-                        <table id="datatable-buttons"
-                            class="table table-striped dt-responsive nowrap w-100">
+                        <table id="datatable-buttons" class="table table-striped w-100 nowrap">
+                        {{-- <table id="datatable-buttons scroll-horizontal-datatable" class="table table-striped w-100 nowrap"> --}}
+                            {{-- <table id="scroll-horizontal-datatable" class="table table-striped w-100 nowrap"> --}}
+
                             <thead>
                                 <tr>
                                     <th>Nama Asesor</th>
@@ -106,21 +108,25 @@
                                         @endif
                                     </td>
                                     <td>
-                                        {{-- <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i
-                                        class="ri-delete-bin-2-line"></i></a> --}}
+                                        <div class="btn-group mb-2">
+                                             {{-- Delete Button --}}
+                                            <form action="/asesor/{{ $asesor->id }}" method="POST">
+                                                {{ csrf_field() }}
+                                                {{ method_field('DELETE') }}
 
-                                         {{-- Delete Button --}}
-                                         <form action="/asesor/{{ $asesor->id }}" method="POST">
-                                            {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
+                                                <input type="hidden" name="id_surat" value="{{ $asesor->id }}">
 
-                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure ?')">
-                                                <i class="ri-delete-bin-2-line"></i>
+                                                <button type="button" id="deleteButton-{{ $asesor->id }}" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Delete">
+                                                    <i class="ri-delete-bin-2-line"></i>
+                                                </button>
+                                            </form>
+                                            <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure ?')" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
+                                                <i class="ri-edit-line"></i>
                                             </button>
-                                        </form>
-
-                                        <a href="javascript: void(0);" class="text-reset fs-16 px-1"> <i
-                                        class="ri-edit-line"></i></a>
+                                            <button type="submit" class="btn btn-warning" onclick="return confirm('Are you sure ?')" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="See Data">
+                                                <i class="ri-eye-line"></i>
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
                                 @endforeach
@@ -158,9 +164,52 @@
      <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-select/js/dataTables.select.min.js"></script>
 
      <!-- Datatable Demo Aapp js -->
-     <script src="{{ asset('velonic_admin') }}/assets/js/pages/datatable.init.js"></script>
+     <script src="{{ asset('velonic_admin') }}/assets/js/pages/datatable.js"></script>
 
      <!-- App js -->
-     <script src="{{ asset('velonic_admin') }}/assets/js/app.min.js"></script>
+     <script src="{{ asset('velonic_admin') }}/assets/js/app.js"></script>
+
+     {{-- Sweet Alert --}}
+    <script>
+        @foreach ($dataAsesor as $asesor)
+            document.getElementById("deleteButton-{{ $asesor->id }}").addEventListener("click", function() {
+
+            Swal.fire({
+                    title: "Are you sure?",
+                    text: "Apakah Anda Yakin Ingin Mengapus Data Asesor Ini ?",
+                    icon: "warning",
+                    showCancelButton: true,
+            }).then((willDelete) => {
+                    if (willDelete.isConfirmed) {
+                        fetch("{{ route('asesor.destroy', $asesor->id) }}", {
+                            method: "DELETE",
+                            headers: {
+                                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                            }
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                            Swal.fire(
+                                'Terhapus',
+                                'Data Asesor Berhasil Dihapus',
+                                'success'
+                            ).then((result) =>{
+                                if (result.isConfirmed){
+                                window.location.href = "{{ route('asesor.index') }}";
+                                }
+                            })
+                            }
+                        })
+                    } else {
+                    Swal.fire({
+                        title: "Dibatalkan",
+                        text: "Data Asesor Batal Dihapus",
+                        icon: "error",});
+                    }
+                });
+            });
+        @endforeach
+    </script>
+    {{-- /* End Sweet Alert --}}
 
 @endsection
