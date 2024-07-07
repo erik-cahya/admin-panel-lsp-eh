@@ -30,11 +30,10 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Surat</a></li>
-                            <li class="breadcrumb-item active">Surat Tugas Asesor</li>
+                            <li class="breadcrumb-item active">Data Asesor</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Surat Tugas Asesor</h4>
+                    <h4 class="page-title">Data Asesor</h4>
                 </div>
             </div>
         </div>

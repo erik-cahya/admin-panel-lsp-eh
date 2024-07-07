@@ -17,7 +17,7 @@
     <!-- Start Content-->
     <div class="container-fluid">
 
-        <form enctype="multipart/form-data" method="POST" action="/asesor">
+        <form enctype="multipart/form-data" method="POST" action="/asesor/{{ $dataAsesor->id }}">
             @csrf
                <!-- start page title -->
                <div class="row">
@@ -25,9 +25,9 @@
                     <div class="page-title-box">
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Velonic</a></li>
-                                <li class="breadcrumb-item"><a href="javascript: void(0);">Forms</a></li>
-                                <li class="breadcrumb-item active">Form Elements</li>
+                                <li class="breadcrumb-item"><a href="javascript: void(0);">LSP Engineering Hospitality Indonesia</a></li>
+                                <li class="breadcrumb-item"><a href="/asesor">Data Asesor</a></li>
+                                <li class="breadcrumb-item active">Edit Data</li>
                             </ol>
                         </div>
                         <h4 class="page-title">Edit Data Asesor</h4>
@@ -40,9 +40,9 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="header-title">Form Create Surat Tugas Asesor</h4>
+                                    <h4 class="header-title">Form Edit Data Asesor</h4>
                                     <p class="text-muted mb-0">
-                                        Inputkan data asesor LSP pada form dibawah | <code> Anda dapat juga meng-upload foto asesor dan tanda tangan untuk mempermudah keperluan administrasi</code>
+                                        Edit data asesor LSP pada form dibawah | <code> Anda dapat juga meng-upload foto asesor dan tanda tangan untuk mempermudah keperluan administrasi</code>
                                     </p>
                                 </div>
                                     <div class="card-body">

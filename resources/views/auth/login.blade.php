@@ -52,9 +52,6 @@
                                         <label class="custom-control-label c-pointer" for="rememberMe">Remember Me</label>
                                     </div>
                                 </div>
-                                <div>
-                                    <a href="auth-reset-minimal.html" class="fs-11 text-primary">Forget password?</a>
-                                </div>
                             </div>
                             <div class="mt-5">
                                 <button type="submit" class="btn btn-lg btn-primary w-100">Login</button>
