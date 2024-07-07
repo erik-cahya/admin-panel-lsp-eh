@@ -56,10 +56,7 @@ class QRCodeController extends Controller
      */
     public function store(Request $request)
     {
-
-
         $dataUrl = $request->url;
-
         $writer = new PngWriter();
 
         $qrCode = QrCode::create($dataUrl)
@@ -68,9 +65,6 @@ class QRCodeController extends Controller
             ->setMargin(10)
             ->setForegroundColor(new Color(0, 0, 0))
             ->setBackgroundColor(new Color(255, 255, 255));
-
-        // $logo = Logo::create(public_path('/img/1.jpg'))->setResizeToWidth(150)->setResizeToHeight(150);
-
         // Tulis QR code ke dalam sebuah buffer
         $buffer = $writer->write($qrCode)->getString();
 
@@ -140,10 +134,7 @@ class QRCodeController extends Controller
         $imageFile = DB::table('qr_code')->where('id', $id)->value('qr_image');
         DB::table('qr_code')->where('id', $id)->delete();
         File::delete(public_path('img/qr_codes/' . $imageFile));
-        // toast('QR Code Berhasil Dihapus', 'success');
-        // return Redirect::to('/qr-code');
 
         return response()->json(['message' => 'QR Code Berhasil Dihapus']);
-
     }
 }

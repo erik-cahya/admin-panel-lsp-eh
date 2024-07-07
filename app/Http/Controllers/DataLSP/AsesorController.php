@@ -24,17 +24,15 @@ class AsesorController extends Controller
 
     public function store(Request $request)
     {
-
-        // image upload handler
+        // Image Upload Handler
         if ($request->foto_asesor === null) {
             $fotoAsesor = null;
         } else {
-
             $fotoAsesor = 'foto_' . $request->nama_asesor . '.' . $request->foto_asesor->extension();
             $request->foto_asesor->move(public_path('img/foto_asesor'), $fotoAsesor);
         }
 
-        // image upload handler
+        // Image Upload Handler
         if ($request->gambar_tanda_tangan === null) {
             $gambarTandaTangan = null;
         } else {
@@ -83,15 +81,13 @@ class AsesorController extends Controller
 
     public function destroy($id)
     {
+        // Delete Image Handler
+        if (AsesorModel::where('id', $id)->first()->gambar_tanda_tangan != null || AsesorModel::where('id', $id)->first()->foto_asesor != null) {
+            File::delete(public_path('img/gambar_tanda_tangan/' . AsesorModel::where('id', $id)->first()->gambar_tanda_tangan));
+            File::delete(public_path('img/foto_asesor/' . AsesorModel::where('id', $id)->first()->foto_asesor));
+        }
+        // Delete Data Handler
         AsesorModel::destroy($id);
-
         return response()->json(['message' => 'QR Code Berhasil Dihapus']);
-
-        // $flashData = [
-        //     'judul' => 'Delete Data Success',
-        //     'pesan' => 'Data Asesor Berhasil Di Hapus',
-        //     'swalFlashIcon' => 'success',
-        // ];
-        // return redirect('/asesor')->with('flashData', $flashData);
     }
 }

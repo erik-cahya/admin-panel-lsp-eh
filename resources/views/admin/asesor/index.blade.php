@@ -2,16 +2,11 @@
 @section('css_page')
     <!-- Datatables css -->
     <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet"
-        type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet"
-        type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
 
     <!-- Theme Config Js -->
     <script src="{{ asset('velonic_admin') }}/assets/js/config.js"></script>
@@ -56,9 +51,6 @@
                     </div>
                     <div class="card-body">
                         <table id="datatable-buttons" class="table table-striped w-100 nowrap">
-                        {{-- <table id="datatable-buttons scroll-horizontal-datatable" class="table table-striped w-100 nowrap"> --}}
-                            {{-- <table id="scroll-horizontal-datatable" class="table table-striped w-100 nowrap"> --}}
-
                             <thead>
                                 <tr>
                                     <th>Nama Asesor</th>
@@ -109,6 +101,16 @@
                                     </td>
                                     <td>
                                         <div class="btn-group mb-2">
+                                            {{-- See Details --}}
+                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
+                                                <i class="ri-eye-line"></i> 
+                                            </button>
+
+                                            {{-- Edit Button --}}
+                                            <a href="/asesor/{{ $asesor->id }}/edit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
+                                                <i class="ri-edit-line"></i>
+                                            </a>
+
                                              {{-- Delete Button --}}
                                             <form action="/asesor/{{ $asesor->id }}" method="POST">
                                                 {{ csrf_field() }}
@@ -120,12 +122,10 @@
                                                     <i class="ri-delete-bin-2-line"></i>
                                                 </button>
                                             </form>
-                                            <button type="submit" class="btn btn-success" onclick="return confirm('Are you sure ?')" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
-                                                <i class="ri-edit-line"></i>
-                                            </button>
-                                            <button type="submit" class="btn btn-warning" onclick="return confirm('Are you sure ?')" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="See Data">
-                                                <i class="ri-eye-line"></i>
-                                            </button>
+                                           
+
+                                            
+
                                         </div>
                                     </td>
                                 </tr>
@@ -143,6 +143,72 @@
     <!-- container -->
 
 </div>
+{{-- Modal --}}
+@foreach ($dataAsesor as $asesor)
+<div class="modal fade" id="modalSurat{{ $asesor->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header modal-colored-header bg-info">
+                    <h4 class="modal-title" id="info-header-modalLabel">Surat Tugas {{ $asesor->nama_asesor }}</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{-- Modal Content --}}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Nama Asesor</label>
+                                <input class="form-control" type="text" value="{{ $asesor->nama_asesor }}" disabled>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">No REG Asesor</label>
+                                <input class="form-control" type="text" value="{{ $asesor->no_reg }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">No Telp Asesor</label>
+                                <input class="form-control" type="text" value="{{ $asesor->no_telp }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Alamat</label>
+                                <input class="form-control" type="text" value="{{ $asesor->alamat }}" disabled>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">Foto Profile Asesor</label>
+                                <img src="{{ $asesor->foto_asesor == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_asesor/' . $asesor->foto_asesor)  }}" class="avatar-lg d-block" width="200px">
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label">Tanda Tangan Asesor</label>
+                                <img src="{{ $asesor->gambar_tanda_tangan == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/gambar_tanda_tangan/' . $asesor->gambar_tanda_tangan)  }}" class="avatar-lg d-block" width="200px">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endforeach
+<!-- /* End Modal -->
 @endsection
 @section('js_page')
      <!-- Vendor js -->
