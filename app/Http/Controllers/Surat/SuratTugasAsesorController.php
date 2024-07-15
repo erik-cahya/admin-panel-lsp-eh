@@ -65,8 +65,6 @@ class SuratTugasAsesorController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-
-
         $tanggalUjiFormatted = Carbon::createFromFormat('d-F-Y', $request->tanggal_uji)->locale('id')->translatedFormat('d F Y');
 
         $validated = $request->validate([

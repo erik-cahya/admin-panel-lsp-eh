@@ -80,12 +80,14 @@
                                             </div>
                                             <div class="col-lg-6 mb-4">
                                                 <label class="form-label">Skema</label>
-                                                <select class="form-control" data-select2-selector="city" id="skema" name="skema">
+                                                
+                                                <select class="form-control select2" data-toggle="select2" data-select2-selector="city" id="skema" name="skema">
                                                     <option data-city="bg-muted" selected readonly disabled>Pilih Skema Uji</option>
                                                     @foreach ($dataSkema as $skema)
                                                         <option data-city="bg-warning" value="{{ $skema->nama_skema }}">{{ $skema->nama_skema }}</option>
                                                     @endforeach
                                                 </select>
+
                                                 @error('skema')
                                                     <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
                                                 @enderror
@@ -94,12 +96,16 @@
                                         <div class="row">
                                             <div class="col-lg-6 mb-4">
                                                 <label class="form-label">Nama Asesor:</label>
-                                                <select class="form-select form-control" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
+                                                <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
                                                     <option data-icon="feather-user" selected readonly disabled>Pilih Asesor</option>
                                                     @foreach ($dataAsesor as $asesor)
                                                         <option data-icon="feather-user" value="{{ $asesor->nama_asesor }}">{{ $asesor->nama_asesor }}</option>
                                                     @endforeach
                                                 </select>
+
+
+
+                                                
                                                 @error('nama_asesor')
                                                     <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
                                                 @enderror
@@ -115,7 +121,7 @@
                                         <div class="row">
                                             <div class="col-lg-6 mb-4">
                                                 <label class="form-label">Nama TUK:</label>
-                                                <select class="form-select form-control" data-select2-selector="visibility" name="nama_tuk" id="nama_tuk">
+                                                <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" name="nama_tuk" id="nama_tuk">
                                                     <option data-icon="feather-home" selected readonly disabled>Pilih TUK</option>
                                                     @foreach ($tuk as $t)
                                                         <option data-icon="feather-home" value="{{ $t->tuk_nama }}">{{ $t->tuk_nama }}</option>

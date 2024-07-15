@@ -32,7 +32,7 @@ class TUKController extends Controller
             'pesan' => 'Data TUK Berhasil Ditambahkan',
             'swalFlashIcon' => 'success',
         ];
-        return redirect('/tuk')->with('flashData', $dataPesan);
+        return redirect()->route('tuk')->with('flashData', $dataPesan);
     }
 
     public function tukDeleted($id)
@@ -44,6 +44,8 @@ class TUKController extends Controller
             'pesan' => 'Data TUK Telah Dihapus',
             'swalFlashIcon' => 'success',
         ];
-        return redirect()->route('tuk')->with('flashData', $flashData);
+        // return redirect()->route('tuk')->with('flashData', $flashData);
+
+        return response()->json(['message' => 'Data Surat Berhasil Dihapus']);
     }
 }

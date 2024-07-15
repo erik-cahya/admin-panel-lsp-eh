@@ -17,7 +17,7 @@
     <!-- Start Content-->
     <div class="container-fluid">
 
-        <form enctype="multipart/form-data" method="POST" action="/asesor">
+        <form enctype="multipart/form-data" method="POST" action="{{ route('tukAdded') }}">
             @csrf
                <!-- start page title -->
                <div class="row">
@@ -30,7 +30,7 @@
                                 <li class="breadcrumb-item active">Form Elements</li>
                             </ol>
                         </div>
-                        <h4 class="page-title">Create Data Asesor</h4>
+                        <h4 class="page-title">Create Data TUK</h4>
                     </div>
                 </div>
             </div>
@@ -40,18 +40,18 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="header-title">Form Create Surat Tugas Asesor</h4>
+                                    <h4 class="header-title">Form Create Data TUK</h4>
                                     <p class="text-muted mb-0">
-                                        Inputkan data asesor LSP pada form dibawah | <code> Anda dapat juga meng-upload foto asesor dan tanda tangan untuk mempermudah keperluan administrasi</code>
+                                        Inputkan data TUK LSP pada form dibawah
                                     </p>
                                 </div>
                                     <div class="card-body">
                                         <div class="row">
                                             <div class="col-lg-6 mb-4">
-                                                <label class="form-label">Nama Asesor<span class="text-danger">*</span></label>
+                                                <label class="form-label">Nama TUK (Tempat Uji Kompetensi)<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan Nama Asesor" name="nama_asesor">
+                                                    <input type="text" class="form-control" placeholder="Inputkan Nama Asesor" name="tuk_nama">
                                                 </div>
 
                                                 @error('nomor_surat')
@@ -60,10 +60,10 @@
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
-                                                <label class="form-label">No REG<span class="text-danger">*</span></label>
+                                                <label class="form-label">Alamat TUK<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan No REG" name="no_reg">
+                                                    <input type="text" class="form-control" placeholder="Inputkan No REG" name="tuk_alamat">
                                                 </div>
 
                                                 @error('nomor_surat')
@@ -72,10 +72,10 @@
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
-                                                <label class="form-label">No Telp<span class="text-danger">*</span></label>
+                                                <label class="form-label">Nama Contact Person TUK<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan No Telp Asesor" name="no_telp">
+                                                    <input type="text" class="form-control" placeholder="Inputkan No Telp Asesor" name="tuk_namaCP">
                                                 </div>
 
                                                 @error('nomor_surat')
@@ -84,10 +84,10 @@
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
-                                                <label class="form-label">Alamat<span class="text-danger">*</span></label>
+                                                <label class="form-label">Nomor Contact TUK<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan Alamat Asesor" name="alamat">
+                                                    <input type="number" class="form-control" placeholder="Inputkan Alamat Asesor" name="tuk_kontakCP">
                                                 </div>
 
                                                 @error('nomor_surat')
@@ -95,25 +95,6 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="col-lg-6 mb-4">
-                                                <label for="foto_asesor" class="form-label">Upload Gambar Asesor (Opsional)</label>
-                                                <input type="file" id="foto_asesor" name="foto_asesor" class="form-control" onchange="previewImage()">
-                                            </div>
-
-
-                                            <div class="col-lg-6 mb-4">
-                                                <label for="gambar_tanda_tangan" class="form-label">Upload Tanda Tangan (Opsional)</label>
-                                                <input type="file" id="gambar_tanda_tangan" name="gambar_tanda_tangan" class="form-control" onchange="previewImageTandaTangan()">
-                                            </div>
-
-
-                                            <div class="col-lg-6 mb-4">
-                                                <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="foto_asesor img-thumbnail" width="200px">
-                                            </div>
-
-                                            <div class="col-lg-6 mb-4">
-                                                <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="gambar_tanda_tangan img-thumbnail" width="200px">
-                                            </div>
 
                                         </div>
                                         <div class="justify-content-start row">
@@ -137,37 +118,7 @@
 </div>
 @endsection
 @section('js_page')
-<script>
-    // untuk membuat preview gambar
-    function previewImage() {
-        const image = document.querySelector('#foto_asesor');
-        const imgPreview = document.querySelector('.foto_asesor');
-
-        imgPreview.style.display = 'block';
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0]);
-
-        oFReader.onload = function(oFREvent) {
-            imgPreview.src = oFREvent.target.result;
-        }
-    }
-</script>
-<script>
-    // untuk membuat preview gambar
-    function previewImageTandaTangan() {
-        const image = document.querySelector('#gambar_tanda_tangan');
-        const imgPreview = document.querySelector('.gambar_tanda_tangan');
-
-        imgPreview.style.display = 'block';
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(image.files[0]);
-
-        oFReader.onload = function(oFREvent) {
-            imgPreview.src = oFREvent.target.result;
-        }
-    }
-</script>
-     <!-- Vendor js -->
+    <!-- Vendor js -->
      <script src="{{ asset('velonic_admin') }}/assets/js/vendor.min.js"></script>
      <!-- Daterangepicker js -->
      <script src="{{ asset('velonic_admin') }}/assets/vendor/daterangepicker/moment.min.js"></script>
