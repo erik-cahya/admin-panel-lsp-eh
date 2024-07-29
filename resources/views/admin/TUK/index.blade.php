@@ -134,7 +134,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header modal-colored-header bg-info">
-                    <h4 class="modal-title" id="info-header-modalLabel">Surat Tugas {{ $tuk->nama_asesor }}
+                    <h4 class="modal-title" id="info-header-modalLabel">Edit Data TUK {{ $tuk->tuk_nama }}
                     </h4>
                     <button type="button" class="btn-close btn-close-white"
                         data-bs-dismiss="modal" aria-label="Close"></button>
@@ -144,14 +144,14 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label class="form-label">Nomor Surat</label>
-                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $tuk->nomor_surat }}" disabled>
+                                <label class="form-label" for="nama_tuk">Nama TUK</label>
+                                <input id="nama_tuk" name="nama_tuk" type="text" class="form-control" value="{{ $tuk->tuk_nama }}">
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="skema" class="form-label">Skema</label>
-                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $tuk->skema }}" disabled>
+                                <label for="tuk_alamat" class="form-label">Alamat</label>
+                                <input id="tuk_alamat" name="tuk_alamat" type="text" class="form-control" value="{{ $tuk->tuk_alamat }}">
                             </div>
                         </div>
                     </div>
@@ -159,35 +159,19 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="skema" class="form-label">Asesor</label>
-                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $tuk->nama_asesor }}" disabled>
+                                <label for="tuk_namaCP" class="form-label">Nama Contact Person</label>
+                                <input id="tuk_namaCP" name="tuk_namaCP" type="text" class="form-control" value="{{ $tuk->tuk_namaCP }}">
                             </div>
                         </div>
 
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label class="form-label">NO Reg</label>
-                                <input type="text" id="no_reg_asesor" class="form-control" id="no_reg" name="no_reg" value="{{ $tuk->no_reg }}" disabled>
+                                <label for="tuk_kontakCP" class="form-label">Nomor Contact Person</label>
+                                <input id="tuk_kontakCP" name="tuk_kontakCP" type="text" class="form-control" value="{{ $tuk->tuk_kontakCP }}">
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label for="skema" class="form-label">Nama TUK</label>
-                                <input id="nomor_surat" name="nomor_surat" type="text" class="form-control" readonly value="{{ $tuk->nama_tuk }}" disabled>
-
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6">
-                            <div class="mb-3">
-                                <label class="form-label">Alamat TUK</label>
-                                <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control" value="{{ $tuk->alamat_tuk }}" disabled>
-                            </div>
-                        </div>
-                    </div>
                     {{-- Modal Content --}}
                 </div>
 

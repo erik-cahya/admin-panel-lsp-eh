@@ -5,12 +5,14 @@ namespace App\Http\Controllers\DataLsp;
 use App\Http\Controllers\Controller;
 use App\Models\TUKModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TUKController extends Controller
 {
     public function tuk()
     {
         $data['dataTuk'] = TUKModel::get();
+        // $data['dataTuk'] = DB::table('tuk')->get();
         return view('admin.TUK.index', $data);
     }
 

@@ -14,7 +14,8 @@ class CreateSkemaTable extends Migration
     public function up()
     {
         Schema::create('skema', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
+            $table->uuid('id')->primary();
             $table->string('nama_skema');
             $table->timestamps();
         });

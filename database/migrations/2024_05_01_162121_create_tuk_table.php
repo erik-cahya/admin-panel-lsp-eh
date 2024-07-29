@@ -14,7 +14,8 @@ class CreateTukTable extends Migration
     public function up()
     {
         Schema::create('tuk', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
+            $table->uuid('id')->primary();
             $table->string('tuk_nama');
             $table->text('tuk_alamat')->nullable();
             $table->string('tuk_namaCP')->nullable();
