@@ -98,9 +98,10 @@
                                                 <div class="btn-group">
                                                     <button type="button" class="btn btn-outline-danger" data-bs-toggle="dropdown" aria-expanded="false"><i class="ri-equalizer-line me-1"></i> Details</button>
                                                     <div class="dropdown-menu">
-                                                            <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $tuk->id }}">
-                                                                <i class="ri-edit-fill"></i> Edit
-                                                            </button>
+                                                        <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $tuk->id }}">
+                                                            <i class="ri-edit-fill"></i> Edit
+                                                        </button>
+                                                        
                                                         {{-- Delete Button --}}
                                                         <form action="{{ route('tukDeleted', $tuk->id) }}" method="POST">
                                                             {{ csrf_field() }}

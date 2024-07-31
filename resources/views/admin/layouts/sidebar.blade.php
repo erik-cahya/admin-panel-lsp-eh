@@ -116,6 +116,26 @@
                 </div>
             </li>
 
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#skemaLSP" aria-expanded="false" aria-controls="skemaLSP" class="side-nav-link">
+                    <i class="ri-building-line"></i>
+                    <span>Skema LSP</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="skemaLSP">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/skema">List Skema</a>
+                        </li>
+                    </ul>
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/skema/create">Create Data Skema</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
 
 
         </ul>

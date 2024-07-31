@@ -25,6 +25,7 @@ class SkemaController extends Controller
 
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'nama_skema' => 'required|unique:skema',
         ], [
@@ -54,6 +55,7 @@ class SkemaController extends Controller
 
     public function destroy($id)
     {
+        dd($id);
         SkemaModel::destroy($id);
 
         $flashData = [
