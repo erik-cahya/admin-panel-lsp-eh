@@ -27,6 +27,7 @@ class TUKModel extends Model
         });
     }
 
+    // casts : berfungsi agar ketika data di ambil, id dibaca sebagai string
     protected $casts = [
         'id' => 'string',
     ];

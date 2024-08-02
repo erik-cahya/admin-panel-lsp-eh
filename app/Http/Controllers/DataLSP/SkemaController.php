@@ -55,14 +55,7 @@ class SkemaController extends Controller
 
     public function destroy($id)
     {
-        dd($id);
         SkemaModel::destroy($id);
-
-        $flashData = [
-            'judul' => 'Delete Data Success',
-            'pesan' => 'Data Skema Berhasil Di Hapus',
-            'swalFlashIcon' => 'success',
-        ];
-        return redirect('/skema')->with('flashData', $flashData);
+        return response()->json(['message' => 'Data Skema Berhasil Dihapus']);
     }
 }
