@@ -32,28 +32,29 @@
                             <li class="breadcrumb-item active">Skema LSP</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Surat Tugas Asesor</h4>
+                    <h4 class="page-title">Skema LSP</h4>
                 </div>
             </div>
         </div>
         <!-- end page title -->
 
         <div class="row">
-            <div class="col-12">
+            <div class="col-10 col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="header-title">Data Surat Tugas</h4>
+                        <h4 class="header-title">Data Skema LSP</h4>
                         <p class="text-muted mb-0">
-                            Anda bisa mendownload surat dengan format .pdf ataupun .doc
+                            Ini adalah data Skema pada LSP
                         </p>
                     </div>
                     <div class="card-body">
 
-                        <table id="scroll-horizontal-datatable" class="table table-striped w-100 nowrap">
+                        {{-- <table id="" class="table table-striped w-100 nowrap"> --}}
+                        <table id="" class="table table-bordered border-primary">
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Tempat Skema</th>
+                                    <th>Nama Skema</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -76,7 +77,7 @@
                                         <td>
                                             <div class="btn-group mb-2">
                                                 {{-- Edit Button --}}
-                                                <a href="/asesor/{{ $skema->id }}/edit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
+                                                <a href="/skema/{{ $skema->id }}/edit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
                                                     <i class="ri-edit-line"></i>
                                                 </a>
 

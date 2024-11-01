@@ -45,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/qr-code', QRCodeController::class)->except(['create', 'show', 'edit', 'update']);
 
     // ############################################################ Surat Tugas Asesor
+    Route::get('surat-tugas-asesor/compact', [SuratTugasAsesorController::class, 'compact'])->name('surat-tugas-asesor-compact');
     Route::get('surat-tugas-asesor', [SuratTugasAsesorController::class, 'index'])->name('surat-tugas-asesor.view');
     Route::get('surat-tugas-asesor/create', [SuratTugasAsesorController::class, 'createSurat'])->name('surat-tugas-asesor.create');
     Route::post('surat-tugas-asesor/store', [SuratTugasAsesorController::class, 'store'])->name('surat-tugas-asesor.store');
@@ -68,6 +69,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('get_data_tuk/{id}', [SuratTugasAsesorController::class, 'get_data_tuk'])->name('get_data_tuk');
 
     // ############################################################ Asesor
+    Route::get('asesor/compact', [AsesorController::class, 'compact'])->name('asesor-compact');
     Route::resource('/asesor', AsesorController::class);
     Route::get('get_data_asesor/{id}', [SuratTugasAsesorController::class, 'get_data_asesor'])->name('get_data_asesor');
 

@@ -47,6 +47,7 @@
                         <p class="text-muted mb-0">
                             Anda bisa menambahkan dan mendownload data asesor, foto, serta tanda tangan.
                         </p>
+                        <a href="{{ route('asesor-compact') }}">Compact Mode</a>
                     </div>
                     <div class="card-body">
                         <table id="datatable-buttons" class="table table-striped w-100 nowrap">
@@ -68,7 +69,7 @@
 
                                         <div class="d-flex align-items-start justify-content-between">
                                             <div class="d-flex">
-                                                <a class="me-2" href="#">
+                                                <a class="me-2" href="#" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
                                                     <img class="avatar-sm rounded-circle bx-s" src="{{ $asesor->foto_asesor == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_asesor/' . $asesor->foto_asesor)  }}" alt="">
                                                 </a>
                                                 <div class="info">

@@ -33,6 +33,7 @@
                         </ol>
                     </div>
                     <h4 class="page-title">Surat Tugas Asesor</h4>
+
                 </div>
             </div>
         </div>
@@ -46,6 +47,8 @@
                         <p class="text-muted mb-0">
                             Anda bisa mendownload surat dengan format .pdf ataupun .doc
                         </p>
+                    <a href="{{ route('surat-tugas-asesor-compact') }}">Compact Mode</a>
+
                     </div>
                     <div class="card-body">
 

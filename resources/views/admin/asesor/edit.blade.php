@@ -17,8 +17,10 @@
     <!-- Start Content-->
     <div class="container-fluid">
 
-        <form enctype="multipart/form-data" method="POST" action="/asesor/{{ $dataAsesor->id }}">
+        <form enctype="multipart/form-data" method="POST" action="{{ route('asesor.update', $dataAsesor->id) }}">
             @csrf
+            @method('PUT')
+
                <!-- start page title -->
                <div class="row">
                 <div class="col-12">
@@ -60,7 +62,7 @@
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
-                                                <label class="form-label">No REG<span class="text-danger">*</span></label>
+                                                     <label class="form-label">No REG<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
                                                     <input type="text" class="form-control" placeholder="Inputkan No REG" name="no_reg" value="{{ old('no_reg', $dataAsesor->no_reg) }}">
@@ -108,17 +110,17 @@
 
 
                                             <div class="col-lg-6 mb-4">
-                                                <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="foto_asesor img-thumbnail" width="200px">
+                                                <img src="{{ asset($dataAsesor->foto_asesor === null ? 'velonic_admin/assets/images/users/avatar-2.jpg' : 'img/foto_asesor/'.$dataAsesor->foto_asesor) }}" class="foto_asesor img-thumbnail" width="200px">
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
-                                                <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="gambar_tanda_tangan img-thumbnail" width="200px">
+                                                <img src="{{ asset($dataAsesor->gambar_tanda_tangan === null ? 'velonic_admin/assets/images/users/avatar-2.jpg' : 'img/gambar_tanda_tangan/'.$dataAsesor->gambar_tanda_tangan) }}" class="gambar_tanda_tangan img-thumbnail" width="200px">
                                             </div>
 
                                         </div>
                                         <div class="justify-content-start row">
                                             <div class="col-3">
-                                                <button type="submit" class="btn btn-info">Save</button>
+                                                <button type="submit" class="btn btn-info">Save Data Asesor</button>
                                             </div>
                                         </div>
                                     </div>
@@ -144,7 +146,7 @@
         const imgPreview = document.querySelector('.foto_asesor');
 
         imgPreview.style.display = 'block';
-        const oFReader = new FileReader();
+        const oFReader = new FileReader();  
         oFReader.readAsDataURL(image.files[0]);
 
         oFReader.onload = function(oFREvent) {

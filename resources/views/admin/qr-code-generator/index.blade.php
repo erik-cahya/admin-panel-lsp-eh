@@ -97,8 +97,7 @@
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="d-flex">
                                     <a class="me-3" href="#">
-                                        <img class="avatar-md bx-s"
-                                        src="{{ asset('img/qr_codes/' . $qr->qr_image) }}" alt="">
+                                        <img class="avatar-md bx-s" src="{{ asset('img/qr_codes/' . $qr->qr_image) }}" alt="">
                                     </a>
                                     <div class="info">
                                         <h5 class="fs-16 my-1">{{ $qr->name }}</h5>

@@ -8,6 +8,7 @@
         <meta content="A fully responsive admin theme which can be used to build CRM, CMS,ERP etc." name="description" />
         <meta content="Techzaa" name="author" />
 
+    
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('velonic_admin') }}/assets/images/favicon.ico">
 

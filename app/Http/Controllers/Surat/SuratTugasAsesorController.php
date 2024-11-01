@@ -20,6 +20,10 @@ use Illuminate\Support\Facades\DB;
 
 class SuratTugasAsesorController extends Controller
 {
+    public function compact(){
+        $data['data_surat'] = SuratTugasModel::orderBy('nomor_surat', 'ASC')->get();
+        return view('admin.surat.surat-tugas-asesor.compact.index', $data);
+    }
     public function index()
     {
         $data['data_surat'] = SuratTugasModel::orderBy('nomor_surat', 'ASC')->get();

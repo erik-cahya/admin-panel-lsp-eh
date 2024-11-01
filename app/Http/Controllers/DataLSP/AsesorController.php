@@ -10,6 +10,21 @@ use Illuminate\Support\Facades\File;
 
 class AsesorController extends Controller
 {
+    // function get Foto Asesor
+    public function getFotoAsesor($id){
+        return AsesorModel::where('id', $id)->first()->foto_asesor;
+    }
+    // function get Tanda Tangan
+    public function getTandaTangan($id){
+        return AsesorModel::where('id', $id)->first()->gambar_tanda_tangan;
+    }
+
+    public function compact(){
+
+        $data['dataAsesor'] = AsesorModel::get();
+        return view('admin.asesor.compact.index', $data);
+    }
+
     public function index()
     {
         $data['dataAsesor'] = AsesorModel::get();
@@ -64,11 +79,33 @@ class AsesorController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request->all());
+
+        // Image Upload Handler
+        if ($request->foto_asesor === null) {
+            $fotoAsesor = $this->getFotoAsesor($id);
+        } else {
+            File::delete(public_path('img/foto_asesor/' . $this->getFotoAsesor($id)));
+            $fotoAsesor = 'foto_' . $request->nama_asesor . '.' . $request->foto_asesor->extension();
+            $request->foto_asesor->move(public_path('img/foto_asesor'), $fotoAsesor);
+        }
+
+        // Image Upload Handler
+        if ($request->gambar_tanda_tangan === null) {
+            $gambarTandaTangan = $this->getTandaTangan($id);
+        } else {
+            File::delete(public_path('img/gambar_tanda_tangan/' . $this->getTandaTangan($id)));
+            $gambarTandaTangan = 'tanda_tangan_' . $request->nama_asesor . '.' . $request->gambar_tanda_tangan->extension();
+            $request->gambar_tanda_tangan->move(public_path('img/gambar_tanda_tangan'), $gambarTandaTangan);
+        }
+
         AsesorModel::where('id', $id)->update([
             'nama_asesor' => $request->nama_asesor,
             'no_reg' => $request->no_reg,
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
+            'foto_asesor' => $fotoAsesor,
+            'gambar_tanda_tangan' => $gambarTandaTangan
         ]);
 
         $flashData = [
@@ -82,9 +119,9 @@ class AsesorController extends Controller
     public function destroy($id)
     {
         // Delete Image Handler
-        if (AsesorModel::where('id', $id)->first()->gambar_tanda_tangan != null || AsesorModel::where('id', $id)->first()->foto_asesor != null) {
-            File::delete(public_path('img/gambar_tanda_tangan/' . AsesorModel::where('id', $id)->first()->gambar_tanda_tangan));
-            File::delete(public_path('img/foto_asesor/' . AsesorModel::where('id', $id)->first()->foto_asesor));
+        if ($this->getTandaTangan($id) != null || $this->getFotoAsesor($id) != null) {
+            File::delete(public_path('img/foto_asesor/' . $this->getFotoAsesor($id)));
+            File::delete(public_path('img/gambar_tanda_tangan/' . $this->getTandaTangan($id)));
         }
         // Delete Data Handler
         AsesorModel::destroy($id);
