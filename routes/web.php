@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DataLSP\AsesorController;
+use App\Http\Controllers\DataLSP\ManajemenController;
 use App\Http\Controllers\DataLSP\SkemaController;
 use App\Http\Controllers\DataLSP\TUKController;
 use App\Http\Controllers\PDFController;
@@ -72,6 +73,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('asesor/compact', [AsesorController::class, 'compact'])->name('asesor-compact');
     Route::resource('/asesor', AsesorController::class);
     Route::get('get_data_asesor/{id}', [SuratTugasAsesorController::class, 'get_data_asesor'])->name('get_data_asesor');
+    
+    // ############################################################ Manajemen
+    Route::resource('/manajemen', ManajemenController::class);
 
     // ############################################################ Skema
     Route::resource('/skema', SkemaController::class);

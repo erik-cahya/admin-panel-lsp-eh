@@ -10,17 +10,24 @@ use Illuminate\Support\Str;
 
 class SkemaController extends Controller
 {
+    protected $data;
+
+    public function __construct()
+    {
+        // Inisialisasi titlePage
+        $this->data['titlePage'] = 'Data Skema LSP';
+    }
     public function index()
     {
-        $data['dataSkema'] = SkemaModel::get();
+        $this->data['dataSkema'] = SkemaModel::get();
 
 
-        return view('admin.skema.index', $data);
+        return view('admin.skema.index', $this->data);
     }
 
     public function create()
     {
-        return view('admin.skema.create');
+        return view('admin.skema.create', $this->data);
     }
 
     public function store(Request $request)
@@ -51,6 +58,25 @@ class SkemaController extends Controller
 
     public function update(Request $request, $id)
     {
+        // dd($request->all());
+
+        $validated = $request->validate([
+            'nama_skema' => 'required|unique:skema',
+        ], [
+            'nama_skema.required' => 'Nama Skema Tidak Boleh Kosong.',
+            'nama_skema.unique' => 'Data Skema Sudah Ada.',
+        ]);
+
+        SkemaModel::where('id', $id)->update([
+            'nama_skema' => $request->nama_skema,
+        ]);
+
+        $dataPesan = [
+            'judul' => 'Success',
+            'pesan' => 'Data Skema Berhasil Diubah',
+            'swalFlashIcon' => 'success',
+        ];
+        return redirect('/skema')->with('flashData', $dataPesan);
     }
 
     public function destroy($id)

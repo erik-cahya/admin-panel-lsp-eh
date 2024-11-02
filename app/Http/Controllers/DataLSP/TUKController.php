@@ -9,16 +9,25 @@ use Illuminate\Support\Facades\DB;
 
 class TUKController extends Controller
 {
+
+    protected $data;
+
+    public function __construct()
+    {
+        // Inisialisasi titlePage
+        $this->data['titlePage'] = 'Data TUK LSP';
+    }
+
     public function tuk()
     {
-        $data['dataTuk'] = TUKModel::get();
-        // $data['dataTuk'] = DB::table('tuk')->get();
-        return view('admin.TUK.index', $data);
+        $this->data['dataTuk'] = TUKModel::get();
+        // $this->data['dataTuk'] = DB::table('tuk')->get();
+        return view('admin.TUK.index', $this->data);
     }
 
     public function tukAdd()
     {
-        return view('admin.TUK.tukAdd');
+        return view('admin.TUK.tukAdd', $this->data);
     }
 
     public function tukAdded(Request $req)

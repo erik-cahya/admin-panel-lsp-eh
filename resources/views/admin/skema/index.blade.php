@@ -29,81 +29,123 @@
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Data LSP</a></li>
-                            <li class="breadcrumb-item active">Skema LSP</li>
+                            <li class="breadcrumb-item active">{{ $titlePage }}</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Skema LSP</h4>
+                    <h4 class="page-title">{{ $titlePage }}</h4>
                 </div>
             </div>
         </div>
         <!-- end page title -->
 
         <div class="row">
-            <div class="col-10 col-sm-12">
+            <div class="col-xl-8">
+                <!-- Todo-->
                 <div class="card">
-                    <div class="card-header">
-                        <h4 class="header-title">Data Skema LSP</h4>
-                        <p class="text-muted mb-0">
-                            Ini adalah data Skema pada LSP
-                        </p>
-                    </div>
-                    <div class="card-body">
+                    <div class="card-body p-0">
+                        <div class="p-3">
+                            
+                            <h5 class="header-title mb-0">{{ $titlePage }}</h5>
+                        </div>
 
-                        {{-- <table id="" class="table table-striped w-100 nowrap"> --}}
-                        <table id="" class="table table-bordered border-primary">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama Skema</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($dataSkema as $skema)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>
-                                            <div class="d-flex align-items-start justify-content-between">
-                                                <div class="d-flex">
-                                                    <a class="social-list-item bg-dark-subtle text-secondary fs-16 border-0 me-2">
-                                                        <i class="ri-building-line"></i>
-                                                    </a>
-                                                    <div class="info">
-                                                        <h5 class="my-1" style="font-size: 13px">{{ $skema->nama_skema }}</h5>
-                                                    </div>
+                        <div id="yearly-sales-collapse" class="collapse show">
+
+                            <div class="table-responsive">
+                                <table class="table table-nowrap table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Skema</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        {{-- <tr>
+                                           <td>1</td>
+                                           <td>Velonic Admin v1</td>
+                                           <td>01/01/2015</td>
+                                           <td>26/04/2015</td>
+                                           <td><span class="badge bg-info-subtle text-info">Released</span></td>
+                                           <td>Techzaa Studio</td>
+                                       </tr> --}}
+                                         @foreach ($dataSkema as $skema)
+                                          <tr>
+                                            <td>{{ $loop->iteration }}</td>
+                                            <td>{{ $skema->nama_skema }}</td>
+                                            <td>
+                                                <div class="btn-group mb-2">
+                                                    {{-- Edit Button --}}
+                                                    {{-- <a href="/skema/{{ $skema->id }}/edit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
+                                                        <i class="ri-edit-line"></i>
+                                                    </a> --}}
+
+                                                    {{-- See Details --}}
+                                                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $skema->id }}">
+                                                    <i class="ri-edit-line"></i> 
+                                                </button>
+
+                                                    {{-- Delete Button --}}
+                                                    <form action="/skema/{{ $skema->id }}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        {{ method_field('DELETE') }}
+
+                                                        <input type="hidden" name="id_surat" value="{{ $skema->id }}">
+                                                        <button type="button" id="deleteButton-{{ $skema->id }}" class="btn btn-sm btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Delete">
+                                                            <i class="ri-delete-bin-2-line"></i>
+                                                        </button>
+                                                    </form>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="btn-group mb-2">
-                                                {{-- Edit Button --}}
-                                                <a href="/skema/{{ $skema->id }}/edit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
-                                                    <i class="ri-edit-line"></i>
-                                                </a>
+                                            </td>
+                                        </tr>
+                                         @endforeach
 
-                                                 {{-- Delete Button --}}
-                                                <form action="/skema/{{ $skema->id }}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    {{ method_field('DELETE') }}
-
-                                                    <input type="hidden" name="id_surat" value="{{ $skema->id }}">
-                                                    <button type="button" id="deleteButton-{{ $skema->id }}" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Delete">
-                                                        <i class="ri-delete-bin-2-line"></i>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
+                </div> <!-- end card-->
+            </div> <!-- end col-->
         </div>
     </div>
 </div>
 
+
+{{-- Modal --}}
+@foreach ($dataSkema as $skema)
+ <form enctype="multipart/form-data" method="POST" action="{{ route('skema.update', $skema->id) }}">
+    @csrf
+    @method('PUT')
+    <div class="modal fade" id="modalSurat{{ $skema->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header modal-colored-header bg-info">
+                    <h4 class="modal-title" id="info-header-modalLabel">{{ $titlePage }} EHI</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{-- Modal Content --}}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label">Nama Skema</label>
+                                <input class="form-control" type="text" value="{{ $skema->nama_skema }}" name="nama_skema">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Update Data</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ </form>
+@endforeach
+<!-- /* End Modal -->
 
 @endsection
 @section('js_page')

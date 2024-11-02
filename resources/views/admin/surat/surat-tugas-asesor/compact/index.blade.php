@@ -11,11 +11,16 @@
             border-collapse: collapse;
             padding: 10px
         }
+
+        .highlight {
+            background-color: #ef4444;
+            color: white;
+        }
     </style>
 </head>
 <body>
     <a href="/surat-tugas-asesor">Back</a>
-        <table style="margin: 20px">
+        <table style="margin: 20px" id="data-table">
             <tr>
                 <th>No</th>
                 <th>Nomor Surat</th>
@@ -43,5 +48,20 @@
                 </tr>
             @endforeach
         </table>
+
+
+    <script>
+        // Mendapatkan semua baris dalam tabel kecuali header
+        const rows = document.querySelectorAll("#data-table tbody tr");
+
+        rows.forEach(row => {
+            row.addEventListener("click", function() {
+            // Menghapus kelas highlight dari semua baris
+            rows.forEach(r => r.classList.remove("highlight"));
+            // Menambahkan kelas highlight pada baris yang diklik
+            this.classList.add("highlight");
+            });
+        });
+    </script>
 </body>
 </html>

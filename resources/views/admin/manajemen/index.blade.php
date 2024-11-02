@@ -45,7 +45,7 @@
                     <div class="card-header">
                         <h4 class="header-title">{{ $titlePage }}</h4>
                         <p class="text-muted mb-0">
-                            Anda bisa menambahkan dan mendownload {{ $titlePage }}, foto, serta tanda tangan.
+                            Anda bisa menambahkan dan mendownload data asesor, foto, serta tanda tangan.
                         </p>
                         <a href="{{ route('asesor-compact') }}">Compact Mode</a>
                     </div>
@@ -53,10 +53,11 @@
                         <table id="datatable-buttons" class="table table-striped w-100 nowrap">
                             <thead>
                                 <tr>
-                                    <th>Nama Asesor</th>
-                                    <th>No REG</th>
+                                    <th>No</th>
+                                    <th>Nama</th>
                                     <th>No Telp</th>
                                     <th>Alamat</th>
+                                    <th>Jabatan</th>
                                     <th>Data</th>
                                     <th>Action</th>
                                 </tr>
@@ -65,6 +66,7 @@
                                 @foreach ($dataAsesor as $asesor)
 
                                 <tr>
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>
 
                                         <div class="d-flex align-items-start justify-content-between">
@@ -242,7 +244,7 @@
 
             Swal.fire({
                     title: "Are you sure?",
-                    text: "Apakah Anda Yakin Ingin Mengapus {{ $titlePage }} Ini ?",
+                    text: "Apakah Anda Yakin Ingin Mengapus Data Asesor Ini ?",
                     icon: "warning",
                     showCancelButton: true,
             }).then((willDelete) => {
@@ -257,7 +259,7 @@
                             if (response.ok) {
                             Swal.fire(
                                 'Terhapus',
-                                '{{ $titlePage }} Berhasil Dihapus',
+                                'Data Asesor Berhasil Dihapus',
                                 'success'
                             ).then((result) =>{
                                 if (result.isConfirmed){
@@ -269,7 +271,7 @@
                     } else {
                     Swal.fire({
                         title: "Dibatalkan",
-                        text: "{{ $titlePage }} Batal Dihapus",
+                        text: "Data Asesor Batal Dihapus",
                         icon: "error",});
                     }
                 });

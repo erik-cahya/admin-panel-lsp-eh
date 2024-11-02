@@ -3,7 +3,7 @@
 
     <head>
         <meta charset="utf-8" />
-        <title>Dashboard | LSP Engineering  Hospitality Indonesia</title>
+        <title>{{ empty($titlePage) ? '' : $titlePage . ' |'}}  LSP Engineering  Hospitality Indonesia</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully responsive admin theme which can be used to build CRM, CMS,ERP etc." name="description" />
         <meta content="Techzaa" name="author" />

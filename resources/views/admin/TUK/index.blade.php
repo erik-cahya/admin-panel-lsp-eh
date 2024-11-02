@@ -28,11 +28,11 @@
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
                             <li class="breadcrumb-item"><a href="javascript: void(0);">Home</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Surat</a></li>
-                            <li class="breadcrumb-item active">Surat Tugas Asesor</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">TUK LSP</a></li>
+                            <li class="breadcrumb-item active">{{ $titlePage }}</li>
                         </ol>
                     </div>
-                    <h4 class="page-title">Surat Tugas Asesor</h4>
+                    <h4 class="page-title">{{ $titlePage }}</h4>
                 </div>
             </div>
         </div>
@@ -42,7 +42,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="header-title">Data Surat Tugas</h4>
+                        <h4 class="header-title">{{ $titlePage }}</h4>
                         <p class="text-muted mb-0">
                             Anda bisa mendownload surat dengan format .pdf ataupun .doc
                         </p>

@@ -64,6 +64,7 @@
                     <span> QR Code </span>
                     <span class="menu-arrow"></span>
                 </a>
+
                 <div class="collapse" id="qrCode">
                     <ul class="side-nav-second-level">
                         <li>
@@ -78,7 +79,7 @@
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#asesorLSP" aria-expanded="false" aria-controls="asesorLSP" class="side-nav-link">
-                    <i class="ri-user-line"></i>
+                    <i class="ri-user-fill"></i>
                     <span>Asesor LSP</span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -96,9 +97,30 @@
                 </div>
             </li>
 
+
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#manajemenLSP" aria-expanded="false" aria-controls="manajemenLSP" class="side-nav-link">
+                    <i class="ri-team-fill"></i>
+                    <span>Manajemen LSP</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="manajemenLSP">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/manajemen">List Manajemen</a>
+                        </li>
+                    </ul>
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/manajemen/create">Create Data Manajemen</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#tukLSP" aria-expanded="false" aria-controls="tukLSP" class="side-nav-link">
-                    <i class="ri-building-line"></i>
+                    <i class="ri-building-fill"></i>
                     <span>TUK LSP</span>
                     <span class="menu-arrow"></span>
                 </a>
@@ -118,7 +140,7 @@
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#skemaLSP" aria-expanded="false" aria-controls="skemaLSP" class="side-nav-link">
-                    <i class="ri-building-line"></i>
+                    <i class="ri-file-paper-2-fill"></i>
                     <span>Skema LSP</span>
                     <span class="menu-arrow"></span>
                 </a>

@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\File;
 
 class AsesorController extends Controller
 {
+    protected $data;
+
+    public function __construct()
+    {
+        // Inisialisasi titlePage
+        $this->data['titlePage'] = 'Data Asesor';
+    }
+
     // function get Foto Asesor
     public function getFotoAsesor($id){
         return AsesorModel::where('id', $id)->first()->foto_asesor;
@@ -21,20 +29,20 @@ class AsesorController extends Controller
 
     public function compact(){
 
-        $data['dataAsesor'] = AsesorModel::get();
-        return view('admin.asesor.compact.index', $data);
+        $this->data['dataAsesor'] = AsesorModel::get();
+        return view('admin.asesor.compact.index', $this->data);
     }
 
     public function index()
     {
-        $data['dataAsesor'] = AsesorModel::get();
+        $this->data['dataAsesor'] = AsesorModel::get();
         // dd($dataAsesor);
-        return view('admin.asesor.index', $data);
+        return view('admin.asesor.index', $this->data);
     }
 
     public function create()
     {
-        return view('admin.asesor.create');
+        return view('admin.asesor.create', $this->data);
     }
 
     public function store(Request $request)
@@ -73,8 +81,8 @@ class AsesorController extends Controller
 
     public function edit($id)
     {
-        $data['dataAsesor'] = AsesorModel::where('id', $id)->first();
-        return view('admin.asesor.edit', $data);
+        $this->data['dataAsesor'] = AsesorModel::where('id', $id)->first();
+        return view('admin.asesor.edit', $this->data);
     }
 
     public function update(Request $request, $id)
