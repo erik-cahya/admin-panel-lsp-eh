@@ -1,0 +1,116 @@
+[08-Nov-2024 12:05:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/logging.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/logging.php on line 20
+[08-Nov-2024 12:05:17 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/cache.php on line 18
+[08-Nov-2024 12:05:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/services.php on line 18
+[08-Nov-2024 12:05:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/mail.php on line 16
+[08-Nov-2024 12:05:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/app.php on line 16
+[08-Nov-2024 12:05:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/view.php on line 17
+[08-Nov-2024 12:05:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/filesystems.php on line 16
+[08-Nov-2024 12:05:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/view.php on line 17
+[08-Nov-2024 12:05:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/app.php on line 16
+[08-Nov-2024 12:05:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/cache.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/cache.php on line 18
+[08-Nov-2024 12:05:19 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/hashing.php on line 32
+[08-Nov-2024 12:05:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/mail.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/mail.php on line 16
+[08-Nov-2024 12:05:20 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/sanctum.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/sanctum.php on line 16
+[08-Nov-2024 12:05:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/hashing.php on line 32
+[08-Nov-2024 12:05:22 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/services.php on line 18
+[08-Nov-2024 12:05:24 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/database.php on line 18
+[08-Nov-2024 12:05:24 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/session.php on line 21
+[08-Nov-2024 12:05:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/filesystems.php on line 16
+[08-Nov-2024 12:05:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/broadcasting.php on line 18
+[08-Nov-2024 12:05:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/session.php on line 21
+[08-Nov-2024 12:05:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/broadcasting.php on line 18
+[08-Nov-2024 12:05:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/logging.php:20
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/logging.php on line 20
+[08-Nov-2024 12:05:31 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/queue.php on line 16
+[08-Nov-2024 12:05:33 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/queue.php on line 16
+[08-Nov-2024 12:05:56 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/sanctum.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/sanctum.php on line 16
+[08-Nov-2024 12:06:18 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/database.php on line 18
+[14-Nov-2024 09:21:34 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/app.php on line 16
+[14-Nov-2024 09:21:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/app.php on line 16
+[14-Nov-2024 09:32:58 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/config/app.php on line 16

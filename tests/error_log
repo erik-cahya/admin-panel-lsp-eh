@@ -1,0 +1,32 @@
+[08-Nov-2024 12:05:19 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php on line 7
+[08-Nov-2024 12:05:26 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php on line 7
+[14-Nov-2024 09:21:28 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php on line 7
+[14-Nov-2024 09:21:28 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php on line 7
+[14-Nov-2024 09:31:40 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php on line 7
+[14-Nov-2024 10:31:05 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php on line 7
+[14-Nov-2024 10:31:06 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php on line 7
+[14-Nov-2024 10:39:57 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Testing\TestCase" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/TestCase.php on line 7

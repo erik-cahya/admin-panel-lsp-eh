@@ -1,0 +1,24 @@
+[08-Nov-2024 12:05:18 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php on line 14
+[08-Nov-2024 12:05:34 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php on line 14
+[14-Nov-2024 09:21:28 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php on line 14
+[14-Nov-2024 09:21:36 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php on line 14
+[14-Nov-2024 09:31:32 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php on line 14
+[14-Nov-2024 10:41:59 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Application" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/bootstrap/app.php on line 14

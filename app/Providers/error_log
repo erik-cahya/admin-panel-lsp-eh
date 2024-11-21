@@ -1,0 +1,40 @@
+[08-Nov-2024 13:28:20 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Support\Providers\AuthServiceProvider" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/AuthServiceProvider.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/AuthServiceProvider.php on line 8
+[08-Nov-2024 13:28:20 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Support\Providers\RouteServiceProvider" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/RouteServiceProvider.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/RouteServiceProvider.php on line 11
+[08-Nov-2024 13:28:21 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Support\Providers\EventServiceProvider" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/EventServiceProvider.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/EventServiceProvider.php on line 10
+[08-Nov-2024 13:28:23 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\ServiceProvider" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/AppServiceProvider.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/AppServiceProvider.php on line 9
+[08-Nov-2024 13:28:23 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Support\Providers\AuthServiceProvider" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/AuthServiceProvider.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/AuthServiceProvider.php on line 8
+[08-Nov-2024 13:28:24 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\ServiceProvider" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/BroadcastServiceProvider.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/BroadcastServiceProvider.php on line 8
+[08-Nov-2024 13:28:24 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Support\Providers\EventServiceProvider" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/EventServiceProvider.php:10
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/EventServiceProvider.php on line 10
+[08-Nov-2024 13:28:25 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\ServiceProvider" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/AppServiceProvider.php:9
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/AppServiceProvider.php on line 9
+[08-Nov-2024 13:28:35 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Foundation\Support\Providers\RouteServiceProvider" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/RouteServiceProvider.php:11
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/RouteServiceProvider.php on line 11
+[08-Nov-2024 13:28:48 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Support\ServiceProvider" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/BroadcastServiceProvider.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/app/Providers/BroadcastServiceProvider.php on line 8

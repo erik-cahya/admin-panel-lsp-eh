@@ -1,0 +1,80 @@
+[08-Nov-2024 13:28:17 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_11_02_173547_create_manajemen_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_11_02_173547_create_manajemen_table.php on line 7
+[08-Nov-2024 13:28:17 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2014_10_12_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2014_10_12_000000_create_users_table.php on line 7
+[08-Nov-2024 13:28:18 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2014_10_12_100000_create_password_resets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2014_10_12_100000_create_password_resets_table.php on line 7
+[08-Nov-2024 13:28:18 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_161907_create_surat_tugas_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_161907_create_surat_tugas_table.php on line 7
+[08-Nov-2024 13:28:18 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_162244_create_asesor_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_162244_create_asesor_table.php on line 7
+[08-Nov-2024 13:28:20 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_161907_create_surat_tugas_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_161907_create_surat_tugas_table.php on line 7
+[08-Nov-2024 13:28:20 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_162121_create_tuk_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_162121_create_tuk_table.php on line 7
+[08-Nov-2024 13:28:22 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_161804_create_qr_code_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_161804_create_qr_code_table.php on line 7
+[08-Nov-2024 13:28:22 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_03_173900_create_skema_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_03_173900_create_skema_table.php on line 7
+[08-Nov-2024 13:28:28 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2014_10_12_000000_create_users_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2014_10_12_000000_create_users_table.php on line 7
+[08-Nov-2024 13:28:28 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2019_08_19_000000_create_failed_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2019_08_19_000000_create_failed_jobs_table.php on line 7
+[08-Nov-2024 13:28:29 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2014_10_12_100000_create_password_resets_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2014_10_12_100000_create_password_resets_table.php on line 7
+[08-Nov-2024 13:28:33 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2019_08_19_000000_create_failed_jobs_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2019_08_19_000000_create_failed_jobs_table.php on line 7
+[08-Nov-2024 13:28:34 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_162121_create_tuk_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_162121_create_tuk_table.php on line 7
+[08-Nov-2024 13:28:34 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_162244_create_asesor_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_162244_create_asesor_table.php on line 7
+[08-Nov-2024 13:28:34 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php on line 7
+[08-Nov-2024 13:28:36 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_03_173900_create_skema_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_03_173900_create_skema_table.php on line 7
+[08-Nov-2024 13:28:38 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_161804_create_qr_code_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_05_01_161804_create_qr_code_table.php on line 7
+[08-Nov-2024 13:28:39 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2019_12_14_000001_create_personal_access_tokens_table.php on line 7
+[08-Nov-2024 13:28:47 UTC] PHP Fatal error:  Uncaught Error: Class "Illuminate\Database\Migrations\Migration" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_11_02_173547_create_manajemen_table.php:7
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/database/migrations/2024_11_02_173547_create_manajemen_table.php on line 7

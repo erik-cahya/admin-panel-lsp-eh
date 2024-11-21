@@ -1,0 +1,1 @@
+[14-Nov-2024 09:18:57 UTC] PHP Fatal error:  require(): Cannot use output buffering in output buffering display handlers in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/vendor/barryvdh/laravel-dompdf/config/dompdf.php on line 1

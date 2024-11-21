@@ -1,0 +1,8 @@
+[08-Nov-2024 13:28:17 UTC] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/Feature/ExampleTest.php on line 8
+[08-Nov-2024 13:28:43 UTC] PHP Fatal error:  Uncaught Error: Class "Tests\TestCase" not found in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/Feature/ExampleTest.php:8
+Stack trace:
+#0 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/tests/Feature/ExampleTest.php on line 8
