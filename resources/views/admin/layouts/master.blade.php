@@ -233,7 +233,11 @@
             </div>
         </div>
 
+        
         @yield('js_page')
+        {{-- Isotope JS --}}
+        <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+
 
         {{-- Sweet Alert / Flash Massage --}}
         <script>
@@ -249,6 +253,22 @@
             @endif
         </script>
         {{-- /* End Sweet Alert / Flash Massage --}}
+        <script>
+            function updateTime() {
+                const sekarang = new Date();
+                let hari = String(sekarang.getDate()).padStart(2, '0');
+                let bulan = String(sekarang.getMonth() + 1).padStart(2, '0');
+                let tahun = sekarang.getFullYear();
 
-    </body>
+                let jam = String(sekarang.getHours()).padStart(2, '0');
+                let menit = String(sekarang.getMinutes()).padStart(2, '0');
+                let detik = String(sekarang.getSeconds()).padStart(2, '0');
+
+                const waktuFormat = `${hari}-${bulan}-${tahun} - ${jam}:${menit}:${detik}`;
+                document.getElementById('waktu').innerText = waktuFormat;
+            }
+            setInterval(updateTime, 1000);
+            updateTime();
+        </script>
+</body>
 </html>

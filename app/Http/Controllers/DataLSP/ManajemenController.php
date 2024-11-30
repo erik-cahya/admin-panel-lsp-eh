@@ -4,6 +4,7 @@ namespace App\Http\Controllers\DataLSP;
 
 use App\Http\Controllers\Controller;
 use App\Models\AsesorModel;
+use App\Models\ManajemenModel;
 use Illuminate\Http\Request;
 
 class ManajemenController extends Controller
@@ -22,7 +23,7 @@ class ManajemenController extends Controller
      */
     public function index()
     {
-        $this->data['dataAsesor'] = AsesorModel::get();
+        $this->data['dataManajemen'] = ManajemenModel::get();
         return view('admin.manajemen.index', $this->data);
     }
 

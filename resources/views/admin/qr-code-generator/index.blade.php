@@ -32,14 +32,17 @@
         <div class="profile-user-box mt-2">
             <div class="row">
                 <div class="col-lg-8">
+                    {{-- Search Form --}}
                     <div class="input-group">
-                        <input type="text" id="example-input1-group2" name="example-input1-group2"
-                            class="form-control" placeholder="Search">
+                        <input type="text" id="ModuleSearch" name="example-input1-group2"
+                        class="form-control" placeholder="Search">
                         <span class="input-group-append">
-                            <button type="button" class="btn btn-primary rounded-start-0"><i
-                                    class="ri-search-line fs-16"></i></button>
+                            <button type="button" class="btn btn-primary rounded-start-0">
+                                <i class="ri-search-line fs-16"></i>
+                            </button>
                         </span>
                     </div>
+                    {{-- Search Form --}}
                 </div>
                 <div class="col-lg-4">
                     <div class="d-flex justify-content-end align-items-center gap-2">
@@ -53,7 +56,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Create QR Code</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
                                     </div>
 
@@ -89,18 +92,48 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="Container">
             @foreach ($data_qr as $qr)
-                <div class="col-md-4">
+                <div class="col-md-4 item">
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex align-items-start justify-content-between">
                                 <div class="d-flex">
                                     <a class="me-3" href="#">
-                                        <img class="avatar-md bx-s" src="{{ asset('img/qr_codes/' . $qr->qr_image) }}" alt="">
+                                        <img class="avatar-md bx-s" src="{{ asset('img/qr_codes/' . $qr->qr_image) }}" data-bs-toggle="modal" data-bs-target="#qrModal{{ $qr->id }}">
                                     </a>
+
+                                    {{-- QR Code Modal --}}
+                                    <div class="modal fade" id="qrModal{{ $qr->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">QR Code - {{ $qr->name }}</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="btn-close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row mb-3">
+                                                        <div class="col-12 d-flex justify-content-center">
+                                                            <img class="avatar-lg" src="{{ asset('img/qr_codes/' . $qr->qr_image) }}" style="height: 15rem; width: 15rem">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="row mb-3">
+                                                        <div class="col-12 d-flex justify-content-center">
+                                                            <p>{{ Str::limit($qr->url) }}</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" id="downloadButton-{{ $qr->id }}" class="btn btn-primary">Download QR</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- /* QR Code Modal --}}
+
                                     <div class="info">
-                                        <h5 class="fs-16 my-1">{{ $qr->name }}</h5>
+                                        <h5 class="fs-16 my-1 title">{{ $qr->name }}</h5>
                                         <p class="text-muted fs-12">{{ Str::limit($qr->url, 20) }}</p>
                                     </div>
                                 </div>
@@ -130,6 +163,7 @@
 </div>
 @endsection
 @section('js_page')
+
     {{-- Sweet Alert --}}
     <script>
         @foreach ($data_qr as $qr)
