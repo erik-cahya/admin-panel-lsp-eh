@@ -125,7 +125,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" id="downloadButton-{{ $qr->id }}" class="btn btn-primary">Download QR</button>
+                                                    <button type="button" id="downloadButtonModal-{{ $qr->id }}" class="btn btn-primary">Download QR</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -148,6 +148,16 @@
 
                 <script> // Script Download QR
                     document.getElementById("downloadButton-{{ $qr->id }}").addEventListener("click", function() {
+                    var imageUrl = this.closest('.card-body').querySelector('img').getAttribute('src');
+                    var a = document.createElement('a');
+                    a.href = imageUrl;
+                    a.download = 'QR {{ $qr->name }}.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    });
+
+                    document.getElementById("downloadButtonModal-{{ $qr->id }}").addEventListener("click", function() {
                     var imageUrl = this.closest('.card-body').querySelector('img').getAttribute('src');
                     var a = document.createElement('a');
                     a.href = imageUrl;
