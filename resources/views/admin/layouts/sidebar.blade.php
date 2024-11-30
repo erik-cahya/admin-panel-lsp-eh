@@ -68,7 +68,9 @@
                 <div class="collapse" id="qrCode">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/qr-code">QR Code List</a>
+                            <a href="/qr-code">
+                                <span class="badge bg-success float-end">{{ App\Models\QrModel::count() }}</span>
+                                QR Code List</a>
                         </li>
                     </ul>
                 </div>
@@ -86,7 +88,10 @@
                 <div class="collapse" id="asesorLSP">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/asesor">List Asesor</a>
+                            <a href="/asesor">
+                                <span class="badge bg-success float-end">{{ App\Models\AsesorModel::count() }}</span>
+                                List Asesor
+                            </a>
                         </li>
                     </ul>
                     <ul class="side-nav-second-level">
@@ -107,7 +112,10 @@
                 <div class="collapse" id="manajemenLSP">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/manajemen">List Manajemen</a>
+                            <a href="/manajemen">
+                                <span class="badge bg-success float-end">{{ App\Models\ManajemenModel::count() }}</span>
+                                List Manajemen
+                            </a>
                         </li>
                     </ul>
                     <ul class="side-nav-second-level">
@@ -127,7 +135,10 @@
                 <div class="collapse" id="tukLSP">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="{{ route('tuk') }}">List TUK</a>
+                            <a href="{{ route('tuk') }}">
+                                <span class="badge bg-success float-end">{{ App\Models\TUKModel::count() }}</span>
+                                List TUK
+                            </a>
                         </li>
                     </ul>
                     <ul class="side-nav-second-level">
@@ -147,7 +158,10 @@
                 <div class="collapse" id="skemaLSP">
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/skema">List Skema</a>
+                            <a href="/skema">
+                                <span class="badge bg-success float-end">{{ App\Models\SkemaModel::count() }}</span>
+                                List Skema
+                            </a>
                         </li>
                     </ul>
                     <ul class="side-nav-second-level">

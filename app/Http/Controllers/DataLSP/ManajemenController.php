@@ -133,7 +133,8 @@ class ManajemenController extends Controller
      */
     public function edit($id)
     {
-        //
+        $this->data['dataManajemen'] = ManajemenModel::where('id', $id)->first();
+        return view('admin.manajemen.edit', $this->data);
     }
 
     /**
@@ -145,7 +146,44 @@ class ManajemenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+
+
+        // Image Upload Handler
+        if ($request->foto_manajemen === null) {
+            $fotoManajemen = $this->getfotoManajemen($id);
+        } else {
+            File::delete(public_path('img/foto_manajemen/' . $this->getfotoManajemen($id)));
+            $fotoManajemen = 'foto_' . $request->nama_manajemen . '.' . $request->foto_manajemen->extension();
+            $request->foto_manajemen->move(public_path('img/foto_manajemen'), $fotoManajemen);
+        }
+
+        // Image Upload Handler
+        if ($request->gambar_tanda_tangan === null) {
+            $gambarTandaTangan = $this->getTandaTangan($id);
+        } else {
+            File::delete(public_path('img/gambar_tanda_tangan/' . $this->getTandaTangan($id)));
+            $gambarTandaTangan = 'tanda_tangan_' . $request->nama_manajemen . '.' . $request->gambar_tanda_tangan->extension();
+            $request->gambar_tanda_tangan->move(public_path('img/gambar_tanda_tangan'), $gambarTandaTangan);
+        }
+
+        ManajemenModel::where('id', $id)->update([
+            'nama_manajemen' => $request->nama_manajemen,
+            'no_telp' => $request->no_telp,
+            'alamat' => $request->alamat,
+            'jabatan' => $request->jabatan,
+
+            'foto_manajemen' => $fotoManajemen,
+            'gambar_tanda_tangan' => $gambarTandaTangan
+        ]);
+
+        $flashData = [
+            'judul' => 'Edit Data Success',
+            'pesan' => 'Data Asesor Berhasil Di Edit',
+            'swalFlashIcon' => 'success',
+        ];
+        return redirect('/manajemen')->with('flashData', $flashData);
+
     }
 
     /**

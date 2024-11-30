@@ -104,12 +104,12 @@
                                             </button>
 
                                             {{-- Edit Button --}}
-                                            <a href="/asesor/{{ $manajemen->id }}/edit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
+                                            <a href="/manajemen/{{ $manajemen->id }}/edit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
                                                 <i class="ri-edit-line"></i>
                                             </a>
 
                                              {{-- Delete Button --}}
-                                            <form action="/asesor/{{ $manajemen->id }}" method="POST">
+                                            <form action="/manajemen/{{ $manajemen->id }}" method="POST">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 

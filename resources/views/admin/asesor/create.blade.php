@@ -35,101 +35,98 @@
                 </div>
             </div>
             <!-- end page title -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="header-title">Form Create {{ $titlePage }}</h4>
+                                <p class="text-muted mb-0">
+                                    Inputkan {{ $titlePage }} LSP pada form dibawah | <code> Anda dapat juga meng-upload foto asesor dan tanda tangan untuk mempermudah keperluan administrasi</code>
+                                </p>
+                            </div>
+                                <div class="card-body">
+                                    <div class="row">
 
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="header-title">Form Create {{ $titlePage }}</h4>
-                                    <p class="text-muted mb-0">
-                                        Inputkan {{ $titlePage }} LSP pada form dibawah | <code> Anda dapat juga meng-upload foto asesor dan tanda tangan untuk mempermudah keperluan administrasi</code>
-                                    </p>
-                                </div>
-                                    <div class="card-body">
-                                        <div class="row">
-
-                                            <div class="col-lg-6 mb-4">
-                                                <label class="form-label">Nama Asesor<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan Nama Asesor" name="nama_asesor" value="{{ old('nama_asesor') }}">
-                                                </div>
-
-                                                @error('nama_asesor')
-                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
-                                                @enderror
+                                        <div class="col-lg-6 mb-4">
+                                            <label class="form-label">Nama Asesor<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                                <input type="text" class="form-control" placeholder="Inputkan Nama Asesor" name="nama_asesor" value="{{ old('nama_asesor') }}">
                                             </div>
 
-                                            <div class="col-lg-6 mb-4">
-                                                <label class="form-label">No REG<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan No REG" name="no_reg" value="{{ old('no_reg') }}">
-                                                </div>
-
-                                                @error('no_reg')
-                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-lg-6 mb-4">
-                                                <label class="form-label">No Telp<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan No Telp Asesor" name="no_telp" value="{{ old('no_telp') }}">
-                                                </div>
-
-                                                @error('no_telp')
-                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-lg-6 mb-4">
-                                                <label class="form-label">Alamat<span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan Alamat Asesor" name="alamat" value="{{ old('alamat') }}">
-                                                </div>
-
-                                                @error('alamat')
-                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-lg-6 mb-4">
-                                                <label for="foto_asesor" class="form-label">Upload Foto Asesor (Opsional)</label>
-                                                <input type="file" id="foto_asesor" name="foto_asesor" class="form-control" onchange="previewImage()">
-                                            </div>
-
-
-                                            <div class="col-lg-6 mb-4">
-                                                <label for="gambar_tanda_tangan" class="form-label">Upload Tanda Tangan (Opsional)</label>
-                                                <input type="file" id="gambar_tanda_tangan" name="gambar_tanda_tangan" class="form-control" onchange="previewImageTandaTangan()">
-                                            </div>
-
-
-                                            <div class="col-lg-6 mb-4">
-                                                <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="foto_asesor img-thumbnail" width="200px">
-                                            </div>
-
-                                            <div class="col-lg-6 mb-4">
-                                                <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="gambar_tanda_tangan img-thumbnail" width="200px">
-                                            </div>
-
+                                            @error('nama_asesor')
+                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                            @enderror
                                         </div>
-                                        <div class="justify-content-start row">
-                                            <div class="col-3">
-                                                <button type="submit" class="btn btn-info">Save</button>
+
+                                        <div class="col-lg-6 mb-4">
+                                            <label class="form-label">No REG<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                                <input type="text" class="form-control" placeholder="Inputkan No REG" name="no_reg" value="{{ old('no_reg') }}">
                                             </div>
+
+                                            @error('no_reg')
+                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-lg-6 mb-4">
+                                            <label class="form-label">No Telp<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                                <input type="text" class="form-control" placeholder="Inputkan No Telp Asesor" name="no_telp" value="{{ old('no_telp') }}">
+                                            </div>
+
+                                            @error('no_telp')
+                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-lg-6 mb-4">
+                                            <label class="form-label">Alamat<span class="text-danger">*</span></label>
+                                            <div class="input-group">
+                                                <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                                <input type="text" class="form-control" placeholder="Inputkan Alamat Asesor" name="alamat" value="{{ old('alamat') }}">
+                                            </div>
+
+                                            @error('alamat')
+                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="col-lg-6 mb-4">
+                                            <label for="foto_asesor" class="form-label">Upload Foto Asesor (Opsional)</label>
+                                            <input type="file" id="foto_asesor" name="foto_asesor" class="form-control" onchange="previewImage()">
+                                        </div>
+
+
+                                        <div class="col-lg-6 mb-4">
+                                            <label for="gambar_tanda_tangan" class="form-label">Upload Tanda Tangan (Opsional)</label>
+                                            <input type="file" id="gambar_tanda_tangan" name="gambar_tanda_tangan" class="form-control" onchange="previewImageTandaTangan()">
+                                        </div>
+
+
+                                        <div class="col-lg-6 mb-4">
+                                            <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="foto_asesor img-thumbnail" width="200px">
+                                        </div>
+
+                                        <div class="col-lg-6 mb-4">
+                                            <img src="{{ asset('velonic_admin/assets/images/users/avatar-2.jpg') }}" class="gambar_tanda_tangan img-thumbnail" width="200px">
+                                        </div>
+
+                                    </div>
+                                    <div class="justify-content-start row">
+                                        <div class="col-3">
+                                            <button type="submit" class="btn btn-info">Save</button>
                                         </div>
                                     </div>
-                            </div>
+                                </div>
                         </div>
                     </div>
-                <!-- [ Main Content ] end -->
-
+                </div>
+            <!-- [ Main Content ] end -->
         </form>
-
     </div>
     <!-- container -->
 

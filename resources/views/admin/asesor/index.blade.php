@@ -103,7 +103,7 @@
                                         <div class="btn-group mb-2">
                                             {{-- See Details --}}
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
-                                                <i class="ri-eye-line"></i> 
+                                                <i class="ri-eye-line"></i>
                                             </button>
 
                                             {{-- Edit Button --}}
@@ -122,9 +122,9 @@
                                                     <i class="ri-delete-bin-2-line"></i>
                                                 </button>
                                             </form>
-                                           
 
-                                            
+
+
 
                                         </div>
                                     </td>
