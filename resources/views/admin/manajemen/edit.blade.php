@@ -146,7 +146,7 @@
         const imgPreview = document.querySelector('.foto_asesor');
 
         imgPreview.style.display = 'block';
-        const oFReader = new FileReader();  
+        const oFReader = new FileReader();
         oFReader.readAsDataURL(image.files[0]);
 
         oFReader.onload = function(oFREvent) {

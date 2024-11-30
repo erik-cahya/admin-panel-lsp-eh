@@ -47,6 +47,25 @@ class AsesorController extends Controller
 
     public function store(Request $request)
     {
+
+        $validated = $request->validate([
+            'nama_asesor' => 'required|unique:asesor',
+            'no_telp' => 'required|unique:asesor',
+            'no_reg' => 'required|unique:asesor',
+            'alamat' => 'required',
+        ], [
+            'nama_asesor.required' => 'Nama Asesor Tidak Boleh Kosong.',
+            'nama_asesor.unique' => 'Nama ini sudah terdaftar.',
+
+            'no_telp.required' => 'No Telepon Tidak Boleh Kosong.',
+            'no_telp.unique' => 'Nomor ini sudah terdaftar.',
+
+            'no_reg.required' => 'No REG Tidak Boleh Kosong.',
+            'no_reg.unique' => 'Nomor REG ini sudah terdaftar.',
+
+            'alamat.required' => 'Alamat Tidak Boleh Kosong.',
+        ]);
+
         // Image Upload Handler
         if ($request->foto_asesor === null) {
             $fotoAsesor = null;
@@ -133,6 +152,6 @@ class AsesorController extends Controller
         }
         // Delete Data Handler
         AsesorModel::destroy($id);
-        return response()->json(['message' => 'QR Code Berhasil Dihapus']);
+        return response()->json(['message' => 'Data Asesor Berhasil Dihapus']);
     }
 }

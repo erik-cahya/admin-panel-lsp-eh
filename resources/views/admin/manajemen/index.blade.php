@@ -41,7 +41,7 @@
                         <p class="text-muted mb-0">
                             Anda bisa menambahkan dan mendownload data asesor, foto, serta tanda tangan.
                         </p>
-                        <a href="{{ route('asesor-compact') }}">Compact Mode</a>
+                        <a href="{{ route('manajemen-compact') }}">Compact Mode</a>
                     </div>
                     <div class="card-body">
                         <table id="datatable-buttons" class="table table-striped w-100 nowrap">
@@ -66,26 +66,27 @@
                                         <div class="d-flex align-items-start justify-content-between">
                                             <div class="d-flex">
                                                 <a class="me-2" href="#" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $manajemen->id }}">
-                                                    <img class="avatar-sm rounded-circle bx-s" src="{{ $manajemen->foto_asesor == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_asesor/' . $manajemen->foto_asesor)  }}" alt="">
+                                                    <img class="avatar-sm rounded-circle bx-s" src="{{ $manajemen->foto_manajemen == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_manajemen/' . $manajemen->foto_manajemen)  }}" alt="">
                                                 </a>
                                                 <div class="info">
-                                                    <h5 class="fs-14 my-1">{{ $manajemen->nama_asesor }}</h5>
+                                                    <h5 class="fs-14 my-1">{{ $manajemen->nama_manajemen }}</h5>
                                                 </div>
                                             </div>
                                         </div>
 
                                     </td>
-                                    <td>{{ $manajemen->no_reg }}</td>
                                     <td>{{ $manajemen->no_telp }}</td>
                                     <td>
                                         {{ Str::limit($manajemen->alamat, 50) }}
                                     </td>
+                                    <td>{{ $manajemen->jabatan }}</td>
+
                                     <td>
                                         {{-- Download Foto Profile --}}
-                                        @if ($manajemen->foto_asesor == null)
+                                        @if ($manajemen->foto_manajemen == null)
                                                 <span class="text-muted d-block">Tidak Ada Gambar Profile</span>
                                             @else
-                                                <a class="d-block" href="{{ asset('img/foto_asesor/' . $manajemen->foto_asesor) }}" download="{{ $manajemen->foto_asesor }}">Download Profile</a>
+                                                <a class="d-block" href="{{ asset('img/foto_manajemen/' . $manajemen->foto_manajemen) }}" download="{{ $manajemen->foto_manajemen }}">Download Profile</a>
                                         @endif
 
                                         {{-- Download Foto Profile --}}
@@ -99,7 +100,7 @@
                                         <div class="btn-group mb-2">
                                             {{-- See Details --}}
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $manajemen->id }}">
-                                                <i class="ri-eye-line"></i> 
+                                                <i class="ri-eye-line"></i>
                                             </button>
 
                                             {{-- Edit Button --}}
@@ -118,9 +119,9 @@
                                                     <i class="ri-delete-bin-2-line"></i>
                                                 </button>
                                             </form>
-                                           
 
-                                            
+
+
 
                                         </div>
                                     </td>
@@ -145,7 +146,7 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header modal-colored-header bg-info">
-                    <h4 class="modal-title" id="info-header-modalLabel">Surat Tugas {{ $manajemen->nama_asesor }}</h4>
+                    <h4 class="modal-title" id="info-header-modalLabel">Data Manajemen {{ $manajemen->nama_manajemen }}</h4>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -153,14 +154,14 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label class="form-label">Nama Asesor</label>
-                                <input class="form-control" type="text" value="{{ $manajemen->nama_asesor }}" disabled>
+                                <label class="form-label">Nama Manajemen</label>
+                                <input class="form-control" type="text" value="{{ $manajemen->nama_manajemen }}" disabled>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="skema" class="form-label">No REG Asesor</label>
-                                <input class="form-control" type="text" value="{{ $manajemen->no_reg }}" disabled>
+                                <label for="skema" class="form-label">No Telp</label>
+                                <input class="form-control" type="text" value="{{ $manajemen->no_telp }}" disabled>
                             </div>
                         </div>
                     </div>
@@ -168,8 +169,8 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="mb-3">
-                                <label for="skema" class="form-label">No Telp Asesor</label>
-                                <input class="form-control" type="text" value="{{ $manajemen->no_telp }}" disabled>
+                                <label for="skema" class="form-label">Jabatan</label>
+                                <input class="form-control" type="text" value="{{ $manajemen->jabatan }}" disabled>
                             </div>
                         </div>
 
@@ -185,7 +186,7 @@
                         <div class="col-sm-6">
                             <div class="mb-3">
                                 <label for="skema" class="form-label">Foto Profile Asesor</label>
-                                <img src="{{ $manajemen->foto_asesor == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_asesor/' . $manajemen->foto_asesor)  }}" class="avatar-lg d-block" width="200px">
+                                <img src="{{ $manajemen->foto_manajemen == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_manajemen/' . $manajemen->foto_manajemen)  }}" class="avatar-lg d-block" width="200px">
                             </div>
                         </div>
 
@@ -237,12 +238,12 @@
             document.getElementById("deleteButton-{{ $manajemen->id }}").addEventListener("click", function() {
                 Swal.fire({
                         title: "Are you sure?",
-                        text: "Apakah Anda Yakin Ingin Mengapus Data Asesor Ini ?",
+                        text: "Apakah Anda Yakin Ingin Mengapus Data Manajemen Ini ?",
                         icon: "warning",
                         showCancelButton: true,
                 }).then((willDelete) => {
                     if (willDelete.isConfirmed) {
-                        fetch("{{ route('asesor.destroy', $manajemen->id) }}", {
+                        fetch("{{ route('manajemen.destroy', $manajemen->id) }}", {
                             method: "DELETE",
                             headers: {
                                 "X-CSRF-TOKEN": "{{ csrf_token() }}"
@@ -252,11 +253,11 @@
                             if (response.ok) {
                             Swal.fire(
                                 'Terhapus',
-                                'Data Asesor Berhasil Dihapus',
+                                'Data Manajemen Berhasil Dihapus',
                                 'success'
                             ).then((result) =>{
                                 if (result.isConfirmed){
-                                window.location.href = "{{ route('asesor.index') }}";
+                                window.location.href = "{{ route('manajemen.index') }}";
                                 }
                             })
                             }
@@ -264,7 +265,7 @@
                     } else {
                     Swal.fire({
                         title: "Dibatalkan",
-                        text: "Data Asesor Batal Dihapus",
+                        text: "Data Manajemen Batal Dihapus",
                         icon: "error",});
                     }
                 });

@@ -19,7 +19,7 @@
     </style>
 </head>
 <body>
-    <a href="/asesor">Back</a>
+    <a href="/manajemen">Back</a>
         <table style="margin: 20px" id="data-table">
             <tr>
                 <th>No</th>
@@ -31,19 +31,19 @@
                 <th>Tanda Tangan</th>
             </tr>
 
-            @foreach ($dataAsesor as $asesor)
+            @foreach ($dataManajemen as $asesor)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $asesor->nama_asesor }}</td>
-                    <td>{{ $asesor->no_reg }}</td>
+                    <td>{{ $asesor->nama_manajemen }}</td>
+                    <td>{{ $asesor->no_telp }}</td>
                     <td>{{ $asesor->no_telp }}</td>
                     <td>{{ $asesor->alamat }}</td>
-                    
+
                     <td>
-                        @if ($asesor->foto_asesor == null)
+                        @if ($asesor->foto_manajemen == null)
                             <span class="text-muted d-block">Tidak Ada Profile</span>
                         @else
-                            <a class="d-block" href="{{ asset('img/foto_asesor/' . $asesor->foto_asesor) }}" download="{{ $asesor->foto_asesor }}">Download Profile</a>
+                            <a class="d-block" href="{{ asset('img/foto_manajemen/' . $asesor->foto_manajemen) }}" download="{{ $asesor->foto_manajemen }}">Download Profile</a>
                         @endif
                     </td>
                     <td>
@@ -64,9 +64,7 @@
 
         rows.forEach(row => {
             row.addEventListener("click", function() {
-            // Menghapus kelas highlight dari semua baris
             rows.forEach(r => r.classList.remove("highlight"));
-            // Menambahkan kelas highlight pada baris yang diklik
             this.classList.add("highlight");
             });
         });

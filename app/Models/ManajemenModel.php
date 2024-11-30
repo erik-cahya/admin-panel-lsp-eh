@@ -23,7 +23,8 @@ class ManajemenModel extends Model
         static::creating(function ($model) {
             if (!$model->id) {
                 // berikan nilai id dengan format uuid
-                $model->id = Str::uuid();
+                // $model->id = Str::uuid();
+                $model->id = rand(111111111111111111, 999999999999999999);
             }
         });
     }

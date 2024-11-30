@@ -13,7 +13,7 @@ class CreateManajemenTable extends Migration
      */
     public function up()
     {
-        Schema::create('manajemen', function (Blueprint $table) {          
+        Schema::create('manajemen', function (Blueprint $table) {
             $table->id();
             $table->string('nama_manajemen');
             $table->string('no_telp')->nullable();

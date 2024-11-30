@@ -47,14 +47,15 @@
                                 </div>
                                     <div class="card-body">
                                         <div class="row">
+
                                             <div class="col-lg-6 mb-4">
                                                 <label class="form-label">Nama Asesor<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan Nama Asesor" name="nama_asesor">
+                                                    <input type="text" class="form-control" placeholder="Inputkan Nama Asesor" name="nama_asesor" value="{{ old('nama_asesor') }}">
                                                 </div>
 
-                                                @error('nomor_surat')
+                                                @error('nama_asesor')
                                                     <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -63,10 +64,10 @@
                                                 <label class="form-label">No REG<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan No REG" name="no_reg">
+                                                    <input type="text" class="form-control" placeholder="Inputkan No REG" name="no_reg" value="{{ old('no_reg') }}">
                                                 </div>
 
-                                                @error('nomor_surat')
+                                                @error('no_reg')
                                                     <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -75,10 +76,10 @@
                                                 <label class="form-label">No Telp<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan No Telp Asesor" name="no_telp">
+                                                    <input type="text" class="form-control" placeholder="Inputkan No Telp Asesor" name="no_telp" value="{{ old('no_telp') }}">
                                                 </div>
 
-                                                @error('nomor_surat')
+                                                @error('no_telp')
                                                     <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -87,16 +88,16 @@
                                                 <label class="form-label">Alamat<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                    <input type="text" class="form-control" placeholder="Inputkan Alamat Asesor" name="alamat">
+                                                    <input type="text" class="form-control" placeholder="Inputkan Alamat Asesor" name="alamat" value="{{ old('alamat') }}">
                                                 </div>
 
-                                                @error('nomor_surat')
+                                                @error('alamat')
                                                     <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
                                                 @enderror
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
-                                                <label for="foto_asesor" class="form-label">Upload Gambar Asesor (Opsional)</label>
+                                                <label for="foto_asesor" class="form-label">Upload Foto Asesor (Opsional)</label>
                                                 <input type="file" id="foto_asesor" name="foto_asesor" class="form-control" onchange="previewImage()">
                                             </div>
 
@@ -124,9 +125,7 @@
                                     </div>
                             </div>
                         </div>
-
                     </div>
-
                 <!-- [ Main Content ] end -->
 
         </form>

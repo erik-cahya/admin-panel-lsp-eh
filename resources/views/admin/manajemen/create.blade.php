@@ -65,6 +65,10 @@
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
                                                     <input type="text" class="form-control" placeholder="Inputkan No Telp" name="no_telp">
                                                 </div>
+
+                                                @error('no_telp')
+                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
@@ -73,6 +77,10 @@
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
                                                     <input type="text" class="form-control" placeholder="Inputkan Jabatan Manajerial" name="jabatan">
                                                 </div>
+
+                                                @error('jabatan')
+                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
@@ -81,10 +89,14 @@
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
                                                     <input type="text" class="form-control" placeholder="Inputkan Alamat" name="alamat">
                                                 </div>
+
+                                                @error('alamat')
+                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                @enderror
                                             </div>
 
                                             <div class="col-lg-6 mb-4">
-                                                <label for="foto_manajemen" class="form-label">Upload Gambar(Opsional)</label>
+                                                <label for="foto_manajemen" class="form-label">Upload Foto Manajemen (Opsional)</label>
                                                 <input type="file" id="foto_manajemen" name="foto_manajemen" class="form-control" onchange="previewImage()">
                                             </div>
 
