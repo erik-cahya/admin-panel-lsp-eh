@@ -35,7 +35,7 @@
                 </a>
             </li>
 
-            <li class="side-nav-title">Main Menu</li>
+            <li class="side-nav-title">Menu Surat</li>
 
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#suratTugasAsesor" aria-expanded="false" aria-controls="suratTugasAsesor" class="side-nav-link">
@@ -78,7 +78,7 @@
 
             <li class="side-nav-title">Data LSP</li>
 
-
+            {{-- Asesor LSP --}}
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#asesorLSP" aria-expanded="false" aria-controls="asesorLSP" class="side-nav-link">
                     <i class="ri-user-fill"></i>
@@ -102,7 +102,7 @@
                 </div>
             </li>
 
-
+            {{-- Manajemen LSP --}}
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#manajemenLSP" aria-expanded="false" aria-controls="manajemenLSP" class="side-nav-link">
                     <i class="ri-team-fill"></i>
@@ -126,6 +126,7 @@
                 </div>
             </li>
 
+            {{-- TUK LSP --}}
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#tukLSP" aria-expanded="false" aria-controls="tukLSP" class="side-nav-link">
                     <i class="ri-building-fill"></i>
@@ -149,6 +150,7 @@
                 </div>
             </li>
 
+            {{-- Skema LSP --}}
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#skemaLSP" aria-expanded="false" aria-controls="skemaLSP" class="side-nav-link">
                     <i class="ri-file-paper-2-fill"></i>
@@ -171,6 +173,33 @@
                     </ul>
                 </div>
             </li>
+
+            <li class="side-nav-title">Blanko Sertifikasi</li>
+
+            {{-- Pengajuan Blanko --}}
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#pengajuanBlanko" aria-expanded="false" aria-controls="pengajuanBlanko" class="side-nav-link">
+                    <i class="ri-user-fill"></i>
+                    <span>Pengajuan Blanko</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="pengajuanBlanko">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/asesor">
+                                <span class="badge bg-success float-end">{{ App\Models\AsesorModel::count() }}</span>
+                                List Asesor
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/asesor/create">Create Data Asesor</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
 
 
 
