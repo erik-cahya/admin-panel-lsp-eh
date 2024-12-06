@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DataLSP\AsesiController;
 use App\Http\Controllers\DataLSP\AsesorController;
 use App\Http\Controllers\DataLSP\ManajemenController;
 use App\Http\Controllers\DataLSP\SkemaController;
 use App\Http\Controllers\DataLSP\TUKController;
+use App\Http\Controllers\Developer\ExcelController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\QRCode\QRCodeController;
 use App\Http\Controllers\Surat\SuratTugasAsesorController;
@@ -26,16 +28,19 @@ use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/auth.php';
 
-
-Route::get('analytics', function () {
-    return view('admin.analytics.index');
-});
-
-
 // Middleware Guest / Belum Login
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [AuthenticatedSessionController::class, 'create']);
 });
+
+
+
+Route::get('/import', function () {
+    return view('Developer.Excel.index');
+});
+
+Route::post('/import', [ExcelController::class, 'importWithoutClass'])->name('import');
+
 
 
 // Middleware Login
@@ -46,17 +51,17 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/qr-code', QRCodeController::class)->except(['create', 'show', 'edit', 'update']);
 
     // ############################################################ Surat Tugas Asesor
-    Route::get('surat-tugas-asesor/compact', [SuratTugasAsesorController::class, 'compact'])->name('surat-tugas-asesor-compact');
-    Route::get('surat-tugas-asesor', [SuratTugasAsesorController::class, 'index'])->name('surat-tugas-asesor.view');
-    Route::get('surat-tugas-asesor/create', [SuratTugasAsesorController::class, 'createSurat'])->name('surat-tugas-asesor.create');
-    Route::post('surat-tugas-asesor/store', [SuratTugasAsesorController::class, 'store'])->name('surat-tugas-asesor.store');
-    Route::post('surat-tugas-asesor/edit/{id}', [SuratTugasAsesorController::class, 'editSurat'])->name('surat-tugas-asesor.edit');
-    Route::post('surat-tugas-asesor/update/{id}', [SuratTugasAsesorController::class, 'updateSurat'])->name('surat-tugas-asesor.update');
+    Route::get('suratTugasAsesor/compact', [SuratTugasAsesorController::class, 'compact'])->name('surat-tugas-asesor-compact');
+    Route::get('suratTugasAsesor', [SuratTugasAsesorController::class, 'index'])->name('surat-tugas-asesor.view');
+    Route::get('suratTugasAsesor/create', [SuratTugasAsesorController::class, 'createSurat'])->name('surat-tugas-asesor.create');
+    Route::post('suratTugasAsesor/store', [SuratTugasAsesorController::class, 'store'])->name('surat-tugas-asesor.store');
+    Route::post('suratTugasAsesor/edit/{id}', [SuratTugasAsesorController::class, 'editSurat'])->name('surat-tugas-asesor.edit');
+    Route::post('suratTugasAsesor/update/{id}', [SuratTugasAsesorController::class, 'updateSurat'])->name('surat-tugas-asesor.update');
 
-    Route::delete('surat-tugas-asesor/destroy/{id}', [SuratTugasAsesorController::class, 'destroy'])->name('surat-tugas-asesor.delete');
+    Route::delete('suratTugasAsesor/destroy/{id}', [SuratTugasAsesorController::class, 'destroy'])->name('surat-tugas-asesor.delete');
 
-    Route::get('surat-tugas-asesor/download{id}', [SuratTugasAsesorController::class, 'downloadSurat'])->name('surat-tugas-asesor.download');
-    Route::get('surat-tugas-asesor/generate-pdf/{id}', [SuratTugasAsesorController::class, 'generatePdf'])->name('surat-tugas-asesor.generatePdf');
+    Route::get('suratTugasAsesor/download{id}', [SuratTugasAsesorController::class, 'downloadSurat'])->name('surat-tugas-asesor.download');
+    Route::get('suratTugasAsesor/generate-pdf/{id}', [SuratTugasAsesorController::class, 'generatePdf'])->name('surat-tugas-asesor.generatePdf');
 
 
     // ############################################################ TUK
@@ -68,6 +73,15 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('tukDeleted/{id}', [TUKController::class, 'tukDeleted'])->name('tukDeleted');
 
     Route::get('get_data_tuk/{id}', [SuratTugasAsesorController::class, 'get_data_tuk'])->name('get_data_tuk');
+
+    // ############################################################ Asesi
+    Route::get('asesi', [AsesiController::class, 'index'])->name('asesiIndex');
+    Route::get('tukAdd', [AsesiController::class, 'tukAdd'])->name('tukAdd');
+    Route::post('tukAdded', [AsesiController::class, 'tukAdded'])->name('tukAdded');
+    Route::get('tukEdit', [AsesiController::class, 'tukEdit'])->name('tukEdit');
+    Route::post('tukEdited/{id}', [AsesiController::class, 'tukEdited'])->name('tukEdited');
+    Route::delete('tukDeleted/{id}', [AsesiController::class, 'tukDeleted'])->name('tukDeleted');
+
 
     // ############################################################ Asesor
     Route::get('asesor/compact', [AsesorController::class, 'compact'])->name('asesor-compact');
@@ -81,5 +95,5 @@ Route::middleware(['auth'])->group(function () {
 
 
     // ############################################################ Skema
-    Route::resource('/skema', SkemaController::class)->except('show','edit', 'create');
+    Route::resource('/skema', SkemaController::class)->except('show','edit');
 });

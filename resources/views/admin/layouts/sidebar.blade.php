@@ -126,6 +126,31 @@
                 </div>
             </li>
 
+
+            {{-- Asesi LSP --}}
+            <li class="side-nav-item">
+                <a data-bs-toggle="collapse" href="#asesiLSP" aria-expanded="false" aria-controls="asesiLSP" class="side-nav-link">
+                    <i class="ri-team-fill"></i>
+                    <span>Anggota Asesi LSP</span>
+                    <span class="menu-arrow"></span>
+                </a>
+                <div class="collapse" id="asesiLSP">
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="{{ route('asesiIndex') }}">
+                                <span class="badge bg-success float-end">{{ App\Models\AsesiModel::count() }}</span>
+                                List Asesi
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="side-nav-second-level">
+                        <li>
+                            <a href="/manajemen/create">Import Data Asesi</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
             {{-- TUK LSP --}}
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#tukLSP" aria-expanded="false" aria-controls="tukLSP" class="side-nav-link">
