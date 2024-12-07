@@ -76,8 +76,8 @@
                         <div class="float-end">
                             <i class="ri-group-2-line widget-icon"></i>
                         </div>
-                        <h6 class="text-uppercase mt-0" title="Customers">Jumlah Manajemen</h6>
-                        <h3 class="my-2">{{ $countManajemen }} Orang</h3>
+                        <h6 class="text-uppercase mt-0" title="Customers">Jumlah Asesi</h6>
+                        <h3 class="my-2">{{ $countAsesi }} Orang</h3>
                     </div>
                 </div>
             </div> <!-- end col-->

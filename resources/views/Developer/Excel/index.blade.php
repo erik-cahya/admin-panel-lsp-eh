@@ -40,24 +40,20 @@
             <tbody>
                 @foreach(session('duplicates') as $duplicate)
                     <tr>
-                        <td>{{ $duplicate['nama_asesi'] }}</td>
+                        <td>{{ $duplicate['nama_lengkap'] }}</td>
+                        <td>{{ $duplicate['nama_tempat_bekerja'] }}</td>
+                        <td>{{ $duplicate['alamat'] }}</td>
                         <td>{{ $duplicate['nik'] }}</td>
                         <td>{{ $duplicate['tempat_lahir'] }}</td>
                         <td>{{ $duplicate['tanggal_lahir'] }}</td>
                         <td>{{ $duplicate['jenis_kelamin'] }}</td>
-                        <td>{{ $duplicate['tempat_tinggal'] }}</td>
-                        <td>{{ $duplicate['kode_kabupaten'] }}</td>
-                        <td>{{ $duplicate['kode_provinsi'] }}</td>
+                        <td>{{ $duplicate['alamat_tempat_tinggal'] }}</td>
                         <td>{{ $duplicate['telp'] }}</td>
                         <td>{{ $duplicate['email'] }}</td>
-                        <td>{{ $duplicate['kode_pendidikan'] }}</td>
-                        <td>{{ $duplicate['kode_pekerjaan'] }}</td>
-                        <td>{{ $duplicate['kode_jadwal'] }}</td>
-                        <td>{{ $duplicate['tanggal_uji'] }}</td>
-                        <td>{{ $duplicate['nomor_registrasi_asesor'] }}</td>
-                        <td>{{ $duplicate['kode_sumber_anggaran'] }}</td>
-                        <td>{{ $duplicate['kode_kementrian'] }}</td>
-                        <td>{{ $duplicate['status_kompeten'] }}</td>
+                        <td>{{ $duplicate['pendidikan_terakhir'] }}</td>
+                        <td>{{ $duplicate['jabatan_pekerjaan'] }}</td>
+                        <td>{{ $duplicate['skema_sertifikasi'] }}</td>
+                        <td>{{ $duplicate['rencana_uji_kompetensi'] }}</td>
                     </tr>
                 @endforeach
             </tbody>

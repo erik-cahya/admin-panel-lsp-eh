@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AsesiModel;
 use App\Models\AsesorModel;
 use App\Models\ManajemenModel;
 use App\Models\SkemaModel;
@@ -15,6 +16,7 @@ class DashboardController extends Controller
     public function index()
     {
         $data['countManajemen'] = ManajemenModel::count();
+        $data['countAsesi'] = AsesiModel::count();
         $data['countAsesor'] = AsesorModel::count();
         $data['countTUK'] = TUKModel::count();
         $data['countSkema'] = SkemaModel::count();

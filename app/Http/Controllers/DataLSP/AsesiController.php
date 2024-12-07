@@ -20,6 +20,13 @@ class AsesiController extends Controller
         $this->data['titlePage'] = 'Data Asesi';
     }
 
+    public function compact(){
+        $this->data['dataAsesor'] = AsesorModel::get();
+        $this->data['dataAsesi'] = AsesiModel::get();
+        
+        return view('admin.asesi.compact.index', $this->data);
+    }
+
     public function index()
     {
         $this->data['dataAsesor'] = AsesorModel::get();

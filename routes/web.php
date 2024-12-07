@@ -75,7 +75,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('get_data_tuk/{id}', [SuratTugasAsesorController::class, 'get_data_tuk'])->name('get_data_tuk');
 
     // ############################################################ Asesi
-    Route::get('asesi', [AsesiController::class, 'index'])->name('asesiIndex');
+    Route::get('/asesi', [AsesiController::class, 'index'])->name('asesiIndex');
+    Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
+
+
     Route::get('tukAdd', [AsesiController::class, 'tukAdd'])->name('tukAdd');
     Route::post('tukAdded', [AsesiController::class, 'tukAdded'])->name('tukAdded');
     Route::get('tukEdit', [AsesiController::class, 'tukEdit'])->name('tukEdit');

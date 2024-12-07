@@ -11,6 +11,10 @@
     <!-- Theme Config Js -->
     <script src="{{ asset('velonic_admin') }}/assets/js/config.js"></script>
 
+    <!-- Select2 css -->
+    <link href="{{ asset('velonic_admin') }}/assets/vendor/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+
+
     <!-- App css -->
     <link href="{{ asset('velonic_admin') }}/assets/css/app.min.css" rel="stylesheet" type="text/css" id="app-style" />
 
@@ -39,7 +43,25 @@
         </div>
         <!-- end page title -->
 
+
         <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <label class="form-label">Judul Skema Data</label>
+                        <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
+                            <option data-icon="feather-user" selected readonly disabled>Pilih Data Skema...</option>
+                                <option data-icon="feather-user" value="Badung">PEMKAB BADUNG 2024</option>
+                                <option data-icon="feather-user" value="Badung">PEMKAB BADUNG 2023</option>
+                        </select>
+                        <button type="submit" class="btn btn-sm btn-primary mt-2">Search Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
@@ -47,31 +69,27 @@
                         <p class="text-muted mb-0">
                             Anda bisa menambahkan dan mendownload {{ $titlePage }}, foto, serta tanda tangan.
                         </p>
-                        <a href="{{ route('asesor-compact') }}">Compact Mode</a>
+                        <a href="{{ route('asesiCompact') }}">Compact Mode</a>
                     </div>
                     <div class="card-body">
                         <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 12px">
                             <thead>
                                 <tr>
                                     <th>NO</th>
-                                    <th>Nama Asesi</th>
+                                    <th>Nama Lengkap Asesi</th>
+                                    <th>Nama Tempat Bekerja</th>
+                                    <th>Alamat Tempat Bekerja</th>
                                     <th>NIK</th>
                                     <th>Tempat Lahir</th>
                                     <th>Tanggal Lahir</th>
                                     <th>Jenis Kelamin</th>
-                                    <th>Kode Kabupaten</th>
-                                    <th>Kode Provinsi</th>
-                                    <th>Telp</th>
+                                    <th>Alamat Tempat Tinggal</th>
+                                    <th>No Telp</th>
                                     <th>Email</th>
-                                    <th>Kode Pendidikan</th>
-                                    <th>Kode Pekerjaan</th>
-                                    <th>Kode Jadwal</th>
-                                    <th>Tanggal Uji</th>
-                                    <th>Nomor Registrasi Asesor</th>
-                                    <th>Kode Sumber Anggaran</th>
-                                    <th>Kode Kementrian</th>
-                                    <th>Status Kompeten</th>
-                                    <th>Status Kompeten</th>
+                                    <th>Pendidikan Terakhir</th>
+                                    <th>Jabatan Pekerjaan</th>
+                                    <th>Skema Sertifikasi</th>
+                                    <th>Rencana Uji Kompetensi</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -79,26 +97,20 @@
                                 @foreach ($dataAsesi as $asesi)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>
-                                        {{ $asesi->nama_asesi }}
-                                    </td>
+                                    <td>{{ $asesi->nama_lengkap }}</td>
+                                    <td>{{ $asesi->nama_tempat_bekerja }}</td>
+                                    <td>{{ Str::limit($asesi->alamat, 30) }}</td>
                                     <td>{{ $asesi->nik }}</td>
                                     <td>{{ $asesi->tempat_lahir }}</td>
                                     <td>{{ $asesi->tanggal_lahir }}</td>
                                     <td>{{ $asesi->jenis_kelamin }}</td>
-                                    <td>{{ $asesi->tempat_tinggal }}</td>
-                                    <td>{{ $asesi->kode_kabupaten }}</td>
-                                    <td>{{ $asesi->kode_provinsi }}</td>
+                                    <td>{{ $asesi->alamat_tempat_tinggal }}</td>
                                     <td>{{ $asesi->telp }}</td>
                                     <td>{{ $asesi->email }}</td>
-                                    <td>{{ $asesi->kode_pendidikan }}</td>
-                                    <td>{{ $asesi->kode_pekerjaan }}</td>
-                                    <td>{{ $asesi->kode_jadwal }}</td>
-                                    <td>{{ $asesi->tanggal_uji }}</td>
-                                    <td>{{ $asesi->nomor_registrasi_asesor }}</td>
-                                    <td>{{ $asesi->kode_sumber_anggaran }}</td>
-                                    <td>{{ $asesi->kode_kementrian }}</td>
-                                    <td>{{ $asesi->status_kompeten }}</td>
+                                    <td>{{ $asesi->pendidikan_terakhir }}</td>
+                                    <td>{{ $asesi->jabatan_pekerjaan }}</td>
+                                    <td>{{ $asesi->skema_sertifikasi }}</td>
+                                    <td>{{ $asesi->rencana_uji_kompetensi }}</td>
                                     
                                     <td>
                                         Edit | 
@@ -133,6 +145,9 @@
 @section('js_page')
      <!-- Vendor js -->
      <script src="{{ asset('velonic_admin') }}/assets/js/vendor.min.js"></script>
+
+     <!--  Select2 Plugin Js -->
+    <script src="{{ asset('velonic_admin') }}/assets/vendor/select2/js/select2.min.js"></script>
 
      <!-- Datatables js -->
      <script src="{{ asset('velonic_admin') }}/assets/vendor/datatables.net/js/jquery.dataTables.min.js"></script>
