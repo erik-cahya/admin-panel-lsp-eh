@@ -20,6 +20,21 @@
 
     <!-- Icons css -->
     <link href="{{ asset('velonic_admin') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        .hover-menu{
+            display: none;
+        }
+
+        .hoverMenuContainer:hover > .hover-menu{
+            display: block;
+        }
+
+        /* .hover-menu-container:hover + .hover-menu{
+            display: block;
+            background-color: blue;
+        } */
+    </style>
 @endsection
 
 @section('content')
@@ -51,8 +66,8 @@
                         <label class="form-label">Judul Skema Data</label>
                         <select class="form-select form-control select2" data-toggle="select2" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
                             <option data-icon="feather-user" selected readonly disabled>Pilih Data Skema...</option>
-                                <option data-icon="feather-user" value="Badung">PEMKAB BADUNG 2024</option>
-                                <option data-icon="feather-user" value="Badung">PEMKAB BADUNG 2023</option>
+                                <option data-icon="feather-user" value="Badung">PEMKAB BADUNG 2024 | 300</option>
+                                <option data-icon="feather-user" value="Badung">PEMKAB BADUNG 2023 | 156</option>
                         </select>
                         <button type="submit" class="btn btn-sm btn-primary mt-2">Search Data</button>
                     </div>
@@ -97,7 +112,23 @@
                                 @foreach ($dataAsesi as $asesi)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $asesi->nama_lengkap }}</td>
+                                    <td class="hoverMenuContainer">
+                                        {{ $asesi->nama_lengkap }} 
+                                        
+                                        <div class="row hover-menu">
+                                            <div class="col">
+                                                Edit | 
+                                                {{-- Delete Button --}}
+                                                <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
+                                                    {{ csrf_field() }}
+                                                    {{ method_field('DELETE') }}
+                                                    
+                                                    <input type="hidden" id="idAsesi" name="id_surat" value="{{ $asesi->id }}">
+                                                    <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>{{ $asesi->nama_tempat_bekerja }}</td>
                                     <td>{{ Str::limit($asesi->alamat, 30) }}</td>
                                     <td>{{ $asesi->nik }}</td>
@@ -120,9 +151,8 @@
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 
-                                            <input type="hidden" name="id_surat" value="{{ $asesi->id }}">
-
-                                            <span type="button" class="text-danger" id="deleteButton-{{ $asesi->id }}">Delete</span>
+                                            <input type="hidden" id="idAsesi" name="id_surat" value="{{ $asesi->id }}">
+                                            <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
                                         </form>
                                     </td>
                                 </tr>
@@ -172,44 +202,58 @@
 
      {{-- Sweet Alert --}}
     <script>
-        @foreach ($dataAsesi as $asesi)
-            document.getElementById("deleteButton-{{ $asesi->id }}").addEventListener("click", function() {
+        document.addEventListener("click", function (event) {
+            if (event.target.classList.contains("deleteButton")) {
+                const asesId = event.target.closest("tr").querySelector('input[name="id_surat"]').value;
+                const namaAsesor = event.target.getAttribute("data-nama");
 
-            Swal.fire({
+                Swal.fire({
                     title: "Are you sure?",
-                    text: "Apakah Anda Yakin Ingin Mengapus {{ $titlePage }} Ini ?",
+                    text: "Apakah Anda ingin menghapus data " + namaAsesor + " ?",
                     icon: "warning",
                     showCancelButton: true,
-            }).then((willDelete) => {
+                }).then((willDelete) => {
                     if (willDelete.isConfirmed) {
-                        fetch("{{ route('asesor.destroy', $asesi->id) }}", {
+                        fetch(`/asesi/${asesId}`, {
                             method: "DELETE",
                             headers: {
                                 "X-CSRF-TOKEN": "{{ csrf_token() }}"
                             }
-                        })
-                        .then(response => {
+                        }).then(response => {
                             if (response.ok) {
-                            Swal.fire(
-                                'Terhapus',
-                                '{{ $titlePage }} Berhasil Dihapus',
-                                'success'
-                            ).then((result) =>{
-                                if (result.isConfirmed){
-                                window.location.href = "{{ route('asesor.index') }}";
-                                }
-                            })
+                                Swal.fire(
+                                    'Terhapus',
+                                    'Data Berhasil Dihapus',
+                                    'success'
+                                ).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.reload();
+                                    }
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Error",
+                                    text: "Gagal menghapus data.",
+                                    icon: "error",
+                                });
                             }
-                        })
+                        }).catch(err => {
+                            Swal.fire({
+                                title: "Error",
+                                text: "Terjadi kesalahan pada server.",
+                                icon: "error",
+                            });
+                        });
                     } else {
-                    Swal.fire({
-                        title: "Dibatalkan",
-                        text: "{{ $titlePage }} Batal Dihapus",
-                        icon: "error",});
+                        Swal.fire({
+                            title: "Dibatalkan",
+                            text: "Data batal dihapus.",
+                            icon: "error",
+                        });
                     }
                 });
-            });
-        @endforeach
+            }
+        });
     </script>
     {{-- /* End Sweet Alert --}}
 

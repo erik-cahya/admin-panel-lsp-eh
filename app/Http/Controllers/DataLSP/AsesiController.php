@@ -35,7 +35,7 @@ class AsesiController extends Controller
         return view('admin.asesi.index', $this->data);
     }
 
-    public function importData(Request $request)
+    public function import(Request $request)
     {
          $request->validate([
             'file' => 'required|mimes:xlsx,csv',

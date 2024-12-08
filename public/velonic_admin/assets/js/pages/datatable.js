@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    "use strict";
+    ("use strict");
 
     // Basic DataTable
     $("#basic-datatable").DataTable({
@@ -7,12 +7,14 @@ $(document).ready(function () {
         language: {
             paginate: {
                 previous: "<i class='ri-arrow-left-s-line'></i>",
-                next: "<i class='ri-arrow-right-s-line'></i>"
-            }
+                next: "<i class='ri-arrow-right-s-line'></i>",
+            },
         },
         drawCallback: function () {
-            $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
-        }
+            $(".dataTables_paginate > .pagination").addClass(
+                "pagination-rounded"
+            );
+        },
     });
 
     // DataTable with buttons
@@ -23,37 +25,46 @@ $(document).ready(function () {
         language: {
             paginate: {
                 previous: "<i class='ri-arrow-left-s-line'></i>",
-                next: "<i class='ri-arrow-right-s-line'></i>"
-            }
+                next: "<i class='ri-arrow-right-s-line'></i>",
+            },
         },
         drawCallback: function () {
-            $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
-        }
+            $(".dataTables_paginate > .pagination").addClass(
+                "pagination-rounded"
+            );
+        },
     });
-    tableWithButtons.buttons().container().appendTo("#datatable-buttons_wrapper .col-md-6:eq(0)");
+    tableWithButtons
+        .buttons()
+        .container()
+        .appendTo("#datatable-buttons_wrapper .col-md-6:eq(0)");
 
     // Selection DataTable
     $("#selection-datatable").DataTable({
         select: {
-            style: "multi"
+            style: "multi",
         },
         language: {
             paginate: {
                 previous: "<i class='ri-arrow-left-s-line'></i>",
-                next: "<i class='ri-arrow-right-s-line'></i>"
-            }
+                next: "<i class='ri-arrow-right-s-line'></i>",
+            },
         },
         drawCallback: function () {
-            $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
-        }
+            $(".dataTables_paginate > .pagination").addClass(
+                "pagination-rounded"
+            );
+        },
     });
 
     // Alternative pagination DataTable
     $("#alternative-page-datatable").DataTable({
         pagingType: "full_numbers",
         drawCallback: function () {
-            $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
-        }
+            $(".dataTables_paginate > .pagination").addClass(
+                "pagination-rounded"
+            );
+        },
     });
 
     // Scroll vertical DataTable
@@ -64,26 +75,38 @@ $(document).ready(function () {
         language: {
             paginate: {
                 previous: "<i class='ri-arrow-left-s-line'></i>",
-                next: "<i class='ri-arrow-right-s-line'></i>"
-            }
+                next: "<i class='ri-arrow-right-s-line'></i>",
+            },
         },
         drawCallback: function () {
-            $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
-        }
+            $(".dataTables_paginate > .pagination").addClass(
+                "pagination-rounded"
+            );
+        },
     });
 
     // Scroll horizontal DataTable
     $("#scroll-horizontal-datatable").DataTable({
         scrollX: true,
+        pageLength: 30, // Default jumlah data per halaman
+
         language: {
+            lengthMenu: "Tampilkan _MENU_ data per halaman", // Ubah teks dropdown
+
             paginate: {
                 previous: "<i class='ri-arrow-left-s-line'></i>",
-                next: "<i class='ri-arrow-right-s-line'></i>"
-            }
+                next: "<i class='ri-arrow-right-s-line'></i>",
+            },
         },
+        lengthMenu: [
+            [30, 50, 100, 200], // Pilihan jumlah data per halaman
+            [30, 50, 100, 200], // Teks yang ditampilkan dalam dropdown
+        ],
         drawCallback: function () {
-            $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
-        }
+            $(".dataTables_paginate > .pagination").addClass(
+                "pagination-rounded"
+            );
+        },
     });
 
     // Complex header DataTable
@@ -91,16 +114,20 @@ $(document).ready(function () {
         language: {
             paginate: {
                 previous: "<i class='ri-arrow-left-s-line'></i>",
-                next: "<i class='ri-arrow-right-s-line'></i>"
-            }
+                next: "<i class='ri-arrow-right-s-line'></i>",
+            },
         },
         drawCallback: function () {
-            $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
+            $(".dataTables_paginate > .pagination").addClass(
+                "pagination-rounded"
+            );
         },
-        columnDefs: [{
-            visible: false,
-            targets: -1
-        }]
+        columnDefs: [
+            {
+                visible: false,
+                targets: -1,
+            },
+        ],
     });
 
     // Row callback DataTable
@@ -108,17 +135,19 @@ $(document).ready(function () {
         language: {
             paginate: {
                 previous: "<i class='ri-arrow-left-s-line'></i>",
-                next: "<i class='ri-arrow-right-s-line'></i>"
-            }
+                next: "<i class='ri-arrow-right-s-line'></i>",
+            },
         },
         drawCallback: function () {
-            $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
+            $(".dataTables_paginate > .pagination").addClass(
+                "pagination-rounded"
+            );
         },
         createdRow: function (row, data, dataIndex) {
             if (+data[5].replace(/[\$,]/g, "") > 150000) {
                 $("td", row).eq(5).addClass("text-danger");
             }
-        }
+        },
     });
 
     // State saving DataTable
@@ -127,12 +156,14 @@ $(document).ready(function () {
         language: {
             paginate: {
                 previous: "<i class='ri-arrow-left-s-line'></i>",
-                next: "<i class='ri-arrow-right-s-line'></i>"
-            }
+                next: "<i class='ri-arrow-right-s-line'></i>",
+            },
         },
         drawCallback: function () {
-            $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
-        }
+            $(".dataTables_paginate > .pagination").addClass(
+                "pagination-rounded"
+            );
+        },
     });
 
     // Fixed columns DataTable
@@ -141,7 +172,7 @@ $(document).ready(function () {
         scrollX: true,
         scrollCollapse: true,
         paging: false,
-        fixedColumns: true
+        fixedColumns: true,
     });
 
     // Adding classes to DataTables elements
@@ -154,12 +185,14 @@ $(document).ready(function () {
         language: {
             paginate: {
                 previous: "<i class='ri-arrow-left-s-line'></i>",
-                next: "<i class='ri-arrow-right-s-line'></i>"
-            }
+                next: "<i class='ri-arrow-right-s-line'></i>",
+            },
         },
         drawCallback: function () {
-            $(".dataTables_paginate > .pagination").addClass("pagination-rounded");
-        }
+            $(".dataTables_paginate > .pagination").addClass(
+                "pagination-rounded"
+            );
+        },
     });
     new $.fn.dataTable.FixedHeader(fixedHeaderTable);
 });

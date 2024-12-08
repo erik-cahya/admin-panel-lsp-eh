@@ -37,7 +37,7 @@ class ExcelController extends Controller
             $jenis_kelamin = preg_replace('/\s+/', ' ', strtoupper(trim($row[7])));
             $alamat_tempat_tinggal = preg_replace('/\s+/', ' ', strtoupper(trim($row[8])));
             $telp = preg_replace('/\s+/', ' ', strtoupper(trim($row[9])));
-            $email = preg_replace('/\s+/', ' ', strtoupper(trim($row[10])));
+            $email = preg_replace('/\s+/', ' ', trim($row[10]));
             $pendidikan_terakhir = preg_replace('/\s+/', ' ', strtoupper(trim($row[11])));
             $jabatan_pekerjaan = preg_replace('/\s+/', ' ', strtoupper(trim($row[12])));
             $skema_sertifikasi = preg_replace('/\s+/', ' ', strtoupper(trim($row[13])));

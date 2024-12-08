@@ -23,49 +23,40 @@
         <table style="margin: 20px; font-size: 12px" id="data-table">
             <tr>
                 <th nowrap>NO</th>
-                <th nowrap>Nama Asesi</th>
+                <th nowrap>Nama Lengkap Asesi</th>
+                <th nowrap>Nama Tempat Bekerja</th>
+                <th nowrap>Alamat Tempat Bekerja</th>
                 <th nowrap>NIK</th>
                 <th nowrap>Tempat Lahir</th>
                 <th nowrap>Tanggal Lahir</th>
                 <th nowrap>Jenis Kelamin</th>
-                <th nowrap>Kode Kabupaten</th>
-                <th nowrap>Kode Provinsi</th>
-                <th nowrap>Telp</th>
+                <th nowrap>Alamat Tempat Tinggal</th>
+                <th nowrap>No Telp</th>
                 <th nowrap>Email</th>
-                <th nowrap>Kode Pendidikan</th>
-                <th nowrap>Kode Pekerjaan</th>
-                <th nowrap>Kode Jadwal</th>
-                <th nowrap>Tanggal Uji</th>
-                <th nowrap>Nomor Registrasi Asesor</th>
-                <th nowrap>Kode Sumber Anggaran</th>
-                <th nowrap>Kode Kementrian</th>
-                <th nowrap>Kode Sumber Anggaran</th>
-                <th nowrap>Status Kompeten</th>
+                <th nowrap>Pendidikan Terakhir</th>
+                <th nowrap>Jabatan Pekerjaan</th>
+                <th nowrap>Skema Sertifikasi</th>
+                <th nowrap>Rencana Uji Kompetensi</th>
             </tr>
 
             @foreach ($dataAsesi as $asesi)
                 <tr>
                     <td nowrap>{{ $loop->iteration }}</td>
-                    <td nowrap>
-                        {{ $asesi->nama_asesi }}
-                    </td>
+                    <td nowrap>{{ $asesi->nama_lengkap }}</td>
+                    <td nowrap>{{ $asesi->nama_tempat_bekerja }}</td>
+                    <td nowrap>{{ $asesi->alamat }}</td>
                     <td nowrap>{{ $asesi->nik }}</td>
                     <td nowrap>{{ $asesi->tempat_lahir }}</td>
                     <td nowrap>{{ $asesi->tanggal_lahir }}</td>
                     <td nowrap>{{ $asesi->jenis_kelamin }}</td>
-                    <td nowrap>{{ $asesi->tempat_tinggal }}</td>
-                    <td nowrap>{{ $asesi->kode_kabupaten }}</td>
-                    <td nowrap>{{ $asesi->kode_provinsi }}</td>
+                    <td nowrap>{{ $asesi->alamat_tempat_tinggal }}</td>
                     <td nowrap>{{ $asesi->telp }}</td>
                     <td nowrap>{{ $asesi->email }}</td>
-                    <td nowrap>{{ $asesi->kode_pendidikan }}</td>
-                    <td nowrap>{{ $asesi->kode_pekerjaan }}</td>
-                    <td nowrap>{{ $asesi->kode_jadwal }}</td>
-                    <td nowrap>{{ $asesi->tanggal_uji }}</td>
-                    <td nowrap>{{ $asesi->nomor_registrasi_asesor }}</td>
-                    <td nowrap>{{ $asesi->kode_sumber_anggaran }}</td>
-                    <td nowrap>{{ $asesi->kode_kementrian }}</td>
-                    <td nowrap>{{ $asesi->status_kompeten }}</td>
+                    <td nowrap>{{ $asesi->pendidikan_terakhir }}</td>
+                    <td nowrap>{{ $asesi->jabatan_pekerjaan }}</td>
+                    <td nowrap>{{ $asesi->skema_sertifikasi }}</td>
+                    <td nowrap>{{ $asesi->rencana_uji_kompetensi }}</td>
+                    
                 </tr>
             @endforeach
         </table>

@@ -76,14 +76,15 @@ Route::middleware(['auth'])->group(function () {
 
     // ############################################################ Asesi
     Route::get('/asesi', [AsesiController::class, 'index'])->name('asesiIndex');
+    Route::get('/asesi/import', [AsesiController::class, 'import'])->name('asesiImport');
     Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
 
 
-    Route::get('tukAdd', [AsesiController::class, 'tukAdd'])->name('tukAdd');
-    Route::post('tukAdded', [AsesiController::class, 'tukAdded'])->name('tukAdded');
-    Route::get('tukEdit', [AsesiController::class, 'tukEdit'])->name('tukEdit');
-    Route::post('tukEdited/{id}', [AsesiController::class, 'tukEdited'])->name('tukEdited');
-    Route::delete('tukDeleted/{id}', [AsesiController::class, 'tukDeleted'])->name('tukDeleted');
+    // Route::get('tukAdd', [AsesiController::class, 'tukAdd'])->name('tukAdd');
+    // Route::post('tukAdded', [AsesiController::class, 'tukAdded'])->name('tukAdded');
+    // Route::get('tukEdit', [AsesiController::class, 'tukEdit'])->name('tukEdit');
+    // Route::post('tukEdited/{id}', [AsesiController::class, 'tukEdited'])->name('tukEdited');
+    // Route::delete('tukDeleted/{id}', [AsesiController::class, 'tukDeleted'])->name('tukDeleted');
 
 
     // ############################################################ Asesor

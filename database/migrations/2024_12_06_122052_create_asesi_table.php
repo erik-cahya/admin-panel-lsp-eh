@@ -30,6 +30,7 @@ class CreateAsesiTable extends Migration
             $table->string('jabatan_pekerjaan')->nullable();
             $table->string('skema_sertifikasi')->nullable();
             $table->string('rencana_uji_kompetensi')->nullable();
+            $table->string('id_judul')->nullable();
 
             $table->timestamps();
 

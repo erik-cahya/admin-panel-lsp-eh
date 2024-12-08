@@ -131,7 +131,7 @@
             <li class="side-nav-item">
                 <a data-bs-toggle="collapse" href="#asesiLSP" aria-expanded="false" aria-controls="asesiLSP" class="side-nav-link">
                     <i class="ri-team-fill"></i>
-                    <span>Anggota Asesi LSP</span>
+                    <span>Asesi LSP</span>
                     <span class="menu-arrow"></span>
                 </a>
                 <div class="collapse" id="asesiLSP">
