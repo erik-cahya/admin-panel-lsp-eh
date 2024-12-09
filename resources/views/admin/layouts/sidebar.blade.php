@@ -145,7 +145,7 @@
                     </ul>
                     <ul class="side-nav-second-level">
                         <li>
-                            <a href="/manajemen/create">Import Data Asesi</a>
+                            <a href="/import">Import Data Asesi</a>
                         </li>
                     </ul>
                 </div>

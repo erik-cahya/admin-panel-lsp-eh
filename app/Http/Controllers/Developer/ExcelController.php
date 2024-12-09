@@ -16,7 +16,7 @@ class ExcelController extends Controller
 
     public function importWithoutClass(Request $request)
     {
-         $request->validate([
+        $request->validate([
             'file' => 'required|mimes:xlsx,csv',
         ]);
 
@@ -27,7 +27,7 @@ class ExcelController extends Controller
         foreach ($rows as $key => $row) {
             if ($key == 0) continue; // Skip header
 
-            // Bersihkan spasi berlebih dari setiap kolom
+            // bersihkan spasi berlebih & paksa kolom nik hanya angka
             $nama_lengkap = preg_replace('/\s+/', ' ', strtoupper(trim($row[1])));
             $nama_tempat_bekerja = preg_replace('/\s+/', ' ', strtoupper(trim($row[2])));
             $alamat = preg_replace('/\s+/', ' ', strtoupper(trim($row[3])));

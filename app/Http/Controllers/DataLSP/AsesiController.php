@@ -37,7 +37,7 @@ class AsesiController extends Controller
 
     public function import(Request $request)
     {
-         $request->validate([
+        $request->validate([
             'file' => 'required|mimes:xlsx,csv',
         ]);
 
@@ -46,30 +46,29 @@ class AsesiController extends Controller
         $duplicates = []; // Array untuk menyimpan data yang duplikat
 
         foreach ($rows as $key => $row) {
-            if ($key == 0) continue; // Skip header
+            if ($key == 0) continue; // Skip header di file excel
 
-            // Bersihkan spasi berlebih dari setiap kolom
-            $nama_asesi = preg_replace('/\s+/', ' ', trim($row[1]));
-            $nik = preg_replace('/\s+/', ' ', trim($row[2]));
-            $tempat_lahir = preg_replace('/\s+/', ' ', trim($row[3]));
-            $tanggal_lahir = preg_replace('/\s+/', ' ', trim($row[4]));
-            $jenis_kelamin = preg_replace('/\s+/', ' ', trim($row[5]));
-            $tempat_tinggal = preg_replace('/\s+/', ' ', trim($row[6]));
-            $kode_kabupaten = preg_replace('/\s+/', ' ', trim($row[7]));
-            $kode_provinsi = preg_replace('/\s+/', ' ', trim($row[8]));
-            $telp = preg_replace('/\s+/', ' ', trim($row[9]));
+            // bersihkan spasi berlebih & paksa kolom nik hanya angka
+            $nama_lengkap = preg_replace('/\s+/', ' ', strtoupper(trim($row[1])));
+            $nama_tempat_bekerja = preg_replace('/\s+/', ' ', strtoupper(trim($row[2])));
+            $alamat = preg_replace('/\s+/', ' ', strtoupper(trim($row[3])));
+            $nik = preg_replace('/\D/', '', preg_replace('/\s+/', ' ', strtoupper(trim($row[4]))));
+            $tempat_lahir = preg_replace('/\s+/', ' ', strtoupper(trim($row[5])));
+            $tanggal_lahir = preg_replace('/\s+/', ' ', strtoupper(trim($row[6])));
+            $jenis_kelamin = preg_replace('/\s+/', ' ', strtoupper(trim($row[7])));
+            $alamat_tempat_tinggal = preg_replace('/\s+/', ' ', strtoupper(trim($row[8])));
+            $telp = preg_replace('/\s+/', ' ', strtoupper(trim($row[9])));
             $email = preg_replace('/\s+/', ' ', trim($row[10]));
-            $kode_pendidikan = preg_replace('/\s+/', ' ', trim($row[11]));
-            $kode_pekerjaan = preg_replace('/\s+/', ' ', trim($row[12]));
-            $kode_jadwal = preg_replace('/\s+/', ' ', trim($row[13]));
-            $tanggal_uji = preg_replace('/\s+/', ' ', trim($row[14]));
-            $nomor_registrasi_asesor = preg_replace('/\s+/', ' ', trim($row[15]));
-            $kode_sumber_anggaran = preg_replace('/\s+/', ' ', trim($row[16]));
-            $kode_kementrian = preg_replace('/\s+/', ' ', trim($row[17]));
-            $status_kompeten = preg_replace('/\s+/', ' ', trim($row[18]));
+            $pendidikan_terakhir = preg_replace('/\s+/', ' ', strtoupper(trim($row[11])));
+            $jabatan_pekerjaan = preg_replace('/\s+/', ' ', strtoupper(trim($row[12])));
+            $skema_sertifikasi = preg_replace('/\s+/', ' ', strtoupper(trim($row[13])));
+            $rencana_uji_kompetensi = preg_replace('/\s+/', ' ', strtoupper(trim($row[14])));
+
+            // dd($nik);
+            
             
 
-            // cek data nik duplicate on database
+            // Periksa apakah seluruh baris sudah ada di database
             $exists = DB::table('asesi')->where([
                 ['nik', '=', $nik],
             ])->exists();
@@ -98,46 +97,39 @@ class AsesiController extends Controller
             if ($exists) {
                 // Simpan seluruh baris sebagai duplikat
                 $duplicates[] = [
-                    'nama_asesi' => $nama_asesi,
+                    'nama_lengkap' => $nama_lengkap,
+                    'nama_tempat_bekerja' => $nama_tempat_bekerja,
+                    'alamat' => $alamat,
                     'nik' => $nik,
                     'tempat_lahir' => $tempat_lahir,
                     'tanggal_lahir' => $tanggal_lahir,
                     'jenis_kelamin' => $jenis_kelamin,
-                    'tempat_tinggal' => $tempat_tinggal,
-                    'kode_kabupaten' => $kode_kabupaten,
-                    'kode_provinsi' => $kode_provinsi,
+                    'alamat_tempat_tinggal' => $alamat_tempat_tinggal,
                     'telp' => $telp,
                     'email' => $email,
-                    'kode_pendidikan' => $kode_pendidikan,
-                    'kode_pekerjaan' => $kode_pekerjaan,
-                    'kode_jadwal' => $kode_jadwal,
-                    'tanggal_uji' => $tanggal_uji,
-                    'nomor_registrasi_asesor' => $nomor_registrasi_asesor,
-                    'kode_sumber_anggaran' => $kode_sumber_anggaran,
-                    'kode_kementrian' => $kode_kementrian,
-                    'status_kompeten' => $status_kompeten
+                    'pendidikan_terakhir' => $pendidikan_terakhir,
+                    'jabatan_pekerjaan' => $jabatan_pekerjaan,
+                    'skema_sertifikasi' => $skema_sertifikasi,
+                    'rencana_uji_kompetensi' => $rencana_uji_kompetensi,
+                    
                 ];
             } else {
                 // Masukkan data ke database jika tidak duplikat
                 DB::table('asesi')->insert([
-                    'nama_asesi' => $nama_asesi,
+                    'nama_lengkap' => $nama_lengkap,
+                    'nama_tempat_bekerja' => $nama_tempat_bekerja,
+                    'alamat' => $alamat,
                     'nik' => $nik,
                     'tempat_lahir' => $tempat_lahir,
                     'tanggal_lahir' => $tanggal_lahir,
                     'jenis_kelamin' => $jenis_kelamin,
-                    'tempat_tinggal' => $tempat_tinggal,
-                    'kode_kabupaten' => $kode_kabupaten,
-                    'kode_provinsi' => $kode_provinsi,
+                    'alamat_tempat_tinggal' => $alamat_tempat_tinggal,
                     'telp' => $telp,
                     'email' => $email,
-                    'kode_pendidikan' => $kode_pendidikan,
-                    'kode_pekerjaan' => $kode_pekerjaan,
-                    'kode_jadwal' => $kode_jadwal,
-                    'tanggal_uji' => $tanggal_uji,
-                    'nomor_registrasi_asesor' => $nomor_registrasi_asesor,
-                    'kode_sumber_anggaran' => $kode_sumber_anggaran,
-                    'kode_kementrian' => $kode_kementrian,
-                    'status_kompeten' => $status_kompeten
+                    'pendidikan_terakhir' => $pendidikan_terakhir,
+                    'jabatan_pekerjaan' => $jabatan_pekerjaan,
+                    'skema_sertifikasi' => $skema_sertifikasi,
+                    'rencana_uji_kompetensi' => $rencana_uji_kompetensi,
                 ]);
             }
         }
