@@ -112,6 +112,7 @@
                                 @foreach ($dataAsesi as $asesi)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
+                                    
                                     <td class="hoverMenuContainer">
                                         {{ $asesi->nama_lengkap }} 
                                         
@@ -123,12 +124,13 @@
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
                                                     
-                                                    <input type="hidden" id="idAsesi" name="id_surat" value="{{ $asesi->id }}">
+                                                    <input type="hidden" id="idAsesi" name="id_asesi" value="{{ $asesi->id }}">
                                                     <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
                                                 </form>
                                             </div>
                                         </div>
                                     </td>
+                                    
                                     <td>{{ $asesi->nama_tempat_bekerja }}</td>
                                     <td>{{ Str::limit($asesi->alamat, 30) }}</td>
                                     <td>{{ $asesi->nik }}</td>
@@ -151,7 +153,7 @@
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
 
-                                            <input type="hidden" id="idAsesi" name="id_surat" value="{{ $asesi->id }}">
+                                            <input type="hidden" id="idAsesi" name="id_asesi" value="{{ $asesi->id }}">
                                             <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
                                         </form>
                                     </td>
@@ -204,9 +206,9 @@
     <script>
         document.addEventListener("click", function (event) {
             if (event.target.classList.contains("deleteButton")) {
-                const asesId = event.target.closest("tr").querySelector('input[name="id_surat"]').value;
+                const asesId = event.target.closest("tr").querySelector('input[name="id_asesi"]').value;
                 const namaAsesor = event.target.getAttribute("data-nama");
-
+                
                 Swal.fire({
                     title: "Are you sure?",
                     text: "Apakah Anda ingin menghapus data " + namaAsesor + " ?",
@@ -214,7 +216,9 @@
                     showCancelButton: true,
                 }).then((willDelete) => {
                     if (willDelete.isConfirmed) {
-                        fetch(`/asesi/${asesId}`, {
+                        const url = `/asesiDeleted/${asesId}`;
+                        fetch(url, {
+
                             method: "DELETE",
                             headers: {
                                 "X-CSRF-TOKEN": "{{ csrf_token() }}"
@@ -229,6 +233,8 @@
                                     if (result.isConfirmed) {
                                         window.location.reload();
                                     }
+                                        // console.log("URL Fetch:", "{{ route('asesiDeleted'," . asesId . ") }}");
+
                                 });
                             } else {
                                 Swal.fire({

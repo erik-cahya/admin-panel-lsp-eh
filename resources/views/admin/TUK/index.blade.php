@@ -245,7 +245,7 @@
                             method: "DELETE",
                             headers: {
                                 "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                            }
+                            }   
                         })
                         .then(response => {
                             if (response.ok) {

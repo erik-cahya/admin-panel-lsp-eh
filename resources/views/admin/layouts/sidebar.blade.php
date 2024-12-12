@@ -25,9 +25,8 @@
     <div class="h-100" id="leftside-menu-container" data-simplebar>
         <!--- Sidemenu -->
         <ul class="side-nav">
-
             <li class="side-nav-title">Main</li>
-
+            
             <li class="side-nav-item {{ request()->segment(1) === 'dashboard' ? 'menuitem-active' : ''}} ">
                 <a href="{{ route('dashboard') }}" class="side-nav-link ">
                     <i class="ri-dashboard-3-line"></i>
@@ -70,7 +69,8 @@
                         <li>
                             <a href="/qr-code">
                                 <span class="badge bg-success float-end">{{ App\Models\QrModel::count() }}</span>
-                                QR Code List</a>
+                                QR Code List
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -224,10 +224,6 @@
                     </ul>
                 </div>
             </li>
-
-
-
-
         </ul>
         <!--- End Sidemenu -->
 

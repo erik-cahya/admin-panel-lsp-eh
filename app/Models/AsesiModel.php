@@ -11,4 +11,10 @@ class AsesiModel extends Model
     protected $guarded = ['id'];
     protected $primaryKey = 'id';
     use HasFactory;
+
+
+    protected $casts = [
+        'id' => 'string',
+    ];
+
 }

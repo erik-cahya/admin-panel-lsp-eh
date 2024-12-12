@@ -39,7 +39,7 @@ Route::get('/import', function () {
     return view('Developer.Excel.index');
 });
 
-Route::post('/import', [ExcelController::class, 'importWithoutClass'])->name('import');
+Route::post('/import', [AsesiController::class, 'importExcel'])->name('import');
 
 
 
@@ -76,8 +76,9 @@ Route::middleware(['auth'])->group(function () {
 
     // ############################################################ Asesi
     Route::get('/asesi', [AsesiController::class, 'index'])->name('asesiIndex');
-    Route::get('/asesi/import', [AsesiController::class, 'import'])->name('asesiImport');
+    Route::get('/asesi/import', [AsesiController::class, 'importExcel'])->name('asesiImport');
     Route::get('/asesi/compact', [AsesiController::class, 'compact'])->name('asesiCompact');
+    Route::delete('/asesiDeleted/{id}', [AsesiController::class, 'asesiDeleted'])->name('asesiDeleted');
 
 
     // Route::get('tukAdd', [AsesiController::class, 'tukAdd'])->name('tukAdd');

@@ -15,7 +15,7 @@ class CreateAsesiTable extends Migration
     {
         Schema::create('asesi', function (Blueprint $table) {
 
-            $table->id();
+            $table->uuid('id');
             $table->string('nama_lengkap')->nullable();
             $table->string('nama_tempat_bekerja')->nullable();
             $table->string('alamat')->nullable();

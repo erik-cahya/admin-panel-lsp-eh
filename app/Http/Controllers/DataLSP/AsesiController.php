@@ -5,9 +5,12 @@ namespace App\Http\Controllers\DataLSP;
 use App\Http\Controllers\Controller;
 use App\Models\AsesiModel;
 use App\Models\AsesorModel;
+use Faker\Core\Uuid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Str;
+use Ramsey\Uuid\Rfc4122\UuidV1;
 
 class AsesiController extends Controller
 {
@@ -35,7 +38,7 @@ class AsesiController extends Controller
         return view('admin.asesi.index', $this->data);
     }
 
-    public function import(Request $request)
+    public function importExcel(Request $request)
     {
         $request->validate([
             'file' => 'required|mimes:xlsx,csv',
@@ -43,18 +46,31 @@ class AsesiController extends Controller
 
         $data = Excel::toArray([], $request->file('file')); // Baca file Excel
         $rows = $data[0]; // Ambil sheet pertama
-        $duplicates = []; // Array untuk menyimpan data yang duplikat
+        $duplicates = []; // Array untuk menyimpan data yang duplikat 
 
-        foreach ($rows as $key => $row) {
-            if ($key == 0) continue; // Skip header di file excel
+        foreach ($rows as $key => $row) 
+        {
+            if ($key == 0) continue; // Skip header
 
-            // bersihkan spasi berlebih & paksa kolom nik hanya angka
+
+            // Validasi nilai tanggal pada $row[6]
+            if (!isset($row[6]) || !is_numeric($row[6])) {
+                dd("Data Tanggal Lahir tidak valid pada ROW ke $key | Tanggal : " . (isset($row[6]) ? $row[6] : "NULL") . " | NAMA : " . $row[1]);
+                
+                // Lewati baris jika tidak valid
+                // continue; 
+            }
+
+            // excel date convert (excel epoch to unix epoch)
+            $birthDateUnix = gmdate('Y-m-d', ($row[6] - 25569) * 86400);
+
+            // clear whitespace & nik must number
             $nama_lengkap = preg_replace('/\s+/', ' ', strtoupper(trim($row[1])));
             $nama_tempat_bekerja = preg_replace('/\s+/', ' ', strtoupper(trim($row[2])));
             $alamat = preg_replace('/\s+/', ' ', strtoupper(trim($row[3])));
             $nik = preg_replace('/\D/', '', preg_replace('/\s+/', ' ', strtoupper(trim($row[4]))));
             $tempat_lahir = preg_replace('/\s+/', ' ', strtoupper(trim($row[5])));
-            $tanggal_lahir = preg_replace('/\s+/', ' ', strtoupper(trim($row[6])));
+            $tanggal_lahir = $birthDateUnix;
             $jenis_kelamin = preg_replace('/\s+/', ' ', strtoupper(trim($row[7])));
             $alamat_tempat_tinggal = preg_replace('/\s+/', ' ', strtoupper(trim($row[8])));
             $telp = preg_replace('/\s+/', ' ', strtoupper(trim($row[9])));
@@ -64,9 +80,6 @@ class AsesiController extends Controller
             $skema_sertifikasi = preg_replace('/\s+/', ' ', strtoupper(trim($row[13])));
             $rencana_uji_kompetensi = preg_replace('/\s+/', ' ', strtoupper(trim($row[14])));
 
-            // dd($nik);
-            
-            
 
             // Periksa apakah seluruh baris sudah ada di database
             $exists = DB::table('asesi')->where([
@@ -116,6 +129,8 @@ class AsesiController extends Controller
             } else {
                 // Masukkan data ke database jika tidak duplikat
                 DB::table('asesi')->insert([
+                    // 'id' => rand(0000000000, 9999999999),
+                    'id' => Str::uuid(),
                     'nama_lengkap' => $nama_lengkap,
                     'nama_tempat_bekerja' => $nama_tempat_bekerja,
                     'alamat' => $alamat,
@@ -139,5 +154,19 @@ class AsesiController extends Controller
             'success' => 'Data berhasil diimpor!',
             'duplicates' => $duplicates, // Kirim baris-baris duplikat
         ]);
+    }
+
+    public function asesiDeleted($id)
+    {
+        AsesiModel::destroy($id);
+
+        $flashData = [
+            'judul' => 'Delete Success',
+            'pesan' => 'Data TUK Telah Dihapus',
+            'swalFlashIcon' => 'success',
+        ];
+        // return redirect()->route('tuk')->with('flashData', $flashData);
+
+        return response()->json(['message' => 'Data Surat Berhasil Dihapus']);
     }
 }
