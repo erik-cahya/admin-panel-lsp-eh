@@ -10,8 +10,7 @@
      <link href="{{ asset('velonic_admin') }}/assets/vendor/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
 
      <!-- Bootstrap Touchspin css -->
-     <link href="{{ asset('velonic_admin') }}/assets/vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet"
-         type="text/css" />
+     <link href="{{ asset('velonic_admin') }}/assets/vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css" rel="stylesheet" type="text/css" />
 
      <!-- Bootstrap Datepicker css -->
      <link href="{{ asset('velonic_admin') }}/assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css" rel="stylesheet" type="text/css" />
@@ -38,8 +37,7 @@
     <div class="container-fluid">
         <form enctype="multipart/form-data" method="POST" action="{{ route('surat-tugas-asesor.update', $dataSurat->id) }}">
             @csrf
-                <!-- start page title -->
-               <div class="row">
+            <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
                         <div class="page-title-right">
@@ -53,118 +51,113 @@
                     </div>
                 </div>
             </div>
-            <!-- end page title -->
-                <!-- [ Main Content ] start -->
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="header-title">Form Edit Surat Tugas Asesor</h4>
-                                    <p class="text-muted mb-0">
-                                        Edit data yang diperlukan untuk surat tugas asesor pada form dibawah | <code> Nomor Surat Tugas Tidak Dapat Diubah!</code>
-                                    </p>
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="header-title">Form Edit Surat Tugas Asesor</h4>
+                            <p class="text-muted mb-0">
+                                Edit data yang diperlukan untuk surat tugas asesor pada form dibawah | <code> Nomor Surat Tugas Tidak Dapat Diubah!</code>
+                            </p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+
+                                {{-- Nomor Surat --}}
+                                <div class="col-lg-6 mb-4">
+                                    <label class="form-label">Nomor Surat<span class="text-danger">*</span></label>
+                                    <div class="input-group">
+                                        <div class="input-group-text"><i class="feather-user"></i></div>
+                                        <input type="text" class="form-control" id="nomor_surat" oninput="capitalizeText()" name="nomor_surat" readonly value="{{ $dataSurat->nomor_surat }}">
+                                    </div>
+                                    @error('nomor_surat')
+                                        <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                <div class="card-body">
-                                    <div class="row">
 
-                                        {{-- Nomor Surat --}}
-                                        <div class="col-lg-6 mb-4">
-                                            <label class="form-label">Nomor Surat<span class="text-danger">*</span></label>
-                                            <div class="input-group">
-                                                <div class="input-group-text"><i class="feather-user"></i></div>
-                                                <input type="text" class="form-control" id="nomor_surat" oninput="capitalizeText()" name="nomor_surat" readonly value="{{ $dataSurat->nomor_surat }}">
-                                            </div>
-                                            @error('nomor_surat')
-                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                {{-- Skema --}}
+                                <div class="col-lg-6 mb-4">
+                                    <label class="form-label">Skema</label>
+                                    <select class="form-control" data-select2-selector="city" id="skema" name="skema">
+                                        <option data-city="bg-muted" selected readonly disabled>Pilih Skema Uji</option>
+                                        @foreach ($dataSkema as $skema)
+                                            <option data-city="bg-warning" value="{{ $skema->nama_skema }}" {{ $dataSurat->skema == $skema->nama_skema ? 'selected' : '' }}>{{ $skema->nama_skema }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('skema')
+                                        <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row">
 
-                                        {{-- Skema --}}
-                                        <div class="col-lg-6 mb-4">
-                                            <label class="form-label">Skema</label>
-                                            <select class="form-control" data-select2-selector="city" id="skema" name="skema">
-                                                <option data-city="bg-muted" selected readonly disabled>Pilih Skema Uji</option>
-                                                @foreach ($dataSkema as $skema)
-                                                    <option data-city="bg-warning" value="{{ $skema->nama_skema }}" {{ $dataSurat->skema == $skema->nama_skema ? 'selected' : '' }}>{{ $skema->nama_skema }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('skema')
-                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="row">
+                                {{-- Nama Asesor --}}
+                                <div class="col-lg-6 mb-4">
+                                    <label class="form-label">Nama Asesor:</label>
+                                    <select class="form-select form-control" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
+                                        <option data-icon="feather-user" selected readonly disabled>Pilih Asesor</option>
+                                        @foreach ($dataAsesor as $asesor)
+                                            <option data-icon="feather-user" value="{{ $asesor->nama_asesor }}" {{ $dataSurat->nama_asesor == $asesor->nama_asesor ? 'selected' : '' }}>{{ $asesor->nama_asesor }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('nama_asesor')
+                                        <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
-                                        {{-- Nama Asesor --}}
-                                        <div class="col-lg-6 mb-4">
-                                            <label class="form-label">Nama Asesor:</label>
-                                            <select class="form-select form-control" data-select2-selector="visibility" id="nama_asesor" name="nama_asesor" >
-                                                <option data-icon="feather-user" selected readonly disabled>Pilih Asesor</option>
-                                                @foreach ($dataAsesor as $asesor)
-                                                    <option data-icon="feather-user" value="{{ $asesor->nama_asesor }}" {{ $dataSurat->nama_asesor == $asesor->nama_asesor ? 'selected' : '' }}>{{ $asesor->nama_asesor }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('nama_asesor')
-                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                {{-- NO REG --}}
+                                <div class="col-lg-6 mb-4">
+                                    <label class="form-label">NO REG<span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="no_reg_asesor" placeholder="Pilih Nama Asesor"  name="no_reg" readonly>
+                                </div>
 
-                                        {{-- NO REG --}}
-                                        <div class="col-lg-6 mb-4">
-                                            <label class="form-label">NO REG<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="no_reg_asesor" placeholder="Pilih Nama Asesor"  name="no_reg" readonly>
-                                        </div>
+                            </div>
 
-                                    </div>
+                            <div class="row">
+                                {{-- Nama TUK --}}
+                                <div class="col-lg-6 mb-4">
+                                    <label class="form-label">Nama TUK:</label>
+                                    <select class="form-select form-control" data-select2-selector="visibility" name="nama_tuk" id="nama_tuk">
+                                        <option data-icon="feather-home" selected readonly disabled>Pilih TUK</option>
+                                        @foreach ($tuk as $t)
+                                            <option data-icon="feather-home" value="{{ $t->tuk_nama }}" {{ $dataSurat->nama_tuk == $t->tuk_nama ? 'selected' : '' }}>{{ $t->tuk_nama }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('nama_tuk')
+                                        <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
-                                    <div class="row">
-                                        {{-- Nama TUK --}}
-                                        <div class="col-lg-6 mb-4">
-                                            <label class="form-label">Nama TUK:</label>
-                                            <select class="form-select form-control" data-select2-selector="visibility" name="nama_tuk" id="nama_tuk">
-                                                <option data-icon="feather-home" selected readonly disabled>Pilih TUK</option>
-                                                @foreach ($tuk as $t)
-                                                    <option data-icon="feather-home" value="{{ $t->tuk_nama }}" {{ $dataSurat->nama_tuk == $t->tuk_nama ? 'selected' : '' }}>{{ $t->tuk_nama }}</option>
-                                                @endforeach
-                                            </select>
-                                            @error('nama_tuk')
-                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                {{-- Alamat TUK --}}
+                                <div class="col-lg-6 mb-4">
+                                    <label class="form-label">Alamat TUK<span class="text-danger">*</span></label>
+                                    <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control" placeholder="Alamat TUK" readonly>
+                                </div>
 
-                                        {{-- Alamat TUK --}}
-                                        <div class="col-lg-6 mb-4">
-                                            <label class="form-label">Alamat TUK<span class="text-danger">*</span></label>
-                                            <input id="alamat_tuk" name="alamat_tuk" type="text" class="form-control" placeholder="Alamat TUK" readonly>
-                                        </div>
+                            </div>
+                            <div class="row">
+                                {{-- Tanggal Uji --}}
+                                <div class="col-lg-6 mb-4">
+                                    <label class="form-label">Tanggal Uji <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="dateUji" placeholder="Pilih Tanggal Ujian" name="tanggal_uji" value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_uji)->format('d/m/Y') }}">
+                                    @error('tanggal_uji')
+                                        <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
-                                    </div>
-                                    <div class="row">
-                                        {{-- Tanggal Uji --}}
-                                        <div class="col-lg-6 mb-4">
-                                            <label class="form-label">Tanggal Uji <span class="text-danger">*</span></label>
-                                            <input class="form-control" id="dateUji" placeholder="Pilih Tanggal Ujian" name="tanggal_uji" value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_uji)->format('d/m/Y') }}">
-                                            @error('tanggal_uji')
-                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-
-                                        {{-- Tanggal Surat --}}
-                                        <div class="col-lg-6 mb-4">
-                                            <label class="form-label">Tanggal Surat <span class="text-danger">*</span></label>
-                                            <input class="form-control" id="dateSurat" placeholder="Pilih Tanggal Surat" name="tanggal_surat" value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_surat)->format('d/m/Y') }}">
-                                            @error('tanggal_surat')
-                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
-                                            @enderror
-                                        </div>
-                                    </div>
+                                {{-- Tanggal Surat --}}
+                                <div class="col-lg-6 mb-4">
+                                    <label class="form-label">Tanggal Surat <span class="text-danger">*</span></label>
+                                    <input class="form-control" id="dateSurat" placeholder="Pilih Tanggal Surat" name="tanggal_surat" value="{{ Illuminate\Support\Carbon::createFromFormat('Y-m-d', $dataSurat->tanggal_surat)->format('d/m/Y') }}">
+                                    @error('tanggal_surat')
+                                        <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                <!-- [ Main Content ] end -->
-
+                </div>
+            </div>
         </form>
     </div>
 </div>

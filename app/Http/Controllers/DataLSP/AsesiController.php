@@ -44,23 +44,50 @@ class AsesiController extends Controller
             'file' => 'required|mimes:xlsx,csv',
         ]);
 
-        $data = Excel::toArray([], $request->file('file')); // Baca file Excel
-        $rows = $data[0]; // Ambil sheet pertama
-        $duplicates = []; // Array untuk menyimpan data yang duplikat 
+        $data = Excel::toArray([], $request->file('file'));
+        $rows = $data[0];
+        $invalidRows = [];
 
+        foreach ($rows as $key => $row) {
+            if ($key == 0) continue; // Skip header
+
+            // Validasi tanggal harus angka dan tidak null | kolom [6] excel
+            if (!isset($row[6]) || !is_numeric($row[6])) {
+                $invalidRows[] = [
+                    'message' => 'Data Tanggal Excel Error',
+                    'row_number' => $key + 1,
+                    'nama' => $row[1],
+                    'value' => 'Tanggal: ' . (isset($row[6]) ? $row[6] : "NULL")
+                ];
+            }
+
+            // Validasi NIK harus 16 Digit | kolom [4] excel
+            if (!preg_match('/^\d{16}$/', $row[4])) {
+                $length = strlen(trim($row[4]));
+                $invalidRows[] = [
+                    'message' => 'Format NIK Salah',
+                    'row_number' => $key + 1,
+                    'nama' => $row[1],
+                    'value' => 'NIK: ' . $row[4] . ' (Jumlah Digit: ' . $length . ')'
+                ];
+            }
+        }
+
+        // Jika ada baris tidak valid, tampilkan semuanya
+        if (!empty($invalidRows)) {
+            echo '<h2>Format data error</h2>';
+            foreach ($invalidRows as $error) {
+                echo '<div style="margin-top:15px; margin-left:20px;">' . $error['row_number'].'. ' . $error['message'] . ' | Baris ke: ' . $error['row_number'] . ' | Nama: ' . $error['nama'] . ' | ' . $error['value'] . "</div><hr>";
+            }
+            exit; // Hentikan proses setelah menampilkan error
+        }
+
+        // Jika semua data valid, lanjutkan proses
+        $duplicates = [];
         foreach ($rows as $key => $row) 
         {
             if ($key == 0) continue; // Skip header
-
-
-            // Validasi nilai tanggal pada $row[6]
-            if (!isset($row[6]) || !is_numeric($row[6])) {
-                dd("Data Tanggal Lahir tidak valid pada ROW ke $key | Tanggal : " . (isset($row[6]) ? $row[6] : "NULL") . " | NAMA : " . $row[1]);
-                
-                // Lewati baris jika tidak valid
-                // continue; 
-            }
-
+            
             // excel date convert (excel epoch to unix epoch)
             $birthDateUnix = gmdate('Y-m-d', ($row[6] - 25569) * 86400);
 
@@ -80,35 +107,12 @@ class AsesiController extends Controller
             $skema_sertifikasi = preg_replace('/\s+/', ' ', strtoupper(trim($row[13])));
             $rencana_uji_kompetensi = preg_replace('/\s+/', ' ', strtoupper(trim($row[14])));
 
-
-            // Periksa apakah seluruh baris sudah ada di database
+            // Periksa apakah data sudah ada di database
             $exists = DB::table('asesi')->where([
                 ['nik', '=', $nik],
             ])->exists();
-            // $exists = DB::table('asesi')->where([
-            //     ['nama_asesi', '=', $nama_asesi],
-            //     ['nik', '=', $nik],
-            //     ['tempat_lahir', '=', $tempat_lahir],
-            //     ['tanggal_lahir', '=', $tanggal_lahir],
-            //     ['jenis_kelamin', '=', $jenis_kelamin],
-            //     ['tempat_tinggal', '=', $tempat_tinggal],
-            //     ['kode_kabupaten', '=', $kode_kabupaten],
-            //     ['kode_provinsi', '=', $kode_provinsi],
-            //     ['telp', '=', $telp],
-            //     ['email', '=', $email],
-            //     ['kode_pendidikan', '=', $kode_pendidikan],
-            //     ['kode_pekerjaan', '=', $kode_pekerjaan],
-            //     ['kode_jadwal', '=', $kode_jadwal],
-            //     ['tanggal_uji', '=', $tanggal_uji],
-            //     ['nomor_registrasi_asesor', '=', $nomor_registrasi_asesor],
-            //     ['kode_sumber_anggaran', '=', $kode_sumber_anggaran],
-            //     ['kode_kementrian', '=', $kode_kementrian],
-            //     ['status_kompeten', '=', $status_kompeten],
-                
-            // ])->exists();
 
             if ($exists) {
-                // Simpan seluruh baris sebagai duplikat
                 $duplicates[] = [
                     'nama_lengkap' => $nama_lengkap,
                     'nama_tempat_bekerja' => $nama_tempat_bekerja,
@@ -124,12 +128,9 @@ class AsesiController extends Controller
                     'jabatan_pekerjaan' => $jabatan_pekerjaan,
                     'skema_sertifikasi' => $skema_sertifikasi,
                     'rencana_uji_kompetensi' => $rencana_uji_kompetensi,
-                    
                 ];
             } else {
-                // Masukkan data ke database jika tidak duplikat
                 DB::table('asesi')->insert([
-                    // 'id' => rand(0000000000, 9999999999),
                     'id' => Str::uuid(),
                     'nama_lengkap' => $nama_lengkap,
                     'nama_tempat_bekerja' => $nama_tempat_bekerja,
@@ -149,12 +150,12 @@ class AsesiController extends Controller
             }
         }
 
-        // Kirim data duplikat ke view
         return back()->with([
             'success' => 'Data berhasil diimpor!',
-            'duplicates' => $duplicates, // Kirim baris-baris duplikat
+            'duplicates' => $duplicates,
         ]);
     }
+
 
     public function asesiDeleted($id)
     {
