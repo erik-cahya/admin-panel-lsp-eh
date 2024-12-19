@@ -20,14 +20,14 @@ class ExcelController extends Controller
     //         'file' => 'required|mimes:xlsx,csv',
     //     ]);
 
-        
+
 
     //     $data = Excel::toArray([], $request->file('file')); // Baca file Excel
     //     $rows = $data[0]; // Ambil sheet pertama
     //     $duplicates = []; // Array untuk menyimpan data yang duplikat
 
 
-        
+
 
     //     foreach ($rows as $key => $row) {
     //         if ($key == 0) continue; // Skip header
@@ -36,9 +36,9 @@ class ExcelController extends Controller
     //         // Validasi nilai tanggal pada $row[6]
     //         if (!isset($row[6]) || !is_numeric($row[6])) {
     //             dd("Data Tanggal Lahir tidak valid pada ROW ke $key | Tanggal : " . (isset($row[6]) ? $row[6] : "NULL") . " | NAMA : " . $row[1]);
-                
+
     //             // Lewati baris jika tidak valid
-    //             // continue; 
+    //             // continue;
     //         }
 
     //         // Konversi Excel date ke format Y-m-d
@@ -50,10 +50,10 @@ class ExcelController extends Controller
     //         $alamat = preg_replace('/\s+/', ' ', strtoupper(trim($row[3])));
     //         $nik = preg_replace('/\D/', '', preg_replace('/\s+/', ' ', strtoupper(trim($row[4]))));
     //         $tempat_lahir = preg_replace('/\s+/', ' ', strtoupper(trim($row[5])));
-            
+
     //         // $tanggal_lahir = preg_replace('/\s+/', ' ', trim($birthDateUnix));
     //         $tanggal_lahir = $birthDateUnix;
-            
+
     //         $jenis_kelamin = preg_replace('/\s+/', ' ', strtoupper(trim($row[7])));
     //         $alamat_tempat_tinggal = preg_replace('/\s+/', ' ', strtoupper(trim($row[8])));
     //         $telp = preg_replace('/\s+/', ' ', strtoupper(trim($row[9])));
@@ -63,8 +63,8 @@ class ExcelController extends Controller
     //         $skema_sertifikasi = preg_replace('/\s+/', ' ', strtoupper(trim($row[13])));
     //         $rencana_uji_kompetensi = preg_replace('/\s+/', ' ', strtoupper(trim($row[14])));
 
-            
-            
+
+
 
     //         // Periksa apakah seluruh baris sudah ada di database
     //         $exists = DB::table('asesi')->where([
@@ -89,7 +89,7 @@ class ExcelController extends Controller
     //         //     ['kode_sumber_anggaran', '=', $kode_sumber_anggaran],
     //         //     ['kode_kementrian', '=', $kode_kementrian],
     //         //     ['status_kompeten', '=', $status_kompeten],
-                
+
     //         // ])->exists();
 
     //         if ($exists) {
@@ -109,7 +109,7 @@ class ExcelController extends Controller
     //                 'jabatan_pekerjaan' => $jabatan_pekerjaan,
     //                 'skema_sertifikasi' => $skema_sertifikasi,
     //                 'rencana_uji_kompetensi' => $rencana_uji_kompetensi,
-                    
+
     //             ];
     //         } else {
     //             // Masukkan data ke database jika tidak duplikat

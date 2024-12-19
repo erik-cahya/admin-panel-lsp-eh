@@ -35,9 +35,7 @@ Route::middleware(['guest'])->group(function () {
 
 
 
-Route::get('/import', function () {
-    return view('Developer.Excel.index');
-});
+Route::get('/import', [ExcelController::class, 'index']);
 
 Route::post('/import', [AsesiController::class, 'importExcel'])->name('import');
 
