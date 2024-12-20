@@ -76,7 +76,7 @@
         </div>
 
         <div class="row">
-            
+
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
@@ -112,25 +112,25 @@
                                 @foreach ($dataAsesi as $asesi)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    
+
                                     <td class="hoverMenuContainer">
-                                        {{ $asesi->nama_lengkap }} 
-                                        
+                                        {{ $asesi->nama_lengkap }}
+
                                         <div class="row hover-menu">
                                             <div class="col">
-                                                Edit | 
+                                                Edit |
                                                 {{-- Delete Button --}}
                                                 <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
                                                     {{ csrf_field() }}
                                                     {{ method_field('DELETE') }}
-                                                    
+
                                                     <input type="hidden" id="idAsesi" name="id_asesi" value="{{ $asesi->id }}">
                                                     <span type="button" class="text-danger deleteButton" data-nama="{{ $asesi->nama_lengkap }}">Delete</span>
                                                 </form>
                                             </div>
                                         </div>
                                     </td>
-                                    
+
                                     <td>{{ $asesi->nama_tempat_bekerja }}</td>
                                     <td>{{ Str::limit($asesi->alamat, 30) }}</td>
                                     <td>{{ $asesi->nik }}</td>
@@ -144,10 +144,10 @@
                                     <td>{{ $asesi->jabatan_pekerjaan }}</td>
                                     <td>{{ $asesi->skema_sertifikasi }}</td>
                                     <td>{{ $asesi->rencana_uji_kompetensi }}</td>
-                                    
+
                                     <td>
-                                        Edit | 
-                                        
+                                        Edit |
+
                                         {{-- Delete Button --}}
                                         <form action="/asesi/{{ $asesi->id }}" method="POST" class="d-inline">
                                             {{ csrf_field() }}
@@ -208,7 +208,7 @@
             if (event.target.classList.contains("deleteButton")) {
                 const asesId = event.target.closest("tr").querySelector('input[name="id_asesi"]').value;
                 const namaAsesor = event.target.getAttribute("data-nama");
-                
+
                 Swal.fire({
                     title: "Are you sure?",
                     text: "Apakah Anda ingin menghapus data " + namaAsesor + " ?",

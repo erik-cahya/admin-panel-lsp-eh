@@ -17,6 +17,7 @@ class CreateAsesorTable extends Migration
             $table->id();
             $table->string('nama_asesor');
             $table->string('no_reg');
+            $table->string('no_npwp')->nullable();
             $table->string('no_telp')->nullable();
             $table->string('alamat')->nullable();
             $table->text('foto_asesor')->nullable();

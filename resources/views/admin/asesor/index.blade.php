@@ -16,6 +16,22 @@
 
     <!-- Icons css -->
     <link href="{{ asset('velonic_admin') }}/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+
+     <style>
+        .hover-menu{
+            display: none;
+        }
+
+        .hoverMenuContainer:hover .hover-menu{
+            cursor: pointer;
+            display: block;
+        }
+
+        /* .hover-menu-container:hover + .hover-menu{
+            display: block;
+            background-color: blue;
+        } */
+    </style>
 @endsection
 
 @section('content')
@@ -50,21 +66,23 @@
                         <a href="{{ route('asesor-compact') }}">Compact Mode</a>
                     </div>
                     <div class="card-body">
-                        <table id="datatable-buttons" class="table table-striped w-100 nowrap">
+                        <table id="scroll-horizontal-datatable" class="table table-bordered w-100 nowrap" style="font-size: 12px">
                             <thead>
                                 <tr>
+                                    <th>No</th>
                                     <th>Nama Asesor</th>
                                     <th>No REG</th>
                                     <th>No Telp</th>
                                     <th>Alamat</th>
+                                    <th>No NPWP</th>
                                     <th>Data</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($dataAsesor as $asesor)
-
-                                <tr>
+                                <tr class="hoverMenuContainer">
+                                    <td>{{ $loop->iteration }}</td>
                                     <td>
 
                                         <div class="d-flex align-items-start justify-content-between">
@@ -73,7 +91,24 @@
                                                     <img class="avatar-sm rounded-circle bx-s" src="{{ $asesor->foto_asesor == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_asesor/' . $asesor->foto_asesor)  }}" alt="">
                                                 </a>
                                                 <div class="info">
-                                                    <h5 class="fs-14 my-1">{{ $asesor->nama_asesor }}</h5>
+                                                    <h6>{{ $asesor->nama_asesor }}</h6>
+
+                                                    <div class="row hover-menu">
+                                                        <div class="col">
+                                                            Details | Edit |
+
+                                                            {{-- Delete Button --}}
+                                                            <form action="/asesor/{{ $asesor->id }}" method="POST" class="d-inline">
+                                                                {{ csrf_field() }}
+                                                                {{ method_field('DELETE') }}
+
+                                                                <input type="hidden" id="idAsesor" name="id_asesor" value="{{ $asesor->id }}">
+                                                                <span type="button" class="text-danger deleteButton" data-nama="{{ $asesor->nama_asesor }}">Delete</span>
+                                                            </form>
+                                                            {{-- End Delete Button --}}
+
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -81,9 +116,8 @@
                                     </td>
                                     <td>{{ $asesor->no_reg }}</td>
                                     <td>{{ $asesor->no_telp }}</td>
-                                    <td>
-                                        {{ Str::limit($asesor->alamat, 50) }}
-                                    </td>
+                                    <td>{{ Str::limit($asesor->alamat, 50) }}</td>
+                                    <td>{{ $asesor->no_npwp }}</td>
                                     <td>
                                         {{-- Download Foto Profile --}}
                                         @if ($asesor->foto_asesor == null)
@@ -102,29 +136,30 @@
                                     <td>
                                         <div class="btn-group mb-2">
                                             {{-- See Details --}}
-                                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
+                                            <button type="button" class="btn btn-md btn-primary" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
                                                 <i class="ri-eye-line"></i>
                                             </button>
 
                                             {{-- Edit Button --}}
-                                            <a href="/asesor/{{ $asesor->id }}/edit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
+                                            <a href="/asesor/{{ $asesor->id }}/edit" class="btn btn-md btn-success" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
                                                 <i class="ri-edit-line"></i>
                                             </a>
 
-                                             {{-- Delete Button --}}
-                                            <form action="/asesor/{{ $asesor->id }}" method="POST">
+
+                                            {{-- Delete Button --}}
+                                            <form action="/asesor/{{ $asesor->id }}" method="POST" class="d-inline">
                                                 {{ csrf_field() }}
                                                 {{ method_field('DELETE') }}
 
-                                                <input type="hidden" name="id_surat" value="{{ $asesor->id }}">
+                                                <input type="hidden" id="idAsesor" name="id_asesor" value="{{ $asesor->id }}">
 
-                                                <button type="button" id="deleteButton-{{ $asesor->id }}" class="btn btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Delete">
+                                                <span type="button" class="btn btn-md btn-danger deleteButton" data-nama="{{ $asesor->nama_asesor }}">
                                                     <i class="ri-delete-bin-2-line"></i>
-                                                </button>
+                                                </span>
+
+
                                             </form>
-
-
-
+                                            {{-- End Delete Button --}}
 
                                         </div>
                                     </td>
@@ -155,16 +190,24 @@
                 <div class="modal-body">
                     {{-- Modal Content --}}
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-4">
                             <div class="mb-3">
                                 <label class="form-label">Nama Asesor</label>
                                 <input class="form-control" type="text" value="{{ $asesor->nama_asesor }}" disabled>
                             </div>
                         </div>
-                        <div class="col-sm-6">
+
+                        <div class="col-sm-4">
                             <div class="mb-3">
                                 <label for="skema" class="form-label">No REG Asesor</label>
                                 <input class="form-control" type="text" value="{{ $asesor->no_reg }}" disabled>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="mb-3">
+                                <label for="skema" class="form-label">NPWP Asesor</label>
+                                <input class="form-control" type="text" value="{{ $asesor->no_npwp }}" disabled>
                             </div>
                         </div>
                     </div>
@@ -237,44 +280,65 @@
 
      {{-- Sweet Alert --}}
     <script>
-        @foreach ($dataAsesor as $asesor)
-            document.getElementById("deleteButton-{{ $asesor->id }}").addEventListener("click", function() {
+        document.addEventListener("click", function (event) {
+            if (event.target.classList.contains("deleteButton")) {
+                const asesorId = event.target.closest("tr").querySelector('input[name="id_asesor"]').value;
+                const namaAsesor = event.target.getAttribute("data-nama");
 
-            Swal.fire({
+                console.log(namaAsesor);
+                Swal.fire({
                     title: "Are you sure?",
-                    text: "Apakah Anda Yakin Ingin Mengapus {{ $titlePage }} Ini ?",
+                    text: "Apakah Anda ingin menghapus data " + namaAsesor + " ?",
                     icon: "warning",
                     showCancelButton: true,
-            }).then((willDelete) => {
+                }).then((willDelete) => {
                     if (willDelete.isConfirmed) {
-                        fetch("{{ route('asesor.destroy', $asesor->id) }}", {
+                        // const url = `/asesor.destroy/${asesorId}`;
+                        const url = `{{ route('asesor.destroy', ':id') }}`.replace(':id', asesorId);
+                        console.log(url);
+                        fetch(url, {
+
                             method: "DELETE",
                             headers: {
                                 "X-CSRF-TOKEN": "{{ csrf_token() }}"
                             }
-                        })
-                        .then(response => {
+                        }).then(response => {
                             if (response.ok) {
-                            Swal.fire(
-                                'Terhapus',
-                                '{{ $titlePage }} Berhasil Dihapus',
-                                'success'
-                            ).then((result) =>{
-                                if (result.isConfirmed){
-                                window.location.href = "{{ route('asesor.index') }}";
-                                }
-                            })
+                                Swal.fire(
+                                    'Terhapus',
+                                    'Data Berhasil Dihapus',
+                                    'success'
+                                ).then((result) => {
+                                    if (result.isConfirmed) {
+                                        window.location.reload();
+                                    }
+                                        // console.log("URL Fetch:", "{{ route('asesiDeleted'," . asesorId . ") }}");
+
+                                });
+                            } else {
+                                Swal.fire({
+                                    title: "Error",
+                                    text: "Gagal menghapus data.",
+                                    icon: "error",
+                                });
                             }
-                        })
+                        }).catch(err => {
+                            Swal.fire({
+                                title: "Error",
+                                text: "Terjadi kesalahan pada server.",
+                                icon: "error",
+                            });
+                        });
                     } else {
-                    Swal.fire({
-                        title: "Dibatalkan",
-                        text: "{{ $titlePage }} Batal Dihapus",
-                        icon: "error",});
+                        Swal.fire({
+                            title: "Dibatalkan",
+                            text: "Data batal dihapus.",
+                            icon: "error",
+                        });
                     }
                 });
-            });
-        @endforeach
+            }
+        });
     </script>
     {{-- /* End Sweet Alert --}}
 

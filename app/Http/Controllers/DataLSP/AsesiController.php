@@ -26,7 +26,7 @@ class AsesiController extends Controller
     public function compact(){
         $this->data['dataAsesor'] = AsesorModel::get();
         $this->data['dataAsesi'] = AsesiModel::get();
-        
+
         return view('admin.asesi.compact.index', $this->data);
     }
 
@@ -34,7 +34,7 @@ class AsesiController extends Controller
     {
         $this->data['dataAsesor'] = AsesorModel::get();
         $this->data['dataAsesi'] = AsesiModel::get();
-        
+
         return view('admin.asesi.index', $this->data);
     }
 
@@ -84,10 +84,10 @@ class AsesiController extends Controller
 
         // Jika semua data valid, lanjutkan proses
         $duplicates = [];
-        foreach ($rows as $key => $row) 
+        foreach ($rows as $key => $row)
         {
             if ($key == 0) continue; // Skip header
-            
+
             // excel date convert (excel epoch to unix epoch)
             $birthDateUnix = gmdate('Y-m-d', ($row[6] - 25569) * 86400);
 

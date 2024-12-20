@@ -52,6 +52,7 @@ class AsesorController extends Controller
             'nama_asesor' => 'required|unique:asesor',
             'no_telp' => 'required|unique:asesor',
             'no_reg' => 'required|unique:asesor',
+            'no_npwp' => 'unique:asesor',
             'alamat' => 'required',
         ], [
             'nama_asesor.required' => 'Nama Asesor Tidak Boleh Kosong.',
@@ -62,6 +63,8 @@ class AsesorController extends Controller
 
             'no_reg.required' => 'No REG Tidak Boleh Kosong.',
             'no_reg.unique' => 'Nomor REG ini sudah terdaftar.',
+
+            'no_npwp.unique' => 'Nomor NPWP ini sudah terdaftar.',
 
             'alamat.required' => 'Alamat Tidak Boleh Kosong.',
         ]);
@@ -85,6 +88,7 @@ class AsesorController extends Controller
         AsesorModel::create([
             'nama_asesor' => $request->nama_asesor,
             'no_reg' => $request->no_reg,
+            'no_npwp' => $request->no_npwp,
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
             'foto_asesor' => $fotoAsesor,
@@ -108,6 +112,27 @@ class AsesorController extends Controller
     {
         // dd($request->all());
 
+        $validated = $request->validate([
+            'nama_asesor' => 'required|unique:asesor',
+            'no_telp' => 'required|unique:asesor',
+            'no_reg' => 'required|unique:asesor',
+            'no_npwp' => 'unique:asesor',
+            'alamat' => 'required',
+        ], [
+            'nama_asesor.required' => 'Nama Asesor Tidak Boleh Kosong.',
+            'nama_asesor.unique' => 'Nama ini sudah terdaftar.',
+
+            'no_telp.required' => 'No Telepon Tidak Boleh Kosong.',
+            'no_telp.unique' => 'Nomor ini sudah terdaftar.',
+
+            'no_reg.required' => 'No REG Tidak Boleh Kosong.',
+            'no_reg.unique' => 'Nomor REG ini sudah terdaftar.',
+
+            'no_npwp.unique' => 'Nomor NPWP ini sudah terdaftar.',
+
+            'alamat.required' => 'Alamat Tidak Boleh Kosong.',
+        ]);
+
         // Image Upload Handler
         if ($request->foto_asesor === null) {
             $fotoAsesor = $this->getFotoAsesor($id);
@@ -129,6 +154,7 @@ class AsesorController extends Controller
         AsesorModel::where('id', $id)->update([
             'nama_asesor' => $request->nama_asesor,
             'no_reg' => $request->no_reg,
+            'no_npwp' => $request->no_npwp,
             'no_telp' => $request->no_telp,
             'alamat' => $request->alamat,
             'foto_asesor' => $fotoAsesor,
@@ -152,6 +178,13 @@ class AsesorController extends Controller
         }
         // Delete Data Handler
         AsesorModel::destroy($id);
-        return response()->json(['message' => 'Data Asesor Berhasil Dihapus']);
+        $flashData = [
+            'judul' => 'Delete Success',
+            'pesan' => 'Data TUK Telah Dihapus',
+            'swalFlashIcon' => 'success',
+        ];
+        // return redirect()->route('tuk')->with('flashData', $flashData);
+
+        return response()->json(['message' => 'Data Surat Berhasil Dihapus']);
     }
 }

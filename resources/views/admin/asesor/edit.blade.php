@@ -49,7 +49,7 @@
                                 </div>
                                     <div class="card-body">
                                         <div class="row">
-                                            <div class="col-lg-6 mb-4">
+                                            <div class="col-lg-4 mb-4">
                                                 <label class="form-label">Nama Asesor<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
@@ -61,7 +61,7 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="col-lg-6 mb-4">
+                                            <div class="col-lg-4 mb-4">
                                                      <label class="form-label">No REG<span class="text-danger">*</span></label>
                                                 <div class="input-group">
                                                     <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
@@ -69,6 +69,18 @@
                                                 </div>
 
                                                 @error('no_reg')
+                                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+
+                                            <div class="col-lg-4 mb-4">
+                                                     <label class="form-label">No NPWP<span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                                    <input type="text" class="form-control" placeholder="Inputkan No REG" name="no_npwp" value="{{ old('no_npwp', $dataAsesor->no_npwp) }}">
+                                                </div>
+
+                                                @error('no_npwp')
                                                     <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
                                                 @enderror
                                             </div>
@@ -146,7 +158,7 @@
         const imgPreview = document.querySelector('.foto_asesor');
 
         imgPreview.style.display = 'block';
-        const oFReader = new FileReader();  
+        const oFReader = new FileReader();
         oFReader.readAsDataURL(image.files[0]);
 
         oFReader.onload = function(oFREvent) {
