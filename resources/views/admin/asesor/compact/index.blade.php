@@ -25,6 +25,7 @@
                 <th>No</th>
                 <th>Nama Asesor</th>
                 <th>No REG</th>
+                <th>No NPWP</th>
                 <th>No Telp</th>
                 <th>Alamat</th>
                 <th>Foto Asesor</th>
@@ -36,9 +37,10 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $asesor->nama_asesor }}</td>
                     <td>{{ $asesor->no_reg }}</td>
+                    <td>{{ $asesor->no_npwp }}</td>
                     <td>{{ $asesor->no_telp }}</td>
                     <td>{{ $asesor->alamat }}</td>
-                    
+
                     <td>
                         @if ($asesor->foto_asesor == null)
                             <span class="text-muted d-block">Tidak Ada Profile</span>

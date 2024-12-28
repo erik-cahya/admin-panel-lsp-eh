@@ -14,7 +14,7 @@ class CreateManajemenTable extends Migration
     public function up()
     {
         Schema::create('manajemen', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->string('nama_manajemen');
             $table->string('no_telp')->nullable();
             $table->string('alamat')->nullable();

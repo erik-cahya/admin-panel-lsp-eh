@@ -91,11 +91,25 @@
                                                     <img class="avatar-sm rounded-circle bx-s" src="{{ $asesor->foto_asesor == null ? asset('velonic_admin/assets/images/users/avatar-2.jpg') : asset('img/foto_asesor/' . $asesor->foto_asesor)  }}" alt="">
                                                 </a>
                                                 <div class="info">
-                                                    <h6>{{ $asesor->nama_asesor }}</h6>
+                                                    <span class="fw-bold">{{ $asesor->nama_asesor }}</span>
 
                                                     <div class="row hover-menu">
                                                         <div class="col">
-                                                            Details | Edit |
+
+                                                            {{-- Edit Button --}}
+                                                            <a href="/asesor/{{ $asesor->id }}/edit" class="text-secondary" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $asesor->id }}">
+                                                                Details
+                                                            </a>
+
+                                                            |
+
+                                                            {{-- Edit Button --}}
+                                                            <a href="/asesor/{{ $asesor->id }}/edit">
+                                                                Edit
+                                                            </a>
+                                                            {{-- Edit Button --}}
+
+                                                            |
 
                                                             {{-- Delete Button --}}
                                                             <form action="/asesor/{{ $asesor->id }}" method="POST" class="d-inline">
@@ -116,7 +130,7 @@
                                     </td>
                                     <td>{{ $asesor->no_reg }}</td>
                                     <td>{{ $asesor->no_telp }}</td>
-                                    <td>{{ Str::limit($asesor->alamat, 50) }}</td>
+                                    <td>{{ $asesor->alamat }}</td>
                                     <td>{{ $asesor->no_npwp }}</td>
                                     <td>
                                         {{-- Download Foto Profile --}}

@@ -61,6 +61,7 @@ class AsesiController extends Controller
                 ];
             }
 
+
             // Validasi NIK harus 16 Digit | kolom [4] excel
             if (!preg_match('/^\d{16}$/', $row[4])) {
                 $length = strlen(trim($row[4]));

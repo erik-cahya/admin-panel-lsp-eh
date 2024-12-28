@@ -8,7 +8,7 @@
         <meta content="A fully responsive admin theme which can be used to build CRM, CMS,ERP etc." name="description" />
         <meta content="Techzaa" name="author" />
 
-    
+
         <!-- App favicon -->
         <link rel="shortcut icon" href="{{ asset('velonic_admin') }}/assets/images/favicon.ico">
 
@@ -230,10 +230,16 @@
                         <button type="button" class="btn btn-light w-100" id="reset-layout">Reset</button>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-12" style="font-size: 10px; margin-top: 5px">
+                        <span>First Commit : 20 April 2024</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        
+
         @yield('js_page')
         {{-- Isotope JS --}}
         <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
