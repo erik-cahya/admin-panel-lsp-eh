@@ -26,7 +26,7 @@
         <!--- Sidemenu -->
         <ul class="side-nav">
             <li class="side-nav-title">Main</li>
-            
+
             <li class="side-nav-item {{ request()->segment(1) === 'dashboard' ? 'menuitem-active' : ''}} ">
                 <a href="{{ route('dashboard') }}" class="side-nav-link ">
                     <i class="ri-dashboard-3-line"></i>

@@ -56,7 +56,7 @@
                     <td nowrap>{{ $asesi->jabatan_pekerjaan }}</td>
                     <td nowrap>{{ $asesi->skema_sertifikasi }}</td>
                     <td nowrap>{{ $asesi->rencana_uji_kompetensi }}</td>
-                    
+
                 </tr>
             @endforeach
         </table>

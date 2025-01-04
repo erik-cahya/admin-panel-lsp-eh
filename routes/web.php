@@ -8,6 +8,7 @@ use App\Http\Controllers\DataLSP\ManajemenController;
 use App\Http\Controllers\DataLSP\SkemaController;
 use App\Http\Controllers\DataLSP\TUKController;
 use App\Http\Controllers\Developer\ExcelController;
+use App\Http\Controllers\LogController;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\QRCode\QRCodeController;
 use App\Http\Controllers\Surat\SuratTugasAsesorController;
@@ -44,6 +45,8 @@ Route::post('/import', [AsesiController::class, 'importExcel'])->name('import');
 // Middleware Login
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/logs', [LogController::class, 'index']);
 
     // ############################################################ QR Code
     Route::resource('/qr-code', QRCodeController::class)->except(['create', 'show', 'edit', 'update']);

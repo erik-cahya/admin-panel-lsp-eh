@@ -8,6 +8,9 @@ use App\Models\ManajemenModel;
 use App\Models\SkemaModel;
 use App\Models\TUKModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 
@@ -15,10 +18,6 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
-        dd($request->ip());
-
-        dd(geoip()->getLocation($request->ip()));
-
         $data['countManajemen'] = ManajemenModel::count();
         $data['countAsesi'] = AsesiModel::count();
         $data['countAsesor'] = AsesorModel::count();
