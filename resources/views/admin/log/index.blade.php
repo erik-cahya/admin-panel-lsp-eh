@@ -28,6 +28,7 @@
             <th nowrap>Name User</th>
             <th nowrap>Location</th>
             <th nowrap>Internet Services</th>
+            <th nowrap>Timestamp</th>
         </thead>
         <tbody>
             @foreach ($logData as $log)
@@ -37,6 +38,7 @@
                 <td nowrap>{{ $log['name'] }}</td>
                 <td nowrap>{{ $log['city'] .', '. $log['regionName'] .' '. $log['country'] }}</td>
                 <td nowrap>{{ $log['isp'] }}</td>
+                <td nowrap>{{ $log['timestamps'] }}</td>
             </tr>
             @endforeach
         </tbody>
