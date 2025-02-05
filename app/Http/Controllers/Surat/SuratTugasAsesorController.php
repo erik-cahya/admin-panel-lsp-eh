@@ -51,6 +51,16 @@ class SuratTugasAsesorController extends Controller
         preg_match("/^\d+/", $nomorSuratTerakhir['nomor_surat'], $matches);
         $check = $matches[0];
 
+        // ketika tahun terakhir surat
+        if(explode('/',$nomorSuratTerakhir['nomor_surat'])[2] !== date('Y')){
+            dd('tahun tidak sama');
+        }else{
+            dd('true');
+        }
+
+        // dd(explode('/',$nomorSuratTerakhir['nomor_surat'])[2]);
+
+
         $data['tuk'] = TUKModel::get();
         $count = $check + 1;
         $year = date('Y');
