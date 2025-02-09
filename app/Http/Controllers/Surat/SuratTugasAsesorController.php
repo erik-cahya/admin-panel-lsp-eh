@@ -47,19 +47,15 @@ class SuratTugasAsesorController extends Controller
         if ($nomorSuratTerakhir == null) {
             $nomorSuratTerakhir =  ['nomor_surat' => '000/ST-LSP-EHI/2021'];
         }
+
         // Ambil angkanya doang
         preg_match("/^\d+/", $nomorSuratTerakhir['nomor_surat'], $matches);
         $check = $matches[0];
 
-        // ketika tahun terakhir surat
+        // ketika tahun surat terakhir tidak sama dengan tahun ini, maka ubah nomornya ke 0
         if(explode('/',$nomorSuratTerakhir['nomor_surat'])[2] !== date('Y')){
-            dd('tahun tidak sama');
-        }else{
-            dd('true');
+             $check = 0;
         }
-
-        // dd(explode('/',$nomorSuratTerakhir['nomor_surat'])[2]);
-
 
         $data['tuk'] = TUKModel::get();
         $count = $check + 1;
