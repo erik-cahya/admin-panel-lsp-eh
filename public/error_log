@@ -1,0 +1,9 @@
+[28-Dec-2024 15:41:07 UTC] PHP Warning:  require(/home/satuproj/admin.lsp-eh.com/admin-lsp-app/vendor/composer/../laravel/framework/src/Illuminate/Collections/helpers.php): Failed to open stream: No such file or directory in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/vendor/composer/autoload_real.php on line 41
+[28-Dec-2024 15:41:07 UTC] PHP Warning:  require(/home/satuproj/admin.lsp-eh.com/admin-lsp-app/vendor/composer/../laravel/framework/src/Illuminate/Collections/helpers.php): Failed to open stream: No such file or directory in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/vendor/composer/autoload_real.php on line 41
+[28-Dec-2024 15:41:07 UTC] PHP Fatal error:  Uncaught Error: Failed opening required '/home/satuproj/admin.lsp-eh.com/admin-lsp-app/vendor/composer/../laravel/framework/src/Illuminate/Collections/helpers.php' (include_path='.:/opt/cpanel/ea-php81/root/usr/share/pear') in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/vendor/composer/autoload_real.php:41
+Stack trace:
+#0 /home/satuproj/admin.lsp-eh.com/admin-lsp-app/vendor/composer/autoload_real.php(45): {closure}('265b4faa2b3a976...', '/home/satuproj/...')
+#1 /home/satuproj/admin.lsp-eh.com/admin-lsp-app/vendor/autoload.php(25): ComposerAutoloaderInite6ba18c0589ff93915a70d819ee555a8::getLoader()
+#2 /home/satuproj/admin.lsp-eh.com/admin-lsp-app/public/index.php(34): require('/home/satuproj/...')
+#3 {main}
+  thrown in /home/satuproj/admin.lsp-eh.com/admin-lsp-app/vendor/composer/autoload_real.php on line 41
