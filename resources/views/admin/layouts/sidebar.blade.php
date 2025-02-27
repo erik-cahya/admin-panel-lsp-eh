@@ -191,11 +191,6 @@
                             </a>
                         </li>
                     </ul>
-                    <ul class="side-nav-second-level">
-                        <li>
-                            <a href="/skema/create">Create Data Skema</a>
-                        </li>
-                    </ul>
                 </div>
             </li>
 
