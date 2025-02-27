@@ -68,5 +68,95 @@
         "id_user": 719760510601167112,
         "name": "Admin LSP",
         "timestamps": "14-Feb-2025 18:48:45"
+    },
+    {
+        "ip_address": "123.231.250.36",
+        "country": "Indonesia",
+        "regionName": "Jakarta",
+        "city": "Karet Tengsin",
+        "isp": "PT Aplikanusa Lintasarta",
+        "id_user": 719760510601167112,
+        "name": "Admin LSP",
+        "timestamps": "15-Feb-2025 13:04:34"
+    },
+    {
+        "ip_address": "180.254.227.223",
+        "country": "Indonesia",
+        "regionName": "Bali",
+        "city": "Banjar Pacung",
+        "isp": "PT. TELKOM INDONESIA",
+        "id_user": 719760510601167112,
+        "name": "Admin LSP",
+        "timestamps": "16-Feb-2025 22:51:16"
+    },
+    {
+        "ip_address": "123.231.250.36",
+        "country": "Indonesia",
+        "regionName": "Jakarta",
+        "city": "Karet Tengsin",
+        "isp": "PT Aplikanusa Lintasarta",
+        "id_user": 719760510601167112,
+        "name": "Admin LSP",
+        "timestamps": "17-Feb-2025 11:08:05"
+    },
+    {
+        "ip_address": "123.231.250.36",
+        "country": "Indonesia",
+        "regionName": "Jakarta",
+        "city": "Karet Tengsin",
+        "isp": "PT Aplikanusa Lintasarta",
+        "id_user": 719760510601167112,
+        "name": "Admin LSP",
+        "timestamps": "17-Feb-2025 11:08:22"
+    },
+    {
+        "ip_address": "123.231.250.36",
+        "country": "Indonesia",
+        "regionName": "Jakarta",
+        "city": "Karet Tengsin",
+        "isp": "PT Aplikanusa Lintasarta",
+        "id_user": 719760510601167112,
+        "name": "Admin LSP",
+        "timestamps": "17-Feb-2025 11:09:11"
+    },
+    {
+        "ip_address": "180.254.227.223",
+        "country": "Indonesia",
+        "regionName": "Bali",
+        "city": "Banjar Pacung",
+        "isp": "PT. TELKOM INDONESIA",
+        "id_user": 719760510601167112,
+        "name": "Admin LSP",
+        "timestamps": "20-Feb-2025 23:53:48"
+    },
+    {
+        "ip_address": "180.254.227.223",
+        "country": "Indonesia",
+        "regionName": "Bali",
+        "city": "Banjar Pacung",
+        "isp": "PT. TELKOM INDONESIA",
+        "id_user": 719760510601167112,
+        "name": "Admin LSP",
+        "timestamps": "22-Feb-2025 02:06:54"
+    },
+    {
+        "ip_address": "123.231.250.36",
+        "country": "Indonesia",
+        "regionName": "Jakarta",
+        "city": "Karet Tengsin",
+        "isp": "PT Aplikanusa Lintasarta",
+        "id_user": 719760510601167112,
+        "name": "Admin LSP",
+        "timestamps": "22-Feb-2025 17:36:30"
+    },
+    {
+        "ip_address": "123.231.250.36",
+        "country": "Indonesia",
+        "regionName": "Jakarta",
+        "city": "Karet Tengsin",
+        "isp": "PT Aplikanusa Lintasarta",
+        "id_user": 719760510601167112,
+        "name": "Admin LSP",
+        "timestamps": "26-Feb-2025 16:14:13"
     }
 ]
