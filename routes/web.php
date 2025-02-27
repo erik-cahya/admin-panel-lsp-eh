@@ -101,5 +101,5 @@ Route::middleware(['auth'])->group(function () {
 
 
     // ############################################################ Skema
-    Route::resource('/skema', SkemaController::class)->except('show','edit');
+    Route::resource('/skema', SkemaController::class)->except('show','edit', 'create');
 });

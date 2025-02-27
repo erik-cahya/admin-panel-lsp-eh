@@ -51,11 +51,17 @@
                                             <label class="form-label">Nama Asesor<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                <input type="text" class="form-control" placeholder="Inputkan Nama Asesor" name="nama_asesor" value="{{ old('nama_asesor') }}">
+                                                <input type="text" class="form-control border-red" placeholder="Inputkan Nama Asesor"name="nama_asesor" value="{{ old('nama_asesor') }}">
                                             </div>
 
+                                            
+
                                             @error('nama_asesor')
-                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                <style> .border-red{border-color: #d03f3f} </style>
+
+                                                <div class="invalid-tooltip d-block position-static mt-1">
+                                                    {{ $message }}
+                                                </div>
                                             @enderror
                                         </div>
 
@@ -63,11 +69,15 @@
                                             <label class="form-label">No REG<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                <input type="text" class="form-control" placeholder="Inputkan No REG" name="no_reg" value="{{ old('no_reg') }}">
+                                                <input type="text" class="form-control border-red" placeholder="Inputkan No REG" name="no_reg" value="{{ old('no_reg') }}">
                                             </div>
 
                                             @error('no_reg')
-                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                <style> .border-red{border-color: #d03f3f} </style>
+
+                                                <div class="invalid-tooltip d-block position-static mt-1">
+                                                    {{ $message }}
+                                                </div>
                                             @enderror
                                         </div>
 
@@ -75,11 +85,15 @@
                                             <label class="form-label">No NPWP</label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                <input type="text" class="form-control" placeholder="Inputkan No NPWP Asesor" name="no_npwp" value="{{ old('no_npwp') }}">
+                                                <input type="text" class="form-control border-red" placeholder="Inputkan No NPWP Asesor" name="no_npwp" value="{{ old('no_npwp') }}">
                                             </div>
 
                                             @error('no_npwp')
-                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                <style> .border-red{border-color: #d03f3f} </style>
+
+                                                <div class="invalid-tooltip d-block position-static mt-1">
+                                                    {{ $message }}
+                                                </div>
                                             @enderror
                                         </div>
 
@@ -87,11 +101,15 @@
                                             <label class="form-label">No Telp<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                <input type="text" class="form-control" placeholder="Inputkan No Telp Asesor" name="no_telp" value="{{ old('no_telp') }}">
+                                                <input type="text" class="form-control border-red" placeholder="Inputkan No Telp Asesor" name="no_telp" value="{{ old('no_telp') }}">
                                             </div>
 
                                             @error('no_telp')
-                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                <style> .border-red{border-color: #d03f3f} </style>
+
+                                                <div class="invalid-tooltip d-block position-static mt-1">
+                                                    {{ $message }}
+                                                </div>
                                             @enderror
                                         </div>
 
@@ -99,11 +117,15 @@
                                             <label class="form-label">Alamat<span class="text-danger">*</span></label>
                                             <div class="input-group">
                                                 <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
-                                                <input type="text" class="form-control" placeholder="Inputkan Alamat Asesor" name="alamat" value="{{ old('alamat') }}">
+                                                <input type="text" class="form-control border-red" placeholder="Inputkan Alamat Asesor" name="alamat" value="{{ old('alamat') }}">
                                             </div>
 
                                             @error('alamat')
-                                                <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                                <style> .border-red{border-color: #d03f3f} </style>
+
+                                                <div class="invalid-tooltip d-block position-static mt-1">
+                                                    {{ $message }}
+                                                </div>
                                             @enderror
                                         </div>
 

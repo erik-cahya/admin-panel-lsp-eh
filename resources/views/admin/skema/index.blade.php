@@ -1,12 +1,5 @@
 @extends('admin.layouts.master')
 @section('css_page')
-    <!-- Datatables css -->
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('velonic_admin') }}/assets/vendor/datatables.net-select-bs5/css/select.bootstrap5.min.css" rel="stylesheet" type="text/css" />
     <!-- Theme Config Js -->
     <script src="{{ asset('velonic_admin') }}/assets/js/config.js"></script>
     <!-- App css -->
@@ -43,10 +36,18 @@
                 <!-- Todo-->
                 <div class="card">
                     <div class="card-body p-0">
-                        <div class="p-3">
+                        <div class="row p-3 d-flex">
+                            <div class="col-lg-6">
+                                <h5 class="header-title mb-0">{{ $titlePage }}</h5>
+                            </div>
                             
-                            <h5 class="header-title mb-0">{{ $titlePage }}</h5>
+                            <div class="col-lg-6">
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add.modalSkema">Tambah Data Skema</button>
+                                </div>
+                            </div>
                         </div>
+
 
                         <div id="yearly-sales-collapse" class="collapse show">
 
@@ -60,15 +61,6 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-
-                                        {{-- <tr>
-                                           <td>1</td>
-                                           <td>Velonic Admin v1</td>
-                                           <td>01/01/2015</td>
-                                           <td>26/04/2015</td>
-                                           <td><span class="badge bg-info-subtle text-info">Released</span></td>
-                                           <td>Techzaa Studio</td>
-                                       </tr> --}}
                                          @foreach ($dataSkema as $skema)
                                           <tr>
                                             <td>{{ $loop->iteration }}</td>
@@ -76,14 +68,9 @@
                                             <td>
                                                 <div class="btn-group mb-2">
                                                     {{-- Edit Button --}}
-                                                    {{-- <a href="/skema/{{ $skema->id }}/edit" class="btn btn-success" data-bs-toggle="tooltip" data-bs-placement="top" class="tooltips" data-bs-title="Edit">
-                                                        <i class="ri-edit-line"></i>
-                                                    </a> --}}
-
-                                                    {{-- See Details --}}
-                                                <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#modalSurat{{ $skema->id }}">
-                                                    <i class="ri-edit-line"></i> 
-                                                </button>
+                                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit.modalSkema{{ $skema->id }}">
+                                                        <i class="ri-edit-line"></i> 
+                                                    </button>
 
                                                     {{-- Delete Button --}}
                                                     <form action="/skema/{{ $skema->id }}" method="POST">
@@ -112,12 +99,12 @@
 </div>
 
 
-{{-- Modal --}}
+{{-- Edit Modal --}}
 @foreach ($dataSkema as $skema)
  <form enctype="multipart/form-data" method="POST" action="{{ route('skema.update', $skema->id) }}">
     @csrf
     @method('PUT')
-    <div class="modal fade" id="modalSurat{{ $skema->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="edit.modalSkema{{ $skema->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header modal-colored-header bg-info">
@@ -145,7 +132,46 @@
     </div>
  </form>
 @endforeach
-<!-- /* End Modal -->
+<!-- /* End Edit Modal -->
+
+{{-- Add Modal Skema --}}
+<form enctype="multipart/form-data" method="POST" action="/skema">
+    @csrf
+    <div class="modal fade" id="add.modalSkema" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header modal-colored-header bg-info">
+                    <h4 class="modal-title" id="info-header-modalLabel">{{ $titlePage }} EHI</h4>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{-- Modal Content --}}
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label class="form-label" for="nama_skema">Nama Skema<span class="text-danger">*</span></label>
+                                <div class="input-group">
+                                    <div class="input-group-text"><i class="ri-newspaper-fill"></i> </div>
+                                    <input type="text" class="form-control" placeholder="Inputkan Nama Skema" name="nama_skema">
+                                </div>
+
+                                @error('nama_skema')
+                                    <div style="color: #ff7076; font-size: 13px">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Tambah Data Skema</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ </form>
+{{-- /* End Add Modal Skema --}}
 
 @endsection
 @section('js_page')
